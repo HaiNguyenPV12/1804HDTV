@@ -1,5 +1,5 @@
 <?php
-include "./fconnectadmin.php";
+include "./src/fconnectadmin.php";
 
 //function trả về hình mặc định (trong trường hợp kg thấy hình gốc)
 function img0()
@@ -25,7 +25,7 @@ function URLExists($url)
 //dùng cho select sql, trả về array
 function getSql($sql)
 {
-    include "./fconnectadmin.php";
+    include "./src/fconnectadmin.php";
     $result = $cn->query($sql);
     if (!$result) {
         echo "Lỗi câu lệnh: " . $cn->error;
@@ -46,7 +46,7 @@ function getSql($sql)
 //dùng cho insert, trả về boolean
 function insertSql($sql)
 {
-    include "./fconnectadmin.php";
+    include "./src/fconnectadmin.php";
     $cn->query($sql);
 
     if ($cn->affected_rows <= 0) {
@@ -61,7 +61,7 @@ function insertSql($sql)
 //dùng cho update, trả về boolean
 function updateSql($sql)
 {
-    include "./fconnectadmin.php";
+    include "./src/fconnectadmin.php";
     $cn->query($sql);
 
     if ($cn->affected_rows <= 0) {
@@ -76,7 +76,7 @@ function updateSql($sql)
 //dùng cho delete, trả về boolean
 function deleteSql($sql)
 {
-    include "./fconnectadmin.php";
+    include "./src/fconnectadmin.php";
     $cn->query($sql);
 
     if ($cn->affected_rows <= 0) {
