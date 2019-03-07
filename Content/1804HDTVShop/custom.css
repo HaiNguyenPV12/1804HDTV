@@ -1,4 +1,5 @@
 /* Banner Contents */
+
 .abovenavbar {
     height: 100px;
     width: 100%;
@@ -15,14 +16,14 @@
     color: white;
 }
 
-.navbar-nav .nav-item.active .nav-link,
-.navbar-nav .nav-item:hover .nav-link {
+.navbar-nav .nav-item.active .nav-link, .navbar-nav .nav-item:hover .nav-link {
     background-color: #4a148c;
     color: white;
     transition: 0.25s;
 }
 
 /*Scroll to top button*/
+
 .ScrollToTop {
     position: fixed;
     bottom: 25px;
@@ -42,23 +43,24 @@
     opacity: 0;
 }
 
-    .ScrollToTop:hover {
-        background: #e9ebec;
-        transition: 0.2s;
-        text-decoration: none;
-    }
+.ScrollToTop:hover {
+    background: #e9ebec;
+    transition: 0.2s;
+    text-decoration: none;
+}
 
-    .ScrollToTop.show {
-        opacity: .35;
-    }
+.ScrollToTop.show {
+    opacity: .35;
+}
 
 /* footer */
+
 .footer {
     background-color: rgba(25, 25, 25, 0.85);
     color: #FFF;
     padding-bottom: 5px;
 }
-    
-    .footer a {
-        text-decoration: none;
-    }
+
+.footer a {
+    text-decoration: none;
+}

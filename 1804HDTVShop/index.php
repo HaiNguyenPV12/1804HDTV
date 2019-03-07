@@ -1,10 +1,14 @@
+<?php
+include "../src/fconnectadmin.php";
+?>
+
 <!DOCTYPE html>
 <html ng-app="1804HDTVShop">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>1804HDTV Flower Shop</title>
+    <title>1804HDTV Shop</title>
     <link rel="stylesheet" href="../Content/bootstrap.min.css">
     <link rel="stylesheet" href="../Content/font-awesome.min.css">
     <link rel="stylesheet" href="../Content/bootstrap-social.css">
@@ -29,9 +33,27 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">Loại Hoa</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#!test">test</a>
-                    <!-- <a class="dropdown-item" href="#!mathematic">Mathematics</a>
-                        <a class="dropdown-item" href="#!language">Languages</a> -->
+                    <!-- <a class="dropdown-item" href="#!test">test</a> -->
+                    <?php
+$sql = "SELECT * from flower_cate order by f_cate_name asc";
+$rs = mysqli_query($cn, $sql);
+while ($row = mysqli_fetch_assoc($rs)) {
+    echo "<a class=\"dropdown-item\" href=\"#!browse.php?cate=" . $row['f_cate_name'] . "\">" . $row['f_cate_name'] . "</a>";
+}
+?>
+                </div>
+            </li>
+            <!-- Flower Color Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">Màu Hoa</a>
+                <div class="dropdown-menu">
+                    <?php
+$sql = "SELECT * from flower_color order by f_color_name asc";
+$rs = mysqli_query($cn, $sql);
+while ($row = mysqli_fetch_assoc($rs)) {
+    echo "<a class=\"dropdown-item\" href=\"#!test\">" . $row['f_color_name'] . "</a>";
+}
+?>
                 </div>
             </li>
         </ul>
@@ -39,25 +61,6 @@
 
     <!-- content -->
     <div ng-view></div>
-
-    <div class='container'>
-        <h1>text for scrolling</h1>
-        <h1>text for scrolling</h1>
-        <h1>text for scrolling</h1>
-        <h1>text for scrolling</h1>
-        <h1>text for scrolling</h1>
-        <h1>text for scrolling</h1>
-        <h1>text for scrolling</h1>
-        <h1>text for scrolling</h1>
-        <h1>text for scrolling</h1>
-        <h1>text for scrolling</h1>
-        <h1>text for scrolling</h1>
-        <h1>text for scrolling</h1>
-        <h1>text for scrolling</h1>
-        <h1>text for scrolling</h1>
-        <h1>text for scrolling</h1>
-        <h1>text for scrolling</h1>
-    </div>
 
     <!-- Footer -->
     <div class="footer">
@@ -93,8 +96,8 @@
         </div>
     </div>
 
-    <!-- Scroll to top button -->
-    <a href="#" class="ScrollToTop" title="Back to top">▲</a>
+    <!-- Scroll to top button, remove adblock to show in some cases -->
+    <a href="#" class="ScrollToTop" title="về đầu trang">▲</a>
 
     <!--Scripts placed at end of document to make pages load faster-->
     <script src="../Scripts/angular.min.js"></script>
@@ -104,6 +107,9 @@
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/1804HDTVShop/shopScripts.js"></script>
     <!--Angular Controllers-->
+    <script src="../Scripts/1804HDTVShop/Controllers/indexcontroller.js"></script>
+    <script src="../Scripts/1804HDTVShop/Controllers/homecontroller.js"></script>
+    <script src="../Scripts/1804HDTVShop/Controllers/browsecontroller.js"></script>
 </body>
 
 </html>
