@@ -1,7 +1,7 @@
 <!-- Trang chỉnh sửa chức vụ -->
 <?php
     // Đầu tiên là lấy dữ liệu ra trước để hiển thị trước khi chỉnh sửa
-    include '.././src/staffdb.php';
+    include '../src/staffdb.php';
     if (isset($_GET["roleid"])) {
         $id = $_GET["roleid"];
         $data = getSql("select * from staff_role where s_role_ID ='$id'")[0];
@@ -10,8 +10,15 @@
     }
 ?>
 <!-- Script tùy chỉnh của trang bouquetadd -->
-<script src="./Scripts/custom/roleedit.js"></script>
-
+<script src="../Scripts/1804HDTVAdmin/roleedit.js"></script>
+<?php
+    // Kiểm tra xem chức vụ này có ai nắm chưa
+    $existed = getSql("SELECT * FROM right_detail where s_role_ID = '$id'");
+    // Có thì cảnh báo
+    if (sizeof($existed)>0) {
+        echo "<b><p class='text-warning'>Lưu ý: Đã có người giữ chức vụ này. Nếu mã chức vụ có thay đổi cũng sẽ cập nhật vào bên nhân viên.</p></b>";
+    }
+?>
 <!-- Form -->
 <form id="frmEditRole" name="frmEditRole" class="" method="post">
     <!-- Vì submit dùng kỹ thuật ajax nên tạo thêm cái này để bên trang xử lý nhận biết -->

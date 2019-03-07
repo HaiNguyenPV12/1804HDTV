@@ -74,7 +74,7 @@ app.config(function($routeProvider) {
         templateUrl : "staffright.php",
     })
     .when("/role", {
-        templateUrl : "Pages/role.php"
+        templateUrl : "role.php"
     })
     .otherwise({
         template : "<h2>Không tìm thấy trang!</h2>"

@@ -29,6 +29,7 @@ $(document).on("click","#color_list button",function(){
     $(this).remove();
 });
 
+// Khi nhấn vào màu ở danh sách bên phải, nó sẽ thêm vào danh sách đang có
 $(document).on("click","#color_list_not button",function(){
     var cinsertid=$(this).find("[name='cinsertid']").val();
     var cinsertname=$(this).find("[name='cinsertname']").val();
@@ -59,7 +60,7 @@ $('#frmFlowerColor').submit(function(event){
     // đặt tên cho dễ
     var $form = $(this);
 
-    // Chọn tất cả trừ cái bid (bid mặc định đã disabled)
+    // Chọn tất cả input để tắt
     var $inputs = $form.find("input, select, button, textarea");
 
     // Mã hóa để đưa dữ liệu qua post
@@ -70,7 +71,7 @@ $('#frmFlowerColor').submit(function(event){
 
     // Fire off the request to /form.php
     request = $.ajax({
-        url: "./Pages/process.php",
+        url: "process.php",
         type: "post",
         data: serializedData
     });

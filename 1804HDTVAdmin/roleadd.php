@@ -1,7 +1,7 @@
 <!-- Trang thêm bó hoa mới -->
 
 <!-- Script tùy chỉnh của trang bouquetadd -->
-<script src="./Scripts/custom/roleadd.js"></script>
+<script src="../Scripts/1804HDTVAdmin/roleadd.js"></script>
 
 <!-- Form -->
 <form id="frmAddRole" name="frmAddRole" class="" method="post">

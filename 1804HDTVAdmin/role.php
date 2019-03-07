@@ -10,7 +10,7 @@
 <!-- Tựa đề -->
 <div class='row'>
     <h2 class="col-10">Quản lý Chức vụ</h2>
-    <button type="button" class="btn btn-success btn-lg col-2" data-toggle="modal" data-target="#modal" ng-click="temp.url = './Pages/roleadd.php';modalHText='Thêm mới';">Thêm mới</button>
+    <button type="button" class="btn btn-success btn-lg col-2" data-toggle="modal" data-target="#modal" ng-click="temp.url = 'roleadd.php';modalHText='Thêm mới';">Thêm mới</button>
 </div>
 
 <br>
@@ -18,7 +18,7 @@
 <!-- Đọc dữ liệu từ database để đưa ra bảng -->
 <?php
     // File trung gian kết nối database
-    include '.././src/staffdb.php';
+    include '../src/staffdb.php';
     // Lấy dữ liệu thông tin về quyền hạn và chức vụ nhân viên
     $right = getSql("SELECT s_role_ID , right_name FROM rights, right_detail where rights.right_ID = right_detail.right_ID");
     $role = getSql("SELECT staff_role.*,count(right_detail.s_role_ID) as num FROM `staff_role` left join right_detail on (staff_role.s_role_ID = right_detail.s_role_ID) group by s_role_ID, s_role_name, s_role_detail order by case when staff_role.s_role_ID='admin' then 0 ELSE 1 end, num desc");
@@ -54,7 +54,7 @@
                 }
             }
             if ($roledata['s_role_ID']!="admin") {
-                echo '(Có '.$rcount.' quyền) <a class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'./Pages/roleredit.php?roleid=',$roledata["s_role_ID"],'\';modalHText=\'Chỉnh sửa quyền của '.$roledata["s_role_name"].'\';">Sửa quyền hạn</a>';
+                echo '(Có '.$rcount.' quyền) <a class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'roleredit.php?roleid=',$roledata["s_role_ID"],'\';modalHText=\'Chỉnh sửa quyền của '.$roledata["s_role_name"].'\';">Sửa quyền hạn</a>';
             }
             echo "</td>";
 
@@ -65,8 +65,13 @@
             //-----------------------------------------------------------------------------
             //Chức năng
             if ($roledata['s_role_ID']!="admin") {
-                echo '<td><a class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'./Pages/roleedit.php?roleid=',$roledata["s_role_ID"],'\';modalHText=\'Chỉnh sửa\';">Sửa</a></td>';
-                echo '<td><a class="btn btn-danger btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'./Pages/delete.php?role&&roleid=',$roledata["s_role_ID"],'&&rolename=',$roledata["s_role_name"],'\';modalHText=\'Xóa ',$roledata["s_role_name"],'\';">Xóa</a></td>';
+                echo '<td><a class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'roleedit.php?roleid=',$roledata["s_role_ID"],'\';modalHText=\'Chỉnh sửa\';">Sửa</a></td>';
+                if (sizeof(getSql("SELECT * from staff where s_role_ID ='".$roledata['s_role_ID']."'"))>0) {
+                    echo '<td><a class="btn btn-secondary btn-sm text-light">Xóa</a></td>';
+                }else{
+                    echo '<td><a class="btn btn-danger btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'delete.php?role&&roleid=',$roledata["s_role_ID"],'&&rolename=',$roledata["s_role_name"],'\';modalHText=\'Xóa ',$roledata["s_role_name"],'\';">Xóa</a></td>';
+                }
+                
             }
         }
     }

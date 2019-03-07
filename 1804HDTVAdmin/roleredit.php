@@ -2,18 +2,18 @@
 
 <?php
     // Đầu tiên
-    include '.././src/staffdb.php';
+    include '../src/staffdb.php';
     if (isset($_GET["roleid"])) {
         $roleid = $_GET["roleid"];
         $data = getSql("SELECT s_role_ID, rights.right_ID, right_name FROM rights, right_detail where rights.right_ID = right_detail.right_ID and s_role_ID='$roleid'");
-        $rdata = getSql("SELECT * from right_detail order by right_ID");
+        $rdata = getSql("SELECT * from rights order by right_ID");
     }else{
         echo "Không thấy dữ liệu ID";
         exit;
     }
 ?>
 <!-- Script tùy chỉnh của trang positionredit -->
-<script src="./Scripts/custom/roleredit.js"></script>
+<script src="../Scripts/1804HDTVAdmin/roleredit.js"></script>
 <!-- Form -->
 <form id="frmEditRoleR" name="frmEditRoleR">
     <!-- Vì dùng kỹ thuật ajax để chuyển dữ liệu qua form xử lý nên tạo cái này để nhận biết -->
