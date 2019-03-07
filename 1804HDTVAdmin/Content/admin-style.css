@@ -1,0 +1,97 @@
+.leftmenu{
+    max-width: 14%;
+    position: fixed;
+    display: inline-block;
+    left: 1vw;
+    border: dashed 2px lightseagreen;
+    padding: 2vh;
+    z-index: 99;
+}
+
+a{
+    font-weight: bold;
+    color: black;
+    text-decoration-line: none;
+    margin: 10px; 
+    padding-bottom:1px;
+    transition-duration: 0.3s;
+    border-bottom: rgb(101, 144, 224) 2px solid;
+}
+a:hover{
+    border-bottom-color: rgb(253, 255, 146);
+}
+.button{
+    border-top:  lightgray 1px solid;
+    border-left:  lightgray 1px solid;
+    border-right: gray 2px solid;
+    border-bottom: gray 2px solid;
+    display: inline-block;
+    padding: 1vh;
+    transition-duration: 0.3s;
+    text-align: center;
+}
+.menubutton{
+    width:12vw;
+    border-top:  lightgray 1px solid;
+    border-left:  lightgray 1px solid;
+    border-right: gray 2px solid;
+    border-bottom: gray 2px solid;
+    display: inline-block;
+    margin: 1%;
+    padding: 1vh;
+    transition-duration: 0.3s;
+}
+.content{
+    max-width: 78%;
+    min-width: 78%;
+    height: 85vh;
+    position: absolute;
+    right: 1vw;
+    display: inline-block;
+    padding: 1vh;
+}
+th{
+    border-bottom: rgb(101, 144, 224) 2px solid;
+}
+
+tr:hover{
+    background-color: rgb(235, 235, 235);
+}
+table{
+    border-spacing: 8px;
+    border-top:  lightgray 1px solid;
+    border-left:  lightgray 1px solid;
+    border-right: gray 2px solid;
+    border-bottom: gray 2px solid;
+    padding: 5px;
+    transition-duration: 0.3s;
+}
+.top-title{
+    position: fixed;
+    width: 100%;
+    background-color: lightgrey;
+    opacity: 0.9;
+    padding-left: 20px;
+}
+th{
+    border-bottom: rgb(101, 144, 224) 2px solid;
+    border-left: lightgray 1px solid;
+    border-right: lightgray 1px solid;
+}
+
+.table{
+    width:100%;
+    border-spacing: 8px;
+    border-top:  lightgray 1px solid;
+    border-left:  lightgray 1px solid;
+    border-right: gray 2px solid;
+    border-bottom: gray 2px solid;
+    padding: 5px;
+    transition-duration: 0.3s;
+}
+.td{
+    border-left: lightgray 1px solid;
+    border-right: lightgray 1px solid;
+    text-align: center; 
+    vertical-align: middle;
+}
