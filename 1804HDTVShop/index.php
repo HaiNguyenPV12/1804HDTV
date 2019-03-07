@@ -21,21 +21,21 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-start sticky-top shadow">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php">Trang Chủ</a>
-                </li>
-                <!-- Flower Type Dropdown -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">Loại Hoa</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#!test">test</a>
-                        <!-- <a class="dropdown-item" href="#!mathematic">Mathematics</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="index.php">Trang Chủ</a>
+            </li>
+            <!-- Flower Type Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">Loại Hoa</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#!test">test</a>
+                    <!-- <a class="dropdown-item" href="#!mathematic">Mathematics</a>
                         <a class="dropdown-item" href="#!language">Languages</a> -->
-                    </div>
-                </li>
-            </ul>
-        </nav>
+                </div>
+            </li>
+        </ul>
+    </nav>
 
     <!-- content -->
     <div ng-view></div>
@@ -54,10 +54,14 @@
         <h1>text for scrolling</h1>
         <h1>text for scrolling</h1>
         <h1>text for scrolling</h1>
+        <h1>text for scrolling</h1>
+        <h1>text for scrolling</h1>
+        <h1>text for scrolling</h1>
     </div>
 
     <!-- Footer -->
     <div class="footer">
+        <!-- Social buttons -->
         <div class="container-fluid pt-md-3 text-center">
             <a class="btn btn-social-icon btn-sm btn-google" href="https://www.google.com" target="_blank"><i
                     class="fa fa-google"></i></a>
@@ -82,6 +86,7 @@
                 </div>
             </div>
         </div>
+        <!-- Bottom text -->
         <hr class="py-1">
         <div class="container-fluid text-center">
             <h4>&copy; COPYRIGHT 2019, 1804 HDTV COMPANY</h4>
