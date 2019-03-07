@@ -1,10 +1,8 @@
 <?php
-include "./src/fconnectadmin.php";
-
 //function trả về hình mặc định (trong trường hợp kg thấy hình gốc)
 function img0()
 {
-    return "img/spnone.jpg";
+    return "./../../1804HDTV/img/undefined.jpg";
 }
 
 //trong trường hợp 1 số function check url cần full url
@@ -25,7 +23,7 @@ function URLExists($url)
 //dùng cho select sql, trả về array
 function getSql($sql)
 {
-    include "./src/fconnectadmin.php";
+    include "fconnectadmin.php";
     $result = $cn->query($sql);
     if (!$result) {
         echo "Lỗi câu lệnh: " . $cn->error;
@@ -46,7 +44,7 @@ function getSql($sql)
 //dùng cho insert, trả về boolean
 function insertSql($sql)
 {
-    include "./src/fconnectadmin.php";
+    include "fconnectadmin.php";
     $cn->query($sql);
 
     if ($cn->affected_rows <= 0) {
@@ -61,11 +59,11 @@ function insertSql($sql)
 //dùng cho update, trả về boolean
 function updateSql($sql)
 {
-    include "./src/fconnectadmin.php";
+    include "fconnectadmin.php";
     $cn->query($sql);
 
     if ($cn->affected_rows <= 0) {
-        echo "Lỗi câu lệnh: " . $cn->error;
+        echo $cn->error;
         $cn->close();
         return false;
     }
@@ -76,7 +74,7 @@ function updateSql($sql)
 //dùng cho delete, trả về boolean
 function deleteSql($sql)
 {
-    include "./src/fconnectadmin.php";
+    include "fconnectadmin.php";
     $cn->query($sql);
 
     if ($cn->affected_rows <= 0) {

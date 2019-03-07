@@ -14,3 +14,4 @@ if (mysqli_connect_error()) {
 $cn->query("set character_set_client='utf8mb4'");
 $cn->query("set character_set_results='utf8mb4'");
 $cn->query("set collation_connection='utf8mb4_unicode_ci'");
+?>
