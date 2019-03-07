@@ -1,0 +1,37 @@
+.abovenavbar {
+    height: 100px;
+    width: 100%;
+    /*background-image: url('');*/
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-color: whitesmoke; /*TODO change background color and font*/
+}
+
+/*Scroll to top button*/
+.ScrollToTop {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+    width: 105px;
+    height: 32px;
+    text-align: center;
+    line-height: 30px;
+    background: #000;
+    color: #FFF;
+    cursor: pointer;
+    border: 0;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: opacity 0.2s ease-out;
+    opacity: 0;
+}
+
+    .ScrollToTop:hover {
+        background: #e9ebec;
+        transition: 0.2s;
+    }
+
+    .ScrollToTop.show {
+        opacity: .35;
+    }
