@@ -6,7 +6,7 @@
         exit;
     }
     //xóa file tạm trên server'
-    $files = glob('../tmp/*'); // get all file names
+    $files = glob('tmp/*'); // get all file names
     if (sizeOf($files)>0) {
         foreach($files as $file){ // iterate files
         if(is_file($file))
@@ -23,19 +23,21 @@ img{
     <div class='row'>
         <h2 class="col-7">Quản lý Hoa</h2>
         <?php
-        if (in_array("Q03",$_SESSION["sRight"],true) || in_array("Q00",$_SESSION["sRight"],true)) {
-            echo '<a class="btn btn-info btn-lg col-2 pr-sm-2 pl-sm-2" href="#!flower/category">';
-            echo 'Quản lý loại hoa';
-            echo '</a>';
-        }
-        ?>
-        <button type="button" class="btn btn-success btn-lg col-2 pr-sm-2 pl-sm-2 ml-5" data-toggle="modal" data-target="#modal" ng-click="temp.url = './Pages/floweradd.php';modalHText='Thêm mới';">
+            // Kiểm tra xem user có quyền chỉnh sửa Loại hoa hay không
+            if (in_array("Q03",$_SESSION["sRight"],true) || in_array("Q00",$_SESSION["sRight"],true)) {
+                // Nếu có thì cho hiện
+                echo '<a class="btn btn-info btn-lg col-2 pr-sm-2 pl-sm-2" href="#!flower/category">';
+                echo 'Quản lý loại hoa';
+                echo '</a>';
+            }
+            ?>
+        <button type="button" class="btn btn-success btn-lg col-2 pr-sm-2 pl-sm-2 ml-5" data-toggle="modal" data-target="#modal" ng-click="temp.url = 'floweradd.php';modalHText='Thêm mới';">
             Thêm mới
         </button>
     </div>
     <br>
     <?php
-        include '.././src/flowerdb.php';
+        include '../src/flowerdb.php';
         $data = getSql("SELECT * FROM v_flower_gen");
         $cdata = getSql("SELECT * FROM v_flower_color");
         $num = sizeof($data);
@@ -70,17 +72,17 @@ img{
                     }
                 }
                 // Nút sửa màu
-                echo '<a class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'./Pages/flowercolor.php?fid=',$f['f_ID'],'\';modalHText=\'Chỉnh sửa màu trong hoa\';">Sửa</a>';
+                echo '<a class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'flowercolor.php?fid=',$f['f_ID'],'\';modalHText=\'Chỉnh sửa màu trong hoa\';">Sửa</a>';
                 echo "</td>";
 
                 //-----------------------------------------------------------------------------
                 // Hình
                 echo "<td>";
-                $fimg = "./../../1804HDTV/".$f['f_img'];
+                $fimg = "../".$f['f_img'];
                 if (file_exists($fimg)) {
                     echo '<img src="'.$fimg.'">';
                 }else{
-                    echo '<img src="./../../1804HDTV/img/undefined.jpg">';
+                    echo '<img src="../img/undefined.jpg">';
                 }
                 echo "</td>";
 
@@ -90,8 +92,8 @@ img{
 
                 //-----------------------------------------------------------------------------
                 //Chức năng
-                echo '<td><button class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url=\'\'; temp.url = \'./Pages/floweredit.php?fid=',$f["f_ID"],'\';modalHText=\'Chỉnh sửa\';">Sửa</button></td>';
-                echo '<td><button class="btn btn-danger btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'./Pages/delete.php?flower&&fid=',$f["f_ID"],'&&fname=',$f["f_name"],'\';modalHText=\'Xóa ',$f["f_ID"],'\';">Xóa</button></td>';
+                echo '<td><button class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url=\'\'; temp.url = \'floweredit.php?fid=',$f["f_ID"],'\';modalHText=\'Chỉnh sửa\';">Sửa</button></td>';
+                echo '<td><button class="btn btn-danger btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'delete.php?flower&&fid=',$f["f_ID"],'&&fname=',$f["f_name"],'\';modalHText=\'Xóa ',$f["f_ID"],'\';">Xóa</button></td>';
                 
                 //-----------------------------------------------------------------------------
                 echo "</tr>";   

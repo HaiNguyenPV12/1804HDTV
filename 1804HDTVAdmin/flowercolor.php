@@ -1,9 +1,8 @@
-
 <!-- Trang chỉnh sửa các màu của hoa -->
 <?php
     if (isset($_GET["fid"])) {
         $fid = $_GET["fid"];
-        include '.././src/flowerdb.php';
+        include '../src/flowerdb.php';
         $data = getSql("SELECT * FROM v_flower_color");
         $cdata = getSql("SELECT * FROM flower_color");
     }else{
@@ -11,9 +10,9 @@
         exit;
     }
 ?>
-<link href="./Content/flowercolor.css" rel="stylesheet">
+<link href="../Content/1804HDTVAdmin/flowercolor.css" rel="stylesheet">
 <!-- Script tùy chỉnh của trang positionredit -->
-<script src="./Scripts/custom/flowercolor.js"></script>
+<script src="../Scripts/1804HDTVAdmin/flowercolor.js"></script>
 
 <!-- Form -->
 <form id="frmFlowerColor" name="frmFlowerColor">

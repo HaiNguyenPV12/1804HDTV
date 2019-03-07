@@ -1,9 +1,9 @@
 <?php
-// Trang xử lý hình ảnh
+// Trang xử lý hình ảnh bó hoa
 
 // Đường dẫn tới root chưa folder img
 $target_dir = "../"; // -> http://localhost:8080/
-// Đường dẫn từ thư mục root
+// Đường dẫn hình bó hoa tính từ từ thư mục root
 $target_file_name= $_POST["bimg"]; // -> img/Bouquet/[ID bó]/[Tên hình].[đuôi]
 // Đường dẫn full
 $target_file = $target_dir . $target_file_name;
