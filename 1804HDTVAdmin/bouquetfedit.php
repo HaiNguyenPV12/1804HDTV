@@ -2,7 +2,7 @@
 
 <?php
     // Đầu tiên là lấy dữ liệu ra trước để hiển thị trước khi chỉnh sửa
-    include '.././src/flowerdb.php';
+    include '../src/flowerdb.php';
     if (isset($_GET["bid"])) {
         $bid = $_GET["bid"];
         // Đây là bảng ghép (bouq_detail, flower) để lấy dữ liệu hoa trong các bó
@@ -14,7 +14,7 @@
     }
 ?>
 <!-- Script tùy chỉnh của trang bouquetfedit -->
-<script src="./Scripts/custom/bouquetfedit.js"></script>
+<script src="../Scripts/1804HDTVAdmin/bouquetfedit.js"></script>
 <!-- Form -->
 <form id="frmEditFBouquet" name="frmEditFBouquet">
     <!-- Vì dùng kỹ thuật ajax để chuyển dữ liệu qua form xử lý nên tạo cái này để nhận biết -->

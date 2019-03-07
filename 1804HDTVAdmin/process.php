@@ -8,7 +8,7 @@ if (isset($_POST['cmdAddFlower'])) {
         $fcate = $_POST['fcate'];
         $fimg = $_POST['fimg'];
         $fdetail = $_POST['fdetail'];
-        include '.././src/flowerdb.php';
+        include '../src/flowerdb.php';
         $insert = insertSql("insert into flower values ('$fid','$fcate','$fname','$fimg','$fdetail')");
 
         $imageFileType = strtolower(pathinfo($fimg,PATHINFO_EXTENSION));
@@ -28,7 +28,7 @@ if (isset($_POST['cmdAddFlower'])) {
     if (isset($_POST['bid'])) {
         $sitedir = "./../../1804HDTV/";
         $bid = $_POST['bid'];
-        include '.././src/flowerdb.php';
+        include '../src/flowerdb.php';
         $imgdata = getSql("Select * from bouq_img where b_ID = '$bid'");
         $fdata = getSql("Select * from bouq_detail where b_ID = '$bid'");
         if (sizeof($fdata)>0) {
@@ -49,7 +49,7 @@ if (isset($_POST['cmdAddFlower'])) {
         echo "ok";
     }else if (isset($_POST['bimgid'])) {
         $bimgid = $_POST['bimgid'];
-        include '.././src/flowerdb.php';
+        include '../src/flowerdb.php';
         $deleteDir = (getSql("select * from bouq_img where b_img_ID ='$bimgid'"))[0]["b_img"];
         $delete = deleteSql("delete from bouq_img where b_img_ID ='$bimgid'");
         if ($delete) {
@@ -63,7 +63,7 @@ if (isset($_POST['cmdAddFlower'])) {
         }
     }else if (isset($_POST['fid'])) {
         $fid = $_POST['fid'];
-        include '.././src/flowerdb.php';
+        include '../src/flowerdb.php';
         $existed = getSql("SELECT * FROM bouq_detail where f_ID = '$fid'");
         $img = getSql("SELECT f_img from flower where f_ID = '$fid'")[0];
         if (sizeof($existed)>0) {
@@ -77,7 +77,7 @@ if (isset($_POST['cmdAddFlower'])) {
 
     }else if (isset($_POST['roleid'])) {
         $roleid = $_POST['roleid'];
-        include '.././src/staffdb.php';
+        include '../src/staffdb.php';
         if (sizeof(getSql("select * from staff where s_role_ID = '$roleid'"))>0) {
             echo "<h3>Vẫn còn người giữ chức vụ này nên không thể xóa được!<br>Hãy chắc chắn rằng không ai còn giữ chức vụ này mới xóa được.</h3>";
             exit;
@@ -105,7 +105,7 @@ if (isset($_POST['cmdAddFlower'])) {
         $fimg = $_POST['fimg'];
         $fdetail = $_POST['fdetail'];
 
-        include '.././src/flowerdb.php';
+        include '../src/flowerdb.php';
         // Xử lý dữ liệu thông tin hoa
         // Nếu ID hoa như cũ thì khỏe, chỉ cần update nó
         if ($fid_old==$fid) {
@@ -201,7 +201,7 @@ if (isset($_POST['cmdAddFlower'])) {
     }
 }else if (isset($_POST['cmdAddBouquet'])) {
     if (isset($_POST['bid']) && isset($_POST['bname']) && isset($_POST['bprice']) && isset($_POST['bdetail'])) {
-        include '.././src/flowerdb.php';
+        include '../src/flowerdb.php';
         $bid = $_POST['bid'];
         $bname = $_POST['bname'];
         $bprice = $_POST['bprice'];
@@ -223,7 +223,7 @@ if (isset($_POST['cmdAddFlower'])) {
     }
 }else if (isset($_POST['cmdEditBouquet'])) {
     if (isset($_POST['bid']) && isset($_POST['bname']) && isset($_POST['bprice']) && isset($_POST['bdetail'])) {
-        include '.././src/flowerdb.php';
+        include '../src/flowerdb.php';
         $bid = $_POST['bid'];
         $bname = $_POST['bname'];
         $bprice = $_POST['bprice'];
@@ -244,7 +244,7 @@ if (isset($_POST['cmdAddFlower'])) {
     }
 }else if (isset($_POST['cmdEditFBouquet'])) {
     if (isset($_POST['bid'])) {
-        include '.././src/flowerdb.php';
+        include '../src/flowerdb.php';
         $bid = $_POST['bid'];
         if (sizeof(getSql("SELECT * FROM bouq_detail WHERE b_ID='$bid'"))>0) {
             $delete = deleteSql("DELETE FROM bouq_detail WHERE b_ID = '$bid'");
@@ -263,7 +263,7 @@ if (isset($_POST['cmdAddFlower'])) {
     if (isset($_POST["id"]) && isset($_POST["pw"])) {
         $id = $_POST["id"];
         $pw = $_POST["pw"];
-        include '.././src/staffdb.php';
+        include '../src/staffdb.php';
         $get = getSql("SELECT * from staff where s_u_ID='$id' and s_u_PW='$pw'");
         if (sizeof($get)>0) { 
             session_start();
@@ -280,7 +280,7 @@ if (isset($_POST['cmdAddFlower'])) {
     }
 }else if (isset($_POST["cmdEditRoleR"])) {
     if (isset($_POST['roleid'])) {
-        include '.././src/staffdb.php';
+        include '../src/staffdb.php';
         $roleid = $_POST['roleid'];
         if (sizeof(getSql("SELECT * from right_detail where s_role_ID = '$roleid'"))>0) {
             $delete = deleteSql("DELETE FROM right_detail WHERE s_role_ID = '$roleid'");
@@ -303,7 +303,7 @@ if (isset($_POST['cmdAddFlower'])) {
     }
 }else if (isset($_POST['cmdAddRole'])) {
     if (isset($_POST['roleid']) && isset($_POST['rolename']) && isset($_POST['roledetail'])) {
-        include '.././src/staffdb.php';
+        include '../src/staffdb.php';
         $roleid = $_POST['roleid'];
         $rolename = $_POST['rolename'];
         $roledetail = $_POST['roledetail'];
@@ -318,7 +318,7 @@ if (isset($_POST['cmdAddFlower'])) {
     }
 }else if (isset($_POST['cmdEditRole'])) {
     if (isset($_POST['roleidold']) && isset($_POST['roleid']) && isset($_POST['rolename']) && isset($_POST['roledetail'])) {
-        include '.././src/staffdb.php';
+        include '../src/staffdb.php';
         $roleid = $_POST['roleid'];
         $rolename = $_POST['rolename'];
         $roleidold = $_POST['roleidold'];
@@ -343,7 +343,7 @@ if (isset($_POST['cmdAddFlower'])) {
     }
 }else if (isset($_POST["cmdFlowerColor"])) {
     if (isset($_POST['fid'])) {
-        include '.././src/flowerdb.php';
+        include '../src/flowerdb.php';
         $fid = $_POST['fid'];
         if (sizeof(getSql("SELECT * from flower_color_detail where f_ID = '$fid'"))>0) {
             $delete = deleteSql("DELETE FROM flower_color_detail WHERE f_ID = '$fid'");

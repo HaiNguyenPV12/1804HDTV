@@ -50,7 +50,7 @@ $('#cmdDelete').click(function(event){
     
     
     request = $.ajax({
-        url: "./Pages/process.php",
+        url: "process.php",
         type: "post",
         data: myFormData,
         processData: false,

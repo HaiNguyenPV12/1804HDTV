@@ -2,7 +2,7 @@
 
 <?php
     // Đầu tiên là lấy dữ liệu ra trước để hiển thị trước khi chỉnh sửa
-    include '.././src/flowerdb.php';
+    include '../src/flowerdb.php';
     if (isset($_GET["bid"])) {
         $id = $_GET["bid"];
         $data = getSql("select * from bouquet where b_ID ='$id'")[0];
@@ -12,7 +12,7 @@
     }
 ?>
 <!-- Script tùy chỉnh của trang bouquetedit -->
-<script src="./Scripts/custom/bouquetedit.js"></script>
+<script src="../Scripts/1804HDTVAdmin/bouquetedit.js"></script>
 <!-- Form -->
 <form id="frmEditBouquet" name="frmEditBouquet" class="" method="post">
     <!-- Vì submit dùng kỹ thuật ajax nên tạo thêm cái này để bên trang xử lý nhận biết -->

@@ -42,7 +42,7 @@ $("#frmEditBouquet").submit(function(event){
 
     // Bắt đầu đưa dữ liệu qua trang xử lý
     request = $.ajax({
-        url: "./Pages/process.php",
+        url: "process.php",
         type: "post",
         data: serializedData
     });

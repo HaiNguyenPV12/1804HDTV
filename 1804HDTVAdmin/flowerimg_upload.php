@@ -41,6 +41,7 @@ if (isset($_POST['cmdFImgUpload'])) {
         echo "Có vấn đề khi tải lên!<br>";
     // if everything is ok, try to upload file
     } else {
+        // 
         if (move_uploaded_file($_FILES["fimgfile"]["tmp_name"], ".".$tmp_dir)) {
             echo "<img src=".$tmp_dir." style='max-width:50vh'></img>";
             echo "<input type='hidden' value='$target_file'>";

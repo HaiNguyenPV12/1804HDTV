@@ -1,11 +1,11 @@
-<script src="./Scripts/custom/delete.js"></script>
+<script src="../Scripts/1804HDTVAdmin/delete.js"></script>
 <form name="frmDelete" id="frmDelete" method="post">
 <?php
     if (isset($_GET['bouquet'])) {
         if (isset($_GET["bid"])&&$_GET["bid"]!="") {
             $id = $_GET["bid"];
             $name = $_GET["bname"];
-            include '.././src/flowerdb.php';
+            include '../src/flowerdb.php';
             $img = getSql("SELECT * FROM bouq_img where b_ID = '$id'");
             $order = getSql("SELECT * FROM order_detail where b_ID ='$id'");
             if (sizeof($order)>0) {
@@ -40,7 +40,7 @@
         if (isset($_GET["fid"])&&$_GET["fid"]!="") {
             $id = $_GET["fid"];
             $name = $_GET["fname"];
-            include '.././src/flowerdb.php';
+            include '../src/flowerdb.php';
             $existed = getSql("SELECT * FROM bouq_detail where f_ID = '$id'");
             echo '<input name="fid" id="fid" type="hidden" value="',$id,'">';
             echo '<input name="cmdDelete" type="hidden">';
@@ -57,7 +57,7 @@
         if (isset($_GET["roleid"])&&$_GET["roleid"]!="") {
             $id = $_GET["roleid"];
             $name = $_GET["rolename"];
-            include '.././src/staffdb.php';
+            include '../src/staffdb.php';
             $existed = getSql("select * from staff where s_role_ID = '$id'");
             if (sizeof($existed)>0) {
                 echo "<h4 class='text-danger'>Vẫn còn người giữ chức vụ này nên không thể xóa được!<br>Hãy chắc chắn rằng không còn ai còn giữ chức vụ này nữa.</h4>";
