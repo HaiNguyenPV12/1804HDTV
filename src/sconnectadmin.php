@@ -2,7 +2,7 @@
 $host = 'localhost';
 $user = 'root';
 $pw = '';
-$db = 'flowerdb';
+$db = 'staffdb';
 $cn = new mysqli($host, $user, $pw, $db);
 
 if (mysqli_connect_error()) {
