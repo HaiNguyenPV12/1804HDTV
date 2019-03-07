@@ -20,7 +20,6 @@ function closeModal(){
 $('#imgModal').on('hidden.bs.modal', function (e) {
     $("#bimgfile").val("");
     $("#imgPreview").html("");
-    //$('#fimgdiv').load("./Pages/productimg_table.php?fid="+$('#fid').val());
     location.reload(true);
 });
 
@@ -69,7 +68,7 @@ function uploadFile(file){
     $inputs.prop("disabled", true);
 
     request = $.ajax({
-        url: "./Pages/bouquetimg_upload.php",
+        url: "bouquetimg_upload.php",
         type: "post",
         data: myFormData,
         processData: false,
@@ -118,7 +117,7 @@ function addImg(file){
     $inputs.prop("disabled", true);
 
     request = $.ajax({
-        url: "./Pages/bouquetimg_upload.php",
+        url: "bouquetimg_upload.php",
         type: "post",
         data: myFormData,
         processData: false,

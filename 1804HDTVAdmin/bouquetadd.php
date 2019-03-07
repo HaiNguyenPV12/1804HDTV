@@ -1,7 +1,7 @@
 <!-- Trang thêm bó hoa mới -->
 
 <!-- Script tùy chỉnh của trang bouquetadd, trái tim của trang này -->
-<script src="./Scripts/custom/bouquetadd.js"></script> 
+<script src="../Scripts/1804HDTVAdmin/bouquetadd.js"></script> 
 
 <!-- Form -->
 <form id="frmAddBouquet" name="frmAddBouquet" class="" method="post">

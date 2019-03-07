@@ -6,13 +6,13 @@ function validateID(){
     var checkPV = false;
     //Lấy index cột chứa mã hoa
     var IDIndex = $('th:contains("Mã hình")').index()+1;
-    console.log(IDIndex);
+    //console.log(IDIndex);
     // ở từng dòng của cột đó thực hiện lệnh nếu giống prefixID thì cho phần số ở sau vào array
     $('#bimgtable tr td:nth-child('+IDIndex+')').each( 
         function(i,data){
             var str = data.innerHTML; 
             if (str.substring(0,str.length-3)==preBID) {
-                console.log(str.substring(str.length-2,str.length));
+                //console.log(str.substring(str.length-2,str.length));
                 if ($.isNumeric(str.substring(str.length-2,str.length))) {
                     items.push(parseInt(str.substring(str.length-2,str.length)));
                 }else if(str.substring(str.length-2,str.length)=="PV"){
@@ -27,7 +27,7 @@ function validateID(){
     }else{
         sufBID = Math.max.apply(Math,items)+1;
     }
-    console.log(sufBID);
+    //console.log(sufBID);
     //nếu số đằng sau có 1 chữ số thì thêm số 0 vào trước
     if (!checkPV) {
         sufBID="PV";
@@ -61,7 +61,6 @@ $('#imgModal').on('shown.bs.modal',function (e)
 $('#imgModal').on('hidden.bs.modal', function (e) {
     $("#bimgfile").val("");
     $("#imgPreview").html("");
-    //$('#fimgdiv').load("./Pages/productimg_table.php?fid="+$('#fid').val());
     location.reload(true);
 });
 
@@ -109,7 +108,7 @@ function uploadFile(file){
     $inputs.prop("disabled", true);
 
     request = $.ajax({
-        url: "./Pages/bouquetimg_upload.php",
+        url: "bouquetimg_upload.php",
         type: "post",
         data: myFormData,
         processData: false,
@@ -158,7 +157,7 @@ function addImg(file){
     $inputs.prop("disabled", true);
 
     request = $.ajax({
-        url: "./Pages/bouquetimg_upload.php",
+        url: "bouquetimg_upload.php",
         type: "post",
         data: myFormData,
         processData: false,

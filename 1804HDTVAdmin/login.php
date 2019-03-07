@@ -13,7 +13,7 @@ if (isset($_SESSION["loggedin"])) {
     <title>Đăng nhập trang quản trị</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link href="Content/bootstrap.min.css" rel="stylesheet">
+    <link href="../Content/bootstrap.min.css" rel="stylesheet">
 </head>
     
 
@@ -80,10 +80,10 @@ if (isset($_SESSION["loggedin"])) {
     </div>
 
     <!-- jQuery -->
-    <script src="Scripts/jquery-3.3.1.js"></script>
+    <script src="../Scripts/jquery-3.3.1.js"></script>
     <!-- Bootstrap -->
-    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
     <!-- Script tùy chỉnh -->
-    <script src="Scripts/custom/login.js"></script>
+    <script src="../Scripts/1804HDTVAdmin/login.js"></script>
 </body>
 </html>

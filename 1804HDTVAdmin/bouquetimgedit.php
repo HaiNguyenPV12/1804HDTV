@@ -1,14 +1,14 @@
 <!-- Trang chỉnh sửa hình ảnh bó hoa -->
 
-<script src="./Scripts/custom/bouquetimgedit.js"></script>
+<script src="../Scripts/1804HDTVAdmin/bouquetimgedit.js"></script>
 <?php
 if (isset($_GET["bimgid"])) {
     $bimgid= $_GET["bimgid"];
-    include '.././src/flowerdb.php';
+    include '../src/flowerdb.php';
     $imgdata = (getSql("SELECT * from bouq_img where b_img_ID='$bimgid'"))[0];
     $bid =$imgdata['b_ID'];
     $bimg=$imgdata['b_img'];
-    $sitedir="./../../1804HDTV/";
+    $sitedir="../"; // http://localhost:8080/1804HDTV
 }
 ?>
 

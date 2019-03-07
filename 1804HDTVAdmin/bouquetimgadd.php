@@ -1,6 +1,6 @@
 <!-- Trang thêm hình ảnh bó hoa -->
 
-<script src="./Scripts/custom/bouquetimgadd.js"></script>
+<script src="../Scripts/1804HDTVAdmin/bouquetimgadd.js"></script>
 <style>
 .custom-file-input ~ .custom-file-label::after {
     content: "Tải lên";
