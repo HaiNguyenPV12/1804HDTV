@@ -2,6 +2,8 @@
 function eraseInput(){
     $("#fname").val("");
     $("#fdetail").val("");
+    $("#fimgfile").val("");
+    $("#fimgfiletext").html("Chọn file");
 }
 
 function closeModal(){
@@ -33,6 +35,7 @@ $('#fname').keypress(function() {
     validateID();
 });
 
+// tạo mã
 function validateID(){
     // Mọi thứ phải kiểm tra có dữ liệu trước
     if ($('#fcate').val()!="") {
@@ -76,31 +79,44 @@ function validateID(){
     }
 }
 
+// Khi input file hình thay đổi
 $("#fimgfile").change(function(){
+    // Đầu tiên là tạo mã lại
     validateID();
+    // Cho trống phần hiện hình mẫu
     $("#imgPreview").html("");
+    // Nếu sau khi thay đổi, file thực sự có thay đổi
     if ($(this).val()!="") {
+        // Đưa tên file ra hiển thị
         $("#fimgfiletext").html($(this).prop('files')[0].name);
+        // Bắt đầu function upload hình (và đưa nó ra phần hiển thị mẫu)
         uploadFile($(this).prop('files')[0]);
     }else{
-        $("#imgPreview").html("Chưa có file!");
+    // Nếu file vẫn trống (trong trường hợp user bấm cancel khi chọn file)
+        $("#imgPreview").html("");
         $("#fimgfiletext").html("Chọn file");
     }
 });
 
+// Khi bảng thêm hoa xuất hiện thì tạo mã
 $('#modal').on('shown.bs.modal', function (e) {
     validateID();
 });
 
+// Khi bảng thêm hoa tắt thì reload page để lấy lại dữ liệu
 $('#modal').on('hidden.bs.modal', function (e) {
     location.reload(true);
 });
 
+// chức năng upload tạm thời để hiện hình mẫu
 function uploadFile(file){
     var request;
     var $form = $("#frmImgAdd");
     var $inputs = $form.find("fimgfile, button");
+
+    // Làm theo cách thủ công hơn, tạo form data thủ công
     var myFormData = new FormData();
+    // Đưa từng giá trị vào form data
     myFormData.append('fimgfile', file);
     myFormData.append('fid', $("#fid").val());
     myFormData.append('fimg', $("#fimg").val());
@@ -108,13 +124,15 @@ function uploadFile(file){
 
     $inputs.prop("disabled", true);
 
+    // Thực hiện đưa qua trang xử lý
     request = $.ajax({
-        url: "./Pages/flowerimg_upload.php",
+        url: "flowerimg_upload.php",
         type: "post",
         data: myFormData,
         processData: false,
         contentType: false
     });
+    // Xong rồi thì đưa ra hiện hình mẫu
     request.done(function (response, textStatus, jqXHR){
         // Log a message to the console
         //alert(textStatus);
@@ -157,12 +175,12 @@ $("#frmAddFlower").submit(function(event){
     $inputs.prop("disabled", true);
 
     request = $.ajax({
-        url: "./Pages/process.php",
+        url: "process.php",
         type: "post",
         data: serializedData
     });
 
-    // Callback handler that will be called on success
+    // Nếu truyền dữ liệu thành công
     request.done(function (response, textStatus, jqXHR){
         if (response=="ok") {
             $("#txtResult").addClass("text-success");

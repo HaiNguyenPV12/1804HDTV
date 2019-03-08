@@ -41,40 +41,40 @@ app.config(function($routeProvider) {
         template : "<h2>Xin chào</h2>"
     })
     .when("/bouquet", {
-        templateUrl : "Pages/bouquet.php"
+        templateUrl : "bouquet.php"
     })
     .when("/flower", {
-        templateUrl : "Pages/flower.php",
+        templateUrl : "flower.php",
     })
     .when("/bouquet/img/:bid", {
         templateUrl : function(params) { // <-- 
-            return 'Pages/bouquetimg.php?bid=' + params.bid;    
+            return 'bouquetimg.php?bid=' + params.bid;    
         }
     })
     .when("/bouquet/notselling/:bid", {
         templateUrl : function(params) { // <-- 
-            return 'Pages/bouquetselling.php?notselling&&bid=' + params.bid;    
+            return 'bouquetselling.php?notselling&&bid=' + params.bid;    
         }
     })
     .when("/bouquet/selling/:bid", {
         templateUrl : function(params) { // <-- 
-            return 'Pages/bouquetselling.php?selling&&bid=' + params.bid;    
+            return 'bouquetselling.php?selling&&bid=' + params.bid;    
         }
     })
     .when("/flower/category", {
-        templateUrl : "Pages/flowercate.php",
+        templateUrl : "flowercate.php",
     })
     .when("/color", {
-        templateUrl : "Pages/color.php",
+        templateUrl : "color.php",
     })
     .when("/staff", {
-        templateUrl : "Pages/staff.php",
+        templateUrl : "staff.php",
     })
     .when("/staffright", {
-        templateUrl : "Pages/staffright.php",
+        templateUrl : "staffright.php",
     })
     .when("/role", {
-        templateUrl : "Pages/role.php"
+        templateUrl : "role.php"
     })
     .otherwise({
         template : "<h2>Không tìm thấy trang!</h2>"

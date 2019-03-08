@@ -14,7 +14,7 @@ $('#modal').on('hidden.bs.modal', function (e) {
     reloadPage();
 });
 
-// Khi nhấn vào hoa nào thì hoa đó sẽ bị loại ra
+// Khi quyền nào thì quyền đó sẽ bị loại ra
 $(document).on("click","#right_list button",function(){
     var rid=$(this).find("[name='rid']").val();
     var rname=$(this).find("[name='rname']").val();
@@ -26,7 +26,7 @@ $(document).on("click","#right_list button",function(){
     );
     $(this).remove();
 });
-
+// Khi quyền nào ở list bên phải thì sẽ cho quyền đó vào danh sách lại
 $(document).on("click","#right_list_not button",function(){
     var rinsertid=$(this).find("[name='rinsertid']").val();
     var rinsertname=$(this).find("[name='rinsertname']").val();
@@ -40,24 +40,6 @@ $(document).on("click","#right_list_not button",function(){
     );
     $(this).remove();
 });
-/*
-// Thêm hoa vào danh sách
-$("#cmdAddRPosition").click(function(e){
-    // Gán các giá trị cho dễ gọi
-    var rinsertID = $("#rinsert :selected").val();
-    var rinsertname = $("#rinsert :selected").html();
-
-    // Kiểm tra xem có trong danh sách trên chưa
-    if (($("#right_list").html()).indexOf(rinsertID)!=-1) {
-        alert("Đã có quyền này rồi");
-    }else{
-        $("#right_list").append(
-            '<button name="r_item" class="list-group-item list-group-item-info d-flex justify-content-between align-items-center py-2">'+rinsertname+
-            '<input name="rdata[]" type="hidden" value="'+rinsertID+'"></button>'
-        );
-    }
-});
-*/
 
 //=========================== Xử lý submit dữ liệu =================================//
 var request;
@@ -83,7 +65,7 @@ $('#frmEditRoleR').submit(function(event){
 
     // Fire off the request to /form.php
     request = $.ajax({
-        url: "./Pages/process.php",
+        url: "process.php",
         type: "post",
         data: serializedData
     });

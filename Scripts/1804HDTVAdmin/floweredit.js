@@ -5,11 +5,6 @@ var oldFDetail = $("#fdetail").val();
 var oldFImg = $("#fimg").val();
 var oldFImgView = $("#imgPreview").html();
 
-function eraseInput(){
-    $("#fname").val("");
-    $("#fdetail").val("");
-}
-
 function closeModal(){
     $('#modal').modal('hide');
     $('#result').modal('hide');
@@ -21,7 +16,8 @@ function clearModal(){
 }
 
 $('#cmdReset').click(function (e) {
-    eraseInput();
+    $("#imgPreview").html(oldFImgView);
+    $("#fimgfiletext").html("(Hãy để trống nếu không muốn thay đổi)");
 });
 
 //reload để load lại dữ liệu từ sql
@@ -121,7 +117,7 @@ function uploadFile(file){
     $inputs.prop("disabled", true);
 
     request = $.ajax({
-        url: "./Pages/flowerimg_upload.php",
+        url: "flowerimg_upload.php",
         type: "post",
         data: myFormData,
         processData: false,
@@ -197,7 +193,7 @@ $("#frmEditFlower").submit(function(event){
 
         // Fire off the request to /form.php
         request = $.ajax({
-            url: "./Pages/process.php",
+            url: "process.php",
             type: "post",
             data: myFormData,
             processData: false,

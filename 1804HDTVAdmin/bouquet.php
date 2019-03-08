@@ -20,7 +20,7 @@ img{
     <!-- Tựa đề -->
     <div class='row'>
         <h2 class="col-9">Quản lý Bó Hoa</h2>
-        <button type="button" class="btn btn-success btn-lg col-2 ml-5" data-toggle="modal" data-target="#modal" ng-click="temp.url = './Pages/bouquetadd.php';modalHText='Thêm mới';">
+        <button type="button" class="btn btn-success btn-lg col-2 ml-5" data-toggle="modal" data-target="#modal" ng-click="temp.url = 'bouquetadd.php';modalHText='Thêm mới';">
             Thêm mới
         </button>
     </div>
@@ -30,7 +30,7 @@ img{
     <!-- Đọc dữ liệu từ database để đưa ra bảng -->
     <?php
         // File trung gian kết nối database
-        include '.././src/flowerdb.php';
+        include '../src/flowerdb.php';
         // Lấy dữ liệu thông tin bó hoa
         $data = getSql("SELECT * FROM bouquet");
         // Lấy dữ liệu thông tin các hoa, loại hoa có trong bó hoa đó (dùng bảng trung gian bouq_detail)
@@ -68,8 +68,6 @@ img{
                 //-----------------------------------------------------------------------------
                 // ID bó hoa
                 echo "<td>",$b['b_ID'],"</td>";
-                
-                
 
                 //-----------------------------------------------------------------------------
                 // Tên bó hoa
@@ -101,18 +99,18 @@ img{
                 }
                 // Nếu không có dữ liệu hình preview thì cho một hình thay thế và thông báo
                 if ($bimg=="") {
-                    echo "<img src='./../../1804HDTV/img/undefined.jpg'>(Chưa có dữ liệu hình mẫu)";
+                    echo "<img src='../img/undefined.jpg'>(Chưa có dữ liệu hình mẫu)";
                 }else{
                 // Nếu có rồi thì...
                     // Đầu tiên khởi tạo link của site gốc
-                    $bimg = "./../../1804HDTV/".$bimg;
+                    $bimg = "../".$bimg;
                     // Kiểm tra xem file đó có thực ở thư mục đó không
                     if (file_exists($bimg)) {
                         // Nếu có thì đưa ra
                         echo "<img src='".$bimg."'>";
                     }else{
                         // Không thì lại cho hiện hình thay thế và thông báo
-                        echo "<img src='./../../1804HDTV/img/undefined.jpg'>(Hình chưa tồn tại)";
+                        echo "<img src='../img/undefined.jpg'>(Hình chưa tồn tại)";
                     }
                 }
                 echo "</a>";
@@ -132,7 +130,8 @@ img{
                     // vậy là có tất cả hoa trong bó này
                 }
                 // Nút chỉnh sửa hoa có trong bó
-                echo '<a class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'./Pages/bouquetfedit.php?bid=',$b["b_ID"],'\';modalHText=\'Chỉnh sửa hoa trong bó hoa\';">Sửa</a>';
+                echo '<a class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ';
+                echo 'ng-click="temp.url = \'bouquetfedit.php?bid=',$b["b_ID"],'\';modalHText=\'Chỉnh sửa hoa trong bó hoa\';">Sửa</a>';
                 echo "</td>";
 
                 //-----------------------------------------------------------------------------
@@ -207,7 +206,7 @@ img{
                 //-----------------------------------------------------------------------------
                 // Các nút chức năng
                 // Nút chỉnh sửa (hiện modal)
-                echo '<td><button class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'./Pages/bouquetedit.php?bid=',$b["b_ID"],'\';modalHText=\'Chỉnh sửa\';">Sửa</button></td>';
+                echo '<td><button class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'bouquetedit.php?bid=',$b["b_ID"],'\';modalHText=\'Chỉnh sửa\';">Sửa</button></td>';
                 // Nút quản lý hình
                 echo '<td><a class="btn btn-info btn-sm text-light" href="#!bouquet/img/',$b["b_ID"],'">Hình</a></td>';
                 // Nút xóa
@@ -217,7 +216,7 @@ img{
                     // Nếu bảng này không có dữ liệu liên quan nào nằm ở những bản khác
                     if ((sizeof(getSql("SELECT * FROM order_detail where b_ID = '".$b['b_ID']."'"))<=0)) {
                         // Cho nó hiện ra liền
-                        echo '<button class="btn btn-danger btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'./Pages/delete.php?bouquet&&bid=',$b["b_ID"],'&&bname=',$b["b_name"],'\';modalHText=\'Xóa ',$b["b_ID"],'\';">X</button>';
+                        echo '<button class="btn btn-danger btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'delete.php?bouquet&&bid=',$b["b_ID"],'&&bname=',$b["b_name"],'\';modalHText=\'Xóa ',$b["b_ID"],'\';">X</button>';
                     }else{
                     // Còn không thì...
                         // Cho nó hiện ra...hình thôi :v

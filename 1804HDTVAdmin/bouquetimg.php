@@ -11,9 +11,9 @@
         echo "<h2>Không tìm thấy trang!<h2>";
         exit;
     }
-    include '.././src/flowerdb.php';
+    include '../src/flowerdb.php';
     //xóa file tạm trên server'
-    $files = glob('../tmp/*'); // get all file names
+    $files = glob('tmp/*'); // get all file names
     if (sizeOf($files)>0) {
         foreach($files as $file){ // iterate files
         if(is_file($file))
@@ -42,7 +42,8 @@
     </h2>
 
     <?php
-    echo '<button id="cmdAddImg" class="btn btn-success btn-lg col-2 ml-5" data-toggle="modal" data-target="#imgModal" ng-click="temp.imgurl =\'./Pages/bouquetimgadd.php?bid=',$bid,'\';imgModalHText=\'Thêm hình\'">Thêm hình</button>';
+    echo '<button id="cmdAddImg" class="btn btn-success btn-lg col-2 ml-5" ';
+    echo 'data-toggle="modal" data-target="#imgModal" ng-click="temp.imgurl =\'bouquetimgadd.php?bid=',$bid,'\';imgModalHText=\'Thêm hình\'">Thêm hình</button>';
     ?>
     <!--
     <button type="button" class="btn btn-success btn-lg col-2" data-toggle="modal" data-target="#modal" ng-click="temp.imgurl = './Pages/productadd.php';modalHText='Thêm mới';">Thêm mới</button>
@@ -53,19 +54,24 @@
     if ($bid!="") {
         $data = getSql("select * from bouq_img where b_ID ='$bid'");
         if (sizeof($data)>0) {
+            // Nút thêm hình
             echo "<table id='bimgtable' class='table table-hover table-bordered table-sm text-center'>";
             echo "<tr class='table-info'><th>Mã hình</th><th>Đường dẫn</th><th>Hình mẫu</th></tr>";
             foreach ($data as $key => $imgdata) {
                 echo "<tr>";
                 echo "<td>",$imgdata['b_img_ID'],"</td>";
                 echo "<td>",$imgdata['b_img'],"</td>";
-                if (file_exists("./../../1804HDTV/".$imgdata['b_img'])) {
-                    echo "<td><img class='pvimg' src='./../../1804HDTV/",$imgdata['b_img'],"'></img></td>";
+                if (file_exists("../".$imgdata['b_img'])) {
+                    echo "<td><img class='pvimg' src='../",$imgdata['b_img'],"'></img></td>";
                 }else{
-                    echo "<td><img class='pvimg' src='".img0()."'></img></td>";
+                    echo "<td><img class='pvimg' src='../img/undefined.jpg'></img></td>";
                 }
-                echo '<td><a class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#imgModal" ng-click="temp.imgurl = \'./Pages/bouquetimgedit.php?bimgid=',$imgdata["b_img_ID"],'\';imgModalHText=\'Chỉnh sửa\';">Sửa</a></td>';
-                echo '<td><a class="btn btn-danger btn-sm text-light" data-toggle="modal" data-target="#imgModal" ng-click="temp.imgurl = \'./Pages/delete.php?bouquetimg&&bimgid=',$imgdata["b_img_ID"],'\';imgModalHText=\'Xóa\';">Xóa</a></td>';
+                // Nút chỉnh sửa
+                echo '<td><a class="btn btn-info btn-sm text-light" ';
+                echo 'data-toggle="modal" data-target="#imgModal" ng-click="temp.imgurl = \'bouquetimgedit.php?bimgid=',$imgdata["b_img_ID"],'\';imgModalHText=\'Chỉnh sửa\';">Sửa</a></td>';
+                // Nút Xóa
+                echo '<td><a class="btn btn-danger btn-sm text-light" ';
+                echo 'data-toggle="modal" data-target="#imgModal" ng-click="temp.imgurl = \'delete.php?bouquetimg&&bimgid=',$imgdata["b_img_ID"],'\';imgModalHText=\'Xóa\';">Xóa</a></td>';
                 echo "</tr>";
             }
             

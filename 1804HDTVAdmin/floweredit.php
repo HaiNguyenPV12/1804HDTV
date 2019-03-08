@@ -1,26 +1,28 @@
 <?php
-    include '.././src/flowerdb.php';
+    include '../src/flowerdb.php';
     if (isset($_GET["fid"])) {
         $id = $_GET["fid"];
         $data = getSql("select * from flower where f_ID ='$id'")[0];
     }else{
         echo "no";
     }
-    $sitedir="./../../1804HDTV/";
+    $sitedir="../";
 ?>
 <style>
 .custom-file-input ~ .custom-file-label::after {
     content: "Tải lên";
 }
 </style>
-<script src="./Scripts/custom/floweredit.js"></script>
+<script src="../Scripts/1804HDTVAdmin/floweredit.js"></script>
 <?php
+    // Kiểm tra xem hoa này đã có trong bó nào chưa
     $existed = getSql("SELECT * FROM bouq_detail where f_ID = '$id'");
+    // Có thì cảnh báo
     if (sizeof($existed)>0) {
         echo "<b><p class='text-warning'>Lưu ý: Hoa này đã có dữ liệu trong bó hoa. Nếu mã hoa có thay đổi cũng sẽ cập nhật vào bên bó hoa.</p></b>";
     }
 ?>
-<form id="frmEditFlower" name="frmEditFlower" class="" method="post">
+<form id="frmEditFlower" name="frmEditFlower" method="post">
     <input type="hidden" name="cmdEditFlower">
     <input type="hidden" id="fid_old" name="fid_old" value="<?php echo $id?>">
     <div class="form-inline">
@@ -84,7 +86,7 @@
         <label class="mr-sm-2 col-2"></label>
         <button type="submit" class="btn btn-primary mb-2 col-2" name="cmdEditFlower">Hoàn tất</button>
         <div class="mr-sm-2"></div>
-        <button type="button" class="btn mb-2 btn-warning col-2" name="cmdReset" id="cmdReset">Làm lại</button>
+        <button type="reset" class="btn mb-2 btn-warning col-2" name="cmdReset" id="cmdReset">Làm lại</button>
     </div>
 </form>
 

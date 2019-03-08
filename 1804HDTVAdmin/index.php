@@ -13,17 +13,17 @@ if (!isset($_SESSION["loggedin"])) {
     <title>Quản lý Shop bán hoa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link href="Content/bootstrap.min.css" rel="stylesheet">
+    <link href="../Content/bootstrap.min.css" rel="stylesheet">
 </head>
     <!-- jQuery -->
-    <script src="Scripts/jquery-3.3.1.js"></script>
+    <script src="../Scripts/jquery-3.3.1.js"></script>
     <!-- Angular -->
-    <script src="Scripts/angular.min.js"></script>
-    <script src="Scripts/angular-route.js"></script>
+    <script src="../Scripts/angular.min.js"></script>
+    <script src="../Scripts/angular-route.js"></script>
     <!-- Bootstrap -->
-    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
     <!-- Script tùy chỉnh -->
-    <script src="Scripts/custom/spa.js"></script>
+    <script src="../Scripts/1804HDTVAdmin/spa.js"></script>
     <style>
         body {
             padding-top: 5%;

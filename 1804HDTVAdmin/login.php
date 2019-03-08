@@ -13,33 +13,32 @@ if (isset($_SESSION["loggedin"])) {
     <title>Đăng nhập trang quản trị</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link href="Content/bootstrap.min.css" rel="stylesheet">
+    <link href="../Content/bootstrap.min.css" rel="stylesheet">
 </head>
     
-
-    <style type="text/css">
-        .login-form {
-            width: 340px;
-            margin: 50px auto;
-        }
-        .login-form form {
-            margin-bottom: 15px;
-            background: #f7f7f7;
-            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-            padding: 30px;
-        }
-        .login-form h2 {
-            margin: 0 0 15px;
-        }
-        .form-control, .btn {
-            min-height: 38px;
-            border-radius: 2px;
-        }
-        .btn {        
-            font-size: 15px;
-            font-weight: bold;
-        }
-    </style>
+<style type="text/css">
+    .login-form {
+        width: 340px;
+        margin: 50px auto;
+    }
+    .login-form form {
+        margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .btn {        
+        font-size: 15px;
+        font-weight: bold;
+    }
+</style>
 
 <body>
     <div class="login-form">
@@ -80,10 +79,10 @@ if (isset($_SESSION["loggedin"])) {
     </div>
 
     <!-- jQuery -->
-    <script src="Scripts/jquery-3.3.1.js"></script>
+    <script src="../Scripts/jquery-3.3.1.js"></script>
     <!-- Bootstrap -->
-    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
     <!-- Script tùy chỉnh -->
-    <script src="Scripts/custom/login.js"></script>
+    <script src="../Scripts/1804HDTVAdmin/login.js"></script>
 </body>
 </html>
