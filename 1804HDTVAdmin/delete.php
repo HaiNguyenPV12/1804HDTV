@@ -20,7 +20,7 @@
                 echo "<b><p class='text-danger'>Lưu ý: Các hình của bó hoa này cũng bị xóa theo! Hãy lưu hình lại nếu cần thiết.</p></b>";
             }
             
-            echo "<input type='button' name='cmdDelete' id='cmdDelete' class='btn mb-2 btn-success' value='Có'></button>";
+            echo "<input type='button' name='cmdDelete' id='cmdDelete' class='btn mb-2 btn-success btn-shop' value='Có'></button>";
             echo "<button id='cmdCancel' class='btn mb-2 btn-danger'>Không</button>";
         }else{
             echo "Không thấy ID";
@@ -31,7 +31,7 @@
             echo '<input name="bimgid" id="bimgid" type="hidden" value="',$id,'">';
             echo '<input name="cmdDelete" type="hidden">';
             echo "<h2>Bạn có muốn xóa \"$id\" ?</h2>";
-            echo "<input type='button' name='cmdDelete' id='cmdDelete' class='btn mb-2 btn-success' value='Có'></button>";
+            echo "<input type='button' name='cmdDelete' id='cmdDelete' class='btn mb-2 btn-success btn-shop' value='Có'></button>";
             echo "<button id='cmdCancel' class='btn mb-2 btn-danger'>Không</button>";
         }else{
             echo "Không thấy ID";
@@ -48,7 +48,7 @@
             if (sizeof($existed)>0) {
                 echo "<b><p class='text-danger'>Lưu ý: Hoa này đã có dữ liệu trong bó hoa. Nếu xóa thì dữ liệu hoa này trong bó hoa đó cũng sẽ mất.</p></b>";
             }
-            echo "<input type='button' name='cmdDelete' id='cmdDelete' class='btn mb-2 btn-success' value='Có'></button>";
+            echo "<input type='button' name='cmdDelete' id='cmdDelete' class='btn mb-2 btn-success btn-shop' value='Có'></button>";
             echo "<button id='cmdCancel' class='btn mb-2 btn-danger'>Không</button>";
         }else{
             echo "Không thấy ID";
@@ -65,7 +65,7 @@
                 echo '<input name="roleid" id="roleid" type="hidden" value="',$id,'">';
                 echo '<input name="cmdDelete" type="hidden">';
                 echo "<h2>Bạn có muốn xóa \"$name\" ?</h2>";
-                echo "<input type='button' name='cmdDelete' id='cmdDelete' class='btn mb-2 btn-success' value='Có'></button>";
+                echo "<input type='button' name='cmdDelete' id='cmdDelete' class='btn mb-2 btn-success btn-shop' value='Có'></button>";
                 echo "<button id='cmdCancel' class='btn mb-2 btn-danger'>Không</button>";
             }
         }else{

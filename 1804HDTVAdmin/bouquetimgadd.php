@@ -52,7 +52,7 @@ if (isset($_GET["bid"])) {
     <!-- nút để submit -->
     <div class="form-inline">
         <label class="mr-sm-2 col-2"></label>
-        <input type="button" class="btn btn-success mb-2 col-2" name="cmdImgAdd" id="cmdImgAdd" value="Hoàn tất">
+        <input type="button" class="btn btn-success mb-2 col-2 btn-shop" name="cmdImgAdd" id="cmdImgAdd" value="Hoàn tất">
     </div>
 </form>
 
