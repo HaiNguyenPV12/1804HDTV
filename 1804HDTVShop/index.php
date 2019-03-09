@@ -1,5 +1,6 @@
 <?php
 include "../src/fconnectadmin.php";
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@ include "../src/fconnectadmin.php";
     </a>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-start sticky-top shadow">
+    <nav class="navbar navbar-expand-sm navbar-light justify-content-start sticky-top shadow">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="index.php">Trang Chủ</a>
@@ -38,7 +39,8 @@ include "../src/fconnectadmin.php";
 $sql = "SELECT * from flower_cate order by f_cate_name asc";
 $rs = mysqli_query($cn, $sql);
 while ($row = mysqli_fetch_assoc($rs)) {
-    echo "<a class=\"dropdown-item\" href=\"#!browse.php?cate=" . $row['f_cate_name'] . "\">" . $row['f_cate_name'] . "</a>";
+    $cate = $row['f_cate_name'];
+    echo "<a class=\"dropdown-item\" href=\"#!browse.php/" . $cate . "\">" . $row['f_cate_name'] . "</a>";
 }
 ?>
                 </div>
@@ -83,9 +85,17 @@ while ($row = mysqli_fetch_assoc($rs)) {
             <div class="row justify-content-center">
                 <div class="col-2">
                     1804 HDTV Co.
+                    <ul>
+                        <li><a href="#">Câu hỏi thường xuyên</a></li>
+                        <li><a href="#">Về Chúng tôi</a></li>
+                    </ul>
                 </div>
                 <div class="col-2">
-                    test
+                    Trợ Giúp
+                    <ul>
+                        <li><a href="#">Điều khoản dịch vụ</a></li>
+                        <li><a href="#">Chính sách bảo mật</a></li>
+                    </ul>
                 </div>
             </div>
         </div>

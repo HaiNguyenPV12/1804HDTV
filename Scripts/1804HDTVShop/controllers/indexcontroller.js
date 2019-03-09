@@ -6,9 +6,12 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'home.php',
             controller: 'homecontroller'
         })
-        .when('/browse.php', {
-            templateUrl: 'browse.php',
-            controller: 'browsecontroller'
-        })
-        .otherwise({ redirectTo: '/' });
+        .when('/browse.php/:bid', {
+            templateUrl: function (params) {
+                return "browse.php?cate=" + params.bid;
+            },
+            // templateUrl: 'browse.php'
+            // controller: 'browsecontroller'
+        });
+        // .otherwise({ redirectTo: '/' });
 }]);
