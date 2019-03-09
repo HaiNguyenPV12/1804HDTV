@@ -17,7 +17,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body>
+<body class="bg-shop">
     <!--LOGO-->
     <a href="index.php">
         <div class="abovenavbar">
