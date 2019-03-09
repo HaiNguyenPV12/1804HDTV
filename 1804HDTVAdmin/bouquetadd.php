@@ -47,7 +47,7 @@
     <div class="form-inline">
         <label class="mr-sm-2 col-2"></label>
         <!-- Nút hoàn tất -->
-        <button type="submit" class="btn btn-primary mb-2 col-2" id="cmdAddBouquet" name="cmdAddBouquet">Hoàn tất</button>
+        <button type="submit" class="btn btn-primary mb-2 col-2 btn-shop" id="cmdAddBouquet" name="cmdAddBouquet">Hoàn tất</button>
         <div class="mr-sm-2"></div>
         <!-- Nút reset -->
         <button type="button" class="btn mb-2 btn-warning col-2" name="cmdResetBouquet" id="cmdResetBouquet">Làm lại</button>
