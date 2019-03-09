@@ -74,7 +74,7 @@
     <!-- Nút hoàn tất -->
     <div class="form-inline">
         <div class="col-1"></div>
-        <button type="submit" class="btn btn-primary mb-2 col-2" name="cmdFlowerColor" id="cmdFlowerColor">Lưu</button>
+        <button type="submit" class="btn btn-primary mb-2 col-2 btn-shop" name="cmdFlowerColor" id="cmdFlowerColor">Lưu</button>
     </div>
 </form>
 
