@@ -40,7 +40,7 @@
         <!-- Ô nhập số lượng -->
         <input type="number" class="form-control mb-2 mr-sm-2 col-2" name="finsertquan" id="finsertquan" autocomplete="off" min=1 value=1>
         <!-- Nút thêm hoa -->
-        <button type="button" class="btn btn-info mb-2 col-2" name="cmdAddFBouquet" id="cmdAddFBouquet">Thêm vào</button>
+        <button type="button" class="btn btn-info mb-2 col-2 btn-shop" name="cmdAddFBouquet" id="cmdAddFBouquet">Thêm vào</button>
     </div>
 
     <!-- Tạo danh sách hoa đã có trong bó -->
@@ -48,8 +48,8 @@
         <?php
             if (sizeof($data)>0) {
                 foreach ($data as $key => $fvalue) {
-                    echo "<button name='flower_item' class='list-group-item list-group-item-info d-flex justify-content-between align-items-center'>".$fvalue['f_name'];
-                    echo "  <span name='fquan' class='badge badge-info badge-pill'>".$fvalue['quan']."</span>";
+                    echo "<button name='flower_item' class='list-group-item list-group-item-info d-flex justify-content-between align-items-center list-group-item-shop'>".$fvalue['f_name'];
+                    echo "  <span name='fquan' class='badge badge-info badge-pill badge-shop'>".$fvalue['quan']."</span>";
                     echo "<input name='fdata[]' type='hidden' value='".$fvalue['f_ID'].":".$fvalue['quan']."'>";
 
                     echo "</button>";
@@ -73,7 +73,7 @@
     <!-- Nút hoàn tất -->
     <div class="form-inline">
         <div class="col-1"></div>
-        <button type="submit" class="btn btn-primary mb-2 col-2" name="cmdEditFBouquet" id="cmdEditFBouquet">Lưu</button>
+        <button type="submit" class="btn btn-primary mb-2 col-2 btn-shop" name="cmdEditFBouquet" id="cmdEditFBouquet">Lưu</button>
     </div>
 </form>
 

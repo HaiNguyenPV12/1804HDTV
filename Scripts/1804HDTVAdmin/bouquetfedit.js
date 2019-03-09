@@ -47,8 +47,8 @@ $("#cmdAddFBouquet").click(function(e){
             //return;
         }else{
             $("#flower_list").append(
-                '<button name="flower_item" class="list-group-item list-group-item-info d-flex justify-content-between align-items-center">'+finsertname+
-                '  <span name="fquan" class="badge badge-info badge-pill">'+finsertquan+'</span>'+
+                '<button name="flower_item" class="list-group-item list-group-item-info d-flex justify-content-between align-items-center list-group-item-shop">'+finsertname+
+                '  <span name="fquan" class="badge badge-info badge-pill badge-shop">'+finsertquan+'</span>'+
                 '<input name="fdata[]" type="hidden" value="'+finsertID+':'+finsertquan+'"></button>'
             );
         }
