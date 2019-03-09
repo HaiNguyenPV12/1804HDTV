@@ -73,6 +73,12 @@ app.config(function ($routeProvider) {
         .when("/staffright", {
             templateUrl: "staffright.php",
         })
+        .when("/order", {
+            templateUrl: "order.php",
+        })
+        .when("/customer", {
+            templateUrl: "customer.php",
+        })
         .when("/role", {
             templateUrl: "role.php"
         })
