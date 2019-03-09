@@ -20,7 +20,7 @@ img{
     <!-- Tựa đề -->
     <div class='row'>
         <h2 class="col-9">Quản lý Bó Hoa</h2>
-        <button type="button" class="btn btn-success btn-lg col-2 ml-5" data-toggle="modal" data-target="#modal" ng-click="temp.url = 'bouquetadd.php';modalHText='Thêm mới';">
+        <button type="button" class="btn btn-success btn-lg col-2 ml-5 btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = 'bouquetadd.php';modalHText='Thêm mới';">
             Thêm mới
         </button>
     </div>
@@ -50,7 +50,7 @@ img{
             // Tạo bảng với id là 'btable'
             echo "<table id='btable' class='table table-hover table-bordered table-sm text-center'>";
             // Phần tựa đề cho các cột
-            echo "<tr class='table-info'><th>Mã bó</th><th>Tên</th><th>Giá</th><th>Hình ảnh</th><th>Hoa có trong bó</th><th>Loại hoa</th><th>Màu</th><th>Chi tiết</th><th>Đang bán</th></tr>";
+            echo "<tr class='table-info table-shop'><th>Mã bó</th><th>Tên</th><th>Giá</th><th>Hình ảnh</th><th>Hoa có trong bó</th><th>Loại hoa</th><th>Màu</th><th>Chi tiết</th><th>Đang bán</th></tr>";
             // Khởi tạo con số này để dùng cho id của switch toggle trạng thái đang bán
             $num=0;
             //Lấy từng dữ liệu của array $data và đưa ra $b
@@ -130,7 +130,7 @@ img{
                     // vậy là có tất cả hoa trong bó này
                 }
                 // Nút chỉnh sửa hoa có trong bó
-                echo '<a class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ';
+                echo '<a class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ';
                 echo 'ng-click="temp.url = \'bouquetfedit.php?bid=',$b["b_ID"],'\';modalHText=\'Chỉnh sửa hoa trong bó hoa\';">Sửa</a>';
                 echo "</td>";
 
@@ -206,9 +206,9 @@ img{
                 //-----------------------------------------------------------------------------
                 // Các nút chức năng
                 // Nút chỉnh sửa (hiện modal)
-                echo '<td><button class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'bouquetedit.php?bid=',$b["b_ID"],'\';modalHText=\'Chỉnh sửa\';">Sửa</button></td>';
+                echo '<td><button class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'bouquetedit.php?bid=',$b["b_ID"],'\';modalHText=\'Chỉnh sửa\';">Sửa</button></td>';
                 // Nút quản lý hình
-                echo '<td><a class="btn btn-info btn-sm text-light" href="#!bouquet/img/',$b["b_ID"],'">Hình</a></td>';
+                echo '<td><a class="btn btn-info btn-sm text-light btn-shop" href="#!bouquet/img/',$b["b_ID"],'">Hình</a></td>';
                 // Nút xóa
                 // Chỉ admin mới có thể xóa được (tránh nhân viên xóa làm sai dữ liệu)
                 if (in_array("Q00",$_SESSION["sRight"],true)) {
@@ -239,7 +239,7 @@ img{
             <div class="modal-content">
 
                 <!-- Modal Header -->
-                <div class="modal-header bg-info">
+                <div class="modal-header bg-info bg-shop">
                     <h4 id="modalHeader" class="modal-title text-light">{{modalHText}}</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>

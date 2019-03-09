@@ -14,6 +14,7 @@ if (!isset($_SESSION["loggedin"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link href="../Content/bootstrap.min.css" rel="stylesheet">
+    <link href="../Content/1804HDTVAdmin/custom-color.css" rel="stylesheet">
 </head>
     <!-- jQuery -->
     <script src="../Scripts/jquery-3.3.1.js"></script>
@@ -29,10 +30,6 @@ if (!isset($_SESSION["loggedin"])) {
             padding-top: 5%;
             margin-left: 5%;
             margin-right: 5%;
-        }
-        .list-group-item.active{
-            color: #0c5460;
-            background-color: #bee5eb;
         }
         .sticky-offset {
             top: 56px;
@@ -55,7 +52,7 @@ if (!isset($_SESSION["loggedin"])) {
 
 <body ng-app="myApp" >
     <!-- Thanh tựa đề -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top bg-shop">
         <div class="container">
             <a class="navbar-brand text-light" href="#"><h3>Quản lý Shop bán hoa</h3></a>
             <div class="collapse navbar-collapse" id="navbarResponsive">
