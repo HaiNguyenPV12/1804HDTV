@@ -11,7 +11,7 @@ app.config(['$routeProvider', function ($routeProvider) {
                 return "browse.php?cate=" + params.bid;
             },
             // templateUrl: 'browse.php'
-            // controller: 'browsecontroller'
-        });
-        // .otherwise({ redirectTo: '/' });
+            controller: 'browsecontroller'
+        })
+        .otherwise({ redirectTo: '/' });
 }]);
