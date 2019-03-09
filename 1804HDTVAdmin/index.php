@@ -81,29 +81,29 @@ if (!isset($_SESSION["loggedin"])) {
                     <?php
                         $rightsdata = $_SESSION["sRight"];
                         if (in_array("Q01",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
-                            echo '<a href="#!bouquet" class="list-group-item">Quản lý bó hoa</a>';
+                            echo '<a href="#!bouquet" class="list-group-item list-group-item-shop">Quản lý bó hoa</a>';
                         }
                         if (in_array("Q02",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
-                            echo '<a href="#!flower" class="list-group-item">Quản lý hoa</a>';
+                            echo '<a href="#!flower" class="list-group-item list-group-item-shop">Quản lý hoa</a>';
                         }
                         if (in_array("Q05",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
-                            echo '<a href="#!staff" class="list-group-item">Quản lý nhân viên</a>';
+                            echo '<a href="#!staff" class="list-group-item list-group-item-shop">Quản lý nhân viên</a>';
                         }
                         if(in_array("Q00",$rightsdata,true)){
-                            echo '<a href="#!role" class="list-group-item">Quản lý chức vụ</a>';
+                            echo '<a href="#!role" class="list-group-item list-group-item-shop">Quản lý chức vụ</a>';
                         }
                         if (in_array("Q06",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
-                            echo '<a href="#!order" class="list-group-item">Quản lý đơn hàng</a>';
-                            echo '<a href="#!statistic" class="list-group-item">Xem thống kê doanh thu</a>';
+                            echo '<a href="#!order" class="list-group-item list-group-item-shop">Quản lý đơn hàng</a>';
+                            echo '<a href="#!statistic" class="list-group-item list-group-item-shop">Xem thống kê doanh thu</a>';
                         }
                         if (in_array("Q10",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
-                            echo '<a href="#!customer" class="list-group-item">Quản lý khách hàng</a>';
+                            echo '<a href="#!customer" class="list-group-item list-group-item-shop">Quản lý khách hàng</a>';
                         }
                         if (in_array("Q07",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
-                            echo '<a href="#!comment" class="list-group-item">Quản lý bình luận</a>';
+                            echo '<a href="#!comment" class="list-group-item list-group-item-shop">Quản lý bình luận</a>';
                         }
                         if (in_array("Q08",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
-                            echo '<a href="#!feedback" class="list-group-item">Quản lý đánh giá</a>';
+                            echo '<a href="#!feedback" class="list-group-item list-group-item-shop">Quản lý đánh giá</a>';
                         }
                     ?>
                     <!--

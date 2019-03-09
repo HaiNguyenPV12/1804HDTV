@@ -46,7 +46,7 @@
     <div class="form-inline">
         <label class="mr-sm-2 col-2"></label>
         <!-- Nút hoàn tất -->
-        <button type="submit" class="btn btn-primary mb-2 col-2" id="cmdEditRole" name="cmdEditRole">Hoàn tất</button>
+        <button type="submit" class="btn btn-primary mb-2 col-2 btn-shop" id="cmdEditRole" name="cmdEditRole">Hoàn tất</button>
         <div class="col-1"></div>
         <!-- Nút reset -->
         <button type="reset" class="btn mb-2 btn-warning col-2" name="cmdReset" id="cmdReset">Làm lại</button>

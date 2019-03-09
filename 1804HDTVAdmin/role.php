@@ -10,7 +10,7 @@
 <!-- Tựa đề -->
 <div class='row'>
     <h2 class="col-10">Quản lý Chức vụ</h2>
-    <button type="button" class="btn btn-success btn-lg col-2" data-toggle="modal" data-target="#modal" ng-click="temp.url = 'roleadd.php';modalHText='Thêm mới';">Thêm mới</button>
+    <button type="button" class="btn btn-success btn-lg col-2 btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = 'roleadd.php';modalHText='Thêm mới';">Thêm mới</button>
 </div>
 
 <br>
@@ -29,7 +29,7 @@
         // Tạo bảng với id là 'rtable'
         echo "<table id='rtable' class='table table-hover table-bordered table-sm'>";
         // Phần tựa đề cho các cột
-        echo "<tr class='table-info'><th>Mã chức vụ</th><th>Tên chức vụ</th><th>Quyền hạn</th><th>Chi tiết</th></tr>";
+        echo "<tr class='table-info table-shop'><th>Mã chức vụ</th><th>Tên chức vụ</th><th>Quyền hạn</th><th>Chi tiết</th></tr>";
         foreach ($role as $key => $roledata) {
             //-----------------------------------------------------------------------------
             // Bắt đầu 1 dòng trong bảng
@@ -54,7 +54,7 @@
                 }
             }
             if ($roledata['s_role_ID']!="admin") {
-                echo '(Có '.$rcount.' quyền) <a class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'roleredit.php?roleid=',$roledata["s_role_ID"],'\';modalHText=\'Chỉnh sửa quyền của '.$roledata["s_role_name"].'\';">Sửa quyền hạn</a>';
+                echo '(Có '.$rcount.' quyền) <a class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'roleredit.php?roleid=',$roledata["s_role_ID"],'\';modalHText=\'Chỉnh sửa quyền của '.$roledata["s_role_name"].'\';">Sửa quyền hạn</a>';
             }
             echo "</td>";
 
@@ -65,7 +65,7 @@
             //-----------------------------------------------------------------------------
             //Chức năng
             if ($roledata['s_role_ID']!="admin") {
-                echo '<td><a class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'roleedit.php?roleid=',$roledata["s_role_ID"],'\';modalHText=\'Chỉnh sửa\';">Sửa</a></td>';
+                echo '<td><a class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'roleedit.php?roleid=',$roledata["s_role_ID"],'\';modalHText=\'Chỉnh sửa\';">Sửa</a></td>';
                 if (sizeof(getSql("SELECT * from staff where s_role_ID ='".$roledata['s_role_ID']."'"))>0) {
                     echo '<td><a class="btn btn-secondary btn-sm text-light">Xóa</a></td>';
                 }else{
@@ -84,7 +84,7 @@
         <div class="modal-content">
 
             <!-- Modal Header -->
-            <div class="modal-header bg-info">
+            <div class="modal-header bg-info bg-shop">
                 <h4 id="modalHeader" class="modal-title text-light">{{modalHText}}</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>

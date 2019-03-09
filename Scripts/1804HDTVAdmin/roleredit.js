@@ -19,7 +19,7 @@ $(document).on("click","#right_list button",function(){
     var rid=$(this).find("[name='rid']").val();
     var rname=$(this).find("[name='rname']").val();
     $("#right_list_not").append(
-        '<button type="button" name="r_item_not" class="list-group-item list-group-item-info d-flex justify-content-between align-items-center py-2">'+rname+
+        '<button type="button" name="r_item_not" class="list-group-item list-group-item-info d-flex justify-content-between align-items-center py-2 list-group-item-shop">'+rname+
         '<input name="rinsertid" type="hidden" value="'+rid+'">'+
         '<input name="rinsertname" type="hidden" value="'+rname+'">'+
         '</button>'
@@ -32,7 +32,7 @@ $(document).on("click","#right_list_not button",function(){
     var rinsertname=$(this).find("[name='rinsertname']").val();
     console.log(rinsertid+":"+rinsertname);
     $("#right_list").append(
-        '<button type="button" name="r_item_not" class="list-group-item list-group-item-info d-flex justify-content-between align-items-center py-2">'+rinsertname+
+        '<button type="button" name="r_item_not" class="list-group-item list-group-item-info d-flex justify-content-between align-items-center py-2 list-group-item-shop">'+rinsertname+
         '<input name="rid" type="hidden" value="'+rinsertid+'">'+
         '<input name="rname" type="hidden" value="'+rinsertname+'">'+
         '<input name="rdata[]" type="hidden" value="'+rinsertid+'">'+

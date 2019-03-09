@@ -11,7 +11,7 @@
     <a href='index'>Back to Tester homepage</a><br>
     <form method="get" action="addorder_process">
     <?php
-        include "../src/flowerdb.php";
+        include "../../src/flowerdb.php";
         $cdata = getSql("select * from customer");
         echo "<br>";
         echo "Hãy chọn khách hàng: <span id='cusname'></span><br>";
@@ -42,7 +42,7 @@
         <br>
         <button type='submit' name='cmdOrder' id='cmdOrder'>Đặt hàng</button>
     </form>
-    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../../Scripts/jquery-3.3.1.min.js"></script>
     <script src="addorder.js"></script>
 </body>
 </html>
