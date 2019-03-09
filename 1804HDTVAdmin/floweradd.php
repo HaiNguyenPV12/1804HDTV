@@ -66,7 +66,7 @@
     <!-- Nút submit và reset -->
     <div class="form-inline">
         <label class="mr-sm-2 col-2"></label>
-        <button type="submit" class="btn btn-primary mb-2 col-2" name="cmdAddFlower" id="cmdAddFlower">Hoàn tất</button>
+        <button type="submit" class="btn btn-primary mb-2 col-2 btn-shop" name="cmdAddFlower" id="cmdAddFlower">Hoàn tất</button>
         <div class="col-1"></div>
         <button type="button" class="btn mb-2 btn-warning col-2" name="cmdReset" id="cmdReset">Làm lại</button>
     </div>

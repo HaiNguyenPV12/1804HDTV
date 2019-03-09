@@ -11,7 +11,7 @@ if (!in_array("Q03",$_SESSION["sRight"],true) && !in_array("Q00",$_SESSION["sRig
 <body>
     <div class='row'>
         <h2 class="col-9">Quản lý Hoa > Quản lý Loại Hoa <a href="#!flower" class="btn btn-warning btn-md"> Quay về</a></h2>
-        <button type="button" class="btn btn-success btn-lg col-2 pr-sm-2 pl-sm-2 ml-5" data-toggle="modal" data-target="#modal" ng-click="temp.url = 'flowercateadd.php';modalHText='Thêm mới';">
+        <button type="button" class="btn btn-success btn-lg col-2 pr-sm-2 pl-sm-2 ml-5 btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = 'flowercateadd.php';modalHText='Thêm mới';">
             Thêm mới
         </button>
         
@@ -29,7 +29,7 @@ if (!in_array("Q03",$_SESSION["sRight"],true) && !in_array("Q00",$_SESSION["sRig
             echo "Chưa có dữ liệu loại hoa";
         }else{
             echo "<table id='ftable' class='table table-hover table-bordered table-sm text-center'>";
-            echo "<tr class='table-info'><th>Mã loại hoa</th><th>Tên loại hoa</th></tr>";
+            echo "<tr class='table-info table-shop'><th>Mã loại hoa</th><th>Tên loại hoa</th></tr>";
             foreach ($fcdata as $key=> $fc) {
                 //-----------------------------------------------------------------------------
                 echo "<tr>";
@@ -44,7 +44,7 @@ if (!in_array("Q03",$_SESSION["sRight"],true) && !in_array("Q00",$_SESSION["sRig
 
                 //-----------------------------------------------------------------------------
                 //Chức năng
-                echo '<td><button class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url=\'\'; temp.url = \'flowercateedit.php?fcateid=',$fc["f_cate_ID"],'\';modalHText=\'Chỉnh sửa\';">Sửa</button></td>';
+                echo '<td><button class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url=\'\'; temp.url = \'flowercateedit.php?fcateid=',$fc["f_cate_ID"],'\';modalHText=\'Chỉnh sửa\';">Sửa</button></td>';
                 if (!in_array($fc['f_cate_ID'],$fd,true)) {
                     echo '<td><button class="btn btn-danger btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'delete.php?flowercate&&fcateid=',$fc["f_cate_ID"],'&&fcatename=',$fc["f_cate_name"],'\';modalHText=\'Xóa ',$fc["f_cate_ID"],'\';">Xóa</button></td>';
                 }else{
@@ -65,7 +65,7 @@ if (!in_array("Q03",$_SESSION["sRight"],true) && !in_array("Q00",$_SESSION["sRig
             <div class="modal-content">
 
                 <!-- Modal Header -->
-                <div class="modal-header bg-info">
+                <div class="modal-header bg-info bg-shop">
                     <h4 id="modalHeader" class="modal-title text-light">{{modalHText}}</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>

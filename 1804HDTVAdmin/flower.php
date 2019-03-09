@@ -26,12 +26,12 @@ img{
             // Kiểm tra xem user có quyền chỉnh sửa Loại hoa hay không
             if (in_array("Q03",$_SESSION["sRight"],true) || in_array("Q00",$_SESSION["sRight"],true)) {
                 // Nếu có thì cho hiện
-                echo '<a class="btn btn-info btn-lg col-2 pr-sm-2 pl-sm-2" href="#!flower/category">';
+                echo '<a class="btn btn-info btn-lg col-2 pr-sm-2 pl-sm-2 btn-shop" href="#!flower/category">';
                 echo 'Quản lý loại hoa';
                 echo '</a>';
             }
             ?>
-        <button type="button" class="btn btn-success btn-lg col-2 pr-sm-2 pl-sm-2 ml-5" data-toggle="modal" data-target="#modal" ng-click="temp.url = 'floweradd.php';modalHText='Thêm mới';">
+        <button type="button" class="btn btn-success btn-lg col-2 pr-sm-2 pl-sm-2 ml-5 btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = 'floweradd.php';modalHText='Thêm mới';">
             Thêm mới
         </button>
     </div>
@@ -46,7 +46,7 @@ img{
             echo "Chưa có dữ liệu hoa";
         }else{
             echo "<table id='ftable' class='table table-hover table-bordered table-sm text-center'>";
-            echo "<tr class='table-info'><th>Mã hoa</th><th>Tên hoa</th><th>Loại</th><th>Màu</th><th>Hình mẫu</th><th>Chi tiết</th></tr>";
+            echo "<tr class='table-info table-shop'><th>Mã hoa</th><th>Tên hoa</th><th>Loại</th><th>Màu</th><th>Hình mẫu</th><th>Chi tiết</th></tr>";
             foreach ($data as $key=> $f) {
                 //-----------------------------------------------------------------------------
                 echo "<tr>";
@@ -72,7 +72,7 @@ img{
                     }
                 }
                 // Nút sửa màu
-                echo '<a class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'flowercolor.php?fid=',$f['f_ID'],'\';modalHText=\'Chỉnh sửa màu trong hoa\';">Sửa</a>';
+                echo '<a class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'flowercolor.php?fid=',$f['f_ID'],'\';modalHText=\'Chỉnh sửa màu trong hoa\';">Sửa</a>';
                 echo "</td>";
 
                 //-----------------------------------------------------------------------------
@@ -92,7 +92,7 @@ img{
 
                 //-----------------------------------------------------------------------------
                 //Chức năng
-                echo '<td><button class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url=\'\'; temp.url = \'floweredit.php?fid=',$f["f_ID"],'\';modalHText=\'Chỉnh sửa\';">Sửa</button></td>';
+                echo '<td><button class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url=\'\'; temp.url = \'floweredit.php?fid=',$f["f_ID"],'\';modalHText=\'Chỉnh sửa\';">Sửa</button></td>';
                 echo '<td><button class="btn btn-danger btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'delete.php?flower&&fid=',$f["f_ID"],'&&fname=',$f["f_name"],'\';modalHText=\'Xóa ',$f["f_ID"],'\';">Xóa</button></td>';
                 
                 //-----------------------------------------------------------------------------
@@ -108,7 +108,7 @@ img{
             <div class="modal-content">
 
                 <!-- Modal Header -->
-                <div class="modal-header bg-info">
+                <div class="modal-header bg-info bg-shop">
                     <h4 id="modalHeader" class="modal-title text-light">{{modalHText}}</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>

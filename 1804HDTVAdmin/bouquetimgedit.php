@@ -57,7 +57,7 @@ if (isset($_GET["bimgid"])) {
     <!-- nút để submit -->
     <div class="form-inline">
         <label class="mr-sm-2 col-2"></label>
-        <input type="button" class="btn btn-success mb-2 col-2" name="cmdImgEdit" id="cmdImgEdit" value="Hoàn tất">
+        <input type="button" class="btn btn-success mb-2 col-2 btn-shop" name="cmdImgEdit" id="cmdImgEdit" value="Hoàn tất">
     </div>
 </form>
 
