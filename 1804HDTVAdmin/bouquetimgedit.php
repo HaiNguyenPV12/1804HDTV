@@ -41,7 +41,7 @@ if (isset($_GET["bimgid"])) {
         <div id="imgPreview" class="col-9">
             <?php 
                 if (file_exists($sitedir.$bimg)) {
-                    echo "<img src='".$sitedir.$bimg."' style='max-width:70vh'>";
+                    echo "<img src='".$sitedir.$bimg."' style='max-width:50vh'>";
                 }else{
                     echo "<img src='".$sitedir."img/undefined.jpg' style='max-width:70vh'>";
                 }           

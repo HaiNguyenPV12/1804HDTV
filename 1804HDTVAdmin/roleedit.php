@@ -13,7 +13,7 @@
 <script src="../Scripts/1804HDTVAdmin/roleedit.js"></script>
 <?php
     // Kiểm tra xem chức vụ này có ai nắm chưa
-    $existed = getSql("SELECT * FROM right_detail where s_role_ID = '$id'");
+    $existed = getSql("SELECT * FROM staff where s_role_ID = '$id'");
     // Có thì cảnh báo
     if (sizeof($existed)>0) {
         echo "<b><p class='text-warning'>Lưu ý: Đã có người giữ chức vụ này. Nếu mã chức vụ có thay đổi cũng sẽ cập nhật vào bên nhân viên.</p></b>";

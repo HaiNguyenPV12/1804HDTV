@@ -70,7 +70,7 @@
                 echo '<td><a class="btn btn-info btn-sm text-light btn-shop" ';
                 echo 'data-toggle="modal" data-target="#imgModal" ng-click="temp.imgurl = \'bouquetimgedit.php?bimgid=',$imgdata["b_img_ID"],'\';imgModalHText=\'Chỉnh sửa\';">Sửa</a></td>';
                 // Nút Xóa
-                echo '<td><a class="btn btn-danger btn-sm text-light btn-shop" ';
+                echo '<td><a class="btn btn-danger btn-sm text-light" ';
                 echo 'data-toggle="modal" data-target="#imgModal" ng-click="temp.imgurl = \'delete.php?bouquetimg&&bimgid=',$imgdata["b_img_ID"],'\';imgModalHText=\'Xóa\';">Xóa</a></td>';
                 echo "</tr>";
             }

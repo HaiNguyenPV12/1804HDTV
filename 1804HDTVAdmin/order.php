@@ -20,6 +20,7 @@ img{
     <?php
         include '../src/flowerdb.php';
         $data = getSql("SELECT * FROM orders");
+        $odata = getSql("SELECT order_ID, b_name,quan FROM order_detail, bouquet where order_detail.b_ID = bouquet.b_ID");
         $num = sizeof($data);
         if ($num<=0) 
         {
@@ -28,10 +29,11 @@ img{
         else
         {
             echo "<table id='btable' class='table table-hover table-bordered table-sm text-center'>";
-            echo "<tr class='table-info'>
+            echo "<tr class='table-info table-shop'>
                     <th>Mã Order</th>
                     <th>Mã KH</th>
                     <th>Trạng thái Order</th>
+                    <th>Chi tiết Order</th>
                     <th>Ngày nhận Order</th>
                     <th>Ngày giao hàng</th>
                     </tr>";
@@ -40,15 +42,34 @@ img{
                 echo "<tr>";
                 echo "<td>",$o['order_ID'],"</td>";
                 echo "<td>",$o['cus_ID'],"</td>";
-                echo "<td>",$o['order_status'],"</td>";
+                echo "<td>";
+                if ($o['order_status']==0) {
+                    echo "Đã hủy";
+                }elseif ($o['order_status']==1) {
+                    echo "Đã nhận (chờ giao)";
+                }elseif ($o['order_status']==2) {
+                    echo "Đã giao";
+                }
+                echo "</td>";
+                echo "<td>";
+                foreach ($odata as $key => $od) {
+                    if ($od["order_ID"]==$o["order_ID"]) {
+                        echo $od["quan"]." x  \"".$od["b_name"]."\"<br>";
+                    }
+                }
+                echo "</td>";
                 echo "<td>",$o['order_date'],"</td>";
                 echo "<td>",$o['delivery_date'],"</td>";
                 echo '<td>
-                        <button class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'orderedit.php?oid=',$o["order_ID"],'\';modalHText=\'Chỉnh sửa\';">
-                        Sửa
+                        <button class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'orderedit.php?oid=',$o["order_ID"],'\';modalHText=\'Chỉnh sửa\';">
+                        Đã giao
                         </button>
                         </td>';
-                
+                echo '<td>
+                        <button class="btn btn-danger btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'orderedit.php?oid=',$o["order_ID"],'\';modalHText=\'Chỉnh sửa\';">
+                        Hủy
+                        </button>
+                        </td>';
             }
             echo "</tr>";   
             echo "</table>";
@@ -60,7 +81,7 @@ img{
     <div class="modal fade" id="modal"  ng-controller="myModal">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header bg-info">
+                <div class="modal-header bg-info bg-shop">
                     <h4 id="modalHeader" class="modal-title text-light">{{modalHText}}</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>

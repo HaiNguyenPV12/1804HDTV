@@ -1,4 +1,4 @@
-<!-- Trang thêm bó hoa mới -->
+<!-- Trang thêm chức vụ mới -->
 
 <!-- Script tùy chỉnh của trang bouquetadd -->
 <script src="../Scripts/1804HDTVAdmin/roleadd.js"></script>
