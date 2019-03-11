@@ -62,7 +62,7 @@
             </div>
         </div>
         <!-- about us -->
-        <div style="background: url(../img/1804HDTVShop/home/feedback.png); background-size: cover;" class="feedback-card">
+        <!-- <div style="background: url(../img/1804HDTVShop/home/feedback.png); background-size: cover;" class="feedback-card">
             <div class="row event-details h-100">
                 <div class="col-4 location-text text-center">
                     <div class="row h-75">
@@ -77,7 +77,7 @@
                     <a href="" class=" btn btn-primary btn-shop">Đóng Góp Ý Kiến</a>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- location -->
         <div style="background: url(../img/1804HDTVShop/home/location.png); background-size: cover;" class="location-card">
             <div class="row event-details h-100">
