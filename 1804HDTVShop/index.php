@@ -40,7 +40,7 @@ $sql = "SELECT * from flower_cate order by f_cate_name asc";
 $rs = mysqli_query($cn, $sql);
 while ($row = mysqli_fetch_assoc($rs)) {
     $cate = $row['f_cate_name'];
-    echo "<a class=\"dropdown-item\" href=\"#!browse.php/" . $cate . "\">" . $row['f_cate_name'] . "</a>";
+    echo "<a class=\"dropdown-item\" href=\"#!browse.php/cate/" . $cate . "\">" . $row['f_cate_name'] . "</a>";
 }
 ?>
                 </div>
@@ -54,7 +54,7 @@ $sql = "SELECT * from flower_color order by f_color_name asc";
 $rs = mysqli_query($cn, $sql);
 while ($row = mysqli_fetch_assoc($rs)) {
     $color = $row['f_color_name'];
-    echo "<a class=\"dropdown-item\" href=\"#!browse.php/" . $color . "\">" . $row['f_color_name'] . "</a>";
+    echo "<a class=\"dropdown-item\" href=\"#!browse.php/col/" . $color . "\">" . $row['f_color_name'] . "</a>";
 }
 ?>
                 </div>
@@ -64,11 +64,11 @@ while ($row = mysqli_fetch_assoc($rs)) {
                 <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">Dịp</a>
                 <div class="dropdown-menu">
                     <?php
-$sql = "SELECT * from flower_color order by f_color_name asc";
+$sql = "SELECT * from occasion order by occa_name asc";
 $rs = mysqli_query($cn, $sql);
 while ($row = mysqli_fetch_assoc($rs)) {
-    $color = $row['f_color_name'];
-    echo "<a class=\"dropdown-item\" href=\"#!browse.php/" . $color . "\">" . $row['f_color_name'] . "</a>"; //TODO link to actual ocasions
+    $occa = $row['occa_name'];
+    echo "<a class=\"dropdown-item\" href=\"#!browse.php/occa/" . $occa . "\">" . $row['occa_name'] . "</a>"; //TODO link to actual ocasions
 }
 ?>
                 </div>
@@ -120,6 +120,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
                     <ul>
                         <li><a href="#" class="footer-link">Điều khoản dịch vụ</a></li>
                         <li><a href="#" class="footer-link">Chính sách bảo mật</a></li>
+                        <li><u><a href="#" class="footer-link">Ý Kiến Đóng Góp</a></u></li>
                     </ul>
                 </div>
             </div>

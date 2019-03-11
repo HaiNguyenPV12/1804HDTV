@@ -6,11 +6,25 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'home.php',
             controller: 'homecontroller'
         })
-        .when('/browse.php/:bid', {
+        //flower category
+        .when('/browse.php/cate/:bid', {
             templateUrl: function (params) {
                 return "browse.php?cate=" + params.bid;
             },
-            // templateUrl: 'browse.php'
+            controller: 'browsecontroller'
+        })
+        //flower color
+        .when('/browse.php/col/:bid', {
+            templateUrl: function (params) {
+                return "browse.php?col=" + params.bid;
+            },
+            controller: 'browsecontroller'
+        })
+        //Occasions
+        .when('/browse.php/occa/:bid', {
+            templateUrl: function (params) {
+                return "browse.php?occa=" + params.bid;
+            },
             controller: 'browsecontroller'
         })
         .otherwise({ redirectTo: '/' });
