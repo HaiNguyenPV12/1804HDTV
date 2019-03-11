@@ -82,8 +82,9 @@ while ($row = mysqli_fetch_assoc($rs)) {
     </nav>
 
     <!-- content -->
+    <br>
     <div class="container col-7">
-        <br>
+        
         <h1 class="text-center">Về chúng tôi</h1>
         <h5>Shop <b>Hoa HDTV</b> bao gồm đội ngũ nhân viên chuyên về các loại hoa trong mọi lĩnh vực, có kinh nghiệm hơn 10 năm trong việc kinh doanh các loại hoa.
         <br>Ngoài việc kinh doanh, chúng tôi còn tư vấn cho khách hàng mọi thứ về hoa như nên tặng hoa nào vào dịp nào, ý nghĩa của hoa đó là gì, nên chọn màu ra sao,v.v...
@@ -92,8 +93,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
             <img src="../img/Flower/HHD00/HHD00.jpg" style="max-width:30vw;">
         </div>
     </div>
+    
     <br>
-
     <!-- Footer -->
     <div class="footer">
         <!-- Social buttons -->

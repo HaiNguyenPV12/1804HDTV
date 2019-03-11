@@ -1,11 +1,6 @@
 .bg-shop-2 {
     background-color: #7c43bd !important;
 }
-body {
-    background-color: #f5f5f5;
-    padding-top: 25px;
-    font-family: 'Open sans', Arial, sans-serif;
-}
 
 /************* Button ****************/
 .btn.btn-shop {
@@ -39,6 +34,12 @@ body {
   .btn-shop:not(:disabled):not(.disabled).active:focus {
       box-shadow: 0 0 0 0.2rem rgba(74, 20, 140, 0.5);
   }
+
+
+/************* Border ****************/
+.border-shop {
+  border-color: #7c42bd !important;
+}
 
   .header-navigation {
     display: flex;
