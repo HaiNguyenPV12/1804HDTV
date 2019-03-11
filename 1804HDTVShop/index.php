@@ -106,18 +106,20 @@ while ($row = mysqli_fetch_assoc($rs)) {
         <!-- FAQs and Sitemaps, etc. -->
         <div class="container-fluid">
             <div class="row justify-content-center">
+                <!-- Left Column -->
                 <div class="col-2">
-                    1804 HDTV Co.
+                    <b>1804 HDTV Co.</b>
                     <ul>
-                        <li><a href="#">Câu hỏi thường xuyên</a></li>
-                        <li><a href="#">Về Chúng tôi</a></li>
+                        <li><a href="#" class="footer-link">Câu hỏi thường xuyên</a></li>
+                        <li><a href="#" class="footer-link">Về Chúng tôi</a></li>
                     </ul>
                 </div>
+                <!-- Right Column -->
                 <div class="col-2">
-                    Trợ Giúp
+                    <b>Trợ Giúp</b>
                     <ul>
-                        <li><a href="#">Điều khoản dịch vụ</a></li>
-                        <li><a href="#">Chính sách bảo mật</a></li>
+                        <li><a href="#" class="footer-link">Điều khoản dịch vụ</a></li>
+                        <li><a href="#" class="footer-link">Chính sách bảo mật</a></li>
                     </ul>
                 </div>
             </div>
