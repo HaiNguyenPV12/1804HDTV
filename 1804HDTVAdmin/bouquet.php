@@ -20,8 +20,8 @@ img{
     <!-- Tựa đề -->
     <div class='row'>
         <h2 class="col-9">Quản lý Bó Hoa</h2>
-        <button type="button" class="btn btn-success btn-lg col-2 ml-5 btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = 'bouquetadd.php';modalHText='Thêm mới';">
-            Thêm mới
+        <button type="button" class="btn btn-success btn-lg col-2 ml-5 btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = 'bouquetadd.php';modalHText='Thêm Bó Hoa mới';">
+            Thêm Bó Hoa mới
         </button>
     </div>
 
@@ -206,7 +206,7 @@ img{
                 //-----------------------------------------------------------------------------
                 // Các nút chức năng
                 // Nút chỉnh sửa (hiện modal)
-                echo '<td><button class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'bouquetedit.php?bid=',$b["b_ID"],'\';modalHText=\'Chỉnh sửa\';">Sửa</button></td>';
+                echo '<td><button class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'bouquetedit.php?bid=',$b["b_ID"],'\';modalHText=\'Chỉnh sửa Bó Hoa\';">Sửa</button></td>';
                 // Nút quản lý hình
                 echo '<td><a class="btn btn-info btn-sm text-light btn-shop" href="#!bouquet/img/',$b["b_ID"],'">Hình</a></td>';
                 // Nút xóa

@@ -13,7 +13,7 @@
 <script src="../Scripts/1804HDTVAdmin/roleedit.js"></script>
 <?php
     // Kiểm tra xem chức vụ này có ai nắm chưa
-    $existed = getSql("SELECT * FROM right_detail where s_role_ID = '$id'");
+    $existed = getSql("SELECT * FROM staff where s_role_ID = '$id'");
     // Có thì cảnh báo
     if (sizeof($existed)>0) {
         echo "<b><p class='text-warning'>Lưu ý: Đã có người giữ chức vụ này. Nếu mã chức vụ có thay đổi cũng sẽ cập nhật vào bên nhân viên.</p></b>";
@@ -46,7 +46,7 @@
     <div class="form-inline">
         <label class="mr-sm-2 col-2"></label>
         <!-- Nút hoàn tất -->
-        <button type="submit" class="btn btn-primary mb-2 col-2" id="cmdEditRole" name="cmdEditRole">Hoàn tất</button>
+        <button type="submit" class="btn btn-primary mb-2 col-2 btn-shop" id="cmdEditRole" name="cmdEditRole">Hoàn tất</button>
         <div class="col-1"></div>
         <!-- Nút reset -->
         <button type="reset" class="btn mb-2 btn-warning col-2" name="cmdReset" id="cmdReset">Làm lại</button>

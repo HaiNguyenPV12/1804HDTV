@@ -14,12 +14,16 @@ if (isset($_SESSION["loggedin"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link href="../Content/bootstrap.min.css" rel="stylesheet">
+    <link href="../Content/1804HDTVAdmin/custom-color.css" rel="stylesheet">
 </head>
     
 <style type="text/css">
+    body{
+        background-color:#e4d6f5;
+    }
     .login-form {
         width: 340px;
-        margin: 50px auto;
+        margin: 10px auto;
     }
     .login-form form {
         margin-bottom: 15px;
@@ -38,13 +42,22 @@ if (isset($_SESSION["loggedin"])) {
         font-size: 15px;
         font-weight: bold;
     }
+    .login-logo{
+        margin: 50px auto;
+    }
 </style>
 
 <body>
+    
+    <div class="container d-flex justify-content-center login-logo">
+        <div class="row justify-content-center align-self-center">
+            <img src="../img/logo.png" alt="" style="height:10vh;width:auto;">
+        </div>
+    </div>
     <div class="login-form">
         <form id="frmLogin" name="frmLogin" method="post">
             <input type="hidden" name="cmdLogin">
-            <h2 class="text-center text-info">Đăng nhập</h2>       
+            <h3 class="text-center text-info text-shop">Đăng nhập</h3>       
             <div class="form-group">
                 <input name="id" id="id" type="text" class="form-control" placeholder="Tên đăng nhập" required="required" autocomplete="off">
             </div>
@@ -52,7 +65,7 @@ if (isset($_SESSION["loggedin"])) {
                 <input name="pw" id="pw" type="password" class="form-control" placeholder="Mật khẩu" required="required" autocomplete="off">
             </div>
             <div class="form-group">
-                <button name="cmdLogin" id="cmdLogin" type="submit" class="btn btn-info btn-block">Đăng nhập</button>
+                <button name="cmdLogin" id="cmdLogin" type="submit" class="btn btn-info btn-block btn-shop">Đăng nhập</button>
             </div>
 
             <!--

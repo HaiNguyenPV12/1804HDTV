@@ -1,7 +1,7 @@
 <b>Thêm khách hàng mới</b><br>
 <a href='index.php'>Back to Tester homepage</a><br>
 <?php
-    include "../src/flowerdb.php";
+    include "../../src/flowerdb.php";
     $numarr = array();
     $cdata = getSql("select cus_ID from customer");
     //echo intval("000");

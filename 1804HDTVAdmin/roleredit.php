@@ -29,7 +29,7 @@
                 $rnot = array();
                 if (sizeof($data)>0) {
                     foreach ($data as $key => $rvalue) {
-                        echo "<button type='button' name='r_item' class='list-group-item list-group-item-info d-flex justify-content-between align-items-center py-2'>".$rvalue['right_name'];
+                        echo "<button type='button' name='r_item' class='list-group-item list-group-item-info d-flex justify-content-between align-items-center py-2 list-group-item-shop'>".$rvalue['right_name'];
                         echo "<input name='rname' type='hidden' value='".$rvalue['right_name']."'>";
                         echo "<input name='rid' type='hidden' value='".$rvalue['right_ID']."'>";
                         echo "<input name='rdata[]' type='hidden' value='".$rvalue['right_ID']."'>";
@@ -50,7 +50,7 @@
                     foreach ($rdata as $key => $r) {
                         if ($r['right_ID']!="Q00") {
                             if (!in_array($r['right_ID'], $rnot)) {
-                                echo "<button type='button' name='r_item_not' class='list-group-item list-group-item-info d-flex justify-content-between align-items-center py-2'>".$r['right_name'];
+                                echo "<button type='button' name='r_item_not' class='list-group-item list-group-item-info d-flex justify-content-between align-items-center py-2 list-group-item-shop'>".$r['right_name'];
                                 echo "<input name='rinsertid' type='hidden' value='".$r['right_ID']."'>";
                                 echo "<input name='rinsertname' type='hidden' value='".$r['right_name']."'>";
                                 echo "</button>";
@@ -70,7 +70,7 @@
     <!-- Nút hoàn tất -->
     <div class="form-inline">
         <div class="col-1"></div>
-        <button type="submit" class="btn btn-primary mb-2 col-2" name="cmdEditRoleR" id="cmdEditRoleR">Lưu</button>
+        <button type="submit" class="btn btn-primary mb-2 col-2 btn-shop" name="cmdEditRoleR" id="cmdEditRoleR">Lưu</button>
     </div>
 </form>
 
