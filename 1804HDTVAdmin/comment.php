@@ -19,8 +19,8 @@
             <td>Bó này trông rất bí ẩn</td>
             <td>B000</td>
             <td>06/03/2019</td>
-            <td><a href="#" style="color:#09F;">Đã duyệt</a></td>
-            <td><a href="#" style="color:#F3F;">Xóa</a></td>
+            <td><button href="#" style="color:#09F;">Đã duyệt</button></td>
+            <td><button href="#" style="color:#F3F;">Xóa</button></td>
         </tr>
         <tr>
             <td>2</td>
@@ -28,8 +28,8 @@
             <td>Shop dịch vụ rất tốt!</td>
             <td>B002</td>
             <td>08/03/2019</td>
-            <td><a href="#" style="color:#09F;">Đã duyệt</a></td>
-            <td><a href="#" style="color:#F3F;">Xóa</a></td>
+            <td><button href="#" style="color:#09F;">Đã duyệt</button></td>
+            <td><button href="#" style="color:#F3F;">Xóa</button></td>
         </tr>
         <tr>
             <td>3</td>
@@ -37,8 +37,8 @@
             <td>Giao hàng đẹp như hình! Cần bổ sung thêm dịch vụ tặng kèm thiệp!</td>
             <td>B564</td>
             <td>09/03/2019</td>
-            <td><a href="#" style="color:#09F;">Chưa duyệt</a></td>
-            <td><a href="#" style="color:#F3F;">Xóa</a></td>
+            <td><button href="#" style="color:#09F;">Chưa duyệt</button></td>
+            <td><button href="#" style="color:#F3F;">Xóa</button></td>
         </tr>
     </table>
 
