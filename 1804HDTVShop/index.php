@@ -68,7 +68,7 @@ $sql = "SELECT * from flower_color order by f_color_name asc";
 $rs = mysqli_query($cn, $sql);
 while ($row = mysqli_fetch_assoc($rs)) {
     $color = $row['f_color_name'];
-    echo "<a class=\"dropdown-item\" href=\"#!browse.php/" . $color . "\">" . $row['f_color_name'] . "</a>"; //TODO actual ocasion
+    echo "<a class=\"dropdown-item\" href=\"#!browse.php/" . $color . "\">" . $row['f_color_name'] . "</a>"; //TODO link to actual ocasions
 }
 ?>
                 </div>
