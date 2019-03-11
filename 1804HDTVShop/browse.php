@@ -1,22 +1,31 @@
 <body>
-<?php
+    <div class="container">
+        <?php
 include "../src/fconnectadmin.php";
 if (isset($_GET["cate"]) && !empty($_GET["cate"])) {
     $cate = $_GET["cate"];
-    $sql = "SELECT * from v_flower_gen where f_cate_name like '%$cate%'"; //TODO select from bouq view
+    $sql = "SELECT DISTINCT b_name from v_bouq_gen where f_cate_name like '%$cate%'"; //TODO refractor cate, cols, occa, etc.
     $rs = mysqli_query($cn, $sql);
     while ($row = mysqli_fetch_assoc($rs)) {
-        echo $row['f_ID'] . "<br>";
+        echo $row['b_name'] . "<br>";
     }
-}
-if (isset($_GET["col"]) && !empty($_GET["col"])) {
+} else if (isset($_GET["col"]) && !empty($_GET["col"])) {
     $col = $_GET["col"];
-    $sql = "SELECT * from v_flower_gen where f_color_name like '%$col%'"; //TODO select from bouq view
+    $sql = "SELECT DISTINCT b_name from v_bouq_gen where f_color_name like '%$col%'"; //TODO refractor cate, cols, occa, etc.
     $rs = mysqli_query($cn, $sql);
     while ($row = mysqli_fetch_assoc($rs)) {
-        echo $row['f_ID'] . "<br>";
+        echo $row['b_name'] . "<br>";
+    }
+} else if (isset($_GET["occa"]) && !empty($_GET["occa"])) {
+    $occa = $_GET["occa"];
+    $sql = "SELECT DISTINCT b_name from v_bouq_gen where occa_name like '%$occa%'"; //TODO refractor cate, cols, occa, etc.
+    $rs = mysqli_query($cn, $sql);
+    while ($row = mysqli_fetch_assoc($rs)) {
+        echo $row['b_name'] . "<br>";
     }
 }
 ?>
-test
+    </div>
+    <!-- <br>
+    test -->
 </body>
