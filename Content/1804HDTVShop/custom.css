@@ -9,6 +9,11 @@
     background-color: #f5f5f5;
 }
 
+/* shop background */
+.bg-shop {
+    background-color: #f5f5f5 !important;
+}
+
 /* navbar */
 
 .navbar {
