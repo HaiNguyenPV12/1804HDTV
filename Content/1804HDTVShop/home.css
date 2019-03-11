@@ -1,0 +1,27 @@
+.event-card {
+    height: 375px;
+    background-color: rgba(255, 0, 0, 0.1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 5px;
+}
+
+.event-details {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.event-text-1 {
+    top: 10%;
+    left: 5%;
+    height: 80%;
+    background-color: rgba(255, 255, 255, .75);
+    position: relative;
+}
+
+.event-text-2 {
+    top: 10%;
+    left: 53%;
+    height: 80%;
+    background-color: rgba(255, 255, 255, .75);
+    position: relative;
+}

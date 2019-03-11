@@ -1,5 +1,6 @@
 var app = angular.module("1804HDTVShop", ["ngRoute"]);
 
+// SPA routings
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when('/', {
