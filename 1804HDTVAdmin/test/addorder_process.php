@@ -9,13 +9,13 @@
                     include "addcustomer.php";
                 }else{
                     $cid=$_GET["cid"];
-                    include "../src/flowerdb.php";
+                    include "../../src/flowerdb.php";
                 }
                 echo "+ Đã tạo dữ liệu khách hàng.<br>";
 
                 $timezone = date_default_timezone_get();
                 $date = date("Y-m-d",time());
-                include "../src/fconnectadmin.php";
+                include "../../src/fconnectadmin.php";
                 $cn->query("insert into `orders` values (null,'$cid',1,'$date','$date')");
                 $rs = $cn->query("select LAST_INSERT_ID() as orderid");
                 while ($row = $rs->fetch_assoc()) {

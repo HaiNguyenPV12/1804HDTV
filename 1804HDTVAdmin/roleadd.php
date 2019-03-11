@@ -1,4 +1,4 @@
-<!-- Trang thêm bó hoa mới -->
+<!-- Trang thêm chức vụ mới -->
 
 <!-- Script tùy chỉnh của trang bouquetadd -->
 <script src="../Scripts/1804HDTVAdmin/roleadd.js"></script>
@@ -31,7 +31,7 @@
     <div class="form-inline">
         <label class="mr-sm-2 col-2"></label>
         <!-- Nút hoàn tất -->
-        <button type="submit" class="btn btn-primary mb-2 col-2" id="cmdAddRole" name="cmdAddRole">Hoàn tất</button>
+        <button type="submit" class="btn btn-primary mb-2 col-2 btn-shop" id="cmdAddRole" name="cmdAddRole">Hoàn tất</button>
         <div class="col-1"></div>
         <!-- Nút reset -->
         <button type="reset" class="btn mb-2 btn-warning col-2" name="cmdReset" id="cmdReset">Làm lại</button>

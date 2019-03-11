@@ -82,6 +82,15 @@ app.config(function ($routeProvider) {
         .when("/role", {
             templateUrl: "role.php"
         })
+        .when("/statistic", {
+            templateUrl: "statistic.php"
+        })
+        .when("/comment", {
+            templateUrl: "comment.php"
+        })
+        .when("/feedback", {
+            templateUrl: "feedback.php"
+        })
         .otherwise({
             template: "<h2>Không tìm thấy trang!</h2>"
         });
