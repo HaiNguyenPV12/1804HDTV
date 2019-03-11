@@ -37,8 +37,8 @@ var app = angular.module("myApp", ["ngRoute"]);
 app.config(function ($routeProvider) {
     $routeProvider
         .when("/", {
-            templateUrl: "main.htm",
-            template: "<h2>Xin chào</h2>"
+            templateUrl: "home.php",
+            //template: "<h2>Xin chào</h2>"
         })
         .when("/bouquet", {
             templateUrl: "bouquet.php"
