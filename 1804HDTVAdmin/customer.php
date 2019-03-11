@@ -27,7 +27,7 @@ img{
         else
         {
             echo "<table id='btable' class='table table-hover table-bordered table-sm text-center'>";
-            echo "<tr class='table-info table-shop'>
+            echo "<tr class='table-info'>
                     <th>Mã KH</th>
                     <th>SĐT KH</th>
                     <th>Tên KH</th>
@@ -42,7 +42,7 @@ img{
                 echo "<td>",$cus['cus_address'],"</td>";
                 echo "<td>",$cus['cus_email'],"</td>";
                 echo '<td>
-                        <button class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'customeredit.php?cusid=',$cus["cus_ID"],'\';modalHText=\'Chỉnh sửa\';">
+                        <button class="btn btn-info btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'customeredit.php?cusid=',$cus["cus_ID"],'\';modalHText=\'Chỉnh sửa\';">
                         Sửa
                         </button>
                     </td>';
@@ -61,7 +61,7 @@ img{
             <div class="modal-content">
 
                 <!-- Modal Header -->
-                <div class="modal-header bg-info bg-shop">
+                <div class="modal-header bg-info">
                     <h4 id="modalHeader" class="modal-title text-light">{{modalHText}}</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>

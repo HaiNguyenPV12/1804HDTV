@@ -17,7 +17,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body>
+<body class="bg-shop">
     <!--LOGO-->
     <a href="index.php">
         <div class="abovenavbar">
@@ -58,6 +58,28 @@ while ($row = mysqli_fetch_assoc($rs)) {
 }
 ?>
                 </div>
+            </li>
+            <!-- Occasion Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">Dịp</a>
+                <div class="dropdown-menu">
+                    <?php
+$sql = "SELECT * from flower_color order by f_color_name asc";
+$rs = mysqli_query($cn, $sql);
+while ($row = mysqli_fetch_assoc($rs)) {
+    $color = $row['f_color_name'];
+    echo "<a class=\"dropdown-item\" href=\"#!browse.php/" . $color . "\">" . $row['f_color_name'] . "</a>"; //TODO actual ocasion
+}
+?>
+                </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Tài Khoản</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Giỏ Hàng</a>
             </li>
         </ul>
     </nav>
