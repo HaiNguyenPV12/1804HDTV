@@ -14,14 +14,48 @@
     top: 10%;
     left: 5%;
     height: 80%;
-    background-color: rgba(255, 255, 255, .75);
+    background-color: rgba(255, 255, 255, .80);
     position: relative;
+    border: 1px solid rgba(74, 20, 140, 0.2);
+    /* RGB of #4a148c */
 }
 
 .event-text-2 {
     top: 10%;
     left: 53%;
     height: 80%;
-    background-color: rgba(255, 255, 255, .75);
+    background-color: rgba(255, 255, 255, .80);
     position: relative;
+    border: 1px solid;
+    border: 1px solid rgba(74, 20, 140, 0.2);
+}
+
+.feedback-card {
+    height: 250px;
+    background-color: rgba(255, 0, 0, 0.1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 5px;
+}
+
+.location-card {
+    height: 250px;
+    background-color: rgba(255, 0, 0, 0.1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 5px;
+}
+
+.location-text {
+    margin: auto;
+    height: 80%;
+    background-color: rgba(255, 255, 255, .80);
+    position: relative;
+    border: 1px solid rgba(74, 20, 140, 0.2);
+}
+
+.location-text:hover, .event-text-1:hover, .event-text-2:hover {
+    background-color: rgba(255, 255, 255, .95);
+    border: 1px solid rgba(74, 20, 140, 0.6);
+    transition: 0.4s;
 }
