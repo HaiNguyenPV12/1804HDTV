@@ -75,9 +75,9 @@ while ($row = mysqli_fetch_assoc($rs)) {
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="#">Tài Khoản</a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a class="nav-link" href="#">Giỏ Hàng</a>
             </li>
@@ -120,7 +120,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
                     <ul>
                         <li><a href="#" class="footer-link">Điều khoản dịch vụ</a></li>
                         <li><a href="#" class="footer-link">Chính sách bảo mật</a></li>
-                        <li><u><a href="#" class="footer-link">Ý Kiến Đóng Góp</a></u></li>
+                        <li><a href="#" class="footer-link">Ý Kiến Đóng Góp</a></li>
                     </ul>
                 </div>
             </div>

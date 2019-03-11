@@ -87,3 +87,18 @@
         color: #7c43bd;
         transition: 0.25s;
     }
+
+/* Buttons */
+.btn-shop {
+    background-color: #7c43bd;
+    color: #ffffff;
+    border-color: #7c43bd;
+}
+    .btn.btn-shop:hover,
+    .btn.btn-shop:focus,
+    .btn.btn-shop:active,
+    .btn.btn-shop.active {
+        color: #ffffff;
+        background-color: #4a148c;
+        border-color: #4a148c;
+    }
