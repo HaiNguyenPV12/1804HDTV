@@ -62,14 +62,17 @@
     background-color: #caa2f8;
     border-color: #4a148c;
 }
-.list-group-item-shop:hover {
-    text-decoration: none;
-    color: #4a148c;
-}
+
+    .list-group-item-shop:hover {
+        text-decoration: none;
+        color: #4a148c;
+    }
+
 .list-group-item.active:hover {
     text-decoration: none;
     color: white;
 }
+
 .badge-shop {
     color: #fff;
     background-color: #4a148c;
@@ -99,6 +102,6 @@
     }
 
 /************* Table ****************/
-.text-shop{
+.text-shop {
     color: #7c42bd !important;
 }
