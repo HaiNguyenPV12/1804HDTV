@@ -1,6 +1,29 @@
 <body>
     <div class="container">
-        <?php
+        <div class="col-12 pl-5 pr-5 mt-1">
+            <div class="row">
+                <div class="form-inline">
+                    <label class="mr-3" for="">
+                        Lọc theo:
+                    </label>
+
+                    <select class="form-control mr-3" name="" id="">
+                        <option value="">-- Dịp --</option>
+                    </select>
+
+                    <select class="form-control mr-3" name="" id="">
+                        <option value="">-- Loại hoa --</option>
+                    </select>
+
+                    <select class="form-control mr-3" name="" id="">
+                        <option value="">-- Màu có trong bó --</option>
+                    </select>
+                    <button class="btn btn-shop">
+                        Lọc kết quả
+                    </button>
+                </div>
+            </div>
+            <?php
 include "../src/fconnectadmin.php";
 $sql = "SELECT DISTINCT b_name from v_bouq_gen";
 // $sql = "SELECT DISTINCT b_name,b_img,b_price FROM v_bouq_gen WHERE b_img like '%_PV%'";
@@ -22,7 +45,12 @@ while ($row = mysqli_fetch_assoc($rs)) {
     echo $row['b_name'] . "<br>";
 }
 ?>
-    </div>
-    <!-- <br>
+            <select class="selectpicker" multiple data-live-search="true">
+                <option>Mustard</option>
+                <option>Ketchup</option>
+                <option>Relish</option>
+            </select>
+        </div>
+        <!-- <br>
     test -->
 </body>
