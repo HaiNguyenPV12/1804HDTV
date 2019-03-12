@@ -30,6 +30,10 @@ session_start();
             <li class="nav-item">
                 <a class="nav-link" href="index.php">Trang Chủ</a>
             </li>
+            <!-- All Bouqets -->
+            <li class="nav-item">
+                <a class="nav-link" href="#!browse.php">Tất Cả Bó Hoa</a>
+            </li>
             <!-- Flower Type Dropdown -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">Loại Hoa</a>
@@ -43,6 +47,9 @@ while ($row = mysqli_fetch_assoc($rs)) {
     echo "<a class=\"dropdown-item\" href=\"#!browse.php/cate/" . $cate . "\">" . $row['f_cate_name'] . "</a>";
 }
 ?>
+                    <hr class="dropdown-divider">
+                    <!-- TODO link to page that lists all FLOWER types -->
+                    <a class="dropdown-item" href="#!browse.php">Tất cả các loại hoa</a>
                 </div>
             </li>
             <!-- Flower Color Dropdown -->
@@ -57,6 +64,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
     echo "<a class=\"dropdown-item\" href=\"#!browse.php/col/" . $color . "\">" . $row['f_color_name'] . "</a>";
 }
 ?>
+                    <hr class="dropdown-divider">
+                    <a class="dropdown-item" href="#!browse.php">Tất cả các màu</a>
                 </div>
             </li>
             <!-- Occasion Dropdown -->
@@ -71,6 +80,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
     echo "<a class=\"dropdown-item\" href=\"#!browse.php/occa/" . $occa . "\">" . $row['occa_name'] . "</a>"; //TODO link to actual ocasions
 }
 ?>
+                    <hr class="dropdown-divider">
+                    <a class="dropdown-item" href="#!browse.php">Tất cả các dịp</a>
                 </div>
             </li>
         </ul>
