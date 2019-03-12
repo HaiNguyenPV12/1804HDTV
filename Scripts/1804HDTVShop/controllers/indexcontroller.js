@@ -7,6 +7,13 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'home.php',
             controller: 'homecontroller'
         })
+        //browse
+        .when('/browse.php', {
+            templateUrl: function (params) {
+                return "browse.php";
+            },
+            controller: 'browsecontroller'
+        })
         //flower category
         .when('/browse.php/cate/:bid', {
             templateUrl: function (params) {
