@@ -240,6 +240,7 @@ if (isset($_POST['cmdAddFlower'])) {
 }else if (isset($_POST['cmdAddBouquet'])) {
     if (isset($_POST['bid']) && isset($_POST['bname']) && isset($_POST['bprice']) && isset($_POST['bdetail'])) {
         include '../src/flowerdb.php';
+        $sitedir = "../";
         $bid = $_POST['bid'];
         $bname = $_POST['bname'];
         $bprice = $_POST['bprice'];
@@ -250,7 +251,24 @@ if (isset($_POST['cmdAddFlower'])) {
         }else {
             $bselling = 0;
         }
+
         insertSql("insert into bouquet values ('$bid','$bname','$bdetail',$bprice, $bselling)");
+
+        if (isset($_POST["img"])) {
+            $img = $_POST["img"];
+            if (!file_exists($sitedir."img/Bouquet/$bid")) {
+                mkdir($sitedir."img/Bouquet/$bid", 0777, true);
+            }
+            foreach ($img as $key => $imgdata) {
+                $data = preg_split('/:/',$imgdata);
+                $bimgid = $data[0];
+                $tmpdir = $data[1];
+                $bimg = $data[2];
+                $targetdir = $sitedir.$bimg;
+                rename($tmpdir, $targetdir);
+                $insert = insertSql("INSERT INTO bouq_img VALUES ('$bimgid','$bid','$bimg')");
+            }
+        }
         echo "ok";
     }else{
         echo "not enough";

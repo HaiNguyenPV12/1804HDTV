@@ -17,18 +17,23 @@ if ($("#bselling").is(":checked")) {
 
 // Function tắt bảng Modal
 function closeModal(){
-    $('#modal').modal('hide');
     $('#result').modal('hide');
+    $('#modal').modal('hide');
+    $('.modal-backdrop').remove();
+    //reloadPage();
 }
 
 //reload để load lại dữ liệu từ sql
 function reloadPage(){   
-    location.reload();
+    //location.reload();
+    //$(location).attr('href',"#!bouquet?reload=true");
+    window.location.reload(true);
 }
 
 // Reset khi tắt modal
 $('#modal').on('hidden.bs.modal', function (e) {
-    $("#frmEditBouquet")[0].reset();
+    //$("#frmEditBouquet")[0].reset();
+    reloadPage();
 });
 
 //=========================== Xử lý submit dữ liệu =================================//
@@ -52,8 +57,8 @@ $("#frmEditBouquet").submit(function(event){
         $("#txtResult").addClass("text-success");
         $("#txtResult").html("<h2>Không có thay đổi!</h2>");
         $('#result').modal('show'); 
-        window.setTimeout(closeModal, 1500);
-        window.setTimeout(reloadPage,500);
+        window.setTimeout(closeModal, 1000);
+        window.setTimeout(reloadPage,2500);
     }else{
     // Nếu có thay đổi
         // đặt lại tên form cho dễ gọi :))
@@ -81,8 +86,8 @@ $("#frmEditBouquet").submit(function(event){
                 $("#txtResult").addClass("text-success");
                 $("#txtResult").html("<h2>Chỉnh sửa thành công!</h2>");
                 $('#result').modal('show'); 
-                window.setTimeout(closeModal, 1500);
-                window.setTimeout(reloadPage,500);
+                window.setTimeout(closeModal, 1000);
+                window.setTimeout(reloadPage,2500);
             }else{
                 // Nếu dữ liệu trả về bị bất kì lỗi gì
                 $("#txtResult").html(response);
