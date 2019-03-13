@@ -13,7 +13,6 @@ session_start();
     <link rel="stylesheet" href="../Content/bootstrap.min.css">
     <link rel="stylesheet" href="../Content/font-awesome.min.css">
     <link rel="stylesheet" href="../Content/bootstrap-social.css">
-    <link rel="stylesheet" href="../Content/bootstrap-select.css">
     <link rel="stylesheet" href="../Content/1804HDTVShop/custom.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -155,7 +154,6 @@ while ($row = mysqli_fetch_assoc($rs)) {
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/1804HDTVShop/shopScripts.js"></script>
     <script src="../Scripts/bootstrap.bundle.min.js"></script>
-        <script src="../Scripts/bootstrap-select.min.js"></script>
     <!--Angular Controllers-->
     <script src="../Scripts/1804HDTVShop/Controllers/indexcontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/Controllers/homecontroller.js"></script>

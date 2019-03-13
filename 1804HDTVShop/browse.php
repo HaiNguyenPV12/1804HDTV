@@ -2,7 +2,7 @@
     <div class="container">
         <div class="col-12 pl-5 pr-5 mt-1">
             <div class="row">
-                <div class="form-inline">
+                <div class="form-inline" name="filterGen" id="filterGen">
                     <label class="mr-3" for="">
                         Lọc theo:
                     </label>
@@ -18,8 +18,35 @@
                     <select class="form-control mr-3" name="" id="">
                         <option value="">-- Màu có trong bó --</option>
                     </select>
-                    <button class="btn btn-shop">
+                    <button class="btn btn-shop" type="submit" name="btnFilterGen">
                         Lọc kết quả
+                    </button>
+                    <button class="btn btn-shop ml-1" name="btnSwitch" id="btnSwtich">
+                        Tìm Kiếm Nâng Cao
+                    </button>
+                </div>
+                <!-- Advanced form -->
+                <div class="form-inline" name="filterAdv" id="filterAdv" style="display: none;">
+                    <label class="mr-3" for="">
+                        Lọc theo:
+                    </label>
+
+                    <select class="form-control mr-3" name="" id="">
+                        <option value="">-- Dịp 2--</option>
+                    </select>
+
+                    <select class="form-control mr-3" name="" id="">
+                        <option value="">-- Loại hoa 2--</option>
+                    </select>
+
+                    <select class="form-control mr-3" name="" id="">
+                        <option value="">-- Màu có trong bó 2--</option>
+                    </select>
+                    <button class="btn btn-shop" type="submit" name="btnFilterGen">
+                        Lọc kết quả
+                    </button>
+                    <button class="btn btn-shop ml-1" name="btnSwitch2" id="btnSwtich2">
+                        Tìm Kiếm Cơ Bản
                     </button>
                 </div>
             </div>
@@ -45,12 +72,4 @@ while ($row = mysqli_fetch_assoc($rs)) {
     echo $row['b_name'] . "<br>";
 }
 ?>
-            <select class="selectpicker" multiple data-live-search="true">
-                <option>Mustard</option>
-                <option>Ketchup</option>
-                <option>Relish</option>
-            </select>
-        </div>
-        <!-- <br>
-    test -->
 </body>
