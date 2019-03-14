@@ -9,18 +9,28 @@
         // Phải có lệnh exit mới dừng việc load những phần bên dưới
         exit;
     }
+    //xóa file tạm trên server'
+    $files = glob('tmp/*'); // get all file names
+    if (sizeOf($files)>0) {
+        foreach($files as $file){ // iterate files
+        if(is_file($file))
+            unlink($file); // delete file
+        }
+    }
 ?>
 
 <style>
-img{
-    max-width:20vh;
+img {
+    max-width: 20vh;
 }
 </style>
+
 <body>
     <!-- Tựa đề -->
     <div class='row'>
         <h2 class="col-9">Quản lý Bó Hoa</h2>
-        <button type="button" class="btn btn-success btn-lg col-2 ml-5 btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = 'bouquetadd.php';modalHText='Thêm Bó Hoa mới';">
+        <button type="button" class="btn btn-success btn-lg col-2 ml-5 btn-shop" data-toggle="modal"
+            data-target="#modal" ng-click="temp.url = 'bouquetadd2.php';modalHText='Thêm Bó Hoa mới';">
             Thêm Bó Hoa mới
         </button>
     </div>
@@ -38,7 +48,7 @@ img{
         // Lấy dữ liệu màu (dùng view v_flower_color: ghép bảng flower_color_detail và flower_color)
         $fcdata = getSql("Select * from v_flower_color");
         // Lấy dữ liệu hình của bó hoa đó (dùng bảng bouq_img)
-        $imgdata = getSql("SELECT * from bouq_img");
+        $imgdata = getSql("SELECT * from bouq_img order by b_img_ID");
         // Số dòng dữ liệu của $data
         $num = sizeof($data);
         
@@ -88,7 +98,7 @@ img{
                     // File preview luôn mặc định là: [mã bó hoa]_PV
                     $bimgpv = $b['b_ID']."_PV";
                     // Nếu tìm thấy ID hình nào của bó hoa này có định dạng *_PV thì đưa ra
-                    if ($img['b_img_ID']==$bimgpv) {
+                    if ($img['b_ID']==$b["b_ID"]) {
                         $bimg = $img['b_img'];
                         // có rồi thì break vòng lặp
                         break;
@@ -99,7 +109,7 @@ img{
                 }
                 // Nếu không có dữ liệu hình preview thì cho một hình thay thế và thông báo
                 if ($bimg=="") {
-                    echo "<img src='../img/undefined.jpg'>(Chưa có dữ liệu hình mẫu)";
+                    echo "<img src='../img/undefined.jpg'>(Chưa có dữ liệu hình)";
                 }else{
                 // Nếu có rồi thì...
                     // Đầu tiên khởi tạo link của site gốc
@@ -182,7 +192,6 @@ img{
 
                 //-----------------------------------------------------------------------------
                 // Trạng thái đang bán hay không
-                // Comment sao cho ngầu :v thực ra cái này hiển thị có hoặc không là được
                 // Màu mè làm thêm switch toggle bằng bootstrap 4
                 echo "<td>";
                 if ($b['b_selling']==0) {
@@ -206,7 +215,7 @@ img{
                 //-----------------------------------------------------------------------------
                 // Các nút chức năng
                 // Nút chỉnh sửa (hiện modal)
-                echo '<td><button class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'bouquetedit.php?bid=',$b["b_ID"],'\';modalHText=\'Chỉnh sửa Bó Hoa\';">Sửa</button></td>';
+                echo '<td><button class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'bouquetedit2.php?bid=',$b["b_ID"],'\';modalHText=\'Chỉnh sửa Bó Hoa\';">Sửa</button></td>';
                 // Nút quản lý hình
                 echo '<td><a class="btn btn-info btn-sm text-light btn-shop" href="#!bouquet/img/',$b["b_ID"],'">Hình</a></td>';
                 // Nút xóa
@@ -234,7 +243,7 @@ img{
     <br>
 
     <!-- Modal chung -->
-    <div class="modal fade" id="modal"  ng-controller="myModal">
+    <div class="modal fade" id="modal" ng-controller="myModal">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
 
@@ -259,4 +268,3 @@ img{
         </div>
     </div>
 </body>
-
