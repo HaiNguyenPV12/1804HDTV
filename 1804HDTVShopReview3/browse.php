@@ -22,7 +22,8 @@
                 </button>
             </div>
         </div>
-        <?php
+    </div>
+    <?php
 include "../src/fconnectadmin.php";
 if (isset($_GET["cate"]) && !empty($_GET["cate"])) {
     $cate = $_GET["cate"];
@@ -41,5 +42,5 @@ if (isset($_GET["col"]) && !empty($_GET["col"])) {
     }
 }
 ?>
-        test
+    test
 </body>
