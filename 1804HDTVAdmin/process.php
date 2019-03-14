@@ -254,6 +254,7 @@ if (isset($_POST['cmdAddFlower'])) {
 
         insertSql("insert into bouquet values ('$bid','$bname','$bdetail',$bprice, $bselling)");
 
+        // Xử lý phần upload hình
         if (isset($_POST["img"])) {
             $img = $_POST["img"];
             if (!file_exists($sitedir."img/Bouquet/$bid")) {
@@ -266,7 +267,7 @@ if (isset($_POST['cmdAddFlower'])) {
                 $bimg = $data[2];
                 $targetdir = $sitedir.$bimg;
                 rename($tmpdir, $targetdir);
-                $insert = insertSql("INSERT INTO bouq_img VALUES ('$bimgid','$bid','$bimg')");
+                insertSql("INSERT INTO bouq_img VALUES ('$bimgid','$bid','$bimg')");
             }
         }
         echo "ok";
@@ -277,6 +278,7 @@ if (isset($_POST['cmdAddFlower'])) {
 }else if (isset($_POST['cmdEditBouquet'])) {
     if (isset($_POST['bid']) && isset($_POST['bname']) && isset($_POST['bprice']) && isset($_POST['bdetail'])) {
         include '../src/flowerdb.php';
+        $sitedir = "../";
         $bid = $_POST['bid'];
         $bname = $_POST['bname'];
         $bprice = $_POST['bprice'];
@@ -287,11 +289,66 @@ if (isset($_POST['cmdAddFlower'])) {
             $bselling = 0;
         }
         updateSql("update bouquet set b_name = '$bname', b_detail = '$bdetail', b_price = $bprice, b_selling = $bselling where b_ID = '$bid'");
+        
+        // Xử lý xóa hình
+        if (isset($_POST["imgremove"])) {
+            $imgremove = $_POST["imgremove"];
+            foreach ($imgremove as $key => $remove) {
+                $data = preg_split('/:/',$remove);
+                deleteSql("delete from bouq_img where b_img_ID = '".$data[0]."'");
+                if (file_exists($sitedir.$data[1])) {
+                    unlink($sitedir.$data[1]);
+                }
+            }
+        }
+
+        // Xử lý cập nhật hình
+        if (isset($_POST["img"])) {
+            $img = $_POST["img"];
+            $existed = getSql("select b_img_ID from bouq_img where b_ID = '".$bid."'");
+            if (!file_exists($sitedir."img/Bouquet/$bid")) {
+                mkdir($sitedir."img/Bouquet/$bid", 0777, true);
+            }
+            foreach ($img as $key => $imgdata) {
+                $data = preg_split('/:/',$imgdata);
+                $bimgid = $data[0];
+                $tmpdir = $data[1];
+                $bimg = $data[2];
+                $targetdir = $sitedir.$bimg;
+                if (in_array($bimgid,array_column($existed,"b_img_ID"),true)) {
+                    deleteSql("delete from bouq_img where b_img_ID ='$bimgid'");
+                }
+                rename($tmpdir, $targetdir);
+                insertSql("INSERT INTO bouq_img VALUES ('$bimgid','$bid','$bimg')");
+            }
+        }
         echo "ok";
     }else{
         echo "not enough";
     }
 // Trang chỉnh sửa hoa có trong bó
+}else if (isset($_POST['cmdBouquetImgAdd'])) {
+    if (isset($_POST["img"]) && isset($_POST["bid"]) && isset($_POST["bimgid"]) && isset($_POST["bimg"])) {
+        include '../src/flowerdb.php';
+        $sitedir = "../";
+        $img = $_POST["img"];
+        $bimgid = $_POST["bimgid"];
+        $bid = $_POST["bid"];
+        $bimg = $_POST["bimg"];
+        insertSql("INSERT INTO bouq_img values('$bimgid','$bid','$bimg')");
+
+        // Xử lý hình
+        $data = preg_split('/:/',$img);
+        $tmpdir = $data[1];
+        $targetdir = $sitedir.$bimg;
+        if (!file_exists($sitedir."img/Bouquet/$bid")) {
+            mkdir($sitedir."img/Bouquet/$bid", 0777, true);
+        }
+        rename($tmpdir, $targetdir);
+        echo "ok";
+    }else{
+        echo "Thiếu dữ liệu!";
+    }
 }else if (isset($_POST['cmdEditFBouquet'])) {
     if (isset($_POST['bid'])) {
         include '../src/flowerdb.php';
@@ -313,6 +370,28 @@ if (isset($_POST['cmdAddFlower'])) {
         echo "not enough";
     }
 // Trang đăng nhập
+}else if (isset($_POST['cmdBouquetImgEdit'])) {
+    if (isset($_POST["tmpimg"]) && isset($_POST["bid"]) && isset($_POST["bimgid"]) && isset($_POST["bimg"])) {
+        include '../src/flowerdb.php';
+        $sitedir = "../";
+        $tmpdir = $_POST["tmpimg"];
+        $bimgid = $_POST["bimgid"];
+        $bid = $_POST["bid"];
+        $bimg = $_POST["bimg"];
+        if (isset($_POST["extchanged"])) {
+            updateSql("UPDATE bouq_img set b_img ='$bimg' where b_img_ID='$bimgid'");
+        }
+
+        // Xử lý hình
+        $targetdir = $sitedir.$bimg;
+        if (!file_exists($sitedir."img/Bouquet/$bid")) {
+            mkdir($sitedir."img/Bouquet/$bid", 0777, true);
+        }
+        rename($tmpdir, $targetdir);
+        echo "ok";
+    }else{
+        echo "Thiếu dữ liệu!";
+    }
 }else if (isset($_POST["cmdLogin"])) {
     if (isset($_POST["id"]) && isset($_POST["pw"])) {
         $id = $_POST["id"];

@@ -1,3 +1,4 @@
+var bimgnum;
 function validateID(){
     // khởi tạo prefix ID
     var preBID = $('#bid').val();
@@ -15,8 +16,6 @@ function validateID(){
                 //console.log(str.substring(str.length-2,str.length));
                 if ($.isNumeric(str.substring(str.length-2,str.length))) {
                     items.push(parseInt(str.substring(str.length-2,str.length)));
-                }else if(str.substring(str.length-2,str.length)=="PV"){
-                    checkPV = true;
                 }
             }
         }
@@ -29,12 +28,15 @@ function validateID(){
     }
     //console.log(sufBID);
     //nếu số đằng sau có 1 chữ số thì thêm số 0 vào trước
+    /* cái này cũ rồi
     if (!checkPV) {
         sufBID="PV";
-    }else if (sufBID<=9) {
+    }*/
+    bimgnum = sufBID;
+    if (sufBID<=9) {
         sufBID="0"+sufBID;
     }
-
+    
     bID= preBID+"_"+sufBID;
     var imgext = $("#bimgfile").val().replace(/^.*\./, '');
     if (imgext == $("#bimgfile").val()) {
@@ -51,6 +53,9 @@ function closeModal(){
     $('#imgModal').modal('hide');
 }
 
+function reloadPage(){   
+    location.reload(true);
+}
 
 $('#imgModal').on('shown.bs.modal',function (e) 
     {
@@ -79,36 +84,26 @@ $("#bimgfile").change(function(){
     if ($(this).val()!="") {
         $("#bimgfiletext").html($(this).prop('files')[0].name);
         uploadFile($(this).prop('files')[0]);
-    }else{
-        $("#imgPreview").html("Chưa có file!");
-        $("#bimgfiletext").html("Chọn file");
     }
 });
 
-$("#cmdImgAdd").click(function(event){
-    $("#imgPreview").html("");
-    if ($("#bimgfile").val()!="") {
-        addImg($("#bimgfile").prop('files')[0]);
-    }else{
-        $("#imgPreview").html("Hãy chọn hình!");
-    }
+
+$(document).on("click","#imgPreview div",function(){
+    $(this).remove();
+    $("#bimgfile").val("");
+    $("#bimgfiletext").html("Chọn file");
 });
 
 function uploadFile(file){
     var request;
-    var $form = $("#frmImgAdd");
-    var $inputs = $form.find("fimgfile, button");
     var myFormData = new FormData();
-    myFormData.append('bimgfile', file);
-    myFormData.append('bid', $("#bid").val());
-    myFormData.append('bimg', $("#bimg").val());
-    myFormData.append('bimgid', $("#bimgid").val());
-    myFormData.append('cmdImgUpload', "");
-
-    $inputs.prop("disabled", true);
+    myFormData.append('imgfile', file);
+    myFormData.append('uploadTo', "bouquetimgadd"); 
+    myFormData.append('id', $("#bid").val());
+    myFormData.append('bid', bimgnum);
 
     request = $.ajax({
-        url: "bouquetimg_upload.php",
+        url: "imgupload.php",
         type: "post",
         data: myFormData,
         processData: false,
@@ -133,12 +128,65 @@ function uploadFile(file){
     // if the request failed or succeeded
     request.always(function () {
         // Reenable the inputs
-        $inputs.prop("disabled", false);
     });
 }
 
+//=========================== Xử lý submit dữ liệu =================================//
+var request;
+//Nếu form submit
+$('#frmImgAdd').submit(function(event){
+    // Ngừng submit mặc định (tránh việc load lại trang trước khi thực hiện các lệnh khác)
+    event.preventDefault();
+    if (request) {
+        request.abort();
+    }
+    var $form = $(this);
+    // Mã hóa để đưa dữ liệu qua post
+    var serializedData = $form.serialize();
 
 
+    // Bắt đầu đưa dữ liệu qua trang xử lý
+    request = $.ajax({
+        url: "process.php",
+        type: "post",
+        data: serializedData
+    });
+
+    // Nếu việc truyền dữ liệu xảy ra ổn thỏa (ý là đã submit qua đó thành công)
+    request.done(function (response, textStatus, jqXHR){
+        // Nếu dữ liệu trả về là "ok" (nghĩa là đã xử lý tốt các dữ liệu, không bị lỗi gì khác)
+        if (response=="ok") {
+            $("#txtResult").addClass("text-success");
+            $("#txtResult").html("<h2>Thêm vào thành công!</h2>");
+            // Hiện modal hiển thị kết quả
+            $('#result').modal('show');
+            // Cho tự động tắt và load lại trang sau vài giây
+            window.setTimeout(closeModal, 1500);
+            window.setTimeout(reloadPage,500);
+        }else{
+            // Nếu dữ liệu trả về bị bất kì lỗi gì
+            $("#txtResult").html(response);
+            $('#result').modal('show');
+        }
+        
+    });
+
+    // Nếu việc truyền dữ liệu qua file xử lý bị lỗi
+    request.fail(function (jqXHR, textStatus, errorThrown){
+        // Ghi lại trong console để sửa
+        console.error(
+            "Lỗi khi truyền dữ liệu: "+
+            textStatus, errorThrown
+        );
+    });
+
+    // Dù việc truyền dữ liệu bị lỗi hay không thì cũng phải enable lại input
+    request.always(function () {
+       
+    });
+});
+
+/*
 function addImg(file){
     var request;
     event.preventDefault();
@@ -157,7 +205,7 @@ function addImg(file){
     $inputs.prop("disabled", true);
 
     request = $.ajax({
-        url: "bouquetimg_upload.php",
+        url: "bouquetimg_upload2.php",
         type: "post",
         data: myFormData,
         processData: false,
@@ -194,3 +242,4 @@ function addImg(file){
         $inputs.prop("disabled", false);
     });
 }
+*/

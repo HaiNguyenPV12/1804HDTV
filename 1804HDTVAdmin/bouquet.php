@@ -192,7 +192,6 @@ img {
 
                 //-----------------------------------------------------------------------------
                 // Trạng thái đang bán hay không
-                // Comment sao cho ngầu :v thực ra cái này hiển thị có hoặc không là được
                 // Màu mè làm thêm switch toggle bằng bootstrap 4
                 echo "<td>";
                 if ($b['b_selling']==0) {
@@ -216,7 +215,7 @@ img {
                 //-----------------------------------------------------------------------------
                 // Các nút chức năng
                 // Nút chỉnh sửa (hiện modal)
-                echo '<td><button class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'bouquetedit.php?bid=',$b["b_ID"],'\';modalHText=\'Chỉnh sửa Bó Hoa\';">Sửa</button></td>';
+                echo '<td><button class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'bouquetedit2.php?bid=',$b["b_ID"],'\';modalHText=\'Chỉnh sửa Bó Hoa\';">Sửa</button></td>';
                 // Nút quản lý hình
                 echo '<td><a class="btn btn-info btn-sm text-light btn-shop" href="#!bouquet/img/',$b["b_ID"],'">Hình</a></td>';
                 // Nút xóa

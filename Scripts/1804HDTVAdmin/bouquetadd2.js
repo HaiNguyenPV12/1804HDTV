@@ -92,11 +92,12 @@ $("#imgfile").change(function(){
     if (imglist.length<5) {
         if ($(this).get(0).files.length<=(5-imglist.length)) {
             for (var i = 0; i < $(this).get(0).files.length; ++i) {
+                var bid;
                 if (imglist.length==0) {
                     bid=0;
                 }else{    
                     for (var j = 0; j < 5; j++) {
-                        const found = imglist.some(el => el === j);
+                        const found = imglist.some(el => el == j);
                         if (!found) {
                             bid=j;
                             break;
