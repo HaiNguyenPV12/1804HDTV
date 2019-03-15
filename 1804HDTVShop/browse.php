@@ -162,14 +162,40 @@ if (isset($_GET["occa"]) && !empty($_GET["occa"])) {
 }
 if ($set == true) {
     $sql .= " and b_img like '%_00.jpg%' ORDER BY b_name asc";
-}
-else {
+} else {
     $sql .= " where b_img like '%_00.jpg%' ORDER BY b_name asc";
 }
+?>
+        <div class="row mt-3">
+
+
+            <?php
 $rs = mysqli_query($cn, $sql);
 while ($row = mysqli_fetch_assoc($rs)) {
-    echo $row['b_name'] . "<br>";
+    // echo $row['b_name'] . "<br>";
+    echo "<div class='col-lg-3 col-md-5 mb-4'>
+            <div class='card h-80 border-primary border-shop'>
+                <a href='#'>
+                    <img class='card-img-top custom' src='../img/Bouquet/B000/B000_PV.jpg' alt=''>
+                    <img class='card-img-top custom' src='../" . $row['b_img'] . "' alt=''>
+                </a>
+                <div class='card-body'>
+                    <h4 class='card-title'>
+                        <a href='#'>" . $row['b_name'] . "</a>
+                    </h4>
+                    <h5>" . $row['b_price'] . " Đ</h5>
+                </div>
+
+                <button class='btn card-footer btn-shop'>
+                    <a href='#'>
+                        Xem chi tiết
+                    </a>
+                </button>
+
+            </div>
+        </div>";
 }
 ?>
+        </div>
     </div>
 </body>

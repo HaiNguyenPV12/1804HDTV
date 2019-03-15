@@ -108,3 +108,13 @@
     text-decoration: none;
     color: inherit;
 }
+
+.card-img-top{
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+}
+
+.border-shop {
+    border-color: #7c42bd !important;
+}
