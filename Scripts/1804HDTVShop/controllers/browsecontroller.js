@@ -17,4 +17,15 @@ app.controller('browsecontroller', function ($scope, $location, $anchorScroll, $
         $('#filterGen').toggle(250);
     });
 
+    //basic form values
+    var occaFilter = document.getElementById("occaFilter");
+    var cateFilter = document.getElementById("cateFilter");
+    var colFilter = document.getElementById("colFilter");
+    // console.log(occaFilter.value);
+    //change link on form change
+    $('#filterGen').change(function (e) {
+        e.preventDefault();
+        $('#filterGenLink').attr('href', '#!browse.php/filter/' + cateFilter.value + '/' + colFilter.value + '/' + occaFilter.value);
+    });
+
 });

@@ -35,5 +35,12 @@ app.config(['$routeProvider', function ($routeProvider) {
             },
             controller: 'browsecontroller'
         })
+        //FilterGen
+        .when('/browse.php/filter/:cate/:col/:occa', {
+            templateUrl: function (params) {
+                return "browse.php?cate=" + params.cate + "&col=" + params.col + "&occa=" + params.occa;
+            },
+            controller: 'browsecontroller'
+        })
         .otherwise({ redirectTo: '/' });
 }]);

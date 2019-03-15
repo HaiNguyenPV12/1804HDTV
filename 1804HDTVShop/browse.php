@@ -5,14 +5,14 @@ include "../src/fconnectadmin.php";
     <div class="container">
         <!-- filter -->
         <div class="col-12 mt-1">
-            <div class="row" name="filterGen" id="filterGen">
-                <form class="form-inline" action="" method="get">
+            <div class="row" name="filterGen" id="filterGenForm">
+                <form class="form-inline" method="get" id="filterGen">
                     <label class="mr-3" for="">
                         Lọc theo:
                     </label>
                     <!-- occasion dropdown -->
-                    <select class="form-control mr-3" name="" id="">
-                        <option value="">-- Dịp --</option>
+                    <select class="form-control mr-3" name="occaFilter" id="occaFilter">
+                        <option value="*">-- Dịp --</option>
                         <?php
 $sqlFilterOcca = "SELECT distinct occa_name from v_bouq_gen";
 $rs = mysqli_query($cn, $sqlFilterOcca);
@@ -22,8 +22,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
 ?>
                     </select>
                     <!-- cate dropdown -->
-                    <select class="form-control mr-3" name="" id="">
-                        <option value="">-- Loại hoa --</option>
+                    <select class="form-control mr-3" name="cateFilter" id="cateFilter">
+                        <option value="*">-- Loại hoa --</option>
                         <?php
 $sqlFilterCate = "SELECT distinct f_cate_name from v_bouq_gen";
 $rs = mysqli_query($cn, $sqlFilterCate);
@@ -33,8 +33,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
 ?>
                     </select>
                     <!-- color dropdown -->
-                    <select class="form-control mr-3" name="" id="">
-                        <option value="">-- Màu có trong bó --</option>
+                    <select class="form-control mr-3" name="colFilter" id="colFilter">
+                        <option value="*">-- Màu có trong bó --</option>
                         <?php
 $sqlFilterCol = "SELECT distinct f_color_name from v_bouq_gen where f_color_name is not null";
 $rs = mysqli_query($cn, $sqlFilterCol);
@@ -43,8 +43,10 @@ while ($row = mysqli_fetch_assoc($rs)) {
 }
 ?>
                     </select>
-                    <button class="btn btn-shop" type="submit" name="btnFilterGen">
-                        Lọc kết quả
+                    <button class="btn btn-shop" name="btnFilterGen" id="btnFilterGen">
+                        <a id="filterGenLink" href='#!browse.php/filter/*/*/*'>
+                            Lọc kết quả
+                        </a>
                     </button>
                     <button class="btn btn-shop ml-1" name="btnSwitch" id="btnSwtich">
                         Tìm Kiếm Nâng Cao
@@ -115,20 +117,54 @@ while ($row = mysqli_fetch_assoc($rs)) {
         <!-- end of filter -->
 
         <?php
-$sql = "SELECT DISTINCT b_name from v_bouq_gen";
+$sql = "SELECT DISTINCT b_name,b_img,b_price from v_bouq_gen";
+$set = false;
 // $sql = "SELECT DISTINCT b_name,b_img,b_price FROM v_bouq_gen WHERE b_img like '%_PV%'";
 if (isset($_GET["cate"]) && !empty($_GET["cate"])) {
-    global $sql;
+    global $sql, $set;
     $cate = $_GET["cate"];
-    $sql = "SELECT DISTINCT b_name from v_bouq_gen where f_cate_name like '%$cate%' and b_img like '%_PV%'"; //TODO refractor cate, cols, occa, etc.
-} else if (isset($_GET["col"]) && !empty($_GET["col"])) {
-    global $sql;
+    // $sql = "SELECT DISTINCT b_name from v_bouq_gen where f_cate_name like '%$cate%' and b_img like '%_00%'";
+    if ($cate == "*") {
+        $sql .= " WHERE f_cate_name like '%%'";
+        $set = true;
+    } else {
+        $sql .= " WHERE f_cate_name like '%$cate%'";
+        $set = true;
+    }
+}
+if (isset($_GET["col"]) && !empty($_GET["col"])) {
+    global $sql, $set;
     $col = $_GET["col"];
-    $sql = "SELECT DISTINCT b_name from v_bouq_gen where f_color_name like '%$col%'"; //TODO refractor cate, cols, occa, etc.
-} else if (isset($_GET["occa"]) && !empty($_GET["occa"])) {
-    global $sql;
+    if ($col == "*" && $set == false) {
+        $sql .= " where f_color_name like '%%'";
+    } else if ($col == "*" && $set == true) {
+        $sql .= " and f_color_name like '%%'";
+    } else if ($set == true) {
+        $sql .= " and f_color_name like '%$col%'";
+    } else {
+        $sql .= " where f_color_name like '%$col%'";
+        $set = true;
+    }
+}
+if (isset($_GET["occa"]) && !empty($_GET["occa"])) {
+    global $sql, $set;
     $occa = $_GET["occa"];
-    $sql = "SELECT DISTINCT b_name from v_bouq_gen where occa_name like '%$occa%'"; //TODO refractor cate, cols, occa, etc.
+    if ($occa == "*" && $set == false) {
+        $sql .= " where occa_name like '%%'";
+    } else if ($occa == "*" && $set == true) {
+        $sql .= " and occa_name like '%%'";
+    } else if ($set == true) {
+        $sql .= " and occa_name like '%$occa%'";
+    } else {
+        $sql .= " where occa_name like '%$occa%'";
+        $set = true;
+    }
+}
+if ($set == true) {
+    $sql .= " and b_img like '%_00.jpg%' ORDER BY b_name asc";
+}
+else {
+    $sql .= " where b_img like '%_00.jpg%' ORDER BY b_name asc";
 }
 $rs = mysqli_query($cn, $sql);
 while ($row = mysqli_fetch_assoc($rs)) {
