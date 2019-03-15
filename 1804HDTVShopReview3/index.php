@@ -76,9 +76,6 @@ while ($row = mysqli_fetch_assoc($rs)) {
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Tài Khoản</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="#">Giỏ Hàng</a>
             </li>
         </ul>

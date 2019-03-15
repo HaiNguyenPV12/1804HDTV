@@ -91,6 +91,14 @@ app.config(function ($routeProvider) {
         .when("/feedback", {
             templateUrl: "feedback.php"
         })
+        .when("/occasion", {
+            templateUrl: "occasion.php"
+        })
+        .when("/redirect/:page", {
+            templateUrl: function (params) { // <-- 
+                return 'redirect.php?' + params.page+"=''";
+            }
+        })
         .otherwise({
             template: "<h2>Không tìm thấy trang!</h2>"
         });

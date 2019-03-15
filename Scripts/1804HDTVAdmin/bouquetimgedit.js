@@ -1,7 +1,10 @@
+var bimgnum;
+var oldimgext = $("#imgext").val();
+var imgext;
 function validateID(){
     // khởi tạo ID
     var imgdir= "img/Bouquet/"+$("#bid").val()+"/"+$("#bimgid").val();
-    var imgext = $("#bimgfile").val().replace(/^.*\./, '');
+    imgext = $("#bimgfile").val().replace(/^.*\./, '');
     if (imgext == $("#bimgfile").val()) {
         imgext = '[hãy chọn file trước để xác định đuôi tập tin]';
     } else {
@@ -15,7 +18,9 @@ function validateID(){
 function closeModal(){
     $('#imgModal').modal('hide');
 }
-
+function reloadPage(){   
+    location.reload(true);
+}
 
 $('#imgModal').on('hidden.bs.modal', function (e) {
     $("#bimgfile").val("");
@@ -23,15 +28,6 @@ $('#imgModal').on('hidden.bs.modal', function (e) {
     location.reload(true);
 });
 
-$("#cmdUploadImg").click(function(event){
-    validateID();
-    $("#imgPreview").html("");
-    if ($("#bimgfile").val()!="") {
-        uploadFile($("#bimgfile").prop('files')[0]);
-    }else{
-        $("#imgPreview").html("Chưa có file!");
-    }
-});
 
 $("#bimgfile").change(function(){
     validateID();
@@ -39,36 +35,31 @@ $("#bimgfile").change(function(){
     if ($(this).val()!="") {
         $("#bimgfiletext").html($(this).prop('files')[0].name);
         uploadFile($(this).prop('files')[0]);
-    }else{
-        $("#imgPreview").html("Chưa có file!");
-        $("#bimgfiletext").html("Chọn file");
     }
 });
 
-$("#cmdImgEdit").click(function(event){
-    $("#imgPreview").html("");
-    if ($("#bimgfile").val()!="") {
-        addImg($("#bimgfile").prop('files')[0]);
-    }else{
-        $("#imgPreview").html("Hãy chọn hình!");
-    }
+$(document).on("click","#imgPreview div",function(){
+    $(this).remove();
+    $("#bimgfile").val("");
+    $("#bimgfiletext").html("Chọn file");
 });
+
 
 function uploadFile(file){
     var request;
     var $form = $("#frmImgAdd");
-    var $inputs = $form.find("fimgfile, button");
-    var myFormData = new FormData();
-    myFormData.append('bimgfile', file);
-    myFormData.append('bid', $("#bid").val());
-    myFormData.append('bimg', $("#bimg").val());
-    myFormData.append('bimgid', $("#bimgid").val());
-    myFormData.append('cmdImgUpload', "");
 
-    $inputs.prop("disabled", true);
+    var myFormData = new FormData();
+    myFormData.append('imgfile', file);
+    myFormData.append('uploadTo', "bouquetimgedit"); 
+    myFormData.append('id', $("#bid").val());
+    myFormData.append('bimgid', $("#bimgid").val());
+    if (imgext!=oldimgext) {
+        myFormData.append("extchanged", imgext)
+    }
 
     request = $.ajax({
-        url: "bouquetimg_upload.php",
+        url: "imgupload.php",
         type: "post",
         data: myFormData,
         processData: false,
@@ -93,12 +84,85 @@ function uploadFile(file){
     // if the request failed or succeeded
     request.always(function () {
         // Reenable the inputs
-        $inputs.prop("disabled", false);
+        
     });
 }
 
+//=========================== Xử lý submit dữ liệu =================================//
+var request;
+//Nếu form submit
+$('#frmImgEdit').submit(function(event){
+    // Ngừng submit mặc định (tránh việc load lại trang trước khi thực hiện các lệnh khác)
+    event.preventDefault();
+    if (request) {
+        request.abort();
+    }
+
+    if ($("[name='imgold']").length) {
+        $("#txtResult").addClass("text-success");
+        $("#txtResult").html("<h2>Không có thay đổi!</h2>");
+        // Hiện modal hiển thị kết quả
+        $('#result').modal('show');
+        // Cho tự động tắt và load lại trang sau vài giây
+        window.setTimeout(closeModal, 1500);
+        window.setTimeout(reloadPage,500);
+    }else if($("[name='imgshow']").length){
+        var $form = $(this);
+        // Mã hóa để đưa dữ liệu qua post
+        var serializedData = $form.serialize();
+
+        // Bắt đầu đưa dữ liệu qua trang xử lý
+        request = $.ajax({
+            url: "process.php",
+            type: "post",
+            data: serializedData
+        });
+
+        // Nếu việc truyền dữ liệu xảy ra ổn thỏa (ý là đã submit qua đó thành công)
+        request.done(function (response, textStatus, jqXHR){
+            // Nếu dữ liệu trả về là "ok" (nghĩa là đã xử lý tốt các dữ liệu, không bị lỗi gì khác)
+            if (response=="ok") {
+                $("#txtResult").addClass("text-success");
+                $("#txtResult").html("<h2>Chỉnh sửa thành công!</h2>");
+                // Hiện modal hiển thị kết quả
+                $('#result').modal('show');
+                // Cho tự động tắt và load lại trang sau vài giây
+                window.setTimeout(closeModal, 1500);
+                window.setTimeout(reloadPage,500);
+            }else{
+                // Nếu dữ liệu trả về bị bất kì lỗi gì
+                $("#txtResult").html(response);
+                $('#result').modal('show');
+            }
+            
+        });
+
+        // Nếu việc truyền dữ liệu qua file xử lý bị lỗi
+        request.fail(function (jqXHR, textStatus, errorThrown){
+            // Ghi lại trong console để sửa
+            console.error(
+                "Lỗi khi truyền dữ liệu: "+
+                textStatus, errorThrown
+            );
+        });
+
+        // Dù việc truyền dữ liệu bị lỗi hay không thì cũng phải enable lại input
+        request.always(function () {
+        
+        });
+    }else{
+        $("#txtResult").addClass("text-success");
+        $("#txtResult").html("<h2>Không có thay đổi!</h2>");
+        // Hiện modal hiển thị kết quả
+        $('#result').modal('show');
+        // Cho tự động tắt và load lại trang sau vài giây
+        window.setTimeout(closeModal, 1500);
+        window.setTimeout(reloadPage,500);
+    }
+});
 
 
+/*
 function addImg(file){
     var request;
     event.preventDefault();
@@ -154,3 +218,4 @@ function addImg(file){
         $inputs.prop("disabled", false);
     });
 }
+*/

@@ -16,9 +16,9 @@ if (isset($_GET["bid"])) {
 <!-- Form thêm hình -->
 <form id="frmImgAdd" name="frmImgAdd" class="" method="post">
     <!-- Dùng kỹ thuật ajax nên phải thêm cái này để nhận biết bên trang xử lý -->
-    <input type="hidden" name="cmdImgAdd">
+    <input type="hidden" name="cmdBouquetImgAdd">
+    <input type="hidden" name="bid" id="bid" value="<?php echo $bid ?>">
     <!-- Tên hình: tự động -->
-    <input type="hidden" id="bid" value="<?php echo $bid ?>">
     <div class="form-inline">
         <label class="mr-sm-2 col-2">Tên hình:</label>
         <input type="text" readonly class="form-control mb-2 mr-sm-2 col-9" name="bimgid" id="bimgid" autocomplete="off" >
@@ -39,8 +39,8 @@ if (isset($_GET["bid"])) {
 
     <!-- Chỗ để hiện hình mãu -->
     <div class="form-inline">
-        <div class="col-2"></div>
-        <div id="imgPreview" class="col-9">
+        <div class="col-3"></div>
+        <div id="imgPreview" class="row col-8">
         </div>
     </div>
 
@@ -52,7 +52,7 @@ if (isset($_GET["bid"])) {
     <!-- nút để submit -->
     <div class="form-inline">
         <label class="mr-sm-2 col-2"></label>
-        <input type="button" class="btn btn-success mb-2 col-2 btn-shop" name="cmdImgAdd" id="cmdImgAdd" value="Hoàn tất">
+        <input type="submit" class="btn btn-success mb-2 col-2 btn-shop" name="cmdImgAdd" id="cmdImgAdd" value="Hoàn tất">
     </div>
 </form>
 
