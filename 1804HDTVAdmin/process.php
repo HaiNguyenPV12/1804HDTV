@@ -41,12 +41,13 @@ if (isset($_POST['cmdAddFlower'])) {
         include '../src/flowerdb.php';
         // Lấy dữ liệu hình của bó hoa này
         $imgdata = getSql("Select * from bouq_img where b_ID = '$bid'");
+
         // Lấy dữ liệu hoa có trong bó hoa này
         $fdata = getSql("Select * from bouq_detail where b_ID = '$bid'");
 
         // Nếu có hoa trong bó hoa này thì thực hiện lệnh xóa
         if (sizeof($fdata)>0) {
-            deleteSql("delete from bouq_detail where b_ID = '$bid'");
+            deleteSql("DELETE from bouq_detail where b_ID = '$bid'");
         }
         // Nếu có hình trong bó hoa này
         if (sizeof($imgdata)>0) {
@@ -57,14 +58,14 @@ if (isset($_POST['cmdAddFlower'])) {
                 }
             }
             // Rồi xóa trong CSDL
-            deleteSql("delete from bouq_img where b_ID = '$bid'");
+            deleteSql("DELETE from bouq_img where b_ID = '$bid'");
         }
         // Gỡ luôn folder
         if (file_exists($sitedir."/img/Bouquet/".$bid)) {
             rmdir($sitedir."/img/Bouquet/".$bid);
         }
         // Cuối cùng là xóa bó hoa
-        $delete = deleteSql("delete from bouquet where b_ID ='$bid'");
+        deleteSql('DELETE from bouquet where b_ID ="'.$bid.'"');
         echo "ok";
     // Nếu xóa hình trong bó hoa thì nhận biết bằng bimgid
     }else if (isset($_POST['bimgid'])) {
@@ -238,15 +239,15 @@ if (isset($_POST['cmdAddFlower'])) {
     }
 // Trang thêm bó hoa
 }else if (isset($_POST['cmdAddBouquet'])) {
-    if (isset($_POST['bid']) && isset($_POST['bname']) && isset($_POST['bprice']) && isset($_POST['bdetail'])) {
+    if (isset($_POST['addbid']) && isset($_POST['addbname']) && isset($_POST['addbprice']) && isset($_POST['addbdetail'])) {
         include '../src/flowerdb.php';
         $sitedir = "../";
-        $bid = $_POST['bid'];
-        $bname = $_POST['bname'];
-        $bprice = $_POST['bprice'];
-        $bdetail = $_POST['bdetail'];
+        $bid = $_POST['addbid'];
+        $bname = $_POST['addbname'];
+        $bprice = $_POST['addbprice'];
+        $bdetail = $_POST['addbdetail'];
         $bselling = 1;
-        if (isset($_POST['bselling'])) {
+        if (isset($_POST['addbselling'])) {
             $bselling = 1;
         }else {
             $bselling = 0;
@@ -276,14 +277,14 @@ if (isset($_POST['cmdAddFlower'])) {
     }
 // Trang chỉnh sửa bó hoa
 }else if (isset($_POST['cmdEditBouquet'])) {
-    if (isset($_POST['bid']) && isset($_POST['bname']) && isset($_POST['bprice']) && isset($_POST['bdetail'])) {
+    if (isset($_POST['editbid']) && isset($_POST['editbname']) && isset($_POST['editbprice']) && isset($_POST['editbdetail'])) {
         include '../src/flowerdb.php';
         $sitedir = "../";
-        $bid = $_POST['bid'];
-        $bname = $_POST['bname'];
-        $bprice = $_POST['bprice'];
-        $bdetail = $_POST['bdetail'];
-        if (isset($_POST['bselling'])) {
+        $bid = $_POST['editbid'];
+        $bname = $_POST['editbname'];
+        $bprice = $_POST['editbprice'];
+        $bdetail = $_POST['editbdetail'];
+        if (isset($_POST['editbselling'])) {
             $bselling = 1;
         }else {
             $bselling = 0;
@@ -350,9 +351,9 @@ if (isset($_POST['cmdAddFlower'])) {
         echo "Thiếu dữ liệu!";
     }
 }else if (isset($_POST['cmdEditFBouquet'])) {
-    if (isset($_POST['bid'])) {
+    if (isset($_POST['bfeditbid'])) {
         include '../src/flowerdb.php';
-        $bid = $_POST['bid'];
+        $bid = $_POST['bfeditbid'];
         // Kiểm tra xem dữ liệu hoa có trong bó này có chưa
         if (sizeof(getSql("SELECT * FROM bouq_detail WHERE b_ID='$bid'"))>0) {
             // Có thì xóa

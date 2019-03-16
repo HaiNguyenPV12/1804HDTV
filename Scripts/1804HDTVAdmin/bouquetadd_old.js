@@ -1,5 +1,5 @@
 // Script tùy chỉnh của trang bouquetadd.php
-var imglist = [];
+
 // Function xóa các input (reset)
 function eraseInput(){
     // Vì sao không dùng lệnh reset form bình thường??
@@ -21,13 +21,14 @@ function reloadPage(){
 }
 
 // Function tạo mã bó hoa (Mã bó hoa: B[3 con số theo thứ tự từ 0]. VD: B000, B001,...)
-function IDGenerate(){
+function validateID(){
     // Tiền tố là chữ B
     var preBID = "B";
     // Hậu tố là 3 chữ số, nhưng đầu tiên để so sánh lấy số cao nhất thì đặt mặc định là 0 trước
     var sufBID = 0;
     // Tạo array chứa các số đã có
     var items=[];
+
     // Tìm ID bó hoa ở mỗi dòng trong bảng, lấy số ở mã đó ra đưa vào mảng items...để làm gì?
     // Để tìm ra số lớn nhất trong mảng
     // Lấy index cột chứa mã bó hoa
@@ -51,6 +52,7 @@ function IDGenerate(){
         sufBID = Math.max.apply(Math,items)+1;
     }
 
+
     // Nếu số đằng sau có 1 chữ số 
     if (sufBID<=9) {
         // thì thêm 2 số 0 vào trước để đủ 3 kí tự
@@ -65,7 +67,7 @@ function IDGenerate(){
 
 // Lúc hiện modal là thực hiện tạo ID bó hoa
 $('#modal').on('shown.bs.modal', function (e) {
-    IDGenerate();
+    validateID();
 });
 
 // Khi nhấn nút cmdResetBouquet sẽ thực hiện function xóa các input
@@ -75,103 +77,8 @@ $('#cmdResetBouquet').click(function (e) {
 
 // Khi Modal tắt sẽ gọi function xóa các input
 $('#modal').on('hidden.bs.modal', function (e) {
-    //eraseInput();
-    reloadPage();
+    eraseInput();
 });
-
-$(document).on("click","#imgPreview div",function(){
-    var n = $(this).find("#imgnum").val();
-    if (n) {
-        console.log(n);
-        imglist = imglist.filter(e=>e!=n);
-    }
-    $(this).remove();
-});
-
-$("#imgfile").change(function(){
-    if (imglist.length<5) {
-        if ($(this).get(0).files.length<=(5-imglist.length)) {
-            for (var i = 0; i < $(this).get(0).files.length; ++i) {
-                var bid;
-                if (imglist.length==0) {
-                    bid=0;
-                }else{    
-                    for (var j = 0; j < 5; j++) {
-                        const found = imglist.some(el => el == j);
-                        if (!found) {
-                            bid=j;
-                            break;
-                        }
-                    }
-                }
-                // Bắt đầu function upload hình (và đưa nó ra phần hiển thị mẫu)
-                uploadFile($(this).get(0).files[i],"bouquetadd",$("#bid").val(), bid);
-                imglist.push(bid);
-                // Đưa tên file ra hiển thị
-                $("#imgfiletext").html("Đã có "+imglist.length+" hình.");
-            }
-            $(this).val("");
-        }else{
-            alert("Không thể quá 5 hình! Chỉ có thể tải lên "+(5-imglist.length)+" hình nữa!");
-            $(this).val("");
-        }
-    }else{
-        alert("Không thể thêm quá 5 hình!");
-        $(this).val("");
-        //alert($(this).get(0).files.length);
-    }
-});
-
-//=========================== Xử lý upload hình =================================//
-function uploadFile(file,uploadTo,id, bid){
-    var request;
-    //var $form = $("#frmImgAdd");
-    //var $inputs = $form.find("fimgfile, button");
-
-    // Làm theo cách thủ công hơn, tạo form data thủ công
-    var myFormData = new FormData();
-    // Đưa từng giá trị vào form data
-    myFormData.append('imgfile', file); // file từ input
-    myFormData.append('uploadTo', uploadTo); 
-    myFormData.append('id', id); 
-    myFormData.append('bid', bid); 
-    //myFormData.append('fid', $("#fid").val()); 
-    //myFormData.append('fimg', $("#fimg").val());
-    //myFormData.append('cmdFImgUpload', "");
-
-    //$inputs.prop("disabled", true);
-
-    // Thực hiện đưa qua trang xử lý
-    request = $.ajax({
-        url: "imgupload.php",
-        type: "post",
-        data: myFormData,
-        processData: false,
-        contentType: false
-    });
-    // Xong rồi thì đưa ra hiện hình mẫu
-    request.done(function (response, textStatus, jqXHR){
-        // Log a message to the console
-        //alert(textStatus);
-        $("#imgPreview").append(response); 
-    });
-
-    // Callback handler that will be called on failure
-    request.fail(function (jqXHR, textStatus, errorThrown){
-        // Log the error to the console
-        console.error(
-            "The following error occurred: "+
-            textStatus, errorThrown
-        );
-    });
-
-    // Callback handler that will be called regardless
-    // if the request failed or succeeded
-    request.always(function () {
-        // Reenable the inputs
-        //$inputs.prop("disabled", false);
-    });
-}
 
 
 //=========================== Xử lý submit dữ liệu =================================//

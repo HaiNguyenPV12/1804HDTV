@@ -1,19 +1,23 @@
 // Script tùy chỉnh của trang bouquetedit.php
 
+var editimglist = [];
+var editimgremoved = [];
+$("#editimgPreview").find("[name='imgold[]']").each(function(i,data){
+    //console.log($(this).find("#imgnum").val());
+    editimglist.push($(this).find("#imgnum").val());
+});
+
 // Khởi tạo các giá trị cũ để so sánh có thay đổi hay không khi nhấn Lưu
-var bid_old = $("#bid").val();
-var bname_old = $("#bname").val();
-var bprice_old = $("#bprice").val();
-var bdetail_old = $("#bdetail").val();
-var bselling_old;
-if ($("#bselling").is(":checked")) {
-    bselling_old = 1;
+var editbid_old = $("#editbid").val();
+var editbname_old = $("#editbname").val();
+var editbprice_old = $("#editbprice").val();
+var editbdetail_old = $("#editbdetail").val();
+var editbselling_old;
+if ($("#editbselling").is(":checked")) {
+    editbselling_old = 1;
 }else{
-    bselling_old = 0;
+    editbselling_old = 0;
 }
-// Vì sao ở đây không dùng lệnh xóa input giống bouquetadd.js??
-// --> Vì các dữ liệu ở các input mặc định đã là những dữ liệu có sẵn lấy từ database (gán qua php)
-//     khi reset, nó không đưa về trống, mà đưa về dữ liệu ban đầu
 
 // Function tắt bảng Modal
 function closeModal(){
@@ -33,8 +37,119 @@ function reloadPage(){
 // Reset khi tắt modal
 $('#modal').on('hidden.bs.modal', function (e) {
     //$("#frmEditBouquet")[0].reset();
-    reloadPage();
+    //reloadPage();
 });
+
+$(document).on("click","#editimgPreview div[name='imgshow[]']",function(){
+    var n = $(this).find("#imgnum").val();
+    if (n) {
+        //console.log(n);
+        editimglist = editimglist.filter(e=>e!=n);
+    }
+    //console.log(imglist);
+    $(this).remove();
+});
+
+$(document).on("click","#editimgPreview div[name='imgold[]']",function(){
+    var n = $(this).find("#imgnum").val();
+    var imgid = $(this).find("#imgid").val();
+    if (n) {
+        //console.log(n);
+        editimglist = editimglist.filter(e=>e!=n);
+        editimgremoved.push(n);
+        $("#editimgPreview").append("<input type='hidden' name='imgremove[]' value='"+imgid+"'>");
+    }
+    //console.log(imglist);
+    //console.log(imgremoved);
+    $(this).remove();
+});
+
+$("#editimgfile").change(function(){
+    if (editimglist.length<5) {
+        if ($(this).get(0).files.length<=(5-editimglist.length)) {
+            for (var i = 0; i < $(this).get(0).files.length; ++i) {
+                var bid;
+                //console.log("imglist: "+imglist.length);
+                if (editimglist.length==0) {
+                    bid=0;
+                }else{ 
+                    for (var j = 0; j < 5; j++) {
+                        const found = editimglist.some(el => el == j);
+                        if (!found) {
+                            bid=j;
+                            break;
+                        }
+                    }
+                }
+                //console.log(bid);
+                // Bắt đầu function upload hình (và đưa nó ra phần hiển thị mẫu)
+                uploadFile($(this).get(0).files[i],"bouquetadd",$("#editbid").val(), bid);
+                editimglist.push(bid);
+                // Đưa tên file ra hiển thị
+                $("#editimgfiletext").html("Đã có "+editimglist.length+" hình.");
+            }
+            $(this).val("");
+        }else{
+            alert("Không thể quá 5 hình! Chỉ có thể tải lên "+(5-editimglist.length)+" hình nữa!");
+            $(this).val("");
+        }
+    }else{
+        alert("Không thể thêm quá 5 hình!");
+        $(this).val("");
+        //alert($(this).get(0).files.length);
+    }
+});
+
+//=========================== Xử lý upload hình =================================//
+function uploadFile(file,uploadTo,id, bid){
+    var request;
+    //var $form = $("#frmImgAdd");
+    //var $inputs = $form.find("fimgfile, button");
+
+    // Làm theo cách thủ công hơn, tạo form data thủ công
+    var myFormData = new FormData();
+    // Đưa từng giá trị vào form data
+    myFormData.append('imgfile', file); // file từ input
+    myFormData.append('uploadTo', uploadTo); 
+    myFormData.append('id', id); 
+    myFormData.append('bid', bid); 
+    //myFormData.append('fid', $("#fid").val()); 
+    //myFormData.append('fimg', $("#fimg").val());
+    //myFormData.append('cmdFImgUpload', "");
+
+    //$inputs.prop("disabled", true);
+
+    // Thực hiện đưa qua trang xử lý
+    request = $.ajax({
+        url: "imgupload.php",
+        type: "post",
+        data: myFormData,
+        processData: false,
+        contentType: false
+    });
+    // Xong rồi thì đưa ra hiện hình mẫu
+    request.done(function (response, textStatus, jqXHR){
+        // Log a message to the console
+        //alert(textStatus);
+        $("#editimgPreview").append(response); 
+    });
+
+    // Callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown){
+        // Log the error to the console
+        console.error(
+            "The following error occurred: "+
+            textStatus, errorThrown
+        );
+    });
+
+    // Callback handler that will be called regardless
+    // if the request failed or succeeded
+    request.always(function () {
+        // Reenable the inputs
+        //$inputs.prop("disabled", false);
+    });
+}
 
 //=========================== Xử lý submit dữ liệu =================================//
 var request;
@@ -46,25 +161,33 @@ $("#frmEditBouquet").submit(function(event){
         request.abort();
     }
     var bselling;
-    if ($("#bselling").is(":checked")) {
+    var imgchanged;
+    if ($("#editbselling").is(":checked")) {
         bselling=1; 
     }else{
         bselling=0;
     }
+    if ($("#editimgPreview").find("[name='img[]']").length || editimgremoved.length>0) {
+        imgchanged=true;
+    }else{
+        imgchanged=false;
+    }
+
+    
     // Kiểm tra xem dữ liệu có thay đổi không
-    if ($("#bid").val()== bid_old && $("#bname").val()==bname_old && $("#bprice").val()==bprice_old && $("#bdetail").val()==bdetail_old && bselling==bselling_old) {
+    if ($("#editbid").val()== editbid_old && $("#editbname").val()==editbname_old && $("#editbprice").val()==editbprice_old && $("#editbdetail").val()==editbdetail_old && bselling==editbselling_old &&imgchanged==false) {
     // Nếu không thay đổi
         $("#txtResult").addClass("text-success");
         $("#txtResult").html("<h2>Không có thay đổi!</h2>");
         $('#result').modal('show'); 
         window.setTimeout(closeModal, 1000);
-        window.setTimeout(reloadPage,2500);
+        //window.setTimeout(reloadPage,2500);
     }else{
     // Nếu có thay đổi
         // đặt lại tên form cho dễ gọi :))
         var $form = $(this);
         // Chọn tất cả input trừ cái bid để disable (bid mặc định đã disabled)
-        var $inputs = $form.find("input, select, button, textarea").not("#bid");
+        var $inputs = $form.find("input, select, button, textarea").not("#editbid");
         // Mã hóa để đưa dữ liệu qua post
         var serializedData = $form.serialize();
 
@@ -87,7 +210,7 @@ $("#frmEditBouquet").submit(function(event){
                 $("#txtResult").html("<h2>Chỉnh sửa thành công!</h2>");
                 $('#result').modal('show'); 
                 window.setTimeout(closeModal, 1000);
-                window.setTimeout(reloadPage,2500);
+                //window.setTimeout(reloadPage,2500);
             }else{
                 // Nếu dữ liệu trả về bị bất kì lỗi gì
                 $("#txtResult").html(response);

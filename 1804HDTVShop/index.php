@@ -49,7 +49,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
 ?>
                     <hr class="dropdown-divider">
                     <!-- TODO link to page that lists all FLOWER types -->
-                    <a class="dropdown-item" href="#!browse.php">Tất cả các loại hoa</a>
+                    <a class="dropdown-item" href="#!flowercate">Tất cả các loại hoa</a>
                 </div>
             </li>
             <!-- Flower Color Dropdown -->
