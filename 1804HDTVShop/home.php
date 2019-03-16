@@ -6,7 +6,38 @@
     <div class='container-fluid'>
         <!-- individual occasion cards on front page -->
         <!-- TODO complete rework, link backgrounds with php, get contents from database, etc -->
-        <div style="background: url(../img/1804HDTVShop/Occasions/occa-camon-test.png); background-size: cover;" class="event-card">
+        <?php
+include "../src/fconnectadmin.php";
+$sql = "SELECT * FROM occasion WHERE occa_fp = 1";
+$rs = mysqli_query($cn, $sql);
+$cardindex = 1;
+while ($row = mysqli_fetch_assoc($rs)) {
+
+    if ($cardindex % 2 == 0) {
+        $class = '2';
+    } else {
+        $class = '1';
+    }
+    echo "<div style=\"background: url(../" . $row['occa_img'] . "); background-size: cover;\" class='event-card'>
+        <div class='row event-details h-100'>
+            <div class='col-5 pull-left event-text-" . $class . " text-center'>
+                <div class='row h-75'>
+                    <div class='col my-auto'>
+                        <h2>Hoa " . $row['occa_name'] . "</h2>
+                        <pre class='event-text-content'>
+                            " . $row['occa_detail'] . "
+                        </pre>
+                    </div>
+                </div>
+                <a href='#!browse.php/occa/" . $row['occa_name'] . "' class='btn btn-primary btn-shop'>Xem Chi Tiết</a>
+            </div>
+        </div>
+    </div>";
+    $cardindex++;
+}
+?>
+        <!-- Event Cards template -->
+        <!-- <div style="background: url(../img/1804HDTVShop/Occasions/occa-camon-test.png); background-size: cover;" class="event-card">
             <div class="row event-details h-100">
                 <div class="col-5 pull-left event-text-1 text-center">
                     <div class="row h-75">
@@ -23,63 +54,11 @@
                     <a href="" class=" btn btn-primary btn-shop">Xem Chi Tiết</a>
                 </div>
             </div>
-        </div>
-        <div style="background: url(../img/1804HDTVShop/Occasions/occa-tinhyeu-test.png); background-size: cover;" class="event-card">
-            <div class="row event-details h-100">
-                <div class="col-5 pull-right event-text-2 text-center">
-                    <div class="row h-75">
-                        <div class="col my-auto">
-                            <h2>Hoa Tình Yêu</h2>
-                            <p>
-                                Sự lựa chọn hàng đầu giúp các cặp đôi thể hiện tình cảm. <br>
-                                Valentine hay ngảy kỷ niệm, không chỉ hoa Hồng Đỏ. <br>
-                                Hoa Cúc, Tulip hay Cẩm Chướng sẽ thể
-                                hiện được tình cảm nồng nàn của những cặp đôi yêu nhau. <br>
-                            </p>
-                        </div>
-                    </div>
-                    <a href="" class=" btn btn-primary btn-shop">Xem Chi Tiết</a>
-                </div>
-            </div>
-        </div>
-        <div style="background: url(../img/1804HDTVShop/Occasions/occa-chucmung-test.png); background-size: cover;" class="event-card">
-            <div class="row event-details h-100">
-                <div class="col-5 pull-right event-text-1 text-center">
-                    <div class="row h-75">
-                        <div class="col my-auto">
-                            <h2>Hoa Chúc mừng</h2>
-                            <p>
-                                sự lựa chọn tuyệt vời khi muốn tặng quà cho người thân, bạn bè bởi trước những sắc hoa
-                                rực rỡ thì ai cũng sẽ cảm thấy hạnh phúc, vui vẻ. <br>
-                                Hoa chúc mừng không chỉ giúp tô đẹp thêm không gian nơi bạn đặt nó mà quan trọng hơn,
-                                những lẵng hoa đó còn như thay lời muốn nói và thể hiện tình cảm của người tặng dành cho
-                                người nhận.
-                            </p>
-                        </div>
-                    </div>
-                    <a href="" class=" btn btn-primary btn-shop">Xem Chi Tiết</a>
-                </div>
-            </div>
-        </div>
-        <!-- about us -->
-        <!-- <div style="background: url(../img/1804HDTVShop/home/feedback.png); background-size: cover;" class="feedback-card">
-            <div class="row event-details h-100">
-                <div class="col-4 location-text text-center">
-                    <div class="row h-75">
-                        <div class="col my-auto">
-                            <h3>Về Chúng Tôi</h3>
-                            <p>
-                                HDTV Shop luôn phấn đấu cải thiện trải nghiệm của khách hàng. <br>
-                                Đóng góp ý kiến để giúp chúng tôi giúp bạn.
-                            </p>
-                        </div>
-                    </div>
-                    <a href="" class=" btn btn-primary btn-shop">Đóng Góp Ý Kiến</a>
-                </div>
-            </div>
         </div> -->
+
         <!-- location -->
-        <div style="background: url(../img/1804HDTVShop/home/location.png); background-size: cover;" class="location-card">
+        <div style="background: url(../img/1804HDTVShop/home/location.png); background-size: cover;"
+            class="location-card">
             <div class="row event-details h-100">
                 <div class="col-4 location-text text-center">
                     <div class="row h-75">
@@ -99,7 +78,8 @@
             </div>
         </div>
         <!-- feedback -->
-        <div style="background: url(../img/1804HDTVShop/home/feedback.png); background-size: cover;" class="feedback-card">
+        <div style="background: url(../img/1804HDTVShop/home/feedback.png); background-size: cover;"
+            class="feedback-card">
             <div class="row event-details h-100">
                 <div class="col-4 location-text text-center">
                     <div class="row h-75">
@@ -115,6 +95,26 @@
                 </div>
             </div>
         </div>
+
+        <!-- about us -->
+        <div style="background: url(../img/1804HDTVShop/home/feedback.png); background-size: cover;"
+            class="feedback-card">
+            <div class="row event-details h-100">
+                <div class="col-4 location-text text-center">
+                    <div class="row h-75">
+                        <div class="col my-auto">
+                            <h3>Tìm Hiểu Shop 1804 HDTV</h3>
+                            <p>
+                                Tìm hiểu thêm về cửa hàng bán hoa <br>
+                                và xem đội ngũ hỗ trợ.
+                            </p>
+                        </div>
+                    </div>
+                    <a href="#!about.php" class=" btn btn-primary btn-shop">Về Chúng Tôi</a>
+                </div>
+            </div>
+        </div>
+
         <!-- modal for map/location -->
         <div class="modal fade" id="locationModal">
             <div class="modal-dialog modal-lg">

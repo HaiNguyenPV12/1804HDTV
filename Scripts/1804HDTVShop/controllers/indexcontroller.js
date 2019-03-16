@@ -9,9 +9,7 @@ app.config(['$routeProvider', function ($routeProvider) {
         })
         //browse
         .when('/browse.php', {
-            templateUrl: function (params) {
-                return "browse.php";
-            },
+            templateUrl: "browse.php",
             controller: 'browsecontroller'
         })
         //flower category
@@ -41,6 +39,11 @@ app.config(['$routeProvider', function ($routeProvider) {
                 return "browse.php?cate=" + params.cate + "&col=" + params.col + "&occa=" + params.occa;
             },
             controller: 'browsecontroller'
+        })
+        //about us
+        .when('/about.php', {
+            templateUrl: "about.php",
+            controller: 'aboutcontroller'
         })
         .otherwise({ redirectTo: '/' });
 }]);

@@ -122,7 +122,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
                     <b>1804 HDTV Co.</b>
                     <ul>
                         <li><a href="#" class="footer-link">Câu hỏi thường xuyên</a></li>
-                        <li><a href="#" class="footer-link">Về Chúng tôi</a></li>
+                        <li><a href="#!about.php" class="footer-link">Về Chúng tôi</a></li>
                     </ul>
                 </div>
                 <!-- Right Column -->

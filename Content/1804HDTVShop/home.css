@@ -4,6 +4,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     margin-bottom: 5px;
+    border: 1px solid rgba(74, 20, 140, 0.2);
 }
 
 .event-details {
@@ -26,8 +27,23 @@
     height: 80%;
     background-color: rgba(255, 255, 255, .80);
     position: relative;
-    border: 1px solid;
     border: 1px solid rgba(74, 20, 140, 0.2);
+}
+
+.event-text-content {
+    white-space: pre-wrap;
+    /* css-3 */
+    white-space: -moz-pre-wrap;
+    /* Mozilla, since 1999 */
+    white-space: -pre-wrap;
+    /* Opera 4-6 */
+    white-space: -o-pre-wrap;
+    /* Opera 7 */
+    word-wrap: break-word;
+    /* Internet Explorer 5.5+ */
+    font-family: inherit;
+    font-size: inherit;
+    overflow-x: hidden;
 }
 
 .feedback-card {
@@ -36,6 +52,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     margin-bottom: 5px;
+    border: 1px solid rgba(74, 20, 140, 0.2);
 }
 
 .location-card {
@@ -44,6 +61,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     margin-bottom: 5px;
+    border: 1px solid rgba(74, 20, 140, 0.2);
 }
 
 .location-text {
@@ -54,8 +72,8 @@
     border: 1px solid rgba(74, 20, 140, 0.2);
 }
 
-    .location-text:hover, .event-text-1:hover, .event-text-2:hover {
-        background-color: rgba(255, 255, 255, .95);
-        border: 1px solid rgba(74, 20, 140, 0.6);
-        transition: 0.4s;
-    }
+.location-text:hover, .event-text-1:hover, .event-text-2:hover, .event-card:hover, .feedback-card:hover, .location-card:hover {
+    background-color: rgba(255, 255, 255, .95);
+    border: 1px solid rgba(74, 20, 140, 0.6);
+    transition: 0.4s;
+}

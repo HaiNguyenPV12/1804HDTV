@@ -1,3 +1,6 @@
+<head>
+    <link rel="stylesheet" href="../Content/1804HDTVShop/browse.css">
+</head>
 <body>
     <?php
 include "../src/fconnectadmin.php";
@@ -54,6 +57,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
                 </form>
             </div>
             <!-- Advanced form -->
+            <!-- start of advanced form -->
             <div class="row" name="filterAdv" id="filterAdv" style="display: none;">
                 <form class="form-inline col-12" action="" method="get">
                     <label class="col-2" for="">
@@ -113,6 +117,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
                     </div>
                 </form>
             </div>
+            <!-- end of advanced form -->
         </div>
         <!-- end of filter -->
 
@@ -149,6 +154,7 @@ if (isset($_GET["col"]) && !empty($_GET["col"])) {
 if (isset($_GET["occa"]) && !empty($_GET["occa"])) {
     global $sql, $set;
     $occa = $_GET["occa"];
+    //TODO refractor ifs
     if ($occa == "*" && $set == false) {
         $sql .= " where occa_name like '%%'";
     } else if ($occa == "*" && $set == true) {
@@ -170,6 +176,7 @@ if ($set == true) {
 
 
             <?php
+// setlocale(LC_MONETARY, "en_US");
 $rs = mysqli_query($cn, $sql);
 while ($row = mysqli_fetch_assoc($rs)) {
     // echo $row['b_name'] . "<br>";
@@ -183,7 +190,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
                     <h4 class='card-title'>
                         <a href='#'>" . $row['b_name'] . "</a>
                     </h4>
-                    <h5>" . $row['b_price'] . " Đ</h5>
+                    <h5>" . number_format($row['b_price'], 0, '.', ',') . " Đ</h5>
                 </div>
 
                 <button class='btn card-footer btn-shop'>

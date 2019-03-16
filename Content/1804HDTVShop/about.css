@@ -1,0 +1,50 @@
+.about-us-container {
+    background: url('../../img/1804HDTVShop/about/shop-card.jpg');
+    background-color: rgba(74, 20, 140, 0.6);
+    width: 100%;
+    background-position: 50% 70%;
+    background-size: cover;
+    border: 1px solid rgba(74, 20, 140, 0.2);
+}
+
+.about-us-text {
+    background-color: rgba(255, 255, 255, .80);
+    border: 1px solid rgba(74, 20, 140, 0.2);
+}
+
+.staff-card {
+    height: 150px;
+    background: url('../../img/1804HDTVShop/about/staff-card.jpg');
+    border: 1px solid rgba(74, 20, 140, 0.2);
+    background-color: rgba(255, 0, 0, 0.1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 5px;
+}
+
+.staff-details {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.staff-text {
+    top: 10%;
+    left: 2%;
+    height: 80%;
+    background-color: rgba(255, 255, 255, .80);
+    position: relative;
+    border: 1px solid rgba(74, 20, 140, 0.2);
+    /* RGB of #4a148c */
+}
+
+.btn-shop-email {
+    top: 65%;
+    right: -20%;
+    position: relative;
+    padding-bottom: 0px;
+}
+
+.about-us-container:hover, .about-us-text:hover, .staff-card:hover, .staff-text:hover {
+    background-color: rgba(255, 255, 255, .95);
+    border: 1px solid rgba(74, 20, 140, 0.6);
+    transition: 0.4s;
+}
