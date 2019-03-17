@@ -178,6 +178,14 @@ if ($set == true) {
             <?php
 // setlocale(LC_MONETARY, "en_US");
 $rs = mysqli_query($cn, $sql);
+if (mysqli_num_rows($rs) <= 0) {
+    echo "
+    <div class='col-12 text-center mx-0'>
+        <h6 class='text-center'>
+            Không tìm thấy bó
+        </h6>
+    </div>";
+}
 while ($row = mysqli_fetch_assoc($rs)) {
     // echo $row['b_name'] . "<br>";
     echo "<div class='col-lg-3 col-md-5 mb-4'>

@@ -70,6 +70,18 @@ app.config(function ($routeProvider) {
         .when("/staff", {
             templateUrl: "staff.php",
         })
+        .when("/staff/edit/:id", {
+            templateUrl: function (params) {
+                return 'staffedit.php?id=' + params.id;
+            }
+        })
+        .when("/staff/edit/update/:id/:name/:role/:email/:uname/:pass/:phone/:add/:employed", {
+            templateUrl: function (params) {
+                return 'staffeditres.php?id=' + params.id + '&name=' + params.name + '&role=' +
+                    params.role + '&email=' + params.email + '&uname=' + params.uname + '&pass=' +
+                    params.phone + '&phone=' + params.phone + '&add=' + params.add + '&employed=' + params.employed;
+            }
+        })
         .when("/staffright", {
             templateUrl: "staffright.php",
         })
@@ -96,7 +108,7 @@ app.config(function ($routeProvider) {
         })
         .when("/redirect/:page", {
             templateUrl: function (params) { // <-- 
-                return 'redirect.php?' + params.page+"=''";
+                return 'redirect.php?' + params.page + "=''";
             }
         })
         .otherwise({
