@@ -79,36 +79,36 @@ if (!isset($_SESSION["loggedin"])) {
                 <h2 class="my-3 text-center">Shop HDTV</h2>
                 <div class="list-group">
                     <?php
-                        $rightsdata = $_SESSION["sRight"];
-                        if (in_array("Q01",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
-                            echo '<a href="#!bouquet" class="list-group-item list-group-item-shop">Quản lý Bó Hoa</a>';
-                        }
-                        if (in_array("Q02",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
-                            echo '<a href="#!flower" class="list-group-item list-group-item-shop">Quản lý Hoa</a>';
-                        }
-                        if (in_array("Q03",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
-                            echo '<a href="#!occasion" class="list-group-item list-group-item-shop">Quản lý Dịp</a>';
-                        }
-                        if (in_array("Q05",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
-                            echo '<a href="#!staff" class="list-group-item list-group-item-shop">Quản lý Nhân Viên</a>';
-                        }
-                        if(in_array("Q00",$rightsdata,true)){
-                            echo '<a href="#!role" class="list-group-item list-group-item-shop">Quản lý Chức Vụ</a>';
-                        }
-                        if (in_array("Q06",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
-                            echo '<a href="#!order" class="list-group-item list-group-item-shop">Quản lý Đơn Hàng</a>';
-                            echo '<a href="#!statistic" class="list-group-item list-group-item-shop">Xem thống kê doanh thu</a>';
-                        }
-                        if (in_array("Q10",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
-                            echo '<a href="#!customer" class="list-group-item list-group-item-shop">Quản lý Khách Hàng</a>';
-                        }
-                        if (in_array("Q07",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
-                            echo '<a href="#!comment" class="list-group-item list-group-item-shop">Quản lý Bình Luận</a>';
-                        }
-                        if (in_array("Q08",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
-                            echo '<a href="#!feedback" class="list-group-item list-group-item-shop">Quản lý Đánh Giá</a>';
-                        }
-                    ?>
+$rightsdata = $_SESSION["sRight"];
+if (in_array("Q01", $rightsdata, true) || in_array("Q00", $rightsdata, true)) {
+    echo '<a href="#!bouquet" class="list-group-item list-group-item-shop">Quản lý Bó Hoa</a>';
+}
+if (in_array("Q02", $rightsdata, true) || in_array("Q00", $rightsdata, true)) {
+    echo '<a href="#!flower" class="list-group-item list-group-item-shop">Quản lý Hoa</a>';
+}
+if (in_array("Q03", $rightsdata, true) || in_array("Q00", $rightsdata, true)) {
+    echo '<a href="#!occasion" class="list-group-item list-group-item-shop">Quản lý Dịp</a>';
+}
+if (in_array("Q05", $rightsdata, true) || in_array("Q00", $rightsdata, true)) {
+    echo '<a href="#!staff" class="list-group-item list-group-item-shop">Quản lý Nhân Viên</a>';
+}
+if (in_array("Q00", $rightsdata, true)) {
+    echo '<a href="#!role" class="list-group-item list-group-item-shop">Quản lý Chức Vụ</a>';
+}
+if (in_array("Q06", $rightsdata, true) || in_array("Q00", $rightsdata, true)) {
+    echo '<a href="#!order" class="list-group-item list-group-item-shop">Quản lý Đơn Hàng</a>';
+    echo '<a href="#!statistic" class="list-group-item list-group-item-shop">Xem thống kê doanh thu</a>';
+}
+if (in_array("Q10", $rightsdata, true) || in_array("Q00", $rightsdata, true)) {
+    echo '<a href="#!customer" class="list-group-item list-group-item-shop">Quản lý Khách Hàng</a>';
+}
+if (in_array("Q07", $rightsdata, true) || in_array("Q00", $rightsdata, true)) {
+    echo '<a href="#!comment" class="list-group-item list-group-item-shop">Quản lý Bình Luận</a>';
+}
+if (in_array("Q08", $rightsdata, true) || in_array("Q00", $rightsdata, true)) {
+    echo '<a href="#!feedback" class="list-group-item list-group-item-shop">Quản lý Đánh Giá</a>';
+}
+?>
                     <!--
                     <a href="#!bouquet" class="list-group-item">Quản lý bó hoa</a>
                     <a href="#!flower" class="list-group-item">Quản lý hoa</a>
@@ -131,8 +131,8 @@ if (!isset($_SESSION["loggedin"])) {
 
                 </div>
             </div>
-            
-            
+
+
         </div>
     </div>
 </body>

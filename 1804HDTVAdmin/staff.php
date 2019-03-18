@@ -1,5 +1,6 @@
 <html>
 <script src="../Scripts/1804HDTVAdmin/staff.js"></script>
+<script src="../Scripts/1804HDTVAdmin/controllers/staffcontroller.js"></script>
 <!-- Tựa đề -->
 <div class='row'>
     <h2 class="col-10">Quản lý Nhân viên</h2>

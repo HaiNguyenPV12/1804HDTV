@@ -68,19 +68,26 @@ app.config(function ($routeProvider) {
             templateUrl: "color.php",
         })
         .when("/staff", {
+            cache: false,
             templateUrl: "staff.php",
         })
         .when("/staff/edit/:id", {
+            cache: false,
             templateUrl: function (params) {
                 return 'staffedit.php?id=' + params.id;
-            }
+            },
         })
-        .when("/staff/edit/update/:id/:name/:role/:email/:uname/:pass/:phone/:add/:employed", {
+        .when("/staff/edit/update/:id/:name/:role/:email/:uname/:pass/:phone/:add/:employed/:sadd", {
+            cache: false,
             templateUrl: function (params) {
                 return 'staffeditres.php?id=' + params.id + '&name=' + params.name + '&role=' +
                     params.role + '&email=' + params.email + '&uname=' + params.uname + '&pass=' +
-                    params.phone + '&phone=' + params.phone + '&add=' + params.add + '&employed=' + params.employed;
+                    params.pass + '&phone=' + params.phone + '&add=' + params.add + '&employed=' +
+                    params.employed + '&sadd=' + params.sadd;
             }
+        })
+        .when("/staffadd", {
+            templateUrl: "staffadd.php",
         })
         .when("/staffright", {
             templateUrl: "staffright.php",
@@ -134,6 +141,12 @@ app.controller('myMain', ['$scope', '$route', function ($scope, $route) {
     }
 }]);
 
+// stops pages from caching
+app.run(function($rootScope, $templateCache) {
+    $rootScope.$on('$viewContentLoaded', function() {
+       $templateCache.removeAll();
+    });
+ });
 
 /*
 $(window).on('hashchange',function() {

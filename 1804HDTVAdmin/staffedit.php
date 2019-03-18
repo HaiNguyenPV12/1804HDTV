@@ -17,7 +17,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     </a>
 </button>
 <div class='py-1'></div>
-<form action='' name='staffEditForm' id='staffEditForm'>
+<form name='staffEditForm' id='staffEditForm'>
     <table class='table table-hover table-bordered table-sm'>
         <tbody>
             <tr>
@@ -73,7 +73,7 @@ foreach ($data as $key => $r) {
             <tr>
                 <td>UserName</td>
                 <td>
-                    <input type='text' name='staffUID' id='staffUID' value='<?php
+                    <input type='text' required name='staffUID' id='staffUID' value='<?php
 foreach ($data as $key => $r) {
     echo $r['s_u_ID'];
 }
@@ -83,7 +83,7 @@ foreach ($data as $key => $r) {
             <tr>
                 <td>Password</td>
                 <td>
-                    <input type='password' name='staffPW' id='staffPW' value='<?php
+                    <input type='password' required name='staffPW' id='staffPW' value='<?php
 foreach ($data as $key => $r) {
     echo $r['s_u_PW'];
 }
@@ -93,7 +93,7 @@ foreach ($data as $key => $r) {
             <tr>
                 <td>Số ĐT</td>
                 <td>
-                    <input type='text' name='staffPhone' id='staffPhone' value='<?php
+                    <input type='text' required name='staffPhone' id='staffPhone' value='<?php
 foreach ($data as $key => $r) {
     echo $r['s_phone'];
 }
@@ -103,7 +103,7 @@ foreach ($data as $key => $r) {
             <tr>
                 <td>Địa Chỉ</td>
                 <td>
-                    <input type='text' name='staffAdd' id='staffAdd' value='<?php
+                    <input type='text' required name='staffAdd' id='staffAdd' value='<?php
 foreach ($data as $key => $r) {
     echo $r['s_address'];
 }
@@ -138,11 +138,12 @@ echo "
             </tr>
         </tbody>
     </table>
-    <button class="btn btn-shop" name="btnStaffEdit" id="btnStaffEdit">
-        <a id="btnStaffEditLink" href='#!staffedit/update/*/*/*'>
-            Lưu
-        </a>
+    <button class="btn btn-shop" name="btnStaffEdit" id="btnStaffEdit" type='submit'>
+        Lưu
     </button>
+    <a id="btnStaffEditLink" href='' hidden>
+        Lưu
+    </a>
 </form>
 
 </html>

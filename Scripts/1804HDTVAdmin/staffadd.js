@@ -2,22 +2,22 @@ $(document).ready(function () {
     //scroll to top
     $('html,body').animate({ scrollTop: 0 }, 100); //miliseconds
     //default values
-    $('#btnStaffEditLink').attr('href', '#!staff/edit/update/' + staffID.value
+    $('#btnStaffAddLink').attr('href', '#!staff/edit/update/' + staffID.value
         + '/' + staffName.value + '/' + staffRole.value
         + '/' + staffEmail.value + '/' + staffUID.value
         + '/' + staffPW.value + '/' + staffPhone.value
-        + '/' + staffAdd.value + '/' + staffEmployed.value + '/0'
+        + '/' + staffAdd.value + '/' + staffEmployed.value + '/1'
     );
-    console.log($('#btnStaffEditLink').attr('href'));
-    $('#staffEditForm').change(function (e) {
+    console.log($('#btnStaffAddLink').attr('href'));
+    $('#staffAddForm').change(function (e) {
         e.preventDefault();
-        $('#btnStaffEditLink').attr('href', '#!staff/edit/update/' + staffID.value
+        $('#btnStaffAddLink').attr('href', '#!staff/edit/update/' + staffID.value
             + '/' + staffName.value + '/' + staffRole.value
             + '/' + staffEmail.value + '/' + staffUID.value
             + '/' + staffPW.value + '/' + staffPhone.value
-            + '/' + staffAdd.value + '/' + staffEmployed.value + '/0'
+            + '/' + staffAdd.value + '/' + staffEmployed.value + '/1'
         );
-        console.log($('#btnStaffEditLink').attr('href'));
+        console.log($('#btnStaffAddLink').attr('href'));
     });
 
     $("form").on('submit', function (e) {
@@ -36,8 +36,10 @@ $(document).ready(function () {
         var pwd = $('#staffPW').val();
         var phone = $('#staffPhone').val();
         var address = $('#staffAdd').val();
+        var role = $('#staffRole').val();
+        var employed = $('#staffEmployed').val();
 
-        var inputVal = new Array(name, email, username, pwd, phone, address);
+        var inputVal = new Array(name, email, username, pwd, phone, address, role, employed);
         // console.log(inputVal[5]);
 
         var inputMessage = new Array("Tên", "email", "username", "mật khẩu", "điện thoại", "địa chỉ");
@@ -91,7 +93,7 @@ $(document).ready(function () {
             error = error + 1;
         }
         else if (!phoneReg.test(phone)) {
-            $('#staffPhone').after('<span>Chỉ số</span>');
+            $('#staffPhone').after('<span>Chỉ 10 số</span>');
             error = error + 1;
         }
 
@@ -106,7 +108,7 @@ $(document).ready(function () {
         }
 
         if (error == 0) {
-            $('#btnStaffEditLink').click();
+            $('#btnStaffAddLink').click();
         }
         // $('#btnStaffEditLink').click();
     });
