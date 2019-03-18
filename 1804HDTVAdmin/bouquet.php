@@ -59,8 +59,6 @@ img {
 
                 <!-- Modal body -->
                 <div id="modalBody" class="modal-body">
-                    <div ng-include="temp.url">
-                    </div>
                 </div>
 
                 <!-- Modal footer -->

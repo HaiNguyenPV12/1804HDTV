@@ -40,6 +40,8 @@ $('#cmdDelete').click(function(event){
         myFormData.append('bimgid', $("#delbimgid").val());
     }else if($("#delfid").length){
         myFormData.append('fid', $("#delfid").val());
+    }else if ($("#delfcateid").length) {
+        myFormData.append('fcateid', $("#delfcateid").val());
     }else if($("#delroleid").length){
         myFormData.append('roleid', $("#delroleid").val());
     }

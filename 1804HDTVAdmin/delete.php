@@ -53,6 +53,24 @@
         }else{
             echo "Không thấy ID";
         }
+    }else if (isset($_GET['flowercate'])) {
+        if (isset($_GET['fcateid']) && $_GET['fcateid']!="") {
+            $id = $_GET["fcateid"];
+            $name = $_GET["fcatename"];
+            include '../src/flowerdb.php';
+            $existed = getSql("SELECT * FROM flower where f_cate_ID ='$id'");
+            if (sizeof($existed)>0) {
+                echo "<h4 class='text-danger'>Không thể xóa vì đã có loại hoa này trong dữ liệu hoa. Chỉ có thể chỉnh sửa.</h4>";
+                exit;
+            }
+            echo '<input name="delfcateid" id="delfcateid" type="hidden" value="'.$id.'">';
+            echo '<input name="cmdDelete" type="hidden">';
+            echo "<h2>Bạn có muốn xóa loại hoa \"$name\" ?</h2>";
+            echo "<input type='button' name='cmdDelete' id='cmdDelete' class='btn mb-2 btn-success btn-shop' value='Có'></button>";
+            echo "<button id='cmdCancel' class='btn mb-2 btn-danger'>Không</button>";
+        }else{
+            echo "Mã Loại Hoa bị sai!";
+        }
     }else if (isset($_GET['role'])) {
         if (isset($_GET["roleid"])&&$_GET["roleid"]!="") {
             $id = $_GET["roleid"];

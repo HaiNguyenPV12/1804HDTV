@@ -38,5 +38,11 @@ app.config(['$routeProvider', function ($routeProvider) {
         .when('/flowercate', {
             templateUrl: "flowercate.php"
         })
+        .when('/product/:bid', {
+            templateUrl: function (params) {
+                return "product.php?bid=" + params.bid;
+            },
+            controller: 'productcontroller'
+        })
         .otherwise({ redirectTo: '/' });
 }]);

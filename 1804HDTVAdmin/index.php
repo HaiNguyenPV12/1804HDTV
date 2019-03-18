@@ -15,6 +15,7 @@ if (!isset($_SESSION["loggedin"])) {
     <!-- Bootstrap CSS -->
     <link href="../Content/bootstrap.min.css" rel="stylesheet">
     <link href="../Content/1804HDTVAdmin/custom-color.css" rel="stylesheet">
+    <link rel="shortcut icon" href="#">
 </head>
     <!-- jQuery -->
     <script src="../Scripts/jquery-3.3.1.js"></script>

@@ -1,19 +1,16 @@
-var oldFID = $("#fid").val();
-var oldFName = $("#fname").val();
-var oldFCate = $("#fcate option:selected").val();
-var oldFDetail = $("#fdetail").val();
-var oldFImg = $("#fimg").val();
-var oldFImgView = $("#imgPreview").html();
+var oldFID = $("#editfid").val();
+var oldFName = $("#editfname").val();
+var oldFCate = $("#editfcate option:selected").val();
+var oldFDetail = $("#editfdetail").val();
+var oldFImg = $("#editfimg").val();
+var oldFImgView = $("#editimgPreview").html();
 
 function closeModal(){
     $('#modal').modal('hide');
     $('#result').modal('hide');
+    $('.modal-backdrop').remove();
 }
 
-function clearModal(){
-    $('#modal').html('');
-    $('#result').html('');
-}
 
 $('#cmdReset').click(function (e) {
     $("#imgPreview").html(oldFImgView);
@@ -22,28 +19,27 @@ $('#cmdReset').click(function (e) {
 
 //reload để load lại dữ liệu từ sql
 function reloadPage(){   
-    location.reload();
+    //location.reload();
     //angular.element('#myMain').scope().reloadData();
 }
 
 //Reset khi tắt modal add
 $('#modal').on('hidden.bs.modal', function (e) {
-    //clearModal();
-    reloadPage();
+    closeModal();
 });
 
 // Khi những thứ ảnh hưởng tới ID thay đổi thì khởi động validateID
-$('#fcate').change(function() {
-    validateID();
+$('#editfcate').change(function() {
+    editvalidateID();
 });
 
-function validateID(){
+function editvalidateID(){
     // Mọi thứ phải kiểm tra có dữ liệu trước
-    if ( $('#fcate').val()!="") {
+    if ( $('#editfcate').val()!="") {
         // khởi tạo prefix ID
         var oldPreFID = oldFID.substring(0,oldFID.length-2);
         var oldSufFID = oldFID.substring(oldFID.length-2,oldFID.length);
-        var preFID = "H"+$('#fcate').val();
+        var preFID = "H"+$('#editfcate').val();
         var sufFID = 0;
         var items=[];
         //Lấy index cột chứa mã hoa
@@ -76,45 +72,45 @@ function validateID(){
         }
         //đưa ra dữ liệu
         var fid = preFID+sufFID;
-        $('#fid').val(fid);
-        if ($("#fimgfile").val()!="") {
-            var imgext = $("#fimgfile").val().replace(/^.*\./, '');
-            if (imgext == $("#fimgfile").val()) {
+        $('#editfid').val(fid);
+        if ($("#editfimgfile").val()!="") {
+            var imgext = $("#editfimgfile").val().replace(/^.*\./, '');
+            if (imgext == $("#editfimgfile").val()) {
                 imgext = '[hãy chọn file để xác định đuôi tập tin]';
             } else {
                 imgext = imgext.toLowerCase();
             }
         }else{
-            var imgext = $("#fimg").val().replace(/^.*\./, '');
+            var imgext = $("#editfimg").val().replace(/^.*\./, '');
             imgext = imgext.toLowerCase();
         }
-        $("#fimg").val("img/Flower/"+fid+"/"+fid+"."+imgext);
+        $("#editfimg").val("img/Flower/"+fid+"/"+fid+"."+imgext);
     }
 }
 
-$("#fimgfile").change(function(){
-    validateID();
-    $("#imgPreview").html("");
+$("#editfimgfile").change(function(){
+    editvalidateID();
+    $("#editimgPreview").html("");
     if ($(this).val()!="") {
-        $("#fimgfiletext").html($(this).prop('files')[0].name);
+        $("#editfimgfiletext").html($(this).prop('files')[0].name);
         uploadFile($(this).prop('files')[0]);
     }else{
-        $("#imgPreview").html(oldFImgView);
-        $("#fimgfiletext").html("(Hãy để trống nếu không muốn thay đổi)");
+        $("#editimgPreview").html(oldFImgView);
+        $("#editfimgfiletext").html("(Hãy để trống nếu không muốn thay đổi)");
     }
 });
 
 function uploadFile(file){
     var request;
-    var $form = $("#frmImgAdd");
-    var $inputs = $form.find("fimgfile, button");
+    //var $form = $("#frmImgAdd");
+    //var $inputs = $form.find("fimgfile, button");
     var myFormData = new FormData();
     myFormData.append('fimgfile', file);
-    myFormData.append('fid', $("#fid").val());
-    myFormData.append('fimg', $("#fimg").val());
+    myFormData.append('fid', $("#editfid").val());
+    myFormData.append('fimg', $("#editfimg").val());
     myFormData.append('cmdFImgUpload', "");
 
-    $inputs.prop("disabled", true);
+    //$inputs.prop("disabled", true);
 
     request = $.ajax({
         url: "flowerimg_upload.php",
@@ -126,7 +122,8 @@ function uploadFile(file){
     request.done(function (response, textStatus, jqXHR){
         // Log a message to the console
         //alert(textStatus);
-        $("#imgPreview").html(response); 
+        $("#editimgPreview").html(""); 
+        $("#editimgPreview").html(response); 
     });
 
     // Callback handler that will be called on failure
@@ -142,7 +139,7 @@ function uploadFile(file){
     // if the request failed or succeeded
     request.always(function () {
         // Reenable the inputs
-        $inputs.prop("disabled", false);
+        //$inputs.prop("disabled", false);
     });
 }
 
@@ -155,22 +152,28 @@ $("#frmEditFlower").submit(function(event){
     if (request) {
         request.abort();
     }
-
-    if (oldFID==$("#fid").val() && oldFName==$("#fname").val() && oldFCate==$("#fcate option:selected").val() && oldFDetail == $("#fdetail").val() && $("#fimgfile").val()=="") {
+    var imgchanged=false;
+    if ($("#imgtmpdir").length) {
+        imgchanged=true;
+    }else{
+        imgchanged=false;
+    }
+    if (oldFID==$("#editfid").val() && oldFName==$("#editfname").val() && oldFCate==$("#editfcate option:selected").val() && oldFDetail == $("#editfdetail").val() && $("#editfimgfile").val()=="" && !imgchanged) {
         $("#txtResult").addClass("text-success");
         $("#txtResult").html("<h2>Không có thay đổi!</h2>");
         $('#result').modal('show');
         window.setTimeout(closeModal, 1500);
-        window.setTimeout(reloadPage,500);
+        //window.setTimeout(reloadPage,500);
     }else{
         // đặt tên cho dễ
         var $form = $(this);
 
         // Chọn tất cả trừ cái fid
-        var $inputs = $form.find("input, select, button, textarea").not("#fid");
+        var $inputs = $form.find("input, select, button, textarea").not("#editfid");
 
         // Mã hóa để đưa dữ liệu qua post
-        //var serializedData = $form.serialize();
+        var serializedData = $form.serialize();
+        /*
         var myFormData = new FormData();
         myFormData.append('fid_old', $("#fid_old").val());
         myFormData.append('fimg_old', oldFImg);
@@ -186,20 +189,18 @@ $("#frmEditFlower").submit(function(event){
             var tempimg = $("#imgPreview img").attr('src');
             myFormData.append('tempimg', tempimg);
         }
-        // Let's disable the inputs for the duration of the Ajax request.
-        // Note: we disable elements AFTER the form data has been serialized.
-        // Disabled form elements will not be serialized.
+        */
+
         $inputs.prop("disabled", true);
 
         // Fire off the request to /form.php
         request = $.ajax({
             url: "process.php",
             type: "post",
-            data: myFormData,
-            processData: false,
-            contentType: false
+            data: serializedData
+            //processData: false,
+            //contentType: false
         });
-
         // Callback handler that will be called on success
         request.done(function (response, textStatus, jqXHR){
             // Log a message to the console
@@ -209,7 +210,7 @@ $("#frmEditFlower").submit(function(event){
                 $("#txtResult").html("<h2>Chỉnh sửa thành công!</h2>");
                 $('#result').modal('show');
                 window.setTimeout(closeModal, 1500);
-                window.setTimeout(reloadPage,500);
+                //window.setTimeout(reloadPage,500);
             }else{
                 //$("#txtResult").addClass("text-success");
                 $("#txtResult").html(response);
