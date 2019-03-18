@@ -62,15 +62,16 @@ session_start();
             //-----------------------------------------------------------------------------
             // Hình mẫu
             // Đặt max-width để đừng bị tràn màn hình khi hình quá lớn
-            echo "<td style='max-width:25vh'>";
+            echo "<td style='max-width:15vw'>";
             // Đặt đường dẫn để bấm vào hình thì đưa ra trang quản lý hình ảnh của bó hoa đó
             echo "<a href='#!bouquet/img/".$b["b_ID"]."'>";
             // Tìm trong dữ liệu hình coi có file *_PV (hình mẫu preview) chưa. 
             foreach ($imgdata as $key2 => $img) {
                 // File preview luôn mặc định là: [mã bó hoa]_PV
-                $bimgpv = $b['b_ID']."_PV";
+                //$bimgpv = $b['b_ID']."_00";
                 // Nếu tìm thấy ID hình nào của bó hoa này có định dạng *_PV thì đưa ra
                 if ($img['b_ID']==$b["b_ID"]) {
+                    // Vì đã sắp xếp theo b_img_ID nên ngay từ dòng đầu tiên tìm gặp thì gán luôn
                     $bimg = $img['b_img'];
                     // có rồi thì break vòng lặp
                     break;

@@ -25,7 +25,7 @@ echo '<div class="mb-2 col-2" name="imgshow">
 // Đường dẫn root chứa folder img
 $root_dir = "../";
 $temp_dir = "tmp/";
-// Khởi tạo file name
+// Khởi tạo file name và đường dẫn để lưu vào database
 if ($type=="bouquetadd" || $type=="bouquetimgadd") {
     if ($bid<=9) {
         $filename=$id."_0".$bid.".".$imgext;
@@ -34,13 +34,25 @@ if ($type=="bouquetadd" || $type=="bouquetimgadd") {
         $filename=$id."_".$bid.".".$imgext;
         $bimgid = $id."_".$bid;
     }
+    $target_dir= "img/Bouquet/$id/$filename";
 }elseif($type=="bouquetimgedit"){
     $bimgid = $_POST["bimgid"];
     $filename = $bimgid.".".$imgext;
+    $target_dir= "img/Bouquet/$id/$filename";
+}elseif($type=="flowercateadd"){
+    if ($id=="") {
+        $id = date("dmyHis");
+    }
+    $filename = $id.".".$imgext;
+    $target_dir= "img/Category/$id/$filename";
+}elseif($type=="flowercateedit"){
+    if ($id=="") {
+        $id = date("dmyHis");
+    }
+    $filename = $id.".".$imgext;
+    $target_dir= "img/Category/$id/$filename";
 }
 
-// Đường dẫn từ root đến file (cái sẽ lưu vào database)
-$target_dir= "img/Bouquet/$id/$filename";
 
 
 
@@ -82,7 +94,7 @@ if ($uploadOk == 0) {
     // Chuyển file từ folder tạm của server sang folder tạm của admin
     if (move_uploaded_file($file["tmp_name"], $tmp_dir)) {
         if ($type== "bouquetadd") {
-            echo '<div class="mb-2 col-2" name="imgshow">
+            echo '<div class="mb-2 col-2" name="imgshow[]">
                 <div class="card border-primary border-shop">
                     <img class="card-img-top custom" src="'.$tmp_dir.'?'.date("dmyHis").'" 
                         style="width: 100%;height: 5rem;object-fit: cover;">
@@ -113,8 +125,29 @@ if ($uploadOk == 0) {
             }
             echo '</div>
             </div>';
+        }else if($type=="flowercateadd"){
+            echo '<div class="mb-2 col-12" name="imgshow">
+                <div class="card border-primary border-shop">
+                    <img class="card-img-top custom" src="'.$tmp_dir.'?'.date("dmyHis").'" 
+                        style="width: 100%;height: 15rem;object-fit: cover;">
+                    <small id="imgfilename" class="card-title text-center">'.$filename.'</small>
+                    <input type="hidden" id="imgext" value="'.$imgext.'"> 
+                    <input type="hidden" id="addfcateimg" name="addfcateimg" value="'.$target_dir.'"> 
+                    <input type="hidden" name="addfcatetmpimg" value="'.$tmp_dir.'">
+                </div>
+            </div>';
+        }else if ($type=="flowercateedit") {
+            echo '<div class="mb-2 col-12" id="imgshow">
+                <div class="card border-primary border-shop">
+                    <img class="card-img-top custom" src="'.$tmp_dir.'?'.date("dmyHis").'" 
+                        style="width: 100%;height: 15rem;object-fit: cover;">
+                    <small id="imgfilename" class="card-title text-center">'.$filename.'</small>
+                    <input type="hidden" id="imgext" value="'.$imgext.'"> 
+                    <input type="hidden" id="editfcateimg" name="editfcateimg" value="'.$target_dir.'"> 
+                    <input type="hidden" name="editfcatetmpimg" value="'.$tmp_dir.'">
+                </div>
+            </div>';
         }
-        
     } else {
         echo "Có vấn đề khi tải lên!";
     }

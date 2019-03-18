@@ -17,10 +17,10 @@
         }
         $cid= "KH$sufid";
         echo "Số ID của khách mới: $cid<br>";
-        insertSql("insert into customer values('$cid','000$numid','Khách hàng $numid','Địa chỉ $numid','Email $numid')");
+        insertSql("insert into customer values(null,'000$numid','Khách hàng $numid','Địa chỉ $numid','Email $numid')");
     }else{
         echo "Chưa có dữ liệu khách hàng....Thêm mới...<br>";
-        insertSql("insert into customer values('KH000','0000','Khách hàng 0','Địa chỉ 0','Email 0')");
+        insertSql("insert into customer values(null,'0000','Khách hàng 0','Địa chỉ 0','Email 0')");
         echo "Số ID của khách mới: KH000<br>";
         $cid= "KH000";
     }
