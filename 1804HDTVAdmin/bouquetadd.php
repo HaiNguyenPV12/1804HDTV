@@ -1,56 +1,76 @@
 <!-- Trang thêm bó hoa mới -->
 
 <!-- Script tùy chỉnh của trang bouquetadd, trái tim của trang này -->
-<script src="../Scripts/1804HDTVAdmin/bouquetadd.js"></script> 
+<script src="../Scripts/1804HDTVAdmin/bouquetadd.js"></script>
 
 <!-- Form -->
 <form id="frmAddBouquet" name="frmAddBouquet" class="" method="post">
     <!-- Vì submit dùng kỹ thuật ajax nên tạo thêm cái này để bên trang xử lý nhận biết -->
     <input type="hidden" name="cmdAddBouquet">
 
-    <!-- ID bó hoa -->
+    <!-- Tên bó hoa và ID -->
     <div class="form-inline">
-        <label class="mr-sm-2 col-2">Mã bó hoa:</label>
-        <input type="text" readonly class="form-control mb-2 mr-sm-2 col-9" name="bid" id="bid" autocomplete="off">
-    </div>
-
-    <!-- Tên bó hoa -->
-    <div class="form-inline">
-        <label class="mr-sm-2 col-2">Tên bó hoa:</label>
-        <input type="text" autofocus required class="form-control mb-2 mr-sm-2 col-9" name="bname" id="bname"
+        <label class="mb-2 mr-sm-2 col-2" for="addbname"><span class="text-right">Tên bó hoa:</span></label>
+        <input type="text" readonly class="form-control mb-2 col-2" name="addbid" id="addbid" tabindex="-1">
+        <input type="text" autofocus required class="form-control mb-2 mr-sm-2 col-6" name="addbname" id="addbname"
             autocomplete="off">
+
     </div>
 
     <!-- Giá -->
     <div class="form-inline">
-        <label class="mr-sm-2 col-2">Giá:</label>
-        <input type="number" required class="form-control mb-2 mr-sm-2 col-8" name="bprice" id="bprice"
-            autocomplete="off" min=0>
-        VND
+        <label class="mb-2 mr-sm-2 col-2" for="addbprice">Giá:</label>
+        <input type="number" required class="form-control mb-2 mr-sm-2 col-8" name="addbprice" id="addbprice"
+            autocomplete="off" min=0 step="500" value="0" max="100000000">
+        <label class="mb-2 mr-sm-2 col-1">VND</label>
+
+    </div>
+
+    <!-- Hình -->
+    <div class="form-inline">
+        <label class="mr-sm-2 mb-2 col-2">Hình:</label>
+        <div class="custom-file mb-2 mr-sm-2 col-9">
+            <input type="file" class="custom-file-input " name="addimgfile" id="addimgfile" accept=".jpeg,.jpg,.png"
+                multiple="multiple">
+            <label class="custom-file-label" for="addimgfile" id="addimgfiletext">Chọn file</label>
+        </div>
+    </div>
+    <div class="form-inline">
+        <label class="mr-sm-2 mb-2 col-2"></label>
+        <small class="text-muted mr-sm-2 mb-2 col-9">Tối đa 5 hình. Có thể chọn nhiều hình cùng lúc. Bấm vào hình để loại bỏ hình đó.</small>
+    </div>
+
+    <div class="form-inline">
+        <label class="mr-sm-2 mb-2 col-2"></label>
+        <div class="row col-10" id="addimgPreview">
+
+        </div>
     </div>
 
     <!-- Chi tiết -->
     <div class="form-inline">
-        <label class="mr-sm-2 col-2">Chi tiết:</label>
-        <input type="text" required class="form-control mb-2 mr-sm-2 col-9" name="bdetail" id="bdetail"
-            autocomplete="off">
+        <label class="mb-2 mr-sm-2 col-2" for="bdetail">Chi tiết:</label>
+        <textarea class="form-control mb-2 mr-sm-2 col-9" name="addbdetail" id="addbdetail" cols="30" rows="3" required
+            style="resize: none;"></textarea>
     </div>
 
     <!-- Đang bán -->
     <div class="form-inline">
-        <label class="mr-sm-2 col-2"></label>
+        <label class="mr-sm-2 col-2 mb-2" for="addbselling">Trạng thái:</label>
         <label class="mr-sm-2 mb-2">
-            <input type="checkbox" class="form-check-input" name="bselling" id="bselling" checked><span>Đang bán</span>
+            <input type="checkbox" class="form-check-input" name="addbselling" id="addbselling" checked><span>Đang bán</span>
         </label>
     </div>
 
     <div class="form-inline">
         <label class="mr-sm-2 col-2"></label>
         <!-- Nút hoàn tất -->
-        <button type="submit" class="btn btn-primary mb-2 col-2 btn-shop" id="cmdAddBouquet" name="cmdAddBouquet">Hoàn tất</button>
+        <button type="submit" class="btn btn-primary mb-2 col-2 btn-shop" id="cmdAddBouquet" name="cmdAddBouquet">Hoàn
+            tất</button>
         <div class="mr-sm-2"></div>
         <!-- Nút reset -->
-        <button type="button" class="btn mb-2 btn-warning col-2" name="cmdResetBouquet" id="cmdResetBouquet">Làm lại</button>
+        <button type="button" class="btn mb-2 btn-warning col-2" name="cmdResetAddBouquet" id="cmdResetAddBouquet">Làm
+            lại</button>
     </div>
 </form>
 

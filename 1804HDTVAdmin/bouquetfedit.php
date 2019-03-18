@@ -19,7 +19,7 @@
 <form id="frmEditFBouquet" name="frmEditFBouquet">
     <!-- Vì dùng kỹ thuật ajax để chuyển dữ liệu qua form xử lý nên tạo cái này để nhận biết -->
     <input type="hidden" name="cmdEditFBouquet">
-    <input type="hidden" name="bid" value="<?php echo $bid ?>">
+    <input type="hidden" name="bfeditbid" value="<?php echo $bid ?>">
 
     <!-- Tạo danh sách chọn hoa và nút để thêm vào -->
     <div class="form-inline">

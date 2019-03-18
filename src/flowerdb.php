@@ -26,8 +26,8 @@ function getSql($sql)
     include "fconnectadmin.php";
     $result = $cn->query($sql);
     if (!$result) {
-        echo "Lỗi câu lệnh: " . $cn->error;
-        exit;
+        echo $cn->error;
+        //exit;
     }
     while ($row = $result->fetch_assoc()) {
         $rows[] = $row;
@@ -48,7 +48,7 @@ function insertSql($sql)
     $cn->query($sql);
 
     if ($cn->affected_rows <= 0) {
-        echo "Lỗi câu lệnh: " . $cn->error;
+        echo $cn->error;
         $cn->close();
         return false;
     }
@@ -76,11 +76,11 @@ function deleteSql($sql)
 {
     include "fconnectadmin.php";
     $cn->query($sql);
-
     if ($cn->affected_rows <= 0) {
-        echo "Lỗi câu lệnh: " . $cn->error;
+        echo $cn->error;
         $cn->close();
         return false;
+        exit;
     }
     $cn->close();
     return true;

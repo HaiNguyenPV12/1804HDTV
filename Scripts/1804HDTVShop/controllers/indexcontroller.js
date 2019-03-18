@@ -35,5 +35,8 @@ app.config(['$routeProvider', function ($routeProvider) {
             },
             controller: 'browsecontroller'
         })
+        .when('/flowercate', {
+            templateUrl: "flowercate.php"
+        })
         .otherwise({ redirectTo: '/' });
 }]);
