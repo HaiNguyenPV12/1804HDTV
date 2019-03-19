@@ -1,4 +1,5 @@
 <html>
+<script src="../Scripts/1804HDTVAdmin/occasion.js"></script>
 <?php
 session_start();
 if (!in_array("Q04", $_SESSION["sRight"], true) && !in_array("Q00", $_SESSION["sRight"], true)) {
@@ -11,14 +12,20 @@ if (!in_array("Q04", $_SESSION["sRight"], true) && !in_array("Q00", $_SESSION["s
 img {
     max-width: 20vh;
 }
+
+.btn a,
+.btn-danger a,
+.btn-sm a {
+    text-decoration: none;
+    color: inherit;
+}
 </style>
 
 <body>
     <div class='row'>
         <h2 class="col-9">Quản lý Dịp</h2>
-        <button type="button" class="btn btn-success btn-lg col-2 ml-5 btn-shop" data-toggle="modal"
-            data-target="#modal" ng-click="temp.url = 'occasionadd.php';modalHText='Thêm Dịp mới';">
-            Thêm Dịp mới
+        <button type="button" class="btn btn-success btn-lg col-2 btn-shop">
+            <a href="#!occasionadd">Thêm mới</a>
         </button>
     </div>
 
@@ -28,7 +35,6 @@ include '../src/flowerdb.php';
 $data = getSql("SELECT * FROM occasion");
 $ocdata = getSql("SELECT occa_ID,bouquet.b_ID, b_name FROM occasion_detail,bouquet WHERE occasion_detail.b_ID = bouquet.b_ID");
 $num = sizeof($data);
-$n = 0;
 if ($num <= 0) {
     echo "Chưa có dữ liệu dịp";
 } else {
@@ -60,19 +66,18 @@ if ($num <= 0) {
         }
         echo "</td>";
 
-        echo '
+        echo "
         <td>
-            <button class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'occasionedit.php?oid=', $oc["occa_ID"], '\';modalHText=\'Chỉnh sửa\';">
-                Sửa
+            <button class='btn btn-info btn-sm text-light btn-shop'>
+                <a href='#!occasion/edit/" . $oc["occa_ID"] . "'>Sửa</a>
             </button>
-        </td>';
-        echo '
+        </td>";
+        echo "
         <td>
-            <button class="btn btn-danger btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'occasiondel.php?oid=', $oc["occa_ID"], '\';modalHText=\'Xóa\';">
-                Xóa
+            <button class='btn btn-danger btn-sm text-light' id='btnOccaDelete'>
+                <a onclick=\"javascript: return confirm('Delete this record?');\" href='#!occasion/delete/" . $oc["occa_ID"] . "'>Xóa</a>
             </button>
-        </td>';
-        $n++;
+        </td>";
     }
     echo "</tr>";
     echo "</table>";

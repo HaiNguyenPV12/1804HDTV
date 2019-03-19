@@ -90,6 +90,9 @@ while ($row = mysqli_fetch_assoc($rs)) {
                 <a class="nav-link" href="#">Tài Khoản</a>
             </li> -->
             <li class="nav-item">
+                <a class="nav-link" href="#">Thành Viên</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="#">Giỏ Hàng</a>
             </li>
         </ul>

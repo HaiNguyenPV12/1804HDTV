@@ -113,6 +113,17 @@ app.config(function ($routeProvider) {
         .when("/occasion", {
             templateUrl: "occasion.php"
         })
+        .when("/occasion/edit/:id", {
+            cache: false,
+            templateUrl: function (params) {
+                return 'occasionedit.php?id=' + params.id;
+            },
+        })
+        .when("/occasion/delete/:bid", {
+            templateUrl: function (params) {
+                return 'occasiondelete.php?bid=' + params.bid;
+            },
+        })
         .when("/redirect/:page", {
             templateUrl: function (params) { // <-- 
                 return 'redirect.php?' + params.page + "=''";
