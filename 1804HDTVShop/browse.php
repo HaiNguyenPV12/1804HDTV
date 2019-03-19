@@ -46,19 +46,31 @@ while ($row = mysqli_fetch_assoc($rs)) {
 }
 ?>
                     </select>
+                    <!-- flower name dropdown -->
+                    <select class="form-control mr-3" name="fnameFilter" id="fnameFilter">
+                        <option value="*">-- Hoa có trong bó --</option>
+                        <?php
+$sqlFilterCol = "SELECT distinct f_name from v_bouq_gen where f_name is not null";
+$rs = mysqli_query($cn, $sqlFilterCol);
+while ($row = mysqli_fetch_assoc($rs)) {
+    echo "<option value=\"" . $row['f_name'] . "\">" . $row['f_name'] . "</option>";
+}
+?>
+                    </select>
                     <button class="btn btn-shop" name="btnFilterGen" id="btnFilterGen">
-                        <a id="filterGenLink" href='#!browse.php/filter/*/*/*'>
+                        <a id="filterGenLink" href='#!browse.php/filter/*/*/*/*'>
                             Lọc kết quả
                         </a>
                     </button>
-                    <button class="btn btn-shop ml-1" name="btnSwitch" id="btnSwtich">
+                    <!-- advanced form button -->
+                    <!-- <button class="btn btn-shop ml-1" name="btnSwitch" id="btnSwtich">
                         Tìm Kiếm Nâng Cao
-                    </button>
+                    </button> -->
                 </form>
             </div>
             <!-- Advanced form -->
             <!-- start of advanced form -->
-            <div class="row" name="filterAdv" id="filterAdv" style="display: none;">
+            <!-- <div class="row" name="filterAdv" id="filterAdv" style="display: none;">
                 <form class="form-inline col-12" action="" method="get">
                     <label class="col-2" for="">
                         Lọc theo:
@@ -77,33 +89,33 @@ while ($row = mysqli_fetch_assoc($rs)) {
                     <div class="row col-12">
                         <div class="col-3"></div>
                         <!-- occasion list -->
-                        <div class="col-3">
+                        <!-- <div class="col-3"> -->
                             <!-- <input class="form-check-input" type="checkbox" value="" name="occa_list[]">Option 1 <br> -->
                             <?php
-$rs = mysqli_query($cn, $sqlFilterOcca);
-while ($row = mysqli_fetch_assoc($rs)) {
-    echo "<input class=\"form-check-input\" type=\"checkbox\" value=\"" . $row['occa_name'] . "\" name=\"occa_list[]\">" . $row['occa_name'] . " <br>";
-}
+// $rs = mysqli_query($cn, $sqlFilterOcca);
+// while ($row = mysqli_fetch_assoc($rs)) {
+//     echo "<input class=\"form-check-input\" type=\"checkbox\" value=\"" . $row['occa_name'] . "\" name=\"occa_list[]\">" . $row['occa_name'] . " <br>";
+// }
 ?>
-                        </div>
+                        <!-- </div> -->
                         <!-- category list -->
-                        <div class="col-3">
+                        <!-- <div class="col-3"> -->
                             <?php
-$rs = mysqli_query($cn, $sqlFilterCate);
-while ($row = mysqli_fetch_assoc($rs)) {
-    echo "<input class=\"form-check-input\" type=\"checkbox\" value=\"" . $row['f_cate_name'] . "\" name=\"cate_list[]\">" . $row['f_cate_name'] . " <br>";
-}
+// $rs = mysqli_query($cn, $sqlFilterCate);
+// while ($row = mysqli_fetch_assoc($rs)) {
+//     echo "<input class=\"form-check-input\" type=\"checkbox\" value=\"" . $row['f_cate_name'] . "\" name=\"cate_list[]\">" . $row['f_cate_name'] . " <br>";
+// }
 ?>
-                        </div>
+                        <!-- </div> -->
                         <!-- color list -->
-                        <div class="col-3">
+                        <!-- <div class="col-3"> -->
                             <?php
-$rs = mysqli_query($cn, $sqlFilterCol);
-while ($row = mysqli_fetch_assoc($rs)) {
-    echo "<input class=\"form-check-input\" type=\"checkbox\" value=\"" . $row['f_color_name'] . "\" name=\"col_list[]\">" . $row['f_color_name'] . " <br>";
-}
+// $rs = mysqli_query($cn, $sqlFilterCol);
+// while ($row = mysqli_fetch_assoc($rs)) {
+//     echo "<input class=\"form-check-input\" type=\"checkbox\" value=\"" . $row['f_color_name'] . "\" name=\"col_list[]\">" . $row['f_color_name'] . " <br>";
+// }
 ?>
-                        </div>
+                        <!-- </div>
                     </div>
                     <div class="col-12">
                         <div class="col-4 mx-auto">
@@ -116,7 +128,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
                         </div>
                     </div>
                 </form>
-            </div>
+            </div> -->
             <!-- end of advanced form -->
         </div>
         <!-- end of filter -->
@@ -166,11 +178,26 @@ if (isset($_GET["occa"]) && !empty($_GET["occa"])) {
         $set = true;
     }
 }
-if ($set == true) {
-    $sql .= " and b_img like '%_00.jpg%' ORDER BY b_name asc";
-} else {
-    $sql .= " where b_img like '%_00.jpg%' ORDER BY b_name asc";
+if (isset($_GET["fname"]) && !empty($_GET["fname"])) {
+    global $sql, $set;
+    $fname = $_GET["fname"];
+    if ($fname == "*" && $set == false) {
+        $sql .= " where f_name like '%%'";
+    } else if ($fname == "*" && $set == true) {
+        $sql .= " and f_name like '%%'";
+    } else if ($set == true) {
+        $sql .= " and f_name = '$fname'";
+    } else {
+        $sql .= " where f_name = '$fname'";
+        $set = true;
+    }
 }
+if ($set == true) {
+    $sql .= " and b_selling = 1 and b_img like '%_00.jpg%' ORDER BY b_name asc";
+} else {
+    $sql .= " where b_img like '%_00.jpg%' and b_selling = 1 ORDER BY b_name asc";
+}
+echo $sql;
 ?>
         <div class="row mt-3">
 

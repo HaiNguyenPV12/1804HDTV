@@ -69,7 +69,11 @@ if ($num <= 0) {
         echo "
         <td>
             <button class='btn btn-info btn-sm text-light btn-shop'>
-                <a href='#!occasion/edit/" . $oc["occa_ID"] . "'>Sửa</a>
+                <a href='#!occasion/edit/" . $oc["occa_ID"] . "'>Sửa</a> <br>
+            </button>
+            <div class='py-1'></div>
+            <button class='btn btn-info btn-sm text-light btn-shop'>
+                <a href='#!occasion/img/" . $oc["occa_ID"] . "'>Upload Hình</a>
             </button>
         </td>";
         echo "

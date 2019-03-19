@@ -18,14 +18,15 @@ app.controller('browsecontroller', function ($scope, $location, $anchorScroll, $
     });
 
     //basic form values
-    var occaFilter = document.getElementById("occaFilter");
     var cateFilter = document.getElementById("cateFilter");
     var colFilter = document.getElementById("colFilter");
+    var occaFilter = document.getElementById("occaFilter");
+    var fnameFilter = document.getElementById("fnameFilter");
     // console.log(occaFilter.value);
     //change link on form change
     $('#filterGen').change(function (e) {
         e.preventDefault();
-        $('#filterGenLink').attr('href', '#!browse.php/filter/' + cateFilter.value + '/' + colFilter.value + '/' + occaFilter.value);
+        $('#filterGenLink').attr('href', '#!browse.php/filter/' + cateFilter.value + '/' + colFilter.value + '/' + occaFilter.value + '/'  + fnameFilter.value);
     });
 
 });

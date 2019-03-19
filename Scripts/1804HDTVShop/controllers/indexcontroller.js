@@ -34,9 +34,9 @@ app.config(['$routeProvider', function ($routeProvider) {
             controller: 'browsecontroller'
         })
         //FilterGen
-        .when('/browse.php/filter/:cate/:col/:occa', {
+        .when('/browse.php/filter/:cate/:col/:occa/:fname', {
             templateUrl: function (params) {
-                return "browse.php?cate=" + params.cate + "&col=" + params.col + "&occa=" + params.occa;
+                return "browse.php?cate=" + params.cate + "&col=" + params.col + "&occa=" + params.occa + "&fname=" + params.fname;
             },
             controller: 'browsecontroller'
         })

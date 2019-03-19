@@ -119,6 +119,11 @@ app.config(function ($routeProvider) {
                 return 'occasionedit.php?id=' + params.id;
             },
         })
+        .when("/occasion/img/:bid", {
+            templateUrl: function (params) {
+                return 'occasionimg.php?bid=' + params.bid;
+            },
+        })
         .when("/occasion/delete/:bid", {
             templateUrl: function (params) {
                 return 'occasiondelete.php?bid=' + params.bid;
