@@ -54,7 +54,8 @@
     
     <div class="form-inline">
         <label class="mr-sm-2 col-2" for="editfdetail">Chi tiết:</label>
-        <input type="text" required class="form-control mb-2 mr-sm-2 col-9" name="editfdetail" id="editfdetail" autocomplete="off" value="<?php echo $data['f_detail']?>">
+        <textarea class="form-control mb-2 mr-sm-2 col-9" name="editfdetail" id="editfdetail" cols="30" rows="3" required
+            style="resize: none;"><?php echo $data['f_detail']?></textarea>
     </div>
 
     <div class="form-inline">

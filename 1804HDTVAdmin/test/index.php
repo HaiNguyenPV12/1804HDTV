@@ -11,6 +11,7 @@ a:visited{
     <ul>
         <li><a href="addcustomer.php">Thêm khách hàng mới</a></li>
         <li><a href="addorder.php">Tạo hóa đơn</a></li>
+        <li><a href="cart.php">Xem giỏ hàng</a></li>
     </ul>
 
     <?php

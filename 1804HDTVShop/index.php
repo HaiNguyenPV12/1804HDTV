@@ -43,8 +43,8 @@ session_start();
 $sql = "SELECT * from flower_cate order by f_cate_name asc";
 $rs = mysqli_query($cn, $sql);
 while ($row = mysqli_fetch_assoc($rs)) {
-    $cate = $row['f_cate_name'];
-    echo "<a class=\"dropdown-item\" href=\"#!browse.php/cate/" . $cate . "\">" . $row['f_cate_name'] . "</a>";
+    $cate = $row['f_cate_ID'];
+    echo "<a class=\"dropdown-item\" href=\"#!flowercate/" . $cate . "\">" . $row['f_cate_name'] . "</a>";
 }
 ?>
                     <hr class="dropdown-divider">
@@ -158,6 +158,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
     <script src="../Scripts/1804HDTVShop/Controllers/homecontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/Controllers/browsecontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/Controllers/productcontroller.js"></script>
+    <script src="../Scripts/1804HDTVShop/Controllers/flowercatecontroller.js"></script>
+    <script src="../Scripts/1804HDTVShop/Controllers/flowercontroller.js"></script>
 </body>
 
 </html>

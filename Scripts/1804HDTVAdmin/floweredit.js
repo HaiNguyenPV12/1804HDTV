@@ -1,7 +1,7 @@
 var oldFID = $("#editfid").val();
 var oldFName = $("#editfname").val();
 var oldFCate = $("#editfcate option:selected").val();
-var oldFDetail = $("#editfdetail").val();
+var oldFDetail = $("#editfdetail").html();
 var oldFImg = $("#editfimg").val();
 var oldFImgView = $("#editimgPreview").html();
 

@@ -1,37 +1,19 @@
-app.controller('productcontroller', function ($scope, $location, $anchorScroll, $timeout) {
+app.controller('flowercontroller', function ($scope, $location, $anchorScroll, $timeout) {
     document.title = '1804HDTV Shop';
-
+    //scroll to top on load
     $('html,body').animate({ scrollTop: 0 }, 100); //miliseconds
-
-    $(".thumbnail").on("click", function() {
-        if (!$(this).hasClass("selected")) {
-            var clicked = $(this);
-            var newSelection = clicked.data('big');
-            var $img = $('.primary').css("background-image", "url(" + newSelection + ")");
-            clicked.parent().find('.thumbnail').removeClass('selected');
-            clicked.addClass('selected');
-            $('.primary').empty().append($img.hide().fadeIn('fast'));
-        }
-    });
-
-    $('#modal').on('hidden.bs.modal', function (e) {
-        
-    });
 
     function closeModal(){
         $('#result').modal('hide');
     }
 
-    //=========================== Xử lý submit dữ liệu =================================//
-    //var request;
-    //Nếu form submit
-    $('#cmdAddToCart').click(function(){
+    $('[name=cmdAddToCart]').click(function(){
         // Ngừng submit mặc định (tránh việc load lại trang trước khi thực hiện các lệnh khác)
         //event.preventDefault();
         var myFormData = new FormData();
         myFormData.append('add', "");
-        myFormData.append('bid', $("#bid").val());
-        myFormData.append('quan', $("#quantity").val());
+        myFormData.append('bid', $(this).find("#bid").val());
+        myFormData.append('quan', 1);
         // Bắt đầu đưa dữ liệu qua trang xử lý
         request = $.ajax({
             url: "cart_process.php",
@@ -73,6 +55,5 @@ app.controller('productcontroller', function ($scope, $location, $anchorScroll, 
             //$inputs.prop("disabled", false);
         });
     });
-
-
+    
 });
