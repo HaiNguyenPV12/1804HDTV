@@ -95,7 +95,7 @@ include "../src/flowerdb.php";
                         <a href="#!product/'.$bdata["b_ID"].'"><img class="card-img-top custom" src="'.$bimgurl.'" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title text-center">
-                                <a href="#!product/'.$bdata["f_ID"].'" >'.$bdata["b_name"].'</a>
+                                <a href="#!product/'.$bdata["b_ID"].'" >'.$bdata["b_name"].'</a>
                             </h4>
                         </div>
                         <a href="#!product/'.$bdata["b_ID"].'" class="btn card-footer btn-shop" style="border-radius:0px;border-bottom:2px solid #9f7fc3">
