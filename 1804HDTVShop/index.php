@@ -43,8 +43,8 @@ session_start();
 $sql = "SELECT * from flower_cate order by f_cate_name asc";
 $rs = mysqli_query($cn, $sql);
 while ($row = mysqli_fetch_assoc($rs)) {
-    $cate = $row['f_cate_name'];
-    echo "<a class=\"dropdown-item\" href=\"#!browse.php/cate/" . $cate . "\">" . $row['f_cate_name'] . "</a>";
+    $cate = $row['f_cate_ID'];
+    echo "<a class=\"dropdown-item\" href=\"#!flowercate/" . $cate . "\">" . $row['f_cate_name'] . "</a>";
 }
 ?>
                     <hr class="dropdown-divider">

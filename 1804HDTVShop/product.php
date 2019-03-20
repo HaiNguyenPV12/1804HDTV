@@ -1,4 +1,4 @@
-<br>
+
 <?php
     include "../src/flowerdb.php";
     if (isset($_GET["bid"]) && $_GET["bid"]!="") {
@@ -62,7 +62,7 @@
 }
 </style>
 
-<div class="container col-10">
+<div class="container col-10 mt-3 mb-3">
     <!-- Mini navbar -->
     <div class="row">
         <div class="col">
@@ -316,4 +316,3 @@
     </div>
 </div>
 
-<br>

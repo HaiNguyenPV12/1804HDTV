@@ -8,15 +8,36 @@ include "../src/flowerdb.php";
 }
 .card-img-top{
     width: 100%;
-    height: 12rem;
+    height: 250px;
     object-fit: cover;
 }
 .text-shop a{
     color: #7c43bd;
 }
+.card-caption{
+    position:absolute;
+    top:200px;
+    width:100%;
+    height:50px;
+    background-color:rgba(220,220,220,0.7);
+    padding-top:5px;
+    font-size:23px;
+    font-weight:400;
+}
+.card-caption a{
+    color:#6d24c0;
+}
+.card{
+    transition: 0.3s;
+    transition-timing-function: ease;
+}
+.card:hover{
+    margin-top:-10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
+}
 </style>
 
-<div class="container col-10 mt-3 mb-3">
+<div class="container col-11 mt-3 mb-3">
     <?php
         $sitedir = "../";
         if (isset($_GET["fid"])) {
@@ -76,7 +97,7 @@ include "../src/flowerdb.php";
         $bouquet = getSql("SELECT * FROM bouquet, bouq_detail, flower WHERE bouquet.b_ID = bouq_detail.b_ID AND flower.f_ID = bouq_detail.f_ID and flower.f_ID = '$fid'");
         echo '<div class="col-lg-10 row border bg-light">';
         if (sizeof($bouquet)<=0) {
-            die("Chưa có bó hoa nào có hoa này!");
+            die("<div class='container text-center mt-5'><h4>Chưa có bó hoa nào có hoa này!</h4></div>");
         }else{
             foreach ($bouquet as $key => $bdata) {
                 $bimg = getSql("SELECT * FROM bouq_img WHERE b_ID = '".$bdata["b_ID"]."' ORDER BY b_img_ID ASC");
@@ -93,10 +114,10 @@ include "../src/flowerdb.php";
                 echo '<div class="col-lg-3 col-md-5 mb-3 mt-3">
                     <div class="card h-80 border-primary border-shop">
                         <a href="#!product/'.$bdata["b_ID"].'"><img class="card-img-top custom" src="'.$bimgurl.'" alt=""></a>
-                        <div class="card-body">
-                            <h4 class="card-title text-center">
+                        <div class="text-center card-caption" style="">
+                            <div class="card-title text-center">
                                 <a href="#!product/'.$bdata["b_ID"].'" >'.$bdata["b_name"].'</a>
-                            </h4>
+                            </div>   
                         </div>
                         <a href="#!product/'.$bdata["b_ID"].'" class="btn card-footer btn-shop" style="border-radius:0px;border-bottom:2px solid #9f7fc3">
                             Xem chi tiết
