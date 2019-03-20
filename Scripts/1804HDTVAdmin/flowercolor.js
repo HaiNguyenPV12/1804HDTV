@@ -6,12 +6,12 @@ function closeModal(){
 
 // Reload để load lại dữ liệu từ sql
 function reloadPage(){   
-    location.reload(true);
+    //location.reload(true);
 }
 
 // Reset khi tắt modal
 $('#modal').on('hidden.bs.modal', function (e) {
-    reloadPage();
+    //reloadPage();
 });
 
 // Khi nhấn vào màu nào thì màu đó sẽ bị loại ra

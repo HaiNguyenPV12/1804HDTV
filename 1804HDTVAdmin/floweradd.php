@@ -41,7 +41,8 @@
     <!-- Chi tiết -->
     <div class="form-inline">
         <label class="mr-sm-2 col-2" for="addfdetail">Chi tiết:</label>
-        <input type="text" required class="form-control mb-2 mr-sm-2 col-9" name="addfdetail" id="addfdetail" autocomplete="off">
+        <textarea class="form-control mb-2 mr-sm-2 col-9" name="addfdetail" id="addfdetail" cols="30" rows="3" required
+            style="resize: none;"></textarea>
     </div>
     <!-- Đường dẫn hình -->
     <div class="form-inline">

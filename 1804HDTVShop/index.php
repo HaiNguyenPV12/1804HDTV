@@ -158,6 +158,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
     <script src="../Scripts/1804HDTVShop/Controllers/homecontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/Controllers/browsecontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/Controllers/productcontroller.js"></script>
+    <script src="../Scripts/1804HDTVShop/Controllers/flowercatecontroller.js"></script>
+    <script src="../Scripts/1804HDTVShop/Controllers/flowercontroller.js"></script>
 </body>
 
 </html>
