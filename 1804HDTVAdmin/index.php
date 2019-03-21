@@ -95,6 +95,7 @@ if (!isset($_SESSION["loggedin"])) {
                         }
                         if(in_array("Q00",$rightsdata,true)){
                             echo '<a href="#!role" class="list-group-item list-group-item-shop">Quản lý Chức Vụ</a>';
+                            echo '<a href="#!member" class="list-group-item list-group-item-shop">Quản lý Thành viên</a>';
                         }
                         if (in_array("Q06",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
                             echo '<a href="#!order" class="list-group-item list-group-item-shop">Quản lý Đơn Hàng</a>';

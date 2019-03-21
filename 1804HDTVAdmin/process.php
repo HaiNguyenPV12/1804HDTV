@@ -148,13 +148,29 @@ if (isset($_POST['cmdAddFlower'])) {
         // Đầu tiên là xóa các quyền có trong chức vụ này trước
         if (sizeof(getSql("select * from right_detail where s_role_ID = '$roleid'"))>0) {
             deleteSql("DELETE FROM right_detail where s_role_ID = '$roleid'");
+            $delete = deleteSql("delete from staff_role where s_role_ID ='$roleid'");
+            echo "ok";
         }
         // Sau đó mới xóa chức vụ này
-        $delete = deleteSql("delete from staff_role where s_role_ID ='$roleid'");
-        echo "ok";
-    }else{
+        
+    else{
         echo "Không có id";
     }
+//xóa thành viên
+}else if (isset($_POST['cusid']))
+    {
+        $cusid = $_POST['cusid'];
+        include '../src/flowerdb.php';
+        if (sizeof(getSql("select * from member where cus_ID = '$cusid'"))>0) {
+            deleteSql("DELETE FROM member where cus_ID = '$cusid'");
+            echo "ok";
+        }   
+        else
+        {
+            echo "Không có id";
+        }
+    }
+
 // Trang chỉnh sửa hoa
 }else if (isset($_POST['cmdEditFlower'])) {
     if (isset($_POST['editfid_old']) && isset($_POST['editfid']) && isset($_POST['editfname']) && isset($_POST['editfcate']) && isset($_POST['editfimg']) && isset($_POST['editfdetail'])) {
@@ -499,6 +515,25 @@ if (isset($_POST['cmdAddFlower'])) {
             $update = updateSql("update staff_role set s_role_name = '$rolename', s_role_detail = '$roledetail' where s_role_ID = '$roleidold'");
             echo "ok";
         }
+    }else{
+        echo "not enough";
+    }
+}else if (isset($_POST['cmdEditMember'])) {
+    if (isset($_POST['memid_old']) && isset($_POST['cusID']) && isset($_POST['memID']) && isset($_POST['memName']) && isset($_POST['memEmail']) && isset($_POST['memPhone']) && isset($_POST['memAddress']) && isset($_POST['memUID'])&& isset($_POST['memUPW'])) {
+        include '../src/flowerdb.php';
+        $cusid = $_POST['cusID'];
+        $mID = $_POST['memID'];
+        $mName = $_POST['memName'];
+        $mPhone = $_POST['memPhone'];
+        $mEmail = $_POST['memEmail'];
+        $mAddress = $_POST['memAddress'];
+        $mUID = $_POST['memUID'];
+        $mUPW = $_POST['memUPW'];
+        
+        $update = updateSql("update member set mem_uID = '$mUID', mem_uPW = '$mUPW' where mem_ID = '$mID'");
+        $nupdate = updateSql("update customer set cus_phone = '$mPhone', cus_name = '$mName', cus_address = '$mAddress', cus_email = '$mEmail' where cus_ID = '$cusid'");
+        echo "ok";
+        
     }else{
         echo "not enough";
     }
