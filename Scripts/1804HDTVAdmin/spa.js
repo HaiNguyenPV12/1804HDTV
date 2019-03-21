@@ -130,6 +130,21 @@ app.config(function ($routeProvider) {
                 return 'occasionimg.php?bid=' + params.bid;
             },
         })
+        .when("/occasion/bouq/:occaID", {
+            templateUrl: function (params) {
+                return 'occasionbouq.php?occaID=' + params.occaID;
+            },
+        })
+        .when("/occasion/bouq/del/:bid/:occaID", {
+            templateUrl: function (params) {
+                return 'occasionbouqdel.php?bid=' + params.bid + '&occaID=' + params.occaID;
+            },
+        })
+        .when("/occasion/bouq/add/:bid/:occaID", {
+            templateUrl: function (params) {
+                return 'occasionbouqadd.php?bid=' + params.bid + '&occaID=' + params.occaID;;
+            },
+        })
         .when("/occasion/add", {
             templateUrl: function (params) {
                 return 'occasionadd.php';

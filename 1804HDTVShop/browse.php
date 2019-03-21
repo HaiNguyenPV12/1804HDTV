@@ -197,7 +197,7 @@ if ($set == true) {
 } else {
     $sql .= " where b_img like '%_00.jpg%' and b_selling = 1 ORDER BY b_name asc";
 }
-echo $sql;
+// echo $sql;
 ?>
         <div class="row mt-3">
 

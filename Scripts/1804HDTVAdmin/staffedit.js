@@ -49,61 +49,61 @@ $(document).ready(function () {
         //name
         if (inputVal[0] == "") {
             $('#staffName').after(
-                '<span> Vui lòng nhập ' + inputMessage[0] + '</span>');
+                '<span class="errorm"> Vui lòng nhập ' + inputMessage[0] + '</span>');
             error = error + 1;
         }
-        else if (!nameReg.test(name)) {
-            $('#staffName').after('<span>Chỉ chữ</span>');
+        else if (!nameReg.test(inputVal[0])) {
+            $('#staffName').after('<span class="errorm">Chỉ chữ</span>');
             error = error + 1;
         }
 
         //email
         if (inputVal[1] == "") {
-            $('#staffEmail').after('<span> Vui lòng nhập ' + inputMessage[1] + '</span>');
+            $('#staffEmail').after('<span class="errorm"> Vui lòng nhập ' + inputMessage[1] + '</span>');
             error = error + 1;
         }
-        else if (!emailReg.test(email)) {
-            $('#staffName').after('<span>Vui lòng nhập email đúng</span>');
+        else if (!emailReg.test(inputVal[1])) {
+            $('#staffName').after('<span class="errorm">Vui lòng nhập email đúng</span>');
             error = error + 1;
         }
 
         //username
         if (inputVal[2] == "") {
-            $('#staffUID').after('<span> Vui lòng nhập ' + inputMessage[2] + '</span>');
+            $('#staffUID').after('<span class="errorm"> Vui lòng nhập ' + inputMessage[2] + '</span>');
             error = error + 1;
         }
-        else if (!usernameReg.test(username)) {
-            $('#staffUID').after('<span>Chỉ chữ và số</span>');
+        else if (!usernameReg.test(inputVal[2])) {
+            $('#staffUID').after('<span class="errorm">Chỉ chữ và số</span>');
             error = error + 1;
         }
 
         //pwd
         if (inputVal[3] == "") {
-            $('#staffPW').after('<span> Vui lòng nhập ' + inputMessage[3] + '</span>');
+            $('#staffPW').after('<span class="errorm"> Vui lòng nhập ' + inputMessage[3] + '</span>');
             error = error + 1;
         }
-        else if (!usernameReg.test(pwd)) {
-            $('#staffPW').after('<span>Chỉ chữ và số</span>');
+        else if (!usernameReg.test(inputVal[3])) {
+            $('#staffPW').after('<span class="errorm">Chỉ chữ và số</span>');
             error = error + 1;
         }
 
         //phone
         if (inputVal[4] == "") {
-            $('#staffPhone').after('<span> Vui lòng nhập ' + inputMessage[4] + '</span>');
+            $('#staffPhone').after('<span class="errorm"> Vui lòng nhập ' + inputMessage[4] + '</span>');
             error = error + 1;
         }
         else if (!phoneReg.test(inputVal[4])) {
-            $('#staffPhone').after('<span>Chỉ số</span>');
+            $('#staffPhone').after('<span class="errorm">Chỉ số</span>');
             error = error + 1;
         }
 
         //address
         if (inputVal[5] == "") {
-            $('#staffAdd').after('<span> Vui lòng nhập ' + inputMessage[5] + '</span>');
+            $('#staffAdd').after('<span class="errorm"> Vui lòng nhập ' + inputMessage[5] + '</span>');
             error = error + 1;
         }
-        else if (!addressReg.test(address)) {
-            $('#staffAdd').after('<span>Vui lòng kiểm tra</span>');
+        else if (!addressReg.test(inputVal[5])) {
+            $('#staffAdd').after('<span class="errorm">Vui lòng kiểm tra</span>');
             error = error + 1;
         }
 
@@ -111,5 +111,10 @@ $(document).ready(function () {
             $('#btnStaffEditLink').click();
         }
         // $('#btnStaffEditLink').click();
+        $(".errorm").delay(1750)
+            .hide(500)
+            .queue(function () {
+                $(this).remove();
+            });
     });
 });

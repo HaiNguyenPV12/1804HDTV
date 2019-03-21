@@ -50,7 +50,7 @@ if ($num <= 0) {
         echo "<td>", $oc['occa_ID'], "</td>";
         echo "<td>", $oc['occa_name'], "</td>";
 
-        echo "<td><img src='../", $oc['occa_img'], "' style='max-width=20vw'></td>";
+        echo "<td><img src='../", $oc['occa_img'], "?" . date("dmyHis") . " style='max-width=20vw'></td>";
 
         echo "<td>";
         if ($oc['occa_fp'] == 0) {
@@ -74,6 +74,10 @@ if ($num <= 0) {
             <div class='py-1'></div>
             <button class='btn btn-info btn-sm text-light btn-shop'>
                 <a href='#!occasion/img/" . $oc["occa_ID"] . "'>Upload Hình</a>
+            </button>
+            <div class='py-1'></div>
+            <button class='btn btn-info btn-sm text-light btn-shop'>
+                <a href='#!occasion/bouq/" . $oc["occa_ID"] . "'>Bó</a>
             </button>
         </td>";
         echo "
