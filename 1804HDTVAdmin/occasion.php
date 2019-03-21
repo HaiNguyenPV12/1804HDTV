@@ -20,7 +20,7 @@
 <html>
 <script src="../Scripts/1804HDTVAdmin/occasion.js"></script>
 <?php
-if (!in_array("Q04", $_SESSION["sRight"], true) && !in_array("Q00", $_SESSION["sRight"], true)) {
+if (!in_array("Q01", $_SESSION["sRight"], true) && !in_array("Q00", $_SESSION["sRight"], true)) {
     echo "<h2>Bạn không có quyền truy cập vào trang này!<h2>";
     exit;
 }

@@ -1,6 +1,15 @@
 <?php
 include "../src/fconnectadmin.php";
+include "../src/flowerdb.php";
 session_start();
+$cusdata;
+if (isset($_SESSION['member'])) {
+    $loggedin = true;
+    $memID = $_SESSION['member'];
+    $cusdata = getSql("SELECT mem_uID from member where mem_ID = $memID");
+} else {
+    $loggedin = false;
+}
 ?>
 
 <!DOCTYPE html>
@@ -89,9 +98,32 @@ while ($row = mysqli_fetch_assoc($rs)) {
             <!-- <li class="nav-item">
                 <a class="nav-link" href="#">Tài Khoản</a>
             </li> -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="#">Thành Viên</a>
-            </li>
+            </li> -->
+            <?php
+            if ($loggedin) {
+                foreach ($cusdata as $key => $r) {
+                    $mID = $r['mem_uID'];
+                }
+                echo "
+                <li class='nav-item'>
+                    <a class='nav-link'>"
+                        .$mID
+                    ."</a>
+                </li>
+                <li class='nav-item'>
+                    <a class='nav-link' href='testlogout.php'>Đăng Xuất</a>
+                </li>
+                ";
+            } else {
+                echo "
+                <li class='nav-item'>
+                    <a class='nav-link' href='testsession.php'>Đăng Nhập</a>
+                </li>
+                ";
+            }
+            ?>
             <li class="nav-item">
                 <a class="nav-link" href="#">Giỏ Hàng</a>
             </li>
