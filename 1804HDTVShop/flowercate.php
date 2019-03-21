@@ -22,7 +22,7 @@
     top:200px;
     width:100%;
     height:50px;
-    background-color:rgba(220,220,220,0.7);
+    background-color:rgba(230,230,230,0.85);
     padding-top:5px;
     font-size:23px;
     font-weight:400;
@@ -70,7 +70,7 @@
                     echo '<h3 class="my-3 text-center">Các loại hoa</h3>
                         <h1 class="my-3 text-center">'.$f["f_cate_name"].'</h1>';
                     if (file_exists($sitedir.$f["f_cate_img"])) {
-                        $imgurl = $sitedir.$f["f_cate_img"];
+                        $imgurl = $sitedir.$f["f_cate_img"]."?".date("dmyHis");
                     }else{
                         $imgurl = $sitedir."img/undefined.jpg";
                     }
@@ -103,7 +103,7 @@
                     echo '<h3 class="my-3 text-center">Các loại hoa</h3>
                         <h1 class="my-3 text-center">'.$flowerdata[0]["f_cate_name"].'</h1>';
                     if (file_exists($sitedir.$flowerdata[0]["f_cate_img"])) {
-                        $imgurl = $sitedir.$flowerdata[0]["f_cate_img"];
+                        $imgurl = $sitedir.$flowerdata[0]["f_cate_img"]."?".date("dmyHis");
                     }else{
                         $imgurl = $sitedir."img/undefined.jpg";
                     }
@@ -117,7 +117,7 @@
                         $bexisted = getSql("SELECT * FROM bouq_detail WHERE f_ID = '".$fdata['f_ID']."'");
                         if (sizeof($bexisted)>0) {
                             if (file_exists($sitedir.$fdata["f_img"])) {
-                                $fimgurl = $sitedir.$fdata["f_img"];
+                                $fimgurl = $sitedir.$fdata["f_img"]."?".date("dmyHis");
                             }else{
                                 $fimgurl = $sitedir."img/undefined.jpg";
                             }
@@ -142,7 +142,7 @@
                         $bexisted = getSql("SELECT * FROM bouq_detail WHERE f_ID = '".$fdata['f_ID']."'");
                         if (sizeof($bexisted)<=0) {
                             if (file_exists($sitedir.$fdata["f_img"])) {
-                                $fimgurl = $sitedir.$fdata["f_img"];
+                                $fimgurl = $sitedir.$fdata["f_img"]."?".date("dmyHis");
                             }else{
                                 $fimgurl = $sitedir."img/undefined.jpg";
                             }
@@ -198,7 +198,7 @@
                 foreach ($fcatedata as $key => $fcate) {
                     $fcateimg = $sitedir."img/undefined.jpg";
                     if (file_exists($sitedir.$fcate["f_cate_img"])) {
-                        $fcateimg = $sitedir.$fcate["f_cate_img"];
+                        $fcateimg = $sitedir.$fcate["f_cate_img"]."?".date("dmyHis");
                     }else{
                         //$fcateimg = $sitedir."img/undefined.jpg";
                     }
@@ -233,7 +233,7 @@
                 foreach ($fcatedata as $key => $fcate) {
                     $fcateimg = $sitedir."img/undefined.jpg";
                     if (file_exists($sitedir.$fcate["f_cate_img"])) {
-                        $fcateimg = $sitedir.$fcate["f_cate_img"];
+                        $fcateimg = $sitedir.$fcate["f_cate_img"]."?".date("dmyHis");
                     }else{
                         $fcateimg = $sitedir."img/undefined.jpg";
                     }
