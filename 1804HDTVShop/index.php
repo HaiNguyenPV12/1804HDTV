@@ -1,6 +1,15 @@
 <?php
 include "../src/fconnectadmin.php";
+include "../src/flowerdb.php";
 session_start();
+$cusdata;
+if (isset($_SESSION['member'])) {
+    $loggedin = true;
+    $memID = $_SESSION['member'];
+    $cusdata = getSql("SELECT mem_uID from member where mem_ID = $memID");
+} else {
+    $loggedin = false;
+}
 ?>
 
 <!DOCTYPE html>
@@ -89,6 +98,32 @@ while ($row = mysqli_fetch_assoc($rs)) {
             <!-- <li class="nav-item">
                 <a class="nav-link" href="#">Tài Khoản</a>
             </li> -->
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="#">Thành Viên</a>
+            </li> -->
+            <?php
+            if ($loggedin) {
+                foreach ($cusdata as $key => $r) {
+                    $mID = $r['mem_uID'];
+                }
+                echo "
+                <li class='nav-item'>
+                    <a class='nav-link'>"
+                        .$mID
+                    ."</a>
+                </li>
+                <li class='nav-item'>
+                    <a class='nav-link' href='logout.php'>Đăng Xuất</a>
+                </li>
+                ";
+            } else {
+                echo "
+                <li class='nav-item'>
+                    <a class='nav-link' href='testsession.php'>Đăng Nhập</a>
+                </li>
+                ";
+            }
+            ?>
             <li class="nav-item">
                 <a class="nav-link" href="#">Giỏ Hàng</a>
             </li>
@@ -122,7 +157,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
                     <b>1804 HDTV Co.</b>
                     <ul>
                         <li><a href="#" class="footer-link">Câu hỏi thường xuyên</a></li>
-                        <li><a href="#" class="footer-link">Về Chúng tôi</a></li>
+                        <li><a href="#!about.php" class="footer-link">Về Chúng tôi</a></li>
                     </ul>
                 </div>
                 <!-- Right Column -->
@@ -153,10 +188,12 @@ while ($row = mysqli_fetch_assoc($rs)) {
     <script src="../Scripts/umd/popper.min.js"></script>
     <script src="../Scripts/bootstrap.min.js"></script>
     <script src="../Scripts/1804HDTVShop/shopScripts.js"></script>
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
     <!--Angular Controllers-->
     <script src="../Scripts/1804HDTVShop/Controllers/indexcontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/Controllers/homecontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/Controllers/browsecontroller.js"></script>
+    <script src="../Scripts/1804HDTVShop/Controllers/aboutcontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/Controllers/productcontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/Controllers/flowercatecontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/Controllers/flowercontroller.js"></script>

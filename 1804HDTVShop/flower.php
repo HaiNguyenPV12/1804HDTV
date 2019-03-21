@@ -19,7 +19,7 @@ include "../src/flowerdb.php";
     top:200px;
     width:100%;
     height:50px;
-    background-color:rgba(220,220,220,0.7);
+    background-color:rgba(230,230,230,0.85);
     padding-top:5px;
     font-size:23px;
     font-weight:400;
@@ -85,7 +85,7 @@ include "../src/flowerdb.php";
         echo '<h3 class="my-3 text-center">Các bó có</h3>
             <h1 class="my-3 text-center">'.$data["f_name"].'</h1>';
         if (file_exists($sitedir.$data["f_img"])) {
-            $imgurl = $sitedir.$data["f_img"];
+            $imgurl = $sitedir.$data["f_img"]."?".date("dmyHis");
         }else{
             $imgurl = $sitedir."img/undefined.jpg";
         }
@@ -105,13 +105,13 @@ include "../src/flowerdb.php";
                     $bimgurl = $sitedir."img/undefined.jpg";
                 }else{
                     if (file_exists($sitedir.$bimg[0]["b_img"])) {
-                        $bimgurl = $sitedir.$bimg[0]["b_img"];
+                        $bimgurl = $sitedir.$bimg[0]["b_img"]."?".date("dmyHis");
                     }else{
                         $bimgurl = $sitedir."img/undefined.jpg";
                     }
                 }
                 
-                echo '<div class="col-lg-3 col-md-5 mb-3 mt-3">
+                echo '<div class="col-lg-4 col-md-5 mb-3 mt-3">
                     <div class="card h-80 border-primary border-shop">
                         <a href="#!product/'.$bdata["b_ID"].'"><img class="card-img-top custom" src="'.$bimgurl.'" alt=""></a>
                         <div class="text-center card-caption" style="">

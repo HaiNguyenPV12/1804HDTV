@@ -96,8 +96,8 @@
                                 $selected="";
                             }
                             if (file_exists($imgurl)) {
-                                echo '<div class="'.$selected.' thumbnail" data-big="'.$sitedir.$imgurl.'">
-                                        <div class="thumbnail-image" style="background-image: url('.$sitedir.$imgurl.')"></div>
+                                echo '<div class="'.$selected.' thumbnail" data-big="'.$imgurl.'">
+                                        <div class="thumbnail-image" style="background-image: url('.$imgurl.')"></div>
                                     </div>';
                             }else{
                                 echo '<div class="'.$selected.' thumbnail" data-big="'.$sitedir.'img/undefined.jpg">
