@@ -25,7 +25,7 @@ img {
     <div class='row'>
         <h2 class="col-9">Quản lý Dịp</h2>
         <button type="button" class="btn btn-success btn-lg col-2 btn-shop">
-            <a href="#!occasionadd">Thêm mới</a>
+            <a href="#!occasion/add">Thêm mới</a>
         </button>
     </div>
 

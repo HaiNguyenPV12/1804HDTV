@@ -16,7 +16,7 @@
 // File trung gian kết nối database
 include '.././src/staffdb.php';
 // Lấy dữ liệu thông tin nhân viên
-$data = getSql("SELECT s_ID, s_name, s_u_ID, s_u_PW, s_role_name, s_email, s_phone, s_address, s_employed FROM staff, staff_role where staff.s_role_ID = staff_role.s_role_ID");
+$data = getSql("SELECT s_ID, s_name, s_u_ID, s_u_PW, s_role_name, s_email, s_phone, s_address, s_employed FROM staff, staff_role where staff.s_role_ID = staff_role.s_role_ID order by staff.s_ID asc");
 $size = sizeof($data);
 $num = 0;
 if ($size <= 0) {

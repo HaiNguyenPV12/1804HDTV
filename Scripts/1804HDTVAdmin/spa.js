@@ -119,9 +119,20 @@ app.config(function ($routeProvider) {
                 return 'occasionedit.php?id=' + params.id;
             },
         })
+        .when("/occasion/edit/update/:id/:idnew/:name/:detail/:fp/:oadd", {
+            templateUrl: function (params) {
+                return 'occasioneditres.php?id=' + params.id + '&idnew=' + params.idnew + '&name='
+                    + params.name + '&detail=' + params.detail + '&fp=' + params.fp + '&oadd=' + params.oadd;
+            },
+        })
         .when("/occasion/img/:bid", {
             templateUrl: function (params) {
                 return 'occasionimg.php?bid=' + params.bid;
+            },
+        })
+        .when("/occasion/add", {
+            templateUrl: function (params) {
+                return 'occasionadd.php';
             },
         })
         .when("/occasion/delete/:bid", {
@@ -158,11 +169,11 @@ app.controller('myMain', ['$scope', '$route', function ($scope, $route) {
 }]);
 
 // stops pages from caching
-app.run(function($rootScope, $templateCache) {
-    $rootScope.$on('$viewContentLoaded', function() {
-       $templateCache.removeAll();
+app.run(function ($rootScope, $templateCache) {
+    $rootScope.$on('$viewContentLoaded', function () {
+        $templateCache.removeAll();
     });
- });
+});
 
 /*
 $(window).on('hashchange',function() {

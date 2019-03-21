@@ -26,7 +26,7 @@ if (isset($_GET['id']) && isset($_GET['name']) && isset($_GET['role'])
         }
     }
     else if ($sadd == 1) {
-        echo 'test';
+        // echo 'test';
         $sqla = "INSERT INTO `staff` (`s_ID`, `s_u_ID`, `s_u_PW`, `s_role_ID`, `s_name`, `s_phone`, `s_address`, `s_email`, `s_employed`) VALUES (NULL, '$uName', '$pass', '$role', '$name', '$phone', '$address', '$email', $employed)";
         $rs = mysqli_query($cn, $sqla);
         $ra = mysqli_affected_rows($cn);

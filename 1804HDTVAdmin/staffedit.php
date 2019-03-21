@@ -33,7 +33,7 @@ foreach ($data as $key => $r) {
             <tr>
                 <td>Tên</td>
                 <td>
-                    <input type='text' name='staffName' id='staffName' value='<?php
+                    <input type='text' required name='staffName' id='staffName' value='<?php
 foreach ($data as $key => $r) {
     echo $r['s_name'];
 }
@@ -63,7 +63,7 @@ foreach ($roles as $key => $r) {
             <tr>
                 <td>Email</td>
                 <td>
-                    <input type='text' name='staffEmail' id='staffEmail' value='<?php
+                    <input type='text' required name='staffEmail' id='staffEmail' value='<?php
 foreach ($data as $key => $r) {
     echo $r['s_email'];
 }
