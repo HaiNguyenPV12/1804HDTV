@@ -91,7 +91,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
                             </p>
                         </div>
                     </div>
-                    <a href="" class=" btn btn-primary btn-shop">Đóng Góp Ý Kiến</a>
+                    <a href="#!feedback" class=" btn btn-primary btn-shop">Đóng Góp Ý Kiến</a>
                 </div>
             </div>
         </div>
