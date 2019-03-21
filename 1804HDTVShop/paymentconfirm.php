@@ -83,69 +83,81 @@ while ($row = mysqli_fetch_assoc($rs)) {
     <br>
     <!-- content -->
 
-    <div class="container">
-        <h2 class="text-center">Đặt hàng thành công</h2>
-        <p class="text-center">Cảm ơn quý khách đã tin tưởng và mua hàng tại shop Hoa HDTV!</p>
-        <div class="row">
-            <div class="container col-8">
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">Hình ảnh</th>
-                                <th scope="col" class="text-center">Bó hoa</th>
-                                <th scope="col">Số lượng</th>
-                                <th scope="col" class="text-right">Tổng cộng</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><img src="../img/Bouquet/B000/B000_PV.jpg" style="max-width:10vw" /> </td>
-                                <td>Bó hoa 1</td>
-                                <td>1</td>
-                                <td class="text-right">500.000Đ</td>
-                            </tr>
-                            <tr>
-                                <td><img src="../img/Bouquet/B001/B001_PV.jpg" style="max-width:10vw" /> </td>
-                                <td>Bó hoa 2</td>
-                                <td>1</td>
-                                <td class="text-right">200.000Đ</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td>Đơn giá</td>
-                                <td class="text-right">800.000Đ</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td>Phí vận chuyển</td>
-                                <td class="text-right">30.000Đ</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td><strong>Tổng đơn giá</strong></td>
-                                <td class="text-right"><strong>830.000Đ</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+    <?php
+    include "../src/flowerdb.php";
+    if (isset($_GET["cmdPayment"])&& isset($_GET["cusName"]) && isset($_GET["cusEmail"]) && isset($_GET["cusPhone"])&& isset($_GET["cusAddress"])&& isset($_GET["dateVal"])) 
+    {
+        $cName = $_GET["cusName"];
+        $cEmail = $_GET["cusEmail"];
+        $cAddress =$_GET["cusAddress"];
+        $cPhone = $_GET["cusPhone"];    
+        $dVal = $_GET["dateVal"];     
+        $timezone = date_default_timezone_get();
+        $date = date("Y-m-d",time());
+        $csql = insertSql("insert into customer values(null,'$cPhone','$cName','$cAddress','$cEmail')");
+        $data = getSql("select cus_ID from customer where cus_phone = '$cPhone'");
+        $cusID = $data[0]['cus_ID'];
+        $osql = insertSql("insert into orders values(null,'$cusID',1,'$date','$dVal')");
+    }
+        
+    else
+    {
+        echo "Thiếu dữ kiện";
+        exit();
+    }          
 
-            </div>
-            <div class="container col-4 card bg-light">
-                <article class="card-body mx-auto">
-                    <b>Khách hàng:</b> Nguyễn Văn A<br>
-                    <b>Địa chỉ:</b> 123 abcd quận CD<br>
-                    <b>Số điện thoại:</b> 0900009999<br>
-                    <b>Ngày giao hàng:</b> Hôm nay
-                </article>
-            </div>
-        </div>
+    if (isset($_SESSION["cart"])) {
+        //print_r($_SESSION["cart"]);
+        $bdata = getSql("SELECT * FROM bouquet");                                 
+        foreach ($_SESSION["cart"] as $key => $cart) {
+                foreach ($bdata as $key2 => $b) {
+                    if ($b["b_ID"]==$cart["bid"]) {
+                        $sum = 0;
+                        $cdata = getSql("select cus_ID from customer where cus_phone = '$cPhone'");
+                        $cID = $cdata[0]['cus_ID'];
+                        $odata = getSql("select order_ID from orders where cus_ID = '$cID'");
+                        $ordID = $odata[0]['order_ID'];
+                        $odsql = insertSql("insert into order_detail values(null,'$ordID','".$cart["bid"]."','".$cart["quan"]."')");
+                        $aprice = $b["b_price"]*$cart["quan"];
+                        $sum = $sum + $aprice;
+                    }
+                }
+            } 
+        }   
+
+    else
+    {
+        echo "Thiếu dữ kiện cart";
+    }
+    echo "<p align='center'>THANH TOÁN THÀNH CÔNG</p>";
+    echo "<table id='btable' class='table table-hover table-bordered table-sm text-center' style='width: auto' align='center'>";    
+    echo "<tr class='table-info table-shop'>";    
+    echo "<td>Tên Khách hàng</td>";                    
+    echo "<td>",$cName,"</td>";
+    echo "</tr>";
+    echo "<tr class='table-info table-shop'>";    
+    echo "<td>SĐT khách hàng</td>";                    
+    echo "<td>",$cPhone,"</td>";
+    echo "</tr>";
+    echo "<tr class='table-info table-shop'>";    
+    echo "<td>Email Khách hàng</td>";                    
+    echo "<td>",$cEmail,"</td>";
+    echo "</tr>";
+    echo "<tr class='table-info table-shop'>";    
+    echo "<td>Địa chỉ Khách hàng</td>";                    
+    echo "<td>",$cAddress,"</td>";
+    echo "</tr>";
+    echo "<tr class='table-info table-shop'>";    
+    echo "<td>Tổng số tiền thanh toán</td>";                    
+    echo "<td>",$sum,"</td>";
+    echo "</tr>";
+    echo "</table>";
+
+?>
+    <div style="text-align: center">
+    <a href='index.php' style="justify-content: center">TRỞ VỀ TRANG CHỦ</a><br>
     </div>
-    <br>
-
+            
     <!-- Footer -->
     <div class="footer">
         <!-- Social buttons -->

@@ -95,6 +95,9 @@ app.config(function ($routeProvider) {
         .when("/order", {
             templateUrl: "order.php",
         })
+        .when("/member", {
+            templateUrl: "member.php"
+        })
         .when("/customer", {
             templateUrl: "customer.php",
         })

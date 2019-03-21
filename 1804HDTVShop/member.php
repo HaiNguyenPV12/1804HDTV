@@ -80,101 +80,69 @@ while ($row = mysqli_fetch_assoc($rs)) {
             </li>
         </ul>
     </nav>
-    <br>
+
     <!-- content -->
-
-    <div class="container">
-    <h2 class="text-center">Thanh toán</h2>
-    <div class="row">
-        <div class="container col-8">
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Hình ảnh</th>
-                            <th scope="col" class="text-center">Bó hoa</th>
-                            <th scope="col">Số lượng</th>
-                            <th scope="col" class="text-right">Tổng cộng</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><img src="../img/Bouquet/B000/B000_PV.jpg" style="max-width:10vw" /> </td>
-                            <td>Bó hoa 1</td>
-                            <td>1</td>
-                            <td class="text-right">500.000Đ</td>
-                        </tr>
-                        <tr>
-                            <td><img src="../img/Bouquet/B001/B001_PV.jpg" style="max-width:10vw"/> </td>
-                            <td>Bó hoa 2</td>
-                            <td>1</td>
-                            <td class="text-right">200.000Đ</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>Đơn giá</td>
-                            <td class="text-right">800.000Đ</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>Phí vận chuyển</td>
-                            <td class="text-right">30.000Đ</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td><strong>Tổng đơn giá</strong></td>
-                            <td class="text-right"><strong>830.000Đ</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
+    <div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+	<h4 class="card-title mt-3 text-center">ĐĂNG KÝ TÀI KHOẢN THÀNH VIÊN</h4>
+	<form method="get" action="member_process" id="frmLogin">
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
             </div>
-
-        </div>
-
-        <div class="container col-4">
-            <div class="card bg-light">
-                <article class="card-body mx-auto" style="max-width: 400px;">
-                    <h4 class="card-title mt-3 text-center">Thông tin thanh toán</h4>
-                    <form>
-                        <div class="form-group input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                            </div>
-                            <input name="" class="form-control" placeholder="Họ tên khách hàng" type="text">
-                        </div> <!-- form-group// -->
-                        <div class="form-group input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                            </div>
-                            <input name="" class="form-control" placeholder="Địa chỉ email" type="email">
-                        </div> <!-- form-group// -->
-                        <div class="form-group input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
-                            </div>
-                            <input name="" class="form-control" placeholder="Số điện thoại" type="text">
-                        </div> <!-- form-group// -->
-                        <div class="form-group input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
-                            </div>
-                            <input class="form-control" placeholder="Ngày nhận hàng" type="datetime">
-                        </div> <!-- form-group// -->
-                        <div class="form-group">
-                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
-                                data-target="#myModal">Xác nhận thanh toán </button>
-                        </div> <!-- form-group// -->
-                    </form>
-                </article>
-            </div><!-- card.// -->
-        </div>
-
-    </div>
-    </div>
-    <br>
+            <input name="memName" id="memName" class="form-control" placeholder="Họ và tên thành viên" type="text">            
+        </div> <!-- form-group// -->
+        <p style="color:red;display:none;" id="nameLabel"></p>
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+            </div>
+            <input name="memEmail" id="memEmail" class="form-control" placeholder="Email thành viên" type="text">
+        </div> <!-- form-group// -->
+        <p style="color:red;display:none;" id="emailLabel"></p>
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+            </div>
+            <input name="memAddress" id="memAddress" class="form-control" placeholder="Địa chỉ thành viên" type="text">
+        </div> <!-- form-group// -->        
+        <p style="color:red;display:none;" id="addressLabel"></p>
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+            </div>
+            <input name="memPhone" id="memPhone" class="form-control" placeholder="SĐT thành viên" type="text">
+        </div> <!-- form-group// -->            
+        <p style="color:red;display:none;"  id="phoneLabel"></p>
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+            </div>
+            <input name="memID" id="memID" class="form-control" placeholder="Tên đăng nhập" type="text">
+        </div> <!-- form-group// -->        
+        <p style="color:red;display:none;"  id="idLabel"></p>
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+            </div>
+            <input class="form-control" id="memPW" name="memPW" placeholder="Nhập mật khẩu" type="password">           
+        </div> <!-- form-group// -->
+        <p style="color:red;display:none;" id="pwLabel"></p>
+        <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+            </div>
+            <input class="form-control" id="memRPW" name="memRPW" placeholder="Nhập lại mật khẩu" type="password">            
+        </div> <!-- form-group// -->   
+        <p style="color:red;display:none;" id="repwLabel"></p>
+        <div id="repwLabel"></div>                                   
+        <div class="form-group">
+            <button type="button" name="cmdMember" id="cmdMember" class="btn btn-primary btn-block"> BẠN MUỐN LÀM THÀNH VIÊN CỦA SHOP CHỨ? </button>
+            <input type="hidden" name ="cmdMember">
+        </div> <!-- form-group// -->                                                           
+    </form>
+</article>
+</div> <!-- card.// -->
 
     <!-- Footer -->
     <div class="footer">
@@ -209,7 +177,6 @@ while ($row = mysqli_fetch_assoc($rs)) {
                     <ul>
                         <li><a href="#" class="footer-link">Điều khoản dịch vụ</a></li>
                         <li><a href="#" class="footer-link">Chính sách bảo mật</a></li>
-                        <li><a href="#" class="footer-link">Ý kiến đóng góp</a></li>
                     </ul>
                 </div>
             </div>
@@ -220,7 +187,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
             <h4>&copy; COPYRIGHT 2019, 1804 HDTV COMPANY</h4>
         </div>
     </div>
-    
+
     <!-- Scroll to top button, remove adblock to show in some cases -->
     <a href="#" class="ScrollToTop" title="về đầu trang">▲</a>
 
@@ -235,6 +202,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
     <script src="../Scripts/1804HDTVShop/Controllers/indexcontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/Controllers/homecontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/Controllers/browsecontroller.js"></script>
+    <script src="../Scripts/1804HDTVShop/member.js"></script>
 </body>
 
 </html>
