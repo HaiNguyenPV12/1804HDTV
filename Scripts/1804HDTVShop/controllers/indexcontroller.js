@@ -45,5 +45,26 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: "about.php",
             controller: 'aboutcontroller'
         })
+        .when('/flowercate', {
+            templateUrl: "flowercate.php"
+        })
+        .when('/flowercate/:fcate', {
+            templateUrl: function (params) {
+                return "flowercate.php?fcate=" + params.fcate;
+            },
+            controller: 'flowercatecontroller'
+        })
+        .when('/flower/:fid', {
+            templateUrl: function (params) {
+                return "flower.php?fid=" + params.fid;
+            },
+            controller: 'flowercontroller'
+        })
+        .when('/product/:bid', {
+            templateUrl: function (params) {
+                return "product.php?bid=" + params.bid;
+            },
+            controller: 'productcontroller'
+        })
         .otherwise({ redirectTo: '/' });
 }]);
