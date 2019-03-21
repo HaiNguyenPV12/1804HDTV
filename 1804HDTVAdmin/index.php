@@ -28,16 +28,15 @@ if (!isset($_SESSION["loggedin"])) {
     <script src="../Scripts/1804HDTVAdmin/spa.js"></script>
     <style>
         body {
-            padding-top: 5%;
-            margin-left: 5%;
-            margin-right: 5%;
+            padding-top: 2%;
+            margin-left: 2%;
+            margin-right: 2%;
         }
         .sticky-offset {
             top: 56px;
-            left: 1vw;
         }
         .main{
-            left: 15vw;
+            top: 56px;
         }
         @media only screen and (max-width: 1200px) {
             .sticky-offset {
@@ -72,10 +71,10 @@ if (!isset($_SESSION["loggedin"])) {
     </nav>
 
     <!-- Phần bên dưới -->
-    <div class="fluid-container" >
-        <div class="row">
+    <div class="container-fluid" >
+        <div class="row col-12">
             <!-- Menu trái -->
-            <div class="col-lg-2 fixed-top sticky-offset">
+            <div class="col-lg-2 sticky-offset">
                 <h3 class="my-3 text-center">Trang quản trị</h3>
                 <h2 class="my-3 text-center">Shop HDTV</h2>
                 <div class="list-group">
