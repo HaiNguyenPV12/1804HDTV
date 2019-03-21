@@ -119,7 +119,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
             } else {
                 echo "
                 <li class='nav-item'>
-                    <a class='nav-link' href='testsession.php'>Đăng Nhập</a>
+                    <a class='nav-link' href='#!login'>Đăng Nhập</a>
                 </li>
                 ";
             }
@@ -197,6 +197,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
     <script src="../Scripts/1804HDTVShop/Controllers/productcontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/Controllers/flowercatecontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/Controllers/flowercontroller.js"></script>
+    <script src="../Scripts/1804HDTVShop/controllers/logincontroller.js"></script>
 </body>
 
 </html>

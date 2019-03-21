@@ -66,5 +66,9 @@ app.config(['$routeProvider', function ($routeProvider) {
             },
             controller: 'productcontroller'
         })
+        .when('/login', {
+            templateUrl: 'member_login.php',
+            controller: 'logincontroller'
+        })
         .otherwise({ redirectTo: '/' });
 }]);
