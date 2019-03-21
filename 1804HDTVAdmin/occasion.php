@@ -1,8 +1,26 @@
+<?php
+    // Bắt đầu session để lấy dữ liệu từ session ra
+    session_start();
+    // Kiểm tra xem nếu người đăng nhập hiện tại có quyền quản lý bó hoa (Q01) hoặc quyền admin (Q00) hay không
+    if (!in_array("Q01",$_SESSION["sRight"],true) && !in_array("Q00",$_SESSION["sRight"],true)) {
+        // Không thì ngăn truy cập bằng cách hiện ra dòng sau
+        echo "<h2>Bạn không có quyền truy cập vào trang này!<h2>";
+        // Phải có lệnh exit mới dừng việc load những phần bên dưới
+        exit;
+    }
+    //xóa file tạm trên server'
+    $files = glob('tmp/*'); // get all file names
+    if (sizeOf($files)>0) {
+        foreach($files as $file){ // iterate files
+        if(is_file($file))
+            unlink($file); // delete file
+        }
+    }
+?>
 <html>
 <script src="../Scripts/1804HDTVAdmin/occasion.js"></script>
 <?php
-session_start();
-if (!in_array("Q04", $_SESSION["sRight"], true) && !in_array("Q00", $_SESSION["sRight"], true)) {
+if (!in_array("Q01", $_SESSION["sRight"], true) && !in_array("Q00", $_SESSION["sRight"], true)) {
     echo "<h2>Bạn không có quyền truy cập vào trang này!<h2>";
     exit;
 }
@@ -38,7 +56,7 @@ $num = sizeof($data);
 if ($num <= 0) {
     echo "Chưa có dữ liệu dịp";
 } else {
-    echo "<table id='octable' class='table table-hover table-bordered table-sm text-center'>";
+    echo "<table id='octable' class=' table table-hover table-bordered table-sm text-center'>";
     echo "<tr class='table-info table-shop'>
                     <th>Mã dịp</th>
                     <th>Tên dịp</th>
@@ -47,12 +65,12 @@ if ($num <= 0) {
                     </tr>";
     foreach ($data as $key => $oc) {
         echo "<tr>";
-        echo "<td>", $oc['occa_ID'], "</td>";
-        echo "<td>", $oc['occa_name'], "</td>";
+        echo "<td class='align-middle'>", $oc['occa_ID'], "</td>";
+        echo "<td class='align-middle'>", $oc['occa_name'], "</td>";
 
-        echo "<td><img src='../", $oc['occa_img'], "?" . date("dmyHis") . " style='max-width=20vw'></td>";
+        echo "<td class='align-middle'><img src='../", $oc['occa_img'], "?" . date("dmyHis") . " style='max-width=20vw'></td>";
 
-        echo "<td>";
+        echo "<td class='align-middle'>";
         if ($oc['occa_fp'] == 0) {
             echo "
             <button class='btn btn-outline-danger' disabled>
@@ -67,21 +85,21 @@ if ($num <= 0) {
         echo "</td>";
 
         echo "
-        <td>
+        <td class='align-middle'>
             <button class='btn btn-info btn-sm text-light btn-shop'>
-                <a href='#!occasion/edit/" . $oc["occa_ID"] . "'>Sửa</a> <br>
+                <a href='#!occasion/edit/" . $oc["occa_ID"] . "'>Sửa thông tin</a> <br>
             </button>
             <div class='py-1'></div>
             <button class='btn btn-info btn-sm text-light btn-shop'>
-                <a href='#!occasion/img/" . $oc["occa_ID"] . "'>Upload Hình</a>
+            <a href='#!occasion/img/" . $oc["occa_ID"] . "'>Upload Hình</a>
             </button>
             <div class='py-1'></div>
             <button class='btn btn-info btn-sm text-light btn-shop'>
-                <a href='#!occasion/bouq/" . $oc["occa_ID"] . "'>Bó</a>
+                <a href='#!occasion/bouq/" . $oc["occa_ID"] . "'>Bó của dịp</a>
             </button>
         </td>";
         echo "
-        <td>
+        <td class='align-middle'>
             <button class='btn btn-danger btn-sm text-light' id='btnOccaDelete'>
                 <a onclick=\"javascript: return confirm('Delete this record?');\" href='#!occasion/delete/" . $oc["occa_ID"] . "'>Xóa</a>
             </button>
