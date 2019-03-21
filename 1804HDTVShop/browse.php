@@ -134,7 +134,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
         <!-- end of filter -->
 
         <?php
-$sql = "SELECT DISTINCT b_name,b_img,b_price from v_bouq_gen";
+$sql = "SELECT DISTINCT b_id,b_name,b_img,b_price from v_bouq_gen";
 $set = false;
 // $sql = "SELECT DISTINCT b_name,b_img,b_price FROM v_bouq_gen WHERE b_img like '%_PV%'";
 if (isset($_GET["cate"]) && !empty($_GET["cate"])) {
@@ -197,7 +197,7 @@ if ($set == true) {
 } else {
     $sql .= " where b_img like '%_00.jpg%' and b_selling = 1 ORDER BY b_name asc";
 }
-// echo $sql;
+echo $sql;
 ?>
         <div class="row mt-3">
 
@@ -223,13 +223,13 @@ while ($row = mysqli_fetch_assoc($rs)) {
                 </a>
                 <div class='card-body'>
                     <h4 class='card-title'>
-                        <a href='#'>" . $row['b_name'] . "</a>
+                        <a href='#!product/" . $row['b_ID'] . "'>" . $row['b_name'] . "</a>
                     </h4>
                     <h5>" . number_format($row['b_price'], 0, '.', ',') . " Đ</h5>
                 </div>
 
                 <button class='btn card-footer btn-shop'>
-                    <a href='#'>
+                    <a href='#!product/" . $row['b_ID'] . "'>
                         Xem chi tiết
                     </a>
                 </button>
