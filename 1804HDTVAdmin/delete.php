@@ -4,15 +4,15 @@
     if (isset($_GET['bouquet'])) {
         if (isset($_GET["bid"])&&$_GET["bid"]!="") {
             $id = $_GET["bid"];
-            $name = $_GET["bname"];
             include '../src/flowerdb.php';
+            $name = $_GET["bname"];
             $img = getSql("SELECT * FROM bouq_img where b_ID = '$id'");
             $order = getSql("SELECT * FROM order_detail where b_ID ='$id'");
             if (sizeof($order)>0) {
                 echo "<h4 class='text-danger'>Không thể xóa vì đã có trong đơn hàng!<br>Hãy đặt lại trạng thái bán thay vì xóa.</h4>";
                 exit;
             }
-            echo '<input name="bid" id="bid" type="hidden" value="',$id,'">';
+            echo '<input name="delbid" id="delbid" type="hidden" value="',$id,'">';
             echo '<input name="cmdDelete" type="hidden">';
             echo "<h2>Bạn có muốn xóa bó \"$name\" ?</h2>";
             
@@ -28,7 +28,7 @@
     }else if (isset($_GET['bouquetimg'])){
         if (isset($_GET["bimgid"])&&$_GET["bimgid"]!="") {
             $id = $_GET["bimgid"];
-            echo '<input name="bimgid" id="bimgid" type="hidden" value="',$id,'">';
+            echo '<input name="delbimgid" id="delbimgid" type="hidden" value="',$id,'">';
             echo '<input name="cmdDelete" type="hidden">';
             echo "<h2>Bạn có muốn xóa \"$id\" ?</h2>";
             echo "<input type='button' name='cmdDelete' id='cmdDelete' class='btn mb-2 btn-success btn-shop' value='Có'></button>";
@@ -42,7 +42,7 @@
             $name = $_GET["fname"];
             include '../src/flowerdb.php';
             $existed = getSql("SELECT * FROM bouq_detail where f_ID = '$id'");
-            echo '<input name="fid" id="fid" type="hidden" value="',$id,'">';
+            echo '<input name="delfid" id="delfid" type="hidden" value="',$id,'">';
             echo '<input name="cmdDelete" type="hidden">';
             echo "<h2>Bạn có muốn xóa \"$name\" ?</h2>";
             if (sizeof($existed)>0) {
@@ -53,6 +53,24 @@
         }else{
             echo "Không thấy ID";
         }
+    }else if (isset($_GET['flowercate'])) {
+        if (isset($_GET['fcateid']) && $_GET['fcateid']!="") {
+            $id = $_GET["fcateid"];
+            $name = $_GET["fcatename"];
+            include '../src/flowerdb.php';
+            $existed = getSql("SELECT * FROM flower where f_cate_ID ='$id'");
+            if (sizeof($existed)>0) {
+                echo "<h4 class='text-danger'>Không thể xóa vì đã có loại hoa này trong dữ liệu hoa. Chỉ có thể chỉnh sửa.</h4>";
+                exit;
+            }
+            echo '<input name="delfcateid" id="delfcateid" type="hidden" value="'.$id.'">';
+            echo '<input name="cmdDelete" type="hidden">';
+            echo "<h2>Bạn có muốn xóa loại hoa \"$name\" ?</h2>";
+            echo "<input type='button' name='cmdDelete' id='cmdDelete' class='btn mb-2 btn-success btn-shop' value='Có'></button>";
+            echo "<button id='cmdCancel' class='btn mb-2 btn-danger'>Không</button>";
+        }else{
+            echo "Mã Loại Hoa bị sai!";
+        }
     }else if (isset($_GET['role'])) {
         if (isset($_GET["roleid"])&&$_GET["roleid"]!="") {
             $id = $_GET["roleid"];
@@ -62,7 +80,7 @@
             if (sizeof($existed)>0) {
                 echo "<h4 class='text-danger'>Vẫn còn người giữ chức vụ này nên không thể xóa được!<br>Hãy chắc chắn rằng không còn ai còn giữ chức vụ này nữa.</h4>";
             }else{
-                echo '<input name="roleid" id="roleid" type="hidden" value="',$id,'">';
+                echo '<input name="delroleid" id="delroleid" type="hidden" value="',$id,'">';
                 echo '<input name="cmdDelete" type="hidden">';
                 echo "<h2>Bạn có muốn xóa \"$name\" ?</h2>";
                 echo "<input type='button' name='cmdDelete' id='cmdDelete' class='btn mb-2 btn-success btn-shop' value='Có'></button>";

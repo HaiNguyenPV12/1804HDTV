@@ -4,12 +4,12 @@
 // Trang thêm hoa
 if (isset($_POST['cmdAddFlower'])) {
     // Kiểm tra các dữ liệu bên form Add
-    if (isset($_POST['fid']) && isset($_POST['fname']) && isset($_POST['fcate']) && isset($_POST['fimg'])&& isset($_POST['fdetail'])) {
-        $fid = $_POST['fid'];
-        $fname = $_POST['fname'];
-        $fcate = $_POST['fcate'];
-        $fimg = $_POST['fimg'];
-        $fdetail = $_POST['fdetail'];
+    if (isset($_POST['addfid']) && isset($_POST['addfname']) && isset($_POST['addfcate']) && isset($_POST['addfimg'])&& isset($_POST['addfdetail'])) {
+        $fid = $_POST['addfid'];
+        $fname = $_POST['addfname'];
+        $fcate = $_POST['addfcate'];
+        $fimg = $_POST['addfimg'];
+        $fdetail = $_POST['addfdetail'];
         include '../src/flowerdb.php';
 
         // Insert dữ liệu
@@ -41,12 +41,13 @@ if (isset($_POST['cmdAddFlower'])) {
         include '../src/flowerdb.php';
         // Lấy dữ liệu hình của bó hoa này
         $imgdata = getSql("Select * from bouq_img where b_ID = '$bid'");
+
         // Lấy dữ liệu hoa có trong bó hoa này
         $fdata = getSql("Select * from bouq_detail where b_ID = '$bid'");
 
         // Nếu có hoa trong bó hoa này thì thực hiện lệnh xóa
         if (sizeof($fdata)>0) {
-            deleteSql("delete from bouq_detail where b_ID = '$bid'");
+            deleteSql("DELETE from bouq_detail where b_ID = '$bid'");
         }
         // Nếu có hình trong bó hoa này
         if (sizeof($imgdata)>0) {
@@ -57,14 +58,14 @@ if (isset($_POST['cmdAddFlower'])) {
                 }
             }
             // Rồi xóa trong CSDL
-            deleteSql("delete from bouq_img where b_ID = '$bid'");
+            deleteSql("DELETE from bouq_img where b_ID = '$bid'");
         }
         // Gỡ luôn folder
         if (file_exists($sitedir."/img/Bouquet/".$bid)) {
             rmdir($sitedir."/img/Bouquet/".$bid);
         }
         // Cuối cùng là xóa bó hoa
-        $delete = deleteSql("delete from bouquet where b_ID ='$bid'");
+        deleteSql('DELETE from bouquet where b_ID ="'.$bid.'"');
         echo "ok";
     // Nếu xóa hình trong bó hoa thì nhận biết bằng bimgid
     }else if (isset($_POST['bimgid'])) {
@@ -113,6 +114,27 @@ if (isset($_POST['cmdAddFlower'])) {
         
         echo "ok";
     // Nếu là xóa chức vụ thì dựa vào roleid
+    }else if (isset($_POST['fcateid'])) {
+        $fcateid = $_POST['fcateid'];
+        include '../src/flowerdb.php';
+        $existed = getSql("SELECT * FROM flower where f_cate_ID = '$fcateid'");
+        if (sizeof($existed)>0) {
+            echo "Đã có loại hoa này trong danh sách hoa. Chỉ có thể chỉnh sửa";
+            exit;
+        }
+        $img = getSql("SELECT f_cate_img FROM flower_cate where f_cate_ID = '$fcateid'")[0];
+        deleteSql("DELETE FROM flower_cate where f_cate_ID ='$fcateid'");
+        // Cuối cùng là xóa file hình
+        if (file_exists("../".$img['f_cate_img'])) {
+            if (unlink("../".$img['f_cate_img'])) {
+                rmdir("../img/Category/".$fcateid);
+            }else{
+                if (file_exists("../img/Category/".$fcateid)) {
+                    rmdir("../img/Category/".$fcateid);
+                }
+            }
+        }
+        echo "ok";
     }else if (isset($_POST['roleid'])) {
         $roleid = $_POST['roleid'];
         include '../src/staffdb.php';
@@ -135,15 +157,15 @@ if (isset($_POST['cmdAddFlower'])) {
     }
 // Trang chỉnh sửa hoa
 }else if (isset($_POST['cmdEditFlower'])) {
-    if (isset($_POST['fid_old']) && isset($_POST['fimg_old']) && isset($_POST['fid']) && isset($_POST['fname']) && isset($_POST['fcate']) && isset($_POST['fimg']) && isset($_POST['fdetail'])) {
+    if (isset($_POST['editfid_old']) && isset($_POST['editfid']) && isset($_POST['editfname']) && isset($_POST['editfcate']) && isset($_POST['editfimg']) && isset($_POST['editfdetail'])) {
         $sitedir = "../";
-        $fid_old = $_POST['fid_old'];
-        $fimg_old = $_POST['fimg_old'];
-        $fid = $_POST['fid'];
-        $fname = $_POST['fname'];
-        $fcate = $_POST['fcate'];
-        $fimg = $_POST['fimg'];
-        $fdetail = $_POST['fdetail'];
+        $fid_old = $_POST['editfid_old'];
+        $fimg_old = $_POST['editfimgold'];
+        $fid = $_POST['editfid'];
+        $fname = $_POST['editfname'];
+        $fcate = $_POST['editfcate'];
+        $fimg = $_POST['editfimg'];
+        $fdetail = $_POST['editfdetail'];
 
         include '../src/flowerdb.php';
         // Xử lý dữ liệu thông tin hoa
@@ -173,11 +195,11 @@ if (isset($_POST['cmdAddFlower'])) {
 
         // Tới dữ liệu hình
         // Kiểm tra xem file hình có thay đổi kg
-        if (isset($_POST['fimgfile'])) {
+        if (isset($_POST['imgtmpdir'])) {
         // Nếu có thì
             // Khởi tạo đường dẫn file hình đã upload lên folder tạm và đường dẫn mới
             $imageFileType = strtolower(pathinfo($fimg,PATHINFO_EXTENSION));
-            $tempimg = $_POST['tempimg'];
+            $tempimg = $_POST['imgtmpdir'];
             $dir1 = $tempimg;
             $dir2 = $sitedir.$fimg;
             // Kiểm tra và tạo folder ở đích đến
@@ -238,15 +260,15 @@ if (isset($_POST['cmdAddFlower'])) {
     }
 // Trang thêm bó hoa
 }else if (isset($_POST['cmdAddBouquet'])) {
-    if (isset($_POST['bid']) && isset($_POST['bname']) && isset($_POST['bprice']) && isset($_POST['bdetail'])) {
+    if (isset($_POST['addbid']) && isset($_POST['addbname']) && isset($_POST['addbprice']) && isset($_POST['addbdetail'])) {
         include '../src/flowerdb.php';
         $sitedir = "../";
-        $bid = $_POST['bid'];
-        $bname = $_POST['bname'];
-        $bprice = $_POST['bprice'];
-        $bdetail = $_POST['bdetail'];
+        $bid = $_POST['addbid'];
+        $bname = $_POST['addbname'];
+        $bprice = $_POST['addbprice'];
+        $bdetail = $_POST['addbdetail'];
         $bselling = 1;
-        if (isset($_POST['bselling'])) {
+        if (isset($_POST['addbselling'])) {
             $bselling = 1;
         }else {
             $bselling = 0;
@@ -276,14 +298,14 @@ if (isset($_POST['cmdAddFlower'])) {
     }
 // Trang chỉnh sửa bó hoa
 }else if (isset($_POST['cmdEditBouquet'])) {
-    if (isset($_POST['bid']) && isset($_POST['bname']) && isset($_POST['bprice']) && isset($_POST['bdetail'])) {
+    if (isset($_POST['editbid']) && isset($_POST['editbname']) && isset($_POST['editbprice']) && isset($_POST['editbdetail'])) {
         include '../src/flowerdb.php';
         $sitedir = "../";
-        $bid = $_POST['bid'];
-        $bname = $_POST['bname'];
-        $bprice = $_POST['bprice'];
-        $bdetail = $_POST['bdetail'];
-        if (isset($_POST['bselling'])) {
+        $bid = $_POST['editbid'];
+        $bname = $_POST['editbname'];
+        $bprice = $_POST['editbprice'];
+        $bdetail = $_POST['editbdetail'];
+        if (isset($_POST['editbselling'])) {
             $bselling = 1;
         }else {
             $bselling = 0;
@@ -326,7 +348,7 @@ if (isset($_POST['cmdAddFlower'])) {
     }else{
         echo "not enough";
     }
-// Trang chỉnh sửa hoa có trong bó
+// Trang thêm hình bó hoa
 }else if (isset($_POST['cmdBouquetImgAdd'])) {
     if (isset($_POST["img"]) && isset($_POST["bid"]) && isset($_POST["bimgid"]) && isset($_POST["bimg"])) {
         include '../src/flowerdb.php';
@@ -350,9 +372,9 @@ if (isset($_POST['cmdAddFlower'])) {
         echo "Thiếu dữ liệu!";
     }
 }else if (isset($_POST['cmdEditFBouquet'])) {
-    if (isset($_POST['bid'])) {
+    if (isset($_POST['bfeditbid'])) {
         include '../src/flowerdb.php';
-        $bid = $_POST['bid'];
+        $bid = $_POST['bfeditbid'];
         // Kiểm tra xem dữ liệu hoa có trong bó này có chưa
         if (sizeof(getSql("SELECT * FROM bouq_detail WHERE b_ID='$bid'"))>0) {
             // Có thì xóa
@@ -369,7 +391,7 @@ if (isset($_POST['cmdAddFlower'])) {
     }else{
         echo "not enough";
     }
-// Trang đăng nhập
+// Trang chỉnh sửa hình bó hoa
 }else if (isset($_POST['cmdBouquetImgEdit'])) {
     if (isset($_POST["tmpimg"]) && isset($_POST["bid"]) && isset($_POST["bimgid"]) && isset($_POST["bimg"])) {
         include '../src/flowerdb.php';
@@ -501,7 +523,124 @@ if (isset($_POST['cmdAddFlower'])) {
     }else{
         echo "not enough";
     }
+}else if(isset($_POST["cmdAddFlowerCate"])){
+    if (isset($_POST['addfcateid']) && 
+    isset($_POST['addfcatename']) && 
+    isset($_POST['addfcatedetail']) && 
+    isset($_POST['addfcateimg']) && 
+    isset($_POST['addfcatetmpimg']) ) {
+        include '../src/flowerdb.php';
+        $sitedir= "../";
+        $fcateid = $_POST['addfcateid'];
+        $fcatename = $_POST['addfcatename'];
+        $fcatedetail = $_POST['addfcatedetail'];
+        $fcateimg = $_POST['addfcateimg'];
+        $fcatetmpimg = $_POST['addfcatetmpimg'];
+        
+        // Xử lý SQL
+        insertSql("INSERT INTO flower_cate values('$fcateid','$fcatename','$fcateimg','$fcatedetail')");
+        // Xử lý hình
+        // Kiểm tra folder
+        if (!file_exists($sitedir."img/Category/".$fcateid)) {
+            mkdir($sitedir."img/Category/".$fcateid, 0777, true);
+        }
+        // Di chuyển vào
+        $dir1 = $fcatetmpimg;
+        $dir2 = $sitedir.$fcateimg;
+        rename($dir1, $dir2);
+        echo "ok";
+    }else{
+        echo "Thiếu dữ liệu";
+    }
+}else if(isset($_POST["cmdEditFlowerCate"])){
+    if (isset($_POST['editoldfcateid']) &&
+    isset($_POST['editfcateid']) && 
+    isset($_POST['editfcatename']) && 
+    isset($_POST['editfcatedetail']) && 
+    isset($_POST['editfcateimg']) ) {
+        include '../src/flowerdb.php';
+        $sitedir= "../";
+        $oldfcateid = $_POST['editoldfcateid'];
+        $fcateid = $_POST['editfcateid'];
+        $fcatename = $_POST['editfcatename'];
+        $fcatedetail = $_POST['editfcatedetail'];
+        $fcateimg = $_POST['editfcateimg'];
+        //$fcatetmpimg = $_POST['editfcatetmpimg'];
+
+        // Xử lý SQL
+        $olddata = getSql("SELECT * FROM flower_cate WHERE f_cate_ID ='$oldfcateid'")[0];
+        // Nếu trùng ID
+        if ($oldfcateid==$fcateid) {
+            // Kiểm tra dữ liệu còn lại giống cũ hay không
+            if ($olddata["f_cate_name"]!=$fcatename || $olddata["f_cate_detail"]!=$fcatedetail || $olddata["f_cate_img"]!=$fcateimg) {
+            // Nếu khác thì update
+                updateSql("UPDATE flower_cate set f_cate_name='$fcatename', f_cate_detail='$fcatedetail', f_cate_img='$fcateimg' WHERE f_cate_ID='$fcateid'");
+            }
+        }else{
+        // Nếu không trùng ID
+            // Kiểm tra xem có nằm ở hoa nào chưa
+            $existed = getSql("SELECT * FROM flower where f_cate_ID ='$oldfcateid'");
+            if (sizeof($existed)>0) {
+                // Nếu có thì insert trước cái mới, không update liền
+                insertSql("INSERT INTO flower_cate VALUES ('$fcateid', '$fcatename', '$fcateimg', '$fcatedetail')");
+                // Sau đó cập nhật thông tin ở các hoa có chứa loại hoa này
+                updateSql("UPDATE flower SET f_cate_ID = '$fcateid' WHERE f_cate_ID='$oldfcateid'");
+                // Cuối cùng thì xóa đi cái cũ
+                deleteSql("DELETE flower_cate WHERE f_cate_ID='$oldfcateid'");
+            }else{
+                // Nếu không có thì update thẳng luôn
+                updateSql("UPDATE flower_cate SET f_cate_ID = '$fcateid',f_cate_name='$fcatename',f_cate_img='$fcateimg',f_cate_detail='$fcatedetail' WHERE f_cate_ID='$oldfcateid'");
+            }
+            
+        }
+
+        // Xử lý hình
+        // Kiểm tra xem hình có thay đổi hay không
+        if (isset($_POST["editfcatetmpimg"])) {
+        // Nếu có
+            $fcatetmpimg = $_POST["editfcatetmpimg"];
+            // Kiểm tra và tạo folder
+            if (!file_exists($sitedir."img/Category/".$fcateid)) {
+                mkdir($sitedir."img/Category/".$fcateid, 0777, true);
+            }
+            // Di chuyển vào
+            $dir1 = $fcatetmpimg;
+            $dir2 = $sitedir.$fcateimg;
+            rename($dir1, $dir2);
+        }else{
+        // Nếu không thì kiểm tra xem ID có thay đổi thì đổi tên file và thư mục
+            if ($oldfcateid!=$fcateid){
+                $dir1=$sitedir.$olddata["f_cate_img"];
+                $dir2 = $sitedir.$fcateimg;
+                // Kiểm tra và tạo folder
+                if (!file_exists($sitedir."img/Category/".$fcateid)) {
+                    mkdir($sitedir."img/Category/".$fcateid, 0777, true);
+                }
+                // Nếu file có tồn tại thì chuyển
+                if (file_exists($dir1)) {
+                    rename($dir1, $dir2);
+                }
+            }
+        }
+
+        // Kiểm tra và xóa folder cũ nếu có (trong trường hợp ID thay đổi)
+        if ($oldfcateid!=$fcateid){
+            if (file_exists($sitedir.$olddata["f_cate_img"])) {
+                if (unlink($sitedir.$olddata["f_cate_img"])) {
+                    rmdir($sitedir."img/Category/".$olddata["f_cate_ID"]);
+                }
+            }else{
+                if (file_exists($sitedir."img/Category/".$olddata["f_cate_ID"])) {
+                    rmdir($sitedir."img/Category/".$olddata["f_cate_ID"]);
+                }
+            }
+        }
+
+        echo "ok";
+    }else{
+        echo "Thiếu dữ liệu";
+    }
 }else{
-    echo 'not have cmd';
+    echo 'Mã không hợp lệ!';
 }
 ?>

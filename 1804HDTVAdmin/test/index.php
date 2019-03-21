@@ -1,6 +1,16 @@
+<head>
+    <meta charset="utf-8">
+    <title>Trang Tester</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="../Content/bootstrap.min.css" rel="stylesheet">
+</head>
+
 <style>
 a:visited{
     color: blue;
+}
+body{
+    font-size: 20px;
 }
 </style>
 
@@ -11,6 +21,7 @@ a:visited{
     <ul>
         <li><a href="addcustomer.php">Thêm khách hàng mới</a></li>
         <li><a href="addorder.php">Tạo hóa đơn</a></li>
+        <li><a href="cart.php">Xem giỏ hàng</a></li>
     </ul>
 
     <?php

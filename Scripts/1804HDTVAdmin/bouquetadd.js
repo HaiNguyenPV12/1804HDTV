@@ -1,18 +1,20 @@
 // Script tùy chỉnh của trang bouquetadd.php
-
+var addimglist = [];
 // Function xóa các input (reset)
 function eraseInput(){
     // Vì sao không dùng lệnh reset form bình thường??
     // --> Vì nó sẽ làm mất ID bó hoa đã tạo ra
-    $('#bname').val("");
-    $('#bprice').val("");
-    $('#bdetail').val("");
+    $('#addbname').val("");
+    $('#addbprice').val("");
+    $('#addbdetail').val("");
+    $('#addimgPreview').html("");
 }
 
 // Function tắt bảng Modal
 function closeModal(){
     $('#modal').modal('hide');
     $('#result').modal('hide');
+    $('.modal-backdrop').remove();
 }
 
 // Function reload lại trang để cập nhật lại dữ liệu từ sql
@@ -21,14 +23,16 @@ function reloadPage(){
 }
 
 // Function tạo mã bó hoa (Mã bó hoa: B[3 con số theo thứ tự từ 0]. VD: B000, B001,...)
-function validateID(){
+function IDGenerate(){
+    if (!$("#cmdAddBouquet").length) {
+        return;
+    }
     // Tiền tố là chữ B
     var preBID = "B";
     // Hậu tố là 3 chữ số, nhưng đầu tiên để so sánh lấy số cao nhất thì đặt mặc định là 0 trước
     var sufBID = 0;
     // Tạo array chứa các số đã có
     var items=[];
-
     // Tìm ID bó hoa ở mỗi dòng trong bảng, lấy số ở mã đó ra đưa vào mảng items...để làm gì?
     // Để tìm ra số lớn nhất trong mảng
     // Lấy index cột chứa mã bó hoa
@@ -52,7 +56,6 @@ function validateID(){
         sufBID = Math.max.apply(Math,items)+1;
     }
 
-
     // Nếu số đằng sau có 1 chữ số 
     if (sufBID<=9) {
         // thì thêm 2 số 0 vào trước để đủ 3 kí tự
@@ -62,23 +65,120 @@ function validateID(){
         sufBID="0"+sufBID;
     }
     //đưa ra dữ liệu ID cho bó hoa vào input có id là "bid"
-    $('#bid').val(preBID+sufBID);
+    $('#addbid').val(preBID+sufBID);
 }
 
 // Lúc hiện modal là thực hiện tạo ID bó hoa
 $('#modal').on('shown.bs.modal', function (e) {
-    validateID();
+    if ($("#cmdAddBouquet").length) {
+        IDGenerate();
+    }
 });
 
 // Khi nhấn nút cmdResetBouquet sẽ thực hiện function xóa các input
-$('#cmdResetBouquet').click(function (e) {
+$('#cmdResetAddBouquet').click(function (e) {
     eraseInput();
 });
 
 // Khi Modal tắt sẽ gọi function xóa các input
 $('#modal').on('hidden.bs.modal', function (e) {
-    eraseInput();
+    //eraseInput();
+    //reloadPage();
 });
+
+$(document).on("click","#addimgPreview div",function(){
+    var n = $(this).find("#imgnum").val();
+    if (n) {
+        //console.log(n);
+        addimglist = addimglist.filter(e=>e!=n);
+    }
+    $(this).remove();
+});
+
+$("#addimgfile").change(function(){
+    if (addimglist.length<5) {
+        if ($(this).get(0).files.length<=(5-addimglist.length)) {
+            for (var i = 0; i < $(this).get(0).files.length; ++i) {
+                var bid;
+                if (addimglist.length==0) {
+                    bid=0;
+                }else{    
+                    for (var j = 0; j < 5; j++) {
+                        const found = addimglist.some(el => el == j);
+                        if (!found) {
+                            bid=j;
+                            break;
+                        }
+                    }
+                }
+                // Bắt đầu function upload hình (và đưa nó ra phần hiển thị mẫu)
+                uploadFile($(this).get(0).files[i],"bouquetadd",$("#addbid").val(), bid);
+                addimglist.push(bid);
+                // Đưa tên file ra hiển thị
+                $("#addimgfiletext").html("Đã có "+addimglist.length+" hình.");
+            }
+            $(this).val("");
+        }else{
+            alert("Không thể quá 5 hình! Chỉ có thể tải lên "+(5-addimglist.length)+" hình nữa!");
+            $(this).val("");
+        }
+    }else{
+        alert("Không thể thêm quá 5 hình!");
+        $(this).val("");
+        //alert($(this).get(0).files.length);
+    }
+});
+
+//=========================== Xử lý upload hình =================================//
+function uploadFile(file,uploadTo,id, bid){
+    var request;
+    //var $form = $("#frmImgAdd");
+    //var $inputs = $form.find("fimgfile, button");
+
+    // Làm theo cách thủ công hơn, tạo form data thủ công
+    var myFormData = new FormData();
+    // Đưa từng giá trị vào form data
+    myFormData.append('imgfile', file); // file từ input
+    myFormData.append('uploadTo', uploadTo); 
+    myFormData.append('id', id); 
+    myFormData.append('bid', bid); 
+    //myFormData.append('fid', $("#fid").val()); 
+    //myFormData.append('fimg', $("#fimg").val());
+    //myFormData.append('cmdFImgUpload', "");
+
+    //$inputs.prop("disabled", true);
+
+    // Thực hiện đưa qua trang xử lý
+    request = $.ajax({
+        url: "imgupload.php",
+        type: "post",
+        data: myFormData,
+        processData: false,
+        contentType: false
+    });
+    // Xong rồi thì đưa ra hiện hình mẫu
+    request.done(function (response, textStatus, jqXHR){
+        // Log a message to the console
+        //alert(textStatus);
+        $("#addimgPreview").append(response); 
+    });
+
+    // Callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown){
+        // Log the error to the console
+        console.error(
+            "The following error occurred: "+
+            textStatus, errorThrown
+        );
+    });
+
+    // Callback handler that will be called regardless
+    // if the request failed or succeeded
+    request.always(function () {
+        // Reenable the inputs
+        //$inputs.prop("disabled", false);
+    });
+}
 
 
 //=========================== Xử lý submit dữ liệu =================================//
@@ -94,7 +194,7 @@ $('#frmAddBouquet').submit(function(event){
     // đặt lại tên form cho dễ gọi :))
     var $form = $(this);
     // Chọn tất cả input trừ cái bid để disable (bid mặc định đã disabled)
-    var $inputs = $form.find("input, select, button, textarea").not("#bid");
+    var $inputs = $form.find("input, select, button, textarea").not("#addbid");
     // Mã hóa để đưa dữ liệu qua post
     var serializedData = $form.serialize();
 
@@ -117,10 +217,10 @@ $('#frmAddBouquet').submit(function(event){
             // Hiện modal hiển thị kết quả
             $('#result').modal('show');
             // Xóa input
-            eraseInput();
+            //eraseInput();
             // Cho tự động tắt và load lại trang sau vài giây
             window.setTimeout(closeModal, 1500);
-            window.setTimeout(reloadPage,500);
+            //window.setTimeout(reloadPage,500);
         }else{
             // Nếu dữ liệu trả về bị bất kì lỗi gì
             $("#txtResult").html(response);

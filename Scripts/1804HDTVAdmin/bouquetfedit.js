@@ -2,16 +2,17 @@
 function closeModal(){
     $('#modal').modal('hide');
     $('#result').modal('hide');
+    
 }
 
 // Reload để load lại dữ liệu từ sql
 function reloadPage(){   
-    location.reload(true);
+    //location.reload(true);
 }
 
 // Reset khi tắt modal
 $('#modal').on('hidden.bs.modal', function (e) {
-    reloadPage();
+    //reloadPage();
 });
 
 // Khi nhấn vào hoa nào thì hoa đó sẽ bị loại ra
@@ -74,7 +75,7 @@ $('#frmEditFBouquet').submit(function(event){
     var $form = $(this);
 
     // Chọn tất cả trừ cái bid (bid mặc định đã disabled)
-    var $inputs = $form.find("input, select, button, textarea").not("#bid");
+    var $inputs = $form.find("input, select, button, textarea").not("#bfeditbid");
 
     // Mã hóa để đưa dữ liệu qua post
     var serializedData = $form.serialize();
@@ -98,7 +99,7 @@ $('#frmEditFBouquet').submit(function(event){
             $("#txtResult").html("<h2>Chỉnh sửa thành công!</h2>");
             $('#result').modal('show');
             window.setTimeout(closeModal, 1500);
-            window.setTimeout(reloadPage,500);
+            //window.setTimeout(reloadPage,500);
         }else{
             //$("#txtResult").addClass("text-success");
             $("#txtResult").html(response);

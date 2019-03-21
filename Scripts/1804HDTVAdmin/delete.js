@@ -1,13 +1,12 @@
 function closeModal(){
     $('#modal').modal('hide');
     $('#result').modal('hide');
+    $('.modal-backdrop').remove();
 }
 
-$('#cmdCancel').click(function (e) 
-    {
-        $('#modal').modal('toggle');
-    }
-);
+$('#cmdCancel').click(function (e) {
+    $('#modal').modal('toggle');
+});
 
 //reload để load lại dữ liệu từ sql
 function reloadPage(){   
@@ -35,19 +34,20 @@ $('#cmdDelete').click(function(event){
     }
     var myFormData = new FormData();
     myFormData.append('cmdDelete', "");
-    if ($("#bid").length) {
-        myFormData.append('bid', $("#bid").val());
-    }else if($("#bimgid").length){
-        myFormData.append('bimgid', $("#bimgid").val());
-    }else if($("#fid").length){
-        myFormData.append('fid', $("#fid").val());
-    }else if($("#roleid").length){
-        myFormData.append('roleid', $("#roleid").val());
+    if ($("#delbid").length) {
+        myFormData.append('bid', $("#delbid").val());
+    }else if($("#delbimgid").length){
+        myFormData.append('bimgid', $("#delbimgid").val());
+    }else if($("#delfid").length){
+        myFormData.append('fid', $("#delfid").val());
+    }else if ($("#delfcateid").length) {
+        myFormData.append('fcateid', $("#delfcateid").val());
+    }else if($("#delroleid").length){
+        myFormData.append('roleid', $("#delroleid").val());
     }
     //var $form = $(this);
     //var serializedData = $form.serialize();
     // Fire off the request to /form.php
-    
     
     request = $.ajax({
         url: "process.php",
@@ -65,7 +65,7 @@ $('#cmdDelete').click(function(event){
             $("#txtResult").html("<h2>Xóa thành công!</h2>");
             $('#result').modal('show');
             window.setTimeout(closeModal, 1500);
-            window.setTimeout(reloadPage, 500);
+            //window.setTimeout(reloadPage, 500);
         }else{
             //$("#txtResult").addClass("text-success");
             $("#txtResult").html(response);

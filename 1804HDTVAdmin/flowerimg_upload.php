@@ -43,8 +43,8 @@ if (isset($_POST['cmdFImgUpload'])) {
         }
         // Chuyển file từ folder tạm của server sang folder tạm của admin
         if (move_uploaded_file($_FILES["fimgfile"]["tmp_name"], $tmp_dir)) {
-            echo "<img src=".$tmp_dir." style='max-width:50vh'></img>";
-            echo "<input type='hidden' value='$target_file'>";
+            echo "<img src=".$tmp_dir."?".date("dmyHis")." style='max-width:50vh'></img>";
+            echo "<input type='hidden' name='imgtmpdir' id='imgtmpdir' value='$tmp_dir'>";
         } else {
             echo "Có vấn đề khi tải lên!";
         }
@@ -56,7 +56,7 @@ if (isset($_POST['cmdFImgUpload'])) {
     // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["fimgfile"]["tmp_name"], ".".$tmp_dir)) {
-            echo "<img id='tempimg' src=".$tmp_dir." style='max-width:50vh'></img>";
+            echo "<img class='col-9' id='tempimg' src=".$tmp_dir."?".date("dmyHis")." style='max-width:50vh'></img>";
             echo "<input type='hidden' id='tempdir' name='tempdir' value='$tmp_dir'>";
         } else {
             echo "Có vấn đề khi tải lên!";
