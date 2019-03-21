@@ -113,7 +113,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
                     ."</a>
                 </li>
                 <li class='nav-item'>
-                    <a class='nav-link' href='testlogout.php'>Đăng Xuất</a>
+                    <a class='nav-link' href='logout.php'>Đăng Xuất</a>
                 </li>
                 ";
             } else {
