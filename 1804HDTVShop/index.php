@@ -166,7 +166,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
                     <ul>
                         <li><a href="#" class="footer-link">Điều khoản dịch vụ</a></li>
                         <li><a href="#" class="footer-link">Chính sách bảo mật</a></li>
-                        <li><a href="#" class="footer-link">Ý Kiến Đóng Góp</a></li>
+                        <li><a href="#!feedback" class="footer-link">Ý Kiến Đóng Góp</a></li>
                     </ul>
                 </div>
             </div>

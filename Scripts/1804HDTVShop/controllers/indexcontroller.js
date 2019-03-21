@@ -70,5 +70,9 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'member_login.php',
             controller: 'logincontroller'
         })
+        .when('/feedback', {
+            templateUrl: 'feedback.php',
+            // controller: 'logincontroller'
+        })
         .otherwise({ redirectTo: '/' });
 }]);

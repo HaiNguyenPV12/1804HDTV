@@ -6,7 +6,7 @@ if (isset($_SESSION['member'])) {
     header('location:home');
 }
 ?>
-<div class='container'>
+<div class='container col-5'>
     <div class="login-form">
         <form id="frmLogin" name="frmLogin" method="post">
             <input type="hidden" name="cmdLogin">
