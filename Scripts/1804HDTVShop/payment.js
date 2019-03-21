@@ -1,9 +1,9 @@
 $(document).ready(function(){
 
-    $('#cmdMember').click(function(){
+    $('#cmdPayment').click(function(){
         if(validateForm() == true)
         {
-            $("#frmLogin").submit();
+            $("#frmPayment").submit();
         }
     });
     

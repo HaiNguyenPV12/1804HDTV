@@ -12,12 +12,7 @@ if (isset($_POST["cmdLogin"]))
             if (sizeof($get)>0) 
             { 
                 session_start();
-                // ID
-                $_SESSION["mID"]= $id;
-                // tên
-                $_SESSION["mName"]= $get[0]['cus_name'];
-                // Trạng thái đăng nhập
-                $_SESSION["loggedin"]=true;
+                $_SESSION["member"]= $get[0]["mem_ID"];
                 echo "ok";
             }
             else

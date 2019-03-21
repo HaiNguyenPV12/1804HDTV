@@ -152,8 +152,9 @@ while ($row = mysqli_fetch_assoc($rs)) {
             </div>
 
         </div>
-
+        
         <div class="container col-4">
+            <form method="get" action="paymentconfirm" id="frmPayment">
             <div class="card bg-light">
                 <article class="card-body mx-auto" style="max-width: 400px;">
                     <h4 class="card-title mt-3 text-center">Thông tin thanh toán</h4>
@@ -164,40 +165,45 @@ while ($row = mysqli_fetch_assoc($rs)) {
                             </div>
                             <input name="cusName" id="cusName" class="form-control" placeholder="Họ tên khách hàng" type="text">
                         </div> <!-- form-group// -->
+                        <p style="color:red;display:none;"  id="nameLabel"></p>
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                             </div>
                             <input name="cusEmail" id="cusEmail"  class="form-control" placeholder="Địa chỉ email" type="text">
                         </div> <!-- form-group// -->
+                        <p style="color:red;display:none;"  id="emailLabel"></p>
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                             </div>
                             <input name="cusAddress" id="cusAddress"  class="form-control" placeholder="Địa chỉ nhận hàng" type="text">
                         </div> <!-- form-group// -->
+                        <p style="color:red;display:none;"  id="addressLabel"></p>
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
                             </div>
                             <input name="cusPhone" id="cusPhone"  class="form-control" placeholder="Số điện thoại" type="text">
                         </div> <!-- form-group// -->
+                        <p style="color:red;display:none;"  id="phoneLabel"></p>
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
                             </div>
-                            <input class="form-control" placeholder="Ngày nhận hàng" type="datetime">
+                            <input name="dateVal" id="dateVal" class="form-control" placeholder="Ngày nhận hàng" type="datetime-local">
                         </div> <!-- form-group// -->
                         <div class="form-group">
-                            <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
-                                data-target="#myModal">Xác nhận thanh toán </button>
+                            <button  name="cmdPayment" id="cmdPayment"  type="button" class="btn btn-primary btn-block">Xác nhận thanh toán </button>
+                                <input type="hidden" name ="cmdPayment">
                         </div> <!-- form-group// -->
                     </form>
                 </article>
-            </div><!-- card.// -->
+            </div>
+            </form><!-- card.// -->
         </div>
 
-    </div>
+        </div>
     </div>
     <br>
 
