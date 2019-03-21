@@ -216,16 +216,16 @@ if (mysqli_num_rows($rs) <= 0) {
 while ($row = mysqli_fetch_assoc($rs)) {
     // echo $row['b_name'] . "<br>";
     echo "<div class='col-lg-3 col-md-5 mb-4'>
-            <div class='card h-80 border-primary border-shop'>
-                <a href='#'>
+            <div class='card card-bouq h-80 border-primary border-shop'>
+                <a href='#!product/" . $row['b_ID'] . "'>
                     <img class='card-img-top custom' src='../img/Bouquet/B000/B000_PV.jpg' alt=''>
                     <img class='card-img-top custom' src='../" . $row['b_img'] . "' alt=''>
                 </a>
                 <div class='card-body'>
-                    <h4 class='card-title'>
+                    <h5 class='card-title'>
                         <a href='#!product/" . $row['b_ID'] . "'>" . $row['b_name'] . "</a>
-                    </h4>
-                    <h5>" . number_format($row['b_price'], 0, '.', ',') . " Đ</h5>
+                    </h5>
+                    <h6>" . number_format($row['b_price'], 0, '.', ',') . " Đ</h6>
                 </div>
 
                 <button class='btn card-footer btn-shop'>
