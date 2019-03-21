@@ -68,7 +68,26 @@ app.config(function ($routeProvider) {
             templateUrl: "color.php",
         })
         .when("/staff", {
+            cache: false,
             templateUrl: "staff.php",
+        })
+        .when("/staff/edit/:id", {
+            cache: false,
+            templateUrl: function (params) {
+                return 'staffedit.php?id=' + params.id;
+            },
+        })
+        .when("/staff/edit/update/:id/:name/:role/:email/:uname/:pass/:phone/:add/:employed/:sadd", {
+            cache: false,
+            templateUrl: function (params) {
+                return 'staffeditres.php?id=' + params.id + '&name=' + params.name + '&role=' +
+                    params.role + '&email=' + params.email + '&uname=' + params.uname + '&pass=' +
+                    params.pass + '&phone=' + params.phone + '&add=' + params.add + '&employed=' +
+                    params.employed + '&sadd=' + params.sadd;
+            }
+        })
+        .when("/staffadd", {
+            templateUrl: "staffadd.php",
         })
         .when("/staffright", {
             templateUrl: "staffright.php",
@@ -97,9 +116,51 @@ app.config(function ($routeProvider) {
         .when("/occasion", {
             templateUrl: "occasion.php"
         })
+        .when("/occasion/edit/:id", {
+            cache: false,
+            templateUrl: function (params) {
+                return 'occasionedit.php?id=' + params.id;
+            },
+        })
+        .when("/occasion/edit/update/:id/:idnew/:name/:detail/:fp/:oadd", {
+            templateUrl: function (params) {
+                return 'occasioneditres.php?id=' + params.id + '&idnew=' + params.idnew + '&name='
+                    + params.name + '&detail=' + params.detail + '&fp=' + params.fp + '&oadd=' + params.oadd;
+            },
+        })
+        .when("/occasion/img/:bid", {
+            templateUrl: function (params) {
+                return 'occasionimg.php?bid=' + params.bid;
+            },
+        })
+        .when("/occasion/bouq/:occaID", {
+            templateUrl: function (params) {
+                return 'occasionbouq.php?occaID=' + params.occaID;
+            },
+        })
+        .when("/occasion/bouq/del/:bid/:occaID", {
+            templateUrl: function (params) {
+                return 'occasionbouqdel.php?bid=' + params.bid + '&occaID=' + params.occaID;
+            },
+        })
+        .when("/occasion/bouq/add/:bid/:occaID", {
+            templateUrl: function (params) {
+                return 'occasionbouqadd.php?bid=' + params.bid + '&occaID=' + params.occaID;;
+            },
+        })
+        .when("/occasion/add", {
+            templateUrl: function (params) {
+                return 'occasionadd.php';
+            },
+        })
+        .when("/occasion/delete/:bid", {
+            templateUrl: function (params) {
+                return 'occasiondelete.php?bid=' + params.bid;
+            },
+        })
         .when("/redirect/:page", {
             templateUrl: function (params) { // <-- 
-                return 'redirect.php?' + params.page+"=''";
+                return 'redirect.php?' + params.page + "=''";
             }
         })
         .otherwise({
@@ -125,6 +186,12 @@ app.controller('myMain', ['$scope', '$route', function ($scope, $route) {
     }
 }]);
 
+// stops pages from caching
+app.run(function ($rootScope, $templateCache) {
+    $rootScope.$on('$viewContentLoaded', function () {
+        $templateCache.removeAll();
+    });
+});
 
 /*
 $(window).on('hashchange',function() {

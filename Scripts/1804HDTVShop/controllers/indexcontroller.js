@@ -9,9 +9,7 @@ app.config(['$routeProvider', function ($routeProvider) {
         })
         //browse
         .when('/browse.php', {
-            templateUrl: function (params) {
-                return "browse.php";
-            },
+            templateUrl: "browse.php",
             controller: 'browsecontroller'
         })
         //flower category
@@ -35,6 +33,18 @@ app.config(['$routeProvider', function ($routeProvider) {
             },
             controller: 'browsecontroller'
         })
+        //FilterGen
+        .when('/browse.php/filter/:cate/:col/:occa/:fname', {
+            templateUrl: function (params) {
+                return "browse.php?cate=" + params.cate + "&col=" + params.col + "&occa=" + params.occa + "&fname=" + params.fname;
+            },
+            controller: 'browsecontroller'
+        })
+        //about us
+        .when('/about.php', {
+            templateUrl: "about.php",
+            controller: 'aboutcontroller'
+        })
         .when('/flowercate', {
             templateUrl: "flowercate.php"
         })
@@ -56,6 +66,5 @@ app.config(['$routeProvider', function ($routeProvider) {
             },
             controller: 'productcontroller'
         })
-        
         .otherwise({ redirectTo: '/' });
 }]);

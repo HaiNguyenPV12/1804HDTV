@@ -13,7 +13,7 @@
         <label class="mb-2 mr-sm-2 col-2" for="addbname"><span class="text-right">Tên bó hoa:</span></label>
         <input type="text" readonly class="form-control mb-2 col-2" name="addbid" id="addbid" tabindex="-1">
         <input type="text" autofocus required class="form-control mb-2 mr-sm-2 col-6" name="addbname" id="addbname"
-            autocomplete="off">
+            autocomplete="off" pattern="[\p{L}\s\d]{2,30}" title="2-30 chữ. Không bao gồm kí tự đặc biệt như @#$%^&* ">
 
     </div>
 
@@ -21,7 +21,7 @@
     <div class="form-inline">
         <label class="mb-2 mr-sm-2 col-2" for="addbprice">Giá:</label>
         <input type="number" required class="form-control mb-2 mr-sm-2 col-8" name="addbprice" id="addbprice"
-            autocomplete="off" min=0 step="500" value="0" max="100000000">
+            autocomplete="off" min=0 step="500" value="0" max="100000000" title="Giá từ 0-10 triệu. Tiền lẻ nhất là 500 đ">
         <label class="mb-2 mr-sm-2 col-1">VND</label>
 
     </div>
