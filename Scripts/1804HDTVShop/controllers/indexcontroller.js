@@ -74,5 +74,9 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'feedback.php',
             // controller: 'logincontroller'
         })
+        .when('/tos', {
+            templateUrl: 'tos.html',
+            controller: 'toscontroller'
+        })
         .otherwise({ redirectTo: '/' });
 }]);
