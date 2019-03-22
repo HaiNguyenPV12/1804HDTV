@@ -24,7 +24,7 @@
     <!-- ID loại hoa -->
     <div class="form-inline">
         <label class="mb-2 mr-sm-2 col-2" for="editfcateid">Mã loại hoa:</label>
-        <input type="text" autofocus required class="form-control mb-2 mr-sm-2 col-9" name="editfcateid" id="editfcateid" autocomplete="off" maxlength="3" pattern="\w{2,3} value="<?php echo $data['f_cate_ID'] ?>">
+        <input type="text" autofocus required class="form-control mb-2 mr-sm-2 col-9" name="editfcateid" id="editfcateid" autocomplete="off" maxlength="3" pattern="\w{2,3}"" value="<?php echo $data['f_cate_ID'] ?>">
     </div>
     <div class="form-inline">
         <label class="mr-sm-2 col-2 mb-2"></label>
