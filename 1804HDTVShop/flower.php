@@ -94,7 +94,7 @@ include "../src/flowerdb.php";
         echo '</div>';
 
 
-        $bouquet = getSql("SELECT * FROM bouquet, bouq_detail, flower WHERE bouquet.b_ID = bouq_detail.b_ID AND flower.f_ID = bouq_detail.f_ID and flower.f_ID = '$fid'");
+        $bouquet = getSql("SELECT * FROM bouquet, bouq_detail, flower WHERE bouquet.b_ID = bouq_detail.b_ID AND flower.f_ID = bouq_detail.f_ID and flower.f_ID = '$fid' ORDER BY b_selling DESC");
         echo '<div class="col-lg-10 row border bg-light">';
         if (sizeof($bouquet)<=0) {
             die("<div class='container text-center mt-5'><h4>Chưa có bó hoa nào có hoa này!</h4></div>");
@@ -111,7 +111,7 @@ include "../src/flowerdb.php";
                     }
                 }
                 
-                echo '<div class="col-lg-4 col-md-5 mb-3 mt-3">
+                echo '<div class="col-lg-3 col-md-5 mb-3 mt-3">
                     <div class="card h-80 border-primary border-shop">
                         <a href="#!product/'.$bdata["b_ID"].'"><img class="card-img-top custom" src="'.$bimgurl.'" alt=""></a>
                         <div class="text-center card-caption" style="">
@@ -121,14 +121,21 @@ include "../src/flowerdb.php";
                         </div>
                         <a href="#!product/'.$bdata["b_ID"].'" class="btn card-footer btn-shop" style="border-radius:0px;border-bottom:2px solid #9f7fc3">
                             Xem chi tiết
-                        </a>
-                        <button name="cmdAddToCart" class="btn card-footer btn-shop">
+                        </a>';
+                if ($bdata["b_selling"]==1) {
+                    echo '<button name="cmdAddToCart" class="btn card-footer btn-shop">
+                            <h5>'.number_format($bdata["b_price"],0,",",".").' Đ </h5>
                             <i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Cho vào giỏ hàng
                             <input type="hidden" id="bid" value="'.$bdata["b_ID"].'">
-                        </button>
-
-                    </div>
-                </div>';
+                        </button>';
+                }else{
+                    echo '<a  class="btn card-footer btn-secondary" style="border:none;">
+                            <i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Đã hết hàng
+                            <input type="hidden" id="bid" value="'.$bdata["b_ID"].'">
+                        </a>';
+                }
+                echo'   </div>
+                    </div>';
             }
         }
        
