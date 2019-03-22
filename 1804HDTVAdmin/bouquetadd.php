@@ -20,8 +20,10 @@
     <!-- Giá -->
     <div class="form-inline">
         <label class="mb-2 mr-sm-2 col-2" for="addbprice">Giá:</label>
-        <input type="number" required class="form-control mb-2 mr-sm-2 col-8" name="addbprice" id="addbprice"
-            autocomplete="off" min=0 step="500" value="0" max="100000000" title="Giá từ 0-10 triệu. Tiền lẻ nhất là 500 đ">
+        
+        <input type="number" required class="form-control mb-2 mr-sm-2 col-4" name="addbprice" id="addbprice"
+            autocomplete="off" min=500 step="500" value="0" max="100000000" title="Giá từ 0-10 triệu. Tiền lẻ nhất là 500 đ">
+        <label class="mb-2 mr-sm-2 col-4" for="addbprice" id="addbpriceshow"></label>
         <label class="mb-2 mr-sm-2 col-1">VND</label>
 
     </div>
