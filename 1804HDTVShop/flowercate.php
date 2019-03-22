@@ -121,7 +121,7 @@
                             }else{
                                 $fimgurl = $sitedir."img/undefined.jpg";
                             }
-                            echo '<div class="col-lg-4 col-md-5 mb-3 mt-3">
+                            echo '<div class="col-lg-3 col-md-5 mb-3 mt-3">
                                     <div class="card h-80 border-primary border-shop">
                                         <a href="#!flower/'.$fdata["f_ID"].'"><img class="card-img-top custom" src="'.$fimgurl.'" alt=""></a>
                                         <div class="text-center card-caption" style="">
@@ -146,7 +146,7 @@
                             }else{
                                 $fimgurl = $sitedir."img/undefined.jpg";
                             }
-                            echo '<div class="col-lg-4 col-md-5 mb-3 mt-3">
+                            echo '<div class="col-lg-3 col-md-5 mb-3 mt-3">
                                     <div class="card h-80 border-primary border-shop">
                                         <a href="#!flower/'.$fdata["f_ID"].'"><img class="card-img-top custom" src="'.$fimgurl.'" alt=""></a>
                                         <div class="text-center card-caption" style="">

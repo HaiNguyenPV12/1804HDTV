@@ -86,6 +86,35 @@ $('#modal').on('hidden.bs.modal', function (e) {
     //reloadPage();
 });
 
+$('#addbprice').keyup(function(event){
+    var bprice = $(this).val();
+    var bpriceshow ="";
+    if (bprice.length>8) {
+        bprice = bprice.substring(0,8);
+        //$(this).val(bprice);
+    }
+    if (bprice>10000000) {
+        bprice = "10000000";
+        //$(this).val(bprice);
+    }
+    if (bprice>=1000000) {
+        bpriceshow = bprice.substring(0,bprice.length-6);
+        bpriceshow+=".";
+        bpriceshow+= bprice.substring(bprice.length-6,bprice.length-3);
+        bpriceshow+=".";
+        bpriceshow+= bprice.substring(bprice.length-3,bprice.length);
+    }else if (bprice>=1000) {
+        bpriceshow = bprice.substring(0,bprice.length-3);
+        bpriceshow+=".";
+        bpriceshow+= bprice.substring(bprice.length-3,bprice.length);
+    }else{
+        bpriceshow = bprice;
+    }
+    //bpriceshow += " VNĐ";
+    $(this).val(parseInt(bprice));
+    $("#addbpriceshow").html(bpriceshow);
+});
+
 $(document).on("click","#addimgPreview div",function(){
     var n = $(this).find("#imgnum").val();
     if (n) {
@@ -190,7 +219,11 @@ $('#frmAddBouquet').submit(function(event){
     if (request) {
         request.abort();
     }
-
+    if (!$("[name='imgshow[]']").length) {
+        alert("Chưa có hình!");
+        $("#addimgfile").focus();
+        return;
+    }
     // đặt lại tên form cho dễ gọi :))
     var $form = $(this);
     // Chọn tất cả input trừ cái bid để disable (bid mặc định đã disabled)
