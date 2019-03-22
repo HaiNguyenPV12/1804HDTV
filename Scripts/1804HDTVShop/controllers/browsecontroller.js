@@ -22,11 +22,12 @@ app.controller('browsecontroller', function ($scope, $location, $anchorScroll, $
     var colFilter = document.getElementById("colFilter");
     var occaFilter = document.getElementById("occaFilter");
     var fnameFilter = document.getElementById("fnameFilter");
+    var priceFilter = document.getElementById("priceFilter");
     // console.log(occaFilter.value);
     //change link on form change
     $('#filterGen').change(function (e) {
         e.preventDefault();
-        $('#filterGenLink').attr('href', '#!browse.php/filter/' + cateFilter.value + '/' + colFilter.value + '/' + occaFilter.value + '/'  + fnameFilter.value);
+        $('#filterGenLink').attr('href', '#!browse.php/filter/' + cateFilter.value + '/' + colFilter.value + '/' + occaFilter.value + '/'  + fnameFilter.value + '/'  + priceFilter.value);
     });
 
 });
