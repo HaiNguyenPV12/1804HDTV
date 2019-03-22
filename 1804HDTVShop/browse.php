@@ -150,7 +150,7 @@ if (isset($_GET["price"]) && !empty($_GET["price"])) {
         $set = true;
     }
 }
-echo $sql;
+// echo $sql;
 ?>
             <div class="row mt-3">
                 <?php
