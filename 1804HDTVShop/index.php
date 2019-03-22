@@ -164,9 +164,10 @@ while ($row = mysqli_fetch_assoc($rs)) {
                 <div class="col-2">
                     <b>Trợ Giúp</b>
                     <ul>
-                        <li><a href="#" class="footer-link">Điều khoản dịch vụ</a></li>
-                        <li><a href="#" class="footer-link">Chính sách bảo mật</a></li>
+                        <li><a href="#!tos" class="footer-link">Điều khoản dịch vụ</a></li>
+                        <li><a href="#!tos" class="footer-link">Chính sách bảo mật</a></li>
                         <li><a href="#!feedback" class="footer-link">Ý Kiến Đóng Góp</a></li>
+                        <li><a href="#!sitemap" class="footer-link">Sitemap</a></li>
                     </ul>
                 </div>
             </div>
@@ -198,6 +199,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
     <script src="../Scripts/1804HDTVShop/Controllers/flowercatecontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/Controllers/flowercontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/controllers/logincontroller.js"></script>
+    <script src="../Scripts/1804HDTVShop/controllers/toscontroller.js"></script>
 </body>
 
 </html>
