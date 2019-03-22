@@ -78,5 +78,9 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'tos.html',
             controller: 'toscontroller'
         })
+        .when('/sitemap', {
+            templateUrl: 'sitemap.html',
+            controller: 'smcontroller'
+        })
         .otherwise({ redirectTo: '/' });
 }]);
