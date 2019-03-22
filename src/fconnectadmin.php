@@ -3,7 +3,7 @@ $host = 'localhost';
 $user = 'root';
 $pw = '';
 $db = 'flowerdb';
-$cn = new mysql($host, $user, $pw, $db);
+$cn = new mysql_connect($host, $user, $pw, $db);
 
 if (mysql_connect_error()) {
     echo ("Lỗi kết nối: "+$cn->error);

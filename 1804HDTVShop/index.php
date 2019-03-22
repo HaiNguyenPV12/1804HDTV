@@ -1,6 +1,6 @@
 <?php
-include "../src/fconnectadmin.php";
-include "../src/flowerdb.php";
+include "./src/fconnectadmin.php";
+include "./src/flowerdb.php";
 session_start();
 $cusdata;
 if (isset($_SESSION['member'])) {
