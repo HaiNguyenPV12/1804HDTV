@@ -24,9 +24,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
                 <div class='row h-75'>
                     <div class='col my-auto'>
                         <h2>Hoa " . $row['occa_name'] . "</h2>
-                        <pre class='event-text-content'>
-                            " . $row['occa_detail'] . "
-                        </pre>
+                        <pre class='event-text-content'>" . $row['occa_detail'] . "</pre>
                     </div>
                 </div>
                 <a href='#!browse.php/occa/" . $row['occa_name'] . "' class='btn btn-primary btn-shop'>Xem Chi Tiết</a>

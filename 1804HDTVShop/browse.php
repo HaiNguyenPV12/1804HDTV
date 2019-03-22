@@ -18,7 +18,7 @@ include "../src/fconnectadmin.php";
                     <select class="form-control mr-3" name="occaFilter" id="occaFilter">
                         <option value="*">-- Dịp --</option>
                         <?php
-$sqlFilterOcca = "SELECT distinct occa_name from v_bouq_gen";
+$sqlFilterOcca = "SELECT distinct occa_name from v_bouq_gen where occa_name is not null";
 $rs = mysqli_query($cn, $sqlFilterOcca);
 while ($row = mysqli_fetch_assoc($rs)) {
     echo "<option value=\"" . $row['occa_name'] . "\">" . $row['occa_name'] . "</option>";
