@@ -69,6 +69,10 @@ app.config(['$routeProvider', function ($routeProvider) {
         .when('/login', {
             templateUrl: 'member_login.php',
             controller: 'logincontroller'
+        }) 
+        .when('/member', {
+            templateUrl: 'member.php',
+            controller: 'membercontroller'
         })
         .otherwise({ redirectTo: '/' });
 }]);
