@@ -133,9 +133,9 @@ if (isset($_GET["fname"]) && !empty($_GET["fname"])) {
     }
 }
 if ($set == true) {
-    $sql .= " and b_selling = 1 and b_img like '%_00.jpg%'";
+    $sql .= " and b_selling = 1 and b_img like '%_00.%'";
 } else {
-    $sql .= " where b_img like '%_00.jpg%' and b_selling = 1";
+    $sql .= " where b_img like '%_00.%' and b_selling = 1";
 }
 if (isset($_GET["price"]) && !empty($_GET["price"])) {
     global $sql, $set;
@@ -150,7 +150,7 @@ if (isset($_GET["price"]) && !empty($_GET["price"])) {
         $set = true;
     }
 }
-// echo $sql;
+echo $sql;
 ?>
             <div class="row mt-3">
                 <?php
