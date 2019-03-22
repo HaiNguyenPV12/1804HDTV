@@ -90,7 +90,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
 }
 ?>
                     <hr class="dropdown-divider">
-                    <a class="dropdown-item" href="#!browse.php">Tất cả các dịp</a>
+                    <a class="dropdown-item" href="#!occasion">Tất cả các dịp</a>
                 </div>
             </li>
         </ul>
@@ -200,6 +200,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
     <script src="../Scripts/1804HDTVShop/Controllers/flowercontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/controllers/logincontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/controllers/toscontroller.js"></script>
+    <script src="../Scripts/1804HDTVShop/controllers/occasioncontroller.js"></script>
 </body>
 
 </html>

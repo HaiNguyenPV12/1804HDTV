@@ -82,5 +82,10 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'sitemap.html',
             controller: 'smcontroller'
         })
+        //all occasion
+        .when('/occasion', {
+            templateUrl: 'occasion.php',
+            controller: 'occasioncontroller'
+        })
         .otherwise({ redirectTo: '/' });
 }]);
