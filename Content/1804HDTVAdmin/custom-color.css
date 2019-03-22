@@ -109,3 +109,7 @@
 .text-shop {
     color: #7c42bd !important;
 }
+
+.errorm {
+    color: red;
+}
