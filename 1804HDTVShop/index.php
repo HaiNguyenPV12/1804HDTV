@@ -198,6 +198,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
     <script src="../Scripts/1804HDTVShop/Controllers/flowercatecontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/Controllers/flowercontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/controllers/logincontroller.js"></script>
+    <script src="../Scripts/1804HDTVShop/controllers/membercontroller.js"></script>
+
 </body>
 
 </html>
