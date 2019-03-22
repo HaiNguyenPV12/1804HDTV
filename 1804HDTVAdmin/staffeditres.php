@@ -36,8 +36,8 @@ if (isset($_GET['id']) && isset($_GET['name']) && isset($_GET['role'])
     $sadd = $_GET['sadd'];
     if ($sadd == 0) {
         $sql = "UPDATE staff set s_u_ID = '$uName', s_u_PW = '$pass', s_role_ID = '$role', s_name = '$name', s_phone = '$phone', s_address = '$address', s_email = '$email', s_employed = $employed where s_ID = $id";
-        $rs = mysqli_query($cn, $sql);
-        $ra = mysqli_affected_rows($cn);
+        $rs = mysql_query($cn, $sql);
+        $ra = mysql_affected_rows($cn);
         if ($ra <= 0) {
             echo "Lỗi cập nhật thông tin.";
         } else {
@@ -47,8 +47,8 @@ if (isset($_GET['id']) && isset($_GET['name']) && isset($_GET['role'])
     else if ($sadd == 1) {
         // echo 'test';
         $sqla = "INSERT INTO `staff` (`s_ID`, `s_u_ID`, `s_u_PW`, `s_role_ID`, `s_name`, `s_phone`, `s_address`, `s_email`, `s_employed`) VALUES (NULL, '$uName', '$pass', '$role', '$name', '$phone', '$address', '$email', $employed)";
-        $rs = mysqli_query($cn, $sqla);
-        $ra = mysqli_affected_rows($cn);
+        $rs = mysql_query($cn, $sqla);
+        $ra = mysql_affected_rows($cn);
         if ($ra <= 0) {
             echo "Lỗi cập nhật thông tin.";
         } else {

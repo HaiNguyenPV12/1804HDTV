@@ -37,8 +37,8 @@ session_start();
                     <!-- <a class="dropdown-item" href="#!test">test</a> -->
                     <?php
 $sql = "SELECT * from flower_cate order by f_cate_name asc";
-$rs = mysqli_query($cn, $sql);
-while ($row = mysqli_fetch_assoc($rs)) {
+$rs = mysql_query($cn, $sql);
+while ($row = mysql_fetch_assoc($rs)) {
     $cate = $row['f_cate_name'];
     echo "<a class=\"dropdown-item\" href=\"#!browse.php/" . $cate . "\">" . $row['f_cate_name'] . "</a>";
 }
@@ -51,8 +51,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
                 <div class="dropdown-menu">
                     <?php
 $sql = "SELECT * from flower_color order by f_color_name asc";
-$rs = mysqli_query($cn, $sql);
-while ($row = mysqli_fetch_assoc($rs)) {
+$rs = mysql_query($cn, $sql);
+while ($row = mysql_fetch_assoc($rs)) {
     $color = $row['f_color_name'];
     echo "<a class=\"dropdown-item\" href=\"#!browse.php/" . $color . "\">" . $row['f_color_name'] . "</a>";
 }
@@ -65,8 +65,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
                 <div class="dropdown-menu">
                     <?php
 $sql = "SELECT * from flower_color order by f_color_name asc";
-$rs = mysqli_query($cn, $sql);
-while ($row = mysqli_fetch_assoc($rs)) {
+$rs = mysql_query($cn, $sql);
+while ($row = mysql_fetch_assoc($rs)) {
     $color = $row['f_color_name'];
     echo "<a class=\"dropdown-item\" href=\"#!browse.php/" . $color . "\">" . $row['f_color_name'] . "</a>"; //TODO link to actual ocasions
 }

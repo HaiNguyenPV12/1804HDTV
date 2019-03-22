@@ -33,8 +33,8 @@ if (isset($_GET['id']) && isset($_GET['name']) && isset($_GET['detail'])
     $oadd = $_GET['oadd'];
     if ($oadd == 0) {
         $sql = "UPDATE occasion set occa_ID = '$idnew', occa_name = '$name', occa_detail = '$detail', occa_fp = $fp, occa_img = 'img/Occasion/$idnew.jpg' where occa_ID = '$id'";
-        $rs = mysqli_query($cn, $sql);
-        $ra = mysqli_affected_rows($cn);
+        $rs = mysql_query($cn, $sql);
+        $ra = mysql_affected_rows($cn);
         if ($ra <= 0) {
             echo "Lỗi cập nhật thông tin.";
         } else {
@@ -49,8 +49,8 @@ if (isset($_GET['id']) && isset($_GET['name']) && isset($_GET['detail'])
     } else if ($oadd == 1) {
         // echo 'test';
         $sqla = "INSERT INTO `occasion` (`occa_ID`, `occa_name`, `occa_detail`, `occa_fp`, `occa_img`) VALUES ('$id', '$name', '$detail', 0, 'img/Occasion/$id.jpg')";
-        $rs = mysqli_query($cn, $sqla);
-        $ra = mysqli_affected_rows($cn);
+        $rs = mysql_query($cn, $sqla);
+        $ra = mysql_affected_rows($cn);
         if ($ra <= 0) {
             echo "Lỗi cập nhật thông tin.";
         } else {

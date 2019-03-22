@@ -60,8 +60,8 @@
         <?php
 include "../src/sconnectadmin.php";
 $sql = "SELECT s_name,s_phone,s_email FROM staff WHERE s_role_ID = 'fullstaff' and s_employed = 1";
-$rs = mysqli_query($cn, $sql);
-$numResults = mysqli_num_rows($rs);
+$rs = mysql_query($cn, $sql);
+$numResults = mysql_num_rows($rs);
 // echo $numResults;
 if ($numResults > 0) {
     echo "<div class='col-4 mx-auto text-center mt-2 mb-1'>
@@ -69,7 +69,7 @@ if ($numResults > 0) {
                 Nhân Viên Hỗ Trợ
             </h3>
         </div>";
-    while ($row = mysqli_fetch_assoc($rs)) {
+    while ($row = mysql_fetch_assoc($rs)) {
         echo "
         <div class='staff-card'>
                 <div class='row staff-details h-100'>

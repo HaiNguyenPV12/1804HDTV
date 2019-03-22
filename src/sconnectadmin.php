@@ -3,9 +3,9 @@ $host = 'localhost';
 $user = 'root';
 $pw = '';
 $db = 'staffdb';
-$cn = new mysqli($host, $user, $pw, $db);
+$cn = new mysql($host, $user, $pw, $db);
 
-if (mysqli_connect_error()) {
+if (mysql_connect_error()) {
     echo ("Lỗi kết nối: "+$cn->error);
     exit;
 }

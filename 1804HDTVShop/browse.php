@@ -18,8 +18,8 @@ include "../src/fconnectadmin.php";
                         <option value="*">-- Dịp --</option>
                         <?php
 $sqlFilterOcca = "SELECT distinct occa_name from v_bouq_gen";
-$rs = mysqli_query($cn, $sqlFilterOcca);
-while ($row = mysqli_fetch_assoc($rs)) {
+$rs = mysql_query($cn, $sqlFilterOcca);
+while ($row = mysql_fetch_assoc($rs)) {
     echo "<option value=\"" . $row['occa_name'] . "\">" . $row['occa_name'] . "</option>";
 }
 ?>
@@ -29,8 +29,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
                         <option value="*">-- Loại hoa --</option>
                         <?php
 $sqlFilterCate = "SELECT distinct f_cate_name from v_bouq_gen";
-$rs = mysqli_query($cn, $sqlFilterCate);
-while ($row = mysqli_fetch_assoc($rs)) {
+$rs = mysql_query($cn, $sqlFilterCate);
+while ($row = mysql_fetch_assoc($rs)) {
     echo "<option value=\"" . $row['f_cate_name'] . "\">" . $row['f_cate_name'] . "</option>";
 }
 ?>
@@ -40,8 +40,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
                         <option value="*">-- Màu có trong bó --</option>
                         <?php
 $sqlFilterCol = "SELECT distinct f_color_name from v_bouq_gen where f_color_name is not null";
-$rs = mysqli_query($cn, $sqlFilterCol);
-while ($row = mysqli_fetch_assoc($rs)) {
+$rs = mysql_query($cn, $sqlFilterCol);
+while ($row = mysql_fetch_assoc($rs)) {
     echo "<option value=\"" . $row['f_color_name'] . "\">" . $row['f_color_name'] . "</option>";
 }
 ?>
@@ -51,8 +51,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
                         <option value="*">-- Hoa có trong bó --</option>
                         <?php
 $sqlFilterCol = "SELECT distinct f_name from v_bouq_gen where f_name is not null";
-$rs = mysqli_query($cn, $sqlFilterCol);
-while ($row = mysqli_fetch_assoc($rs)) {
+$rs = mysql_query($cn, $sqlFilterCol);
+while ($row = mysql_fetch_assoc($rs)) {
     echo "<option value=\"" . $row['f_name'] . "\">" . $row['f_name'] . "</option>";
 }
 ?>
@@ -92,8 +92,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
                         <!-- <div class="col-3"> -->
                             <!-- <input class="form-check-input" type="checkbox" value="" name="occa_list[]">Option 1 <br> -->
                             <?php
-// $rs = mysqli_query($cn, $sqlFilterOcca);
-// while ($row = mysqli_fetch_assoc($rs)) {
+// $rs = mysql_query($cn, $sqlFilterOcca);
+// while ($row = mysql_fetch_assoc($rs)) {
 //     echo "<input class=\"form-check-input\" type=\"checkbox\" value=\"" . $row['occa_name'] . "\" name=\"occa_list[]\">" . $row['occa_name'] . " <br>";
 // }
 ?>
@@ -101,8 +101,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
                         <!-- category list -->
                         <!-- <div class="col-3"> -->
                             <?php
-// $rs = mysqli_query($cn, $sqlFilterCate);
-// while ($row = mysqli_fetch_assoc($rs)) {
+// $rs = mysql_query($cn, $sqlFilterCate);
+// while ($row = mysql_fetch_assoc($rs)) {
 //     echo "<input class=\"form-check-input\" type=\"checkbox\" value=\"" . $row['f_cate_name'] . "\" name=\"cate_list[]\">" . $row['f_cate_name'] . " <br>";
 // }
 ?>
@@ -110,8 +110,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
                         <!-- color list -->
                         <!-- <div class="col-3"> -->
                             <?php
-// $rs = mysqli_query($cn, $sqlFilterCol);
-// while ($row = mysqli_fetch_assoc($rs)) {
+// $rs = mysql_query($cn, $sqlFilterCol);
+// while ($row = mysql_fetch_assoc($rs)) {
 //     echo "<input class=\"form-check-input\" type=\"checkbox\" value=\"" . $row['f_color_name'] . "\" name=\"col_list[]\">" . $row['f_color_name'] . " <br>";
 // }
 ?>
@@ -204,8 +204,8 @@ if ($set == true) {
 
             <?php
 // setlocale(LC_MONETARY, "en_US");
-$rs = mysqli_query($cn, $sql);
-if (mysqli_num_rows($rs) <= 0) {
+$rs = mysql_query($cn, $sql);
+if (mysql_num_rows($rs) <= 0) {
     echo "
     <div class='col-12 text-center mx-0'>
         <h6 class='text-center'>
@@ -213,7 +213,7 @@ if (mysqli_num_rows($rs) <= 0) {
         </h6>
     </div>";
 }
-while ($row = mysqli_fetch_assoc($rs)) {
+while ($row = mysql_fetch_assoc($rs)) {
     // echo $row['b_name'] . "<br>";
     echo "<div class='col-lg-3 col-md-5 mb-4'>
             <div class='card card-bouq h-80 border-primary border-shop'>

@@ -9,9 +9,9 @@
         <?php
 include "../src/fconnectadmin.php";
 $sql = "SELECT * FROM occasion WHERE occa_fp = 1";
-$rs = mysqli_query($cn, $sql);
+$rs = mysql_query($cn, $sql);
 $cardindex = 1;
-while ($row = mysqli_fetch_assoc($rs)) {
+while ($row = mysql_fetch_assoc($rs)) {
 
     if ($cardindex % 2 == 0) {
         $class = '2';

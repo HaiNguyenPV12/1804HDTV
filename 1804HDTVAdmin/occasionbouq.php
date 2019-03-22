@@ -33,9 +33,9 @@ include '../src/fconnectadmin.php';
 $bsql = "SELECT * from bouquet";
 $occaID = $_GET['occaID'];
 $sql = "SELECT * FROM bouquet, occasion_detail, occasion WHERE occasion_detail.b_ID = bouquet.b_ID AND occasion_detail.occa_ID = occasion.occa_ID and occasion.occa_ID = '$occaID'";
-$rs = mysqli_query($cn, $sql);
+$rs = mysql_query($cn, $sql);
 //list bouqs in occa
-while ($row = mysqli_fetch_assoc($rs)) {
+while ($row = mysql_fetch_assoc($rs)) {
     echo "<tr>";
     echo "<td>" . $row['b_name'] . "</td>";
     echo "
@@ -47,8 +47,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
 }
 //list bouqs not in occa
 $sql = "SELECT b_name,b_ID from bouquet where b_ID not in (SELECT bouquet.b_ID FROM bouquet, occasion_detail, occasion WHERE occasion_detail.b_ID = bouquet.b_ID AND occasion_detail.occa_ID = occasion.occa_ID and occasion.occa_ID = '$occaID')";
-$rs = mysqli_query($cn, $sql);
-while ($row = mysqli_fetch_assoc($rs)) {
+$rs = mysql_query($cn, $sql);
+while ($row = mysql_fetch_assoc($rs)) {
     echo "<tr>";
     echo "<td>" . $row['b_name'] . "</td>";
     echo "

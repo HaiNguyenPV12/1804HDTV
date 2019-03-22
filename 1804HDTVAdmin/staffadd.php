@@ -41,8 +41,8 @@ $data = getSql("SELECT * from staff_role");
                 <td>
                     <input name='staffID' id='staffID' type='text' disabled value='<?php
 $sql = "SELECT s_ID from staff order by s_ID desc";
-$rs = mysqli_query($cn, $sql);
-$row = mysqli_fetch_array($rs);
+$rs = mysql_query($cn, $sql);
+$row = mysql_fetch_array($rs);
 echo $row[0] + 1;
 ?>'>
                 </td>
