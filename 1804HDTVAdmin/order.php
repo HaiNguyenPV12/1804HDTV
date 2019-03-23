@@ -61,14 +61,14 @@ img{
                 echo "<td>",$o['order_date'],"</td>";
                 echo "<td>",$o['delivery_date'],"</td>";
                 echo '<td>
-                        <button class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'orderedit.php?oid=',$o["order_ID"],'\';modalHText=\'Chỉnh sửa\';">
+                        <a class="btn btn-info btn-sm text-light btn-shop" href="#!order/delivered/'.$o['order_ID'].'">
                         Đã giao
-                        </button>
+                        </a>
                         </td>';
                 echo '<td>
-                        <button class="btn btn-danger btn-sm text-light" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'orderedit.php?oid=',$o["order_ID"],'\';modalHText=\'Chỉnh sửa\';">
+                        <a class="btn btn-danger btn-sm text-light" href="#!order/aborted/'.$o['order_ID'].'">
                         Hủy
-                        </button>
+                        </a>
                         </td>';
             }
             echo "</tr>";   
