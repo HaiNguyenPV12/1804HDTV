@@ -74,5 +74,16 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'member.php',
             controller: 'membercontroller'
         })
+        
+        .when('/cart', {
+            templateUrl: 'cart.php',
+        })
+        .when('/payment', {
+            templateUrl: 'payment.php',
+            controller: 'paymentcontroller'
+        }) 
+        .when('/paymentconfirm', {
+            templateUrl: 'paymentconfirm.php'
+        })
         .otherwise({ redirectTo: '/' });
 }]);

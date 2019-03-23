@@ -3,45 +3,51 @@ include "../src/fconnectadmin.php";
 session_start();
 ?>
 
-    <!-- content -->
     <?php
     include "../src/flowerdb.php";
-    if (isset($_GET["cmdMember"])&& isset($_GET["memName"]) && isset($_GET["memEmail"]) && isset($_GET["memPhone"])&& isset($_GET["memAddress"])&& isset($_GET["memID"])&& isset($_GET["memPW"])) 
+    if (isset($_POST["cmdMember"])&& isset($_POST["memName"]) && isset($_POST["memEmail"]) && isset($_POST["memPhone"])&& isset($_POST["memAddress"])&& isset($_POST["memID"])&& isset($_POST["memPW"])) 
     {
-        $memName = $_GET["memName"];
-        $memEmail = $_GET["memEmail"];
-        $memAddress =$_GET["memAddress"];
-        $memPhone = $_GET["memPhone"];
-        $memID = $_GET["memID"];
-        $memPW = $_GET["memPW"];
-        
-        $mcdata = getSql("select cus_ID from customer where cus_phone = '$memPhone'");
-        if (sizeof($mcdata)>0) 
+        $memName = $_POST["memName"];
+        $memEmail = $_POST["memEmail"];
+        $memAddress = $_POST["memAddress"];
+        $memPhone = $_POST["memPhone"];
+        $memID = $_POST["memID"];
+        $memPW = $_POST["memPW"];
+
+        $udata = getSql("select * from member where mem_uID = '$memID'");
+        if(sizeof($udata)>0)
         {
-            $cusID = $mcdata[0]['cus_ID'];
-            $cdata = getSql("Select * from member where cus_ID = '$cusID'");
-            if(sizeof($cdata)>0)
-            {
-                header ("location: member_login.php");
-            }
-            else
-            {
-                $sql = updateSql("update customer set cus_name = '$memName', cus_address= '$memAddress', cus_email ='$memEmail' where cus_phone = '$memPhone'");
-                $nsql = insertSql("insert into member values(null,'$memID','$memPW','$cusID')");
-                header ("location: member_login.php");
-            }
-            
-            
+            echo "ID này đã tồn tại không thể đăng ký";
+            exit();
         }
         else
         {
-            $sql = insertSql("insert into customer values(null,'$memPhone','$memName','$memAddress','$memEmail')");
-            $data = getSql("select cus_ID from customer where cus_phone = '$memPhone'");
-            $cusID = $data[0]['cus_ID'];
-            $nsql = insertSql("insert into member values(null,'$memID','$memPW','$cusID')");
-            header ("location: member_login.php");
+            $mcdata = getSql("select cus_ID from customer where cus_phone = '$memPhone'");
+            if (sizeof($mcdata)>0) 
+            {
+                $cusID = $mcdata[0]['cus_ID'];
+                $cdata = getSql("Select * from member where cus_ID = '$cusID'");
+                if(sizeof($cdata)>0)
+                {
+                    echo "ok";
+                }
+                else
+                {
+                    $nsql = insertSql("insert into member values(null,'$memID','$memPW','$cusID')");
+                }
+                
+                
+            }
+            else
+            {
+                $sql = insertSql("insert into customer values(null,'$memPhone','$memName','$memAddress','$memEmail')");
+                $data = getSql("select cus_ID from customer where cus_phone = '$memPhone'");
+                $cusID = $data[0]['cus_ID'];
+                $nsql = insertSql("insert into member values(null,'$memID','$memPW','$cusID')");
+                echo "ok";
+            }
         }
-        
+            
     }
     else
     {

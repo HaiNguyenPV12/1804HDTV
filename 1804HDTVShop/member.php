@@ -7,7 +7,7 @@ session_start();
     <div class="card bg-light">
     <article class="card-body mx-auto" style="max-width: 400px;">
 	<h4 class="card-title mt-3 text-center">ĐĂNG KÝ TÀI KHOẢN THÀNH VIÊN</h4>
-	<form method="get" action="member_process" id="frmLogin">
+	<form method="post" name="frmReg" id="frmReg">
         <div class="form-group input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -60,13 +60,18 @@ session_start();
         <div id="repwLabel"></div>                                   
         <div class="form-group">
             <button type="button" name="cmdMember" id="cmdMember" class="btn btn-primary btn-block"> BẠN MUỐN LÀM THÀNH VIÊN CỦA SHOP CHỨ? </button>
-            <input type="hidden" name ="cmdMember">
+            <input type="hidden" name ="cmdMember" >
         </div> <!-- form-group// -->                                                           
     </form>
 </article>
 </div> <!-- card.// -->
-
-    <!-- <script src="../Scripts/1804HDTVShop/member.js"></script> -->
-</body>
-
+<div class="modal" id="result">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body text-center" id="txtResult">
+            </div>
+        </div>
+    </div>
+</div>
 </html>

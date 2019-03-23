@@ -76,11 +76,11 @@ session_start();
         </div>
         
         <div class="container col-4">
-            <form method="get" action="paymentconfirm" id="frmPayment">
+            
             <div class="card bg-light">
                 <article class="card-body mx-auto" style="max-width: 400px;">
                     <h4 class="card-title mt-3 text-center">Thông tin thanh toán</h4>
-                    <form>
+                    <form method="get" action="#!paymentconfirm" id="frmPayment">
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -116,13 +116,13 @@ session_start();
                             <input name="dateVal" id="dateVal" class="form-control" placeholder="Ngày nhận hàng" type="datetime-local">
                         </div> <!-- form-group// -->
                         <div class="form-group">
-                            <button  name="cmdPayment" id="cmdPayment"  type="button" class="btn btn-primary btn-block">Xác nhận thanh toán </button>
+                            <button  name="cmdPay" id="cmdPay"  type="button" class="btn btn-primary btn-block">Xác nhận thanh toán </button>
                                 <input type="hidden" name ="cmdPayment">
                         </div> <!-- form-group// -->
                     </form>
                 </article>
             </div>
-            </form><!-- card.// -->
+           <!-- card.// -->
         </div>
 
         </div>
