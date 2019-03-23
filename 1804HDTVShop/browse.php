@@ -150,7 +150,10 @@ if (isset($_GET["price"]) && !empty($_GET["price"])) {
         $set = true;
     }
 }
-// echo $sql;
+echo "<p hidden class='querycmd'>";
+echo $sql;
+echo "</p>";
+
 ?>
             <div class="row mt-3">
                 <?php
