@@ -78,6 +78,7 @@ app.config(['$routeProvider', function ($routeProvider) {
         
         .when('/cart', {
             templateUrl: 'cart.php',
+            controller: 'cartcontroller'
         })
         .when('/payment', {
             templateUrl: 'payment.php',
