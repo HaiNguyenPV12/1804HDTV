@@ -16,7 +16,7 @@ include "../src/fconnectadmin.php";
                     </label>
                     <!-- occasion dropdown -->
                     <select class="form-control mr-3" name="occaFilter" id="occaFilter">
-                        <option value="*">-- Dịp --</option>
+                        <option value="unset">-- Dịp --</option>
                         <?php
 $sqlFilterOcca = "SELECT distinct occa_name from v_bouq_gen where occa_name is not null";
 $rs = mysqli_query($cn, $sqlFilterOcca);
@@ -27,7 +27,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
                     </select>
                     <!-- cate dropdown -->
                     <select class="form-control mr-3" name="cateFilter" id="cateFilter">
-                        <option value="*">-- Loại hoa --</option>
+                        <option value="unset">-- Loại hoa --</option>
                         <?php
 $sqlFilterCate = "SELECT distinct f_cate_name from v_bouq_gen";
 $rs = mysqli_query($cn, $sqlFilterCate);
@@ -38,7 +38,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
                     </select>
                     <!-- color dropdown -->
                     <select class="form-control mr-3" name="colFilter" id="colFilter">
-                        <option value="*">-- Màu có trong bó --</option>
+                        <option value="unset">-- Màu có trong bó --</option>
                         <?php
 $sqlFilterCol = "SELECT distinct f_color_name from v_bouq_gen where f_color_name is not null";
 $rs = mysqli_query($cn, $sqlFilterCol);
@@ -49,7 +49,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
                     </select>
                     <!-- flower name dropdown -->
                     <select class="form-control mr-3" name="fnameFilter" id="fnameFilter">
-                        <option value="*">-- Hoa có trong bó --</option>
+                        <option value="unset">-- Hoa có trong bó --</option>
                         <?php
 $sqlFilterCol = "SELECT distinct f_name from v_bouq_gen where f_name is not null";
 $rs = mysqli_query($cn, $sqlFilterCol);
@@ -60,12 +60,12 @@ while ($row = mysqli_fetch_assoc($rs)) {
                     </select>
                     <!-- flower price dropdown -->
                     <select class="form-control mr-3" name="priceFilter" id="priceFilter">
-                        <option value="*">-- Giá bó --</option>
+                        <option value="unset">-- Giá bó --</option>
                         <option value="asc">-- Tăng dần --</option>
                         <option value="desc">-- Giảm dần --</option>
                     </select>
                     <button class="btn btn-shop" name="btnFilterGen" id="btnFilterGen">
-                        <a id="filterGenLink" href='#!browse.php/filter/*/*/*/*/*'>
+                        <a id="filterGenLink" href='#!browse.php/filter/unset/unset/unset/unset/unset'>
                             Lọc kết quả
                         </a>
                     </button>
@@ -81,7 +81,7 @@ if (isset($_GET["cate"]) && !empty($_GET["cate"])) {
     global $sql, $set;
     $cate = $_GET["cate"];
     // $sql = "SELECT DISTINCT b_name from v_bouq_gen where f_cate_name like '%$cate%' and b_img like '%_00%'";
-    if ($cate == "*") {
+    if ($cate == "unset") {
         $sql .= " WHERE f_cate_name like '%%'";
         $set = true;
     } else {
@@ -92,9 +92,9 @@ if (isset($_GET["cate"]) && !empty($_GET["cate"])) {
 if (isset($_GET["col"]) && !empty($_GET["col"])) {
     global $sql, $set;
     $col = $_GET["col"];
-    if ($col == "*" && $set == false) {
+    if ($col == "unset" && $set == false) {
         $sql .= " where f_color_name like '%%'";
-    } else if ($col == "*" && $set == true) {
+    } else if ($col == "unset" && $set == true) {
         $sql .= " and f_color_name like '%%'";
     } else if ($set == true) {
         $sql .= " and f_color_name like '%$col%'";
@@ -107,9 +107,9 @@ if (isset($_GET["occa"]) && !empty($_GET["occa"])) {
     global $sql, $set;
     $occa = $_GET["occa"];
     //TODO refractor ifs
-    if ($occa == "*" && $set == false) {
+    if ($occa == "unset" && $set == false) {
         $sql .= " where occa_name like '%%'";
-    } else if ($occa == "*" && $set == true) {
+    } else if ($occa == "unset" && $set == true) {
         $sql .= " and occa_name like '%%'";
     } else if ($set == true) {
         $sql .= " and occa_name like '%$occa%'";
@@ -121,9 +121,9 @@ if (isset($_GET["occa"]) && !empty($_GET["occa"])) {
 if (isset($_GET["fname"]) && !empty($_GET["fname"])) {
     global $sql, $set;
     $fname = $_GET["fname"];
-    if ($fname == "*" && $set == false) {
+    if ($fname == "unset" && $set == false) {
         $sql .= " where f_name like '%%'";
-    } else if ($fname == "*" && $set == true) {
+    } else if ($fname == "unset" && $set == true) {
         $sql .= " and f_name like '%%'";
     } else if ($set == true) {
         $sql .= " and f_name = '$fname'";
@@ -140,7 +140,7 @@ if ($set == true) {
 if (isset($_GET["price"]) && !empty($_GET["price"])) {
     global $sql, $set;
     $price = $_GET["price"];
-    if ($price == "*") {
+    if ($price == "unset") {
         $sql .= " ORDER BY b_name asc";
     } else if ($price == "asc") {
         $sql .= " ORDER BY b_price asc";
@@ -169,7 +169,6 @@ while ($row = mysqli_fetch_assoc($rs)) {
     echo "<div class='col-lg-3 col-md-5 mb-4'>
             <div class='card card-bouq h-80 border-primary border-shop'>
                 <a href='#!product/" . $row['b_ID'] . "'>
-                    <img class='card-img-top custom' src='../img/Bouquet/B000/B000_PV.jpg' alt=''>
                     <img class='card-img-top custom' src='../" . $row['b_img'] . "' alt=''>
                 </a>
                 <div class='card-body'>
