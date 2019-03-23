@@ -34,9 +34,9 @@ app.config(['$routeProvider', function ($routeProvider) {
             controller: 'browsecontroller'
         })
         //FilterGen
-        .when('/browse.php/filter/:cate/:col/:occa/:fname', {
+        .when('/browse.php/filter/:cate/:col/:occa/:fname/:price', {
             templateUrl: function (params) {
-                return "browse.php?cate=" + params.cate + "&col=" + params.col + "&occa=" + params.occa + "&fname=" + params.fname;
+                return "browse.php?cate=" + params.cate + "&col=" + params.col + "&occa=" + params.occa + "&fname=" + params.fname +"&price=" + params.price;
             },
             controller: 'browsecontroller'
         })
@@ -46,7 +46,8 @@ app.config(['$routeProvider', function ($routeProvider) {
             controller: 'aboutcontroller'
         })
         .when('/flowercate', {
-            templateUrl: "flowercate.php"
+            templateUrl: "flowercate.php",
+            controller: 'flowercatecontroller'
         })
         .when('/flowercate/:fcate', {
             templateUrl: function (params) {
@@ -84,6 +85,23 @@ app.config(['$routeProvider', function ($routeProvider) {
         }) 
         .when('/paymentconfirm', {
             templateUrl: 'paymentconfirm.php'
+        })
+        .when('/feedback', {
+            templateUrl: 'feedback.php',
+            // controller: 'logincontroller'
+        })
+        .when('/tos', {
+            templateUrl: 'tos.html',
+            controller: 'toscontroller'
+        })
+        .when('/sitemap', {
+            templateUrl: 'sitemap.html',
+            controller: 'smcontroller'
+        })
+        //all occasion
+        .when('/occasion', {
+            templateUrl: 'occasion.php',
+            controller: 'occasioncontroller'
         })
         .otherwise({ redirectTo: '/' });
 }]);

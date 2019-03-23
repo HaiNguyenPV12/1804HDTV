@@ -22,9 +22,9 @@ function validateFCateID(){
     if (!$("#cmdAddFlowerCate").length) {
         return;
     }
-    if ($("#addfcateid").val().length!=2) {
+    if ($("#addfcateid").val().length!=2 && $("#addfcateid").val().length!=3) {
         $('#validatetext').attr('class','text-danger');
-        $("#validatetext").html("Mã phải có 2 kí tự!");
+        $("#validatetext").html("Mã phải có 2 hoặc 3 kí tự!");
         fcateidvalid=false;
     }else{
         var items=[];

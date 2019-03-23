@@ -9,6 +9,7 @@
     color: #ffffff;
     border-color: #7c43bd;
 }
+
     .btn-shop a {
         text-decoration: none;
         color: inherit;
@@ -23,22 +24,22 @@
         border-color: #4a148c;
     }
 
-.btn-shop:focus,
-.btn-shop.focus {
-    box-shadow: 0 0 0 0.2rem rgba(74, 20, 140, 0.5);
-}
-
-.btn-shop:not(:disabled):not(.disabled):active,
-.btn-shop:not(:disabled):not(.disabled).active {
-    color: #fff;
-    background-color: #7c43bd;
-    border-color: #4a148c;
-}
-
-    .btn-shop:not(:disabled):not(.disabled):active:focus,
-    .btn-shop:not(:disabled):not(.disabled).active:focus {
+    .btn-shop:focus,
+    .btn-shop.focus {
         box-shadow: 0 0 0 0.2rem rgba(74, 20, 140, 0.5);
     }
+
+    .btn-shop:not(:disabled):not(.disabled):active,
+    .btn-shop:not(:disabled):not(.disabled).active {
+        color: #fff;
+        background-color: #7c43bd;
+        border-color: #4a148c;
+    }
+
+        .btn-shop:not(:disabled):not(.disabled):active:focus,
+        .btn-shop:not(:disabled):not(.disabled).active:focus {
+            box-shadow: 0 0 0 0.2rem rgba(74, 20, 140, 0.5);
+        }
 
 /************* Border ****************/
 .border-shop {
@@ -108,4 +109,8 @@
 /************* Table ****************/
 .text-shop {
     color: #7c42bd !important;
+}
+
+.errorm {
+    color: red;
 }

@@ -90,7 +90,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
 }
 ?>
                     <hr class="dropdown-divider">
-                    <a class="dropdown-item" href="#!browse.php">Tất cả các dịp</a>
+                    <a class="dropdown-item" href="#!occasion">Tất cả các dịp</a>
                 </div>
             </li>
         </ul>
@@ -164,9 +164,10 @@ while ($row = mysqli_fetch_assoc($rs)) {
                 <div class="col-2">
                     <b>Trợ Giúp</b>
                     <ul>
-                        <li><a href="#" class="footer-link">Điều khoản dịch vụ</a></li>
-                        <li><a href="#" class="footer-link">Chính sách bảo mật</a></li>
-                        <li><a href="#" class="footer-link">Ý Kiến Đóng Góp</a></li>
+                        <li><a href="#!tos" class="footer-link">Điều khoản dịch vụ</a></li>
+                        <li><a href="#!tos" class="footer-link">Chính sách bảo mật</a></li>
+                        <li><a href="#!feedback" class="footer-link">Ý Kiến Đóng Góp</a></li>
+                        <li><a href="#!sitemap" class="footer-link">Sitemap</a></li>
                     </ul>
                 </div>
             </div>
@@ -200,6 +201,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
     <script src="../Scripts/1804HDTVShop/controllers/logincontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/controllers/membercontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/controllers/paymentcontroller.js"></script>
+    <script src="../Scripts/1804HDTVShop/controllers/toscontroller.js"></script>
+    <script src="../Scripts/1804HDTVShop/controllers/occasioncontroller.js"></script>
 </body>
 
 </html>

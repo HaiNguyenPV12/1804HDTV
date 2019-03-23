@@ -28,7 +28,9 @@ if (!in_array("Q01", $_SESSION["sRight"], true) && !in_array("Q00", $_SESSION["s
 
 <style>
 img {
-    max-width: 20vh;
+    max-width: 20vw;
+    height: 8rem;
+    object-fit: cover;
 }
 
 .btn a,
@@ -68,7 +70,7 @@ if ($num <= 0) {
         echo "<td class='align-middle'>", $oc['occa_ID'], "</td>";
         echo "<td class='align-middle'>", $oc['occa_name'], "</td>";
 
-        echo "<td class='align-middle'><img src='../", $oc['occa_img'], "?" . date("dmyHis") . " style='max-width=20vw'></td>";
+        echo "<td class='align-middle'><img src='../", $oc['occa_img'], "?" . date("dmyHis") . "' alt='Chưa Có Hình'></td>";
 
         echo "<td class='align-middle'>";
         if ($oc['occa_fp'] == 0) {
