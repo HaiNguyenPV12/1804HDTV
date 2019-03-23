@@ -46,7 +46,8 @@ app.config(['$routeProvider', function ($routeProvider) {
             controller: 'aboutcontroller'
         })
         .when('/flowercate', {
-            templateUrl: "flowercate.php"
+            templateUrl: "flowercate.php",
+            controller: 'flowercatecontroller'
         })
         .when('/flowercate/:fcate', {
             templateUrl: function (params) {
