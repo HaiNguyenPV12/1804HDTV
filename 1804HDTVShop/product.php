@@ -213,7 +213,7 @@
                                 if ($num!=0) {
                                     echo ' , ';
                                 }
-                                echo '<a href="#!browse.php/filter/*/'.$cdata["f_color_name"].'/*/*">';
+                                echo '<a href="#!browse.php/filter/*/'.$cdata["f_color_name"].'/*/*/*">';
                                 echo $cdata["f_color_name"];
                                 echo '</a>';
                                 $num++;
@@ -232,7 +232,7 @@
                                 if ($num!=0) {
                                     echo ' , ';
                                 }
-                                echo '<a href="#!browse.php/filter/*/*/'.$odata["occa_name"].'/*">';
+                                echo '<a href="#!browse.php/filter/*/*/'.$odata["occa_name"].'/*/*">';
                                 echo $odata["occa_name"];
                                 echo '</a>';
                                 $num++;
@@ -290,14 +290,15 @@
             ?>
         </div>
 
-        <form action="" class="form mb-3 row container">
-            <input required class="form-control mb-2" type="text" placeholder="Tên *">
-            <input required class="form-control mb-2" type="text" placeholder="Email *">
-            <input class="form-control mb-2" type="text" placeholder="Số điện thoại">
-            <textarea required name="" id="" cols="50" rows="2" class="form-control mb-2"
+        <form id="frmComment" action="" class="form mb-3 row container">
+            <input type="hidden" name="cmbid" id="cmbid" value="<?php echo $bid ?>">
+            <input id="txtName" name="txtName" required class="form-control mb-2" type="text" placeholder="Tên *">
+            <input id="txtPhone" name="txtPhone" required class="form-control mb-2" type="text" placeholder="Số điện thoại *">
+            <input id="txtEmail" name="txtEmail" class="form-control mb-2" type="text" placeholder="Email">
+            <textarea required name="txtDetail" id="txtDetail" cols="50" rows="2" class="form-control mb-2"
                 placeholder="Hãy viết bình luận tại đây *"></textarea>
             <p class="container text-muted"><i>Lưu ý: Bình luận của bạn sẽ được hiện lên sau khi được xét duyệt</i></p>
-            <button type="submit" class="btn btn-lg btn-primary btn-shop">Gửi bình luận</button>
+            <button id="cmdAddComment" name="cmdAddComment" type="button" class="btn btn-lg btn-primary btn-shop">Gửi bình luận</button>
         </form>
     </div>
     <!--Hết bình luận-->

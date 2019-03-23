@@ -6,7 +6,7 @@ if (isset($_SESSION['member'])) {
     header('location:home');
 }
 ?>
-<div class='container col-5'>
+<div class='container col-8'>
     <div class="login-form">
         <form id="frmLogin" name="frmLogin" method="post">
             <input type="hidden" name="cmdLogin">
@@ -20,8 +20,10 @@ if (isset($_SESSION['member'])) {
                     autocomplete="off">
             </div>
             <div class="form-group">
-                <button name="memLogin" id="memLogin" type="submit" class="btn btn-info btn-block btn-shop">Đăng
-                    nhập</button>
+                <button name="memLogin" id="memLogin" type="submit" class="btn btn-info btn-block btn-shop">ĐĂNG NHẬP</button>
+            </div>
+            <div class="form-group">
+                <a href="#!member" class="nav-link" style="text-align: center">ĐĂNG KÝ TÀI KHOẢN</a>
             </div>
         </form>
     </div>

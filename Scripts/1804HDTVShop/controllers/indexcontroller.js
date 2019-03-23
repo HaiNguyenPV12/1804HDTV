@@ -46,7 +46,8 @@ app.config(['$routeProvider', function ($routeProvider) {
             controller: 'aboutcontroller'
         })
         .when('/flowercate', {
-            templateUrl: "flowercate.php"
+            templateUrl: "flowercate.php",
+            controller: 'flowercatecontroller'
         })
         .when('/flowercate/:fcate', {
             templateUrl: function (params) {
@@ -69,6 +70,21 @@ app.config(['$routeProvider', function ($routeProvider) {
         .when('/login', {
             templateUrl: 'member_login.php',
             controller: 'logincontroller'
+        }) 
+        .when('/member', {
+            templateUrl: 'member.php',
+            controller: 'membercontroller'
+        })
+        
+        .when('/cart', {
+            templateUrl: 'cart.php',
+        })
+        .when('/payment', {
+            templateUrl: 'payment.php',
+            controller: 'paymentcontroller'
+        }) 
+        .when('/paymentconfirm', {
+            templateUrl: 'paymentconfirm.php'
         })
         .when('/feedback', {
             templateUrl: 'feedback.php',
