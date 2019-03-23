@@ -74,7 +74,7 @@
                     }else{
                         $imgurl = $sitedir."img/undefined.jpg";
                     }
-                    echo '<img src="../'.$imgurl.'" style="width:100%;border-radius:100%;">';
+                    echo '<img src="'.$imgurl.'" style="width:100%;border-radius:100%;">';
                     echo '<div class="mb-2 mt-4">'.nl2br($f["f_cate_detail"]).'</div>';
                     echo '</div>';
 
@@ -107,7 +107,7 @@
                     }else{
                         $imgurl = $sitedir."img/undefined.jpg";
                     }
-                    echo '<img src="../'.$imgurl.'" style="width:100%;border-radius:100%;">';
+                    echo '<img src="'.$imgurl.'" style="width:100%;border-radius:100%;">';
                     echo '<div class="mb-2 mt-4">'.nl2br($flowerdata[0]["f_cate_detail"]).'</div>';
                     echo '</div>';
 

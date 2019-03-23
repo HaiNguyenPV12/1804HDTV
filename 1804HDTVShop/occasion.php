@@ -5,9 +5,16 @@
 </head>
 
 <body>
+    <div class='container'>
+        <div class='col-12 mt-1'>
+            <div class="row justify-content-center">
+                <h2>Tất cả các dịp</h2>
+            </div>
+        </div>
+    </div>
     <?php
 include "../src/fconnectadmin.php";
-$sql = "SELECT * from occasion INNER JOIN v_bouq_gen on v_bouq_gen.occa_name = occasion.occa_name where v_bouq_gen.b_img LIKE '%_00.%' ORDER by occa_ID";
+$sql = "SELECT * from occasion INNER JOIN v_bouq_gen on v_bouq_gen.occa_name = occasion.occa_name where v_bouq_gen.b_img LIKE '%_00.%' ORDER by occa_ID desc";
 $rs = mysqli_query($cn, $sql);
 $cardindex = 1;
 $occaindex = "";

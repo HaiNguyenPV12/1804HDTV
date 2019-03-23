@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (isset($_POST["add"])) {
-        if (isset($_POST["bid"]) && isset($_POST["quan"]) && isset($_POST["price"])) {
+        if (isset($_POST["bid"]) && isset($_POST["quan"])) {
             // Nếu chưa có session cart thì tạo mới
             if (!isset($_SESSION["cart"])) {
                 // Khởi tạo array
@@ -39,6 +39,17 @@
             echo "Thiếu dữ liệu";
         }
         
+    }else if (isset($_POST["delete"])) {
+        if (isset($_POST["bid"]) && isset($_SESSION["cart"])){
+            foreach ($_SESSION["cart"] as $key => &$cartdata) {
+                // Nếu trùng bid thì cộng dồn quantity vào và cho check = true
+                if ($cartdata["bid"]==$_POST["bid"]) {
+                    unset($_SESSION["cart"][$key]);
+                    echo "ok";
+                    break;
+                }
+            }
+        }
     }else{
         echo "Thiếu dữ kiện";
     }
