@@ -79,6 +79,7 @@ if (!isset($_SESSION["loggedin"])) {
                 <h2 class="my-3 text-center">Shop HDTV</h2>
                 <div class="list-group">
                     <?php
+
                         $rightsdata = $_SESSION["sRight"];
                         if (in_array("Q01",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
                             echo '<a href="#!bouquet" class="list-group-item list-group-item-shop">Quản lý Bó Hoa</a>';
@@ -110,6 +111,7 @@ if (!isset($_SESSION["loggedin"])) {
                             echo '<a href="#!feedback" class="list-group-item list-group-item-shop">Quản lý Đánh Giá</a>';
                         }
                     ?>
+
                     <!--
                     <a href="#!bouquet" class="list-group-item">Quản lý bó hoa</a>
                     <a href="#!flower" class="list-group-item">Quản lý hoa</a>

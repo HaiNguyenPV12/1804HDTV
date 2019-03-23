@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (isset($_POST["add"])) {
-        if (isset($_POST["bid"]) && isset($_POST["quan"]) && isset($_POST["price"])) {
+        if (isset($_POST["bid"]) && isset($_POST["quan"])) {
             // Nếu chưa có session cart thì tạo mới
             if (!isset($_SESSION["cart"])) {
                 // Khởi tạo array

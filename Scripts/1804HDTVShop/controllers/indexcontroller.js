@@ -70,6 +70,21 @@ app.config(['$routeProvider', function ($routeProvider) {
         .when('/login', {
             templateUrl: 'member_login.php',
             controller: 'logincontroller'
+        }) 
+        .when('/member', {
+            templateUrl: 'member.php',
+            controller: 'membercontroller'
+        })
+        
+        .when('/cart', {
+            templateUrl: 'cart.php',
+        })
+        .when('/payment', {
+            templateUrl: 'payment.php',
+            controller: 'paymentcontroller'
+        }) 
+        .when('/paymentconfirm', {
+            templateUrl: 'paymentconfirm.php'
         })
         .when('/feedback', {
             templateUrl: 'feedback.php',
