@@ -20,7 +20,7 @@ img{
     <?php
         include '../src/flowerdb.php';
         $data = getSql("SELECT * FROM orders");
-        $odata = getSql("SELECT order_ID, b_name, b_price,quan FROM order_detail, bouquet where order_detail.b_ID = bouquet.b_ID");
+        $odata = getSql("SELECT orders.order_ID, b_name, b_price,quan,orders.order_date FROM order_detail, bouquet, orders where orders.order_ID = order_detail.order_ID and order_detail.b_ID = bouquet.b_ID and orders.order_status='2'");
         $num = sizeof($data);
         
     ?>
@@ -28,9 +28,9 @@ img{
 
     <div class="form-inline">
         <label class="mr-sm-2 col-2">Xem theo:</label>
-        <select name="" id="">
-            <option value="">Tháng</option>
-            <option value="">Năm</option>
+        <select name="condition" id="condition">
+            <option value="year" selected>Năm</option>
+            <option value="month">Tháng</option>
         </select>
     </div>
     <br>
@@ -39,18 +39,9 @@ img{
             <th>Tháng</th>
             <th>Tổng doanh thu</th>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>15.250.000 Đ</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>17.250.000 Đ</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>16.700.000 Đ</td>
-        </tr>
+        <?php
+      
+        ?>
     </table>
     <div class="modal fade" id="modal"  ng-controller="myModal">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
