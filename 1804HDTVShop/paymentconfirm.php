@@ -7,7 +7,7 @@ session_start();
 
 <?php
     include "../src/flowerdb.php";
-    if (isset($_POST["cmdPay"])&& isset($_POST["cusName"]) && isset($_POST["cusEmail"]) && isset($_POST["cusPhone"])&& isset($_POST["cusAddress"])&& isset($_POST["dateVal"])) 
+    if (isset($_POST["cmdPayment"])&& isset($_POST["cusName"]) && isset($_POST["cusEmail"]) && isset($_POST["cusPhone"])&& isset($_POST["cusAddress"])&& isset($_POST["dateVal"])) 
     {
         $cName = $_POST["cusName"];
         $cEmail = $_POST["cusEmail"];
@@ -74,7 +74,7 @@ session_start();
     echo "<td>",$sum,"</td>";
     echo "</tr>";
     echo "</table>";
-
+    unset($_SESSION["cart"]);
 ?>
     <div style="text-align: center">
     <a href='index.php' style="justify-content: center">TRỞ VỀ TRANG CHỦ</a><br>
