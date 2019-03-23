@@ -83,9 +83,6 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'payment.php',
             controller: 'paymentcontroller'
         }) 
-        .when('/paymentconfirm', {
-            templateUrl: 'paymentconfirm.php'
-        })
         .when('/feedback', {
             templateUrl: 'feedback.php',
             // controller: 'logincontroller'
