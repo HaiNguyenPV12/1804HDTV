@@ -103,7 +103,7 @@ if ($num <= 0) {
         echo "
         <td class='align-middle'>
             <button class='btn btn-danger btn-sm text-light' id='btnOccaDelete'>
-                <a onclick=\"javascript: return confirm('Delete this record?');\" href='#!occasion/delete/" . $oc["occa_ID"] . "'>Xóa</a>
+                <a onclick=\"javascript: return confirm('Xóa Dịp Này?');\" href='#!occasion/delete/" . $oc["occa_ID"] . "'>Xóa</a>
             </button>
         </td>";
     }
