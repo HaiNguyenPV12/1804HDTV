@@ -200,6 +200,8 @@ while ($row = mysqli_fetch_assoc($rs)) {
     <script src="../Scripts/1804HDTVShop/controllers/logincontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/controllers/membercontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/controllers/paymentcontroller.js"></script>
-</body>
+    <script src="../Scripts/1804HDTVShop/controllers/toscontroller.js"></script>
+    <script src="../Scripts/1804HDTVShop/controllers/occasioncontroller.js"></script>
+
 
 </html>
