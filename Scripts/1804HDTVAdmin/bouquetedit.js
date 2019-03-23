@@ -11,6 +11,7 @@ $("#editimgPreview").find("[name='imgold[]']").each(function(i,data){
 var editbid_old = $("#editbid").val();
 var editbname_old = $("#editbname").val();
 var editbprice_old = $("#editbprice").val();
+var editbpriceshow_old = $("#editbpriceshow").val();
 var editbdetail_old = $("#editbdetail").val();
 var editbselling_old;
 if ($("#editbselling").is(":checked")) {
@@ -18,6 +19,21 @@ if ($("#editbselling").is(":checked")) {
 }else{
     editbselling_old = 0;
 }
+var editimgPreview_old = $("#editimgPreview").html();
+
+$("#cmdResetEditBouquet").click(function(){
+    $("#editbid").val(editbid_old);
+    $("#editbname").val(editbname_old);
+    $("#editbprice").val(editbprice_old);
+    $("#editbpriceshow").val(editbpriceshow_old);
+    $("#editbdetail").val(editbdetail_old);
+    $("#editimgPreview").html(editimgPreview_old);
+    if (editbselling_old==1) {
+        $('#editbselling').prop('checked', true);
+    }else{
+        $('#editbselling').prop('checked', false);
+    }
+});
 
 // Function tắt bảng Modal
 function closeModal(){
@@ -62,6 +78,35 @@ $(document).on("click","#editimgPreview div[name='imgold[]']",function(){
     //console.log(imglist);
     //console.log(imgremoved);
     $(this).remove();
+});
+
+$('#editbprice').keyup(function(event){
+    var bprice = $(this).val();
+    var bpriceshow ="";
+    if (bprice.length>8) {
+        bprice = bprice.substring(0,8);
+        //$(this).val(bprice);
+    }
+    if (bprice>10000000) {
+        bprice = "10000000";
+        //$(this).val(bprice);
+    }
+    if (bprice>=1000000) {
+        bpriceshow = bprice.substring(0,bprice.length-6);
+        bpriceshow+=".";
+        bpriceshow+= bprice.substring(bprice.length-6,bprice.length-3);
+        bpriceshow+=".";
+        bpriceshow+= bprice.substring(bprice.length-3,bprice.length);
+    }else if (bprice>=1000) {
+        bpriceshow = bprice.substring(0,bprice.length-3);
+        bpriceshow+=".";
+        bpriceshow+= bprice.substring(bprice.length-3,bprice.length);
+    }else{
+        bpriceshow = bprice;
+    }
+    //bpriceshow += " VNĐ";
+    $(this).val(parseInt(bprice));
+    $("#editbpriceshow").val(bpriceshow+" VNĐ");
 });
 
 $("#editimgfile").change(function(){
@@ -173,6 +218,11 @@ $("#frmEditBouquet").submit(function(event){
         imgchanged=false;
     }
 
+    if (!$("[name='imgshow[]']").length && !$("[name='imgold[]']").length) {
+        alert("Chưa có hình!");
+        $("#editimgfile").focus();
+        return;
+    }
     
     // Kiểm tra xem dữ liệu có thay đổi không
     if ($("#editbid").val()== editbid_old && $("#editbname").val()==editbname_old && $("#editbprice").val()==editbprice_old && $("#editbdetail").val()==editbdetail_old && bselling==editbselling_old &&imgchanged==false) {

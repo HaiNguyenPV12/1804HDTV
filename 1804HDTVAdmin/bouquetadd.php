@@ -11,21 +11,18 @@
     <!-- Tên bó hoa và ID -->
     <div class="form-inline">
         <label class="mb-2 mr-sm-2 col-2" for="addbname"><span class="text-right">Tên bó hoa:</span></label>
-        <input type="text" readonly class="form-control mb-2 col-2" name="addbid" id="addbid" tabindex="-1">
+        <input type="text" readonly class="form-control mb-2 col-3" name="addbid" id="addbid" tabindex="-1">
         <input type="text" autofocus required class="form-control mb-2 mr-sm-2 col-6" name="addbname" id="addbname"
-            autocomplete="off" pattern="[\p{L}\s\d]{2,30}" title="2-30 chữ. Không bao gồm kí tự đặc biệt như @#$%^&* ">
+            autocomplete="off" pattern="[\p{L}\s\d]{2,40}" title="2-40 chữ. Không bao gồm kí tự đặc biệt như @#$%^&* ">
 
     </div>
 
     <!-- Giá -->
     <div class="form-inline">
         <label class="mb-2 mr-sm-2 col-2" for="addbprice">Giá:</label>
-        
-        <input type="number" required class="form-control mb-2 mr-sm-2 col-4" name="addbprice" id="addbprice"
+        <input readonly class="mb-2 col-3 form-control" id="addbpriceshow">
+        <input type="number" required class="form-control mb-2 mr-sm-2 col-6" name="addbprice" id="addbprice"
             autocomplete="off" min=500 step="500" value="0" max="100000000" title="Giá từ 0-10 triệu. Tiền lẻ nhất là 500 đ">
-        <label class="mb-2 mr-sm-2 col-4" for="addbprice" id="addbpriceshow"></label>
-        <label class="mb-2 mr-sm-2 col-1">VND</label>
-
     </div>
 
     <!-- Hình -->
@@ -33,7 +30,7 @@
         <label class="mr-sm-2 mb-2 col-2">Hình:</label>
         <div class="custom-file mb-2 mr-sm-2 col-9">
             <input type="file" class="custom-file-input " name="addimgfile" id="addimgfile" accept=".jpeg,.jpg,.png"
-                multiple="multiple">
+                multiple="multiple" >
             <label class="custom-file-label" for="addimgfile" id="addimgfiletext">Chọn file</label>
         </div>
     </div>
