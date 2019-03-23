@@ -27,7 +27,7 @@ $data = getSql("SELECT * from occasion where occa_ID = '$id'");
 <body>
     <button class='btn btn-shop'>
         <a href="#!occasion/">
-            Về Trang Bó
+            Về Trang Dịp
         </a>
     </button>
     <div class='py-4'></div>
