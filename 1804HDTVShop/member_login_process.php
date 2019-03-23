@@ -17,7 +17,7 @@ if (isset($_POST["cmdLogin"]))
             }
             else
             {
-                echo "error";
+                echo "Thông tin đăng nhập sai";
             }
         }
         else
