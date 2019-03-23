@@ -156,7 +156,6 @@ while ($row = mysqli_fetch_assoc($rs)) {
                 <div class="col-2">
                     <b>1804 HDTV Co.</b>
                     <ul>
-                        <li><a href="#" class="footer-link">Câu hỏi thường xuyên</a></li>
                         <li><a href="#!about.php" class="footer-link">Về Chúng tôi</a></li>
                     </ul>
                 </div>
@@ -203,6 +202,7 @@ while ($row = mysqli_fetch_assoc($rs)) {
     <script src="../Scripts/1804HDTVShop/controllers/paymentcontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/controllers/toscontroller.js"></script>
     <script src="../Scripts/1804HDTVShop/controllers/occasioncontroller.js"></script>
+    <script src="../Scripts/1804HDTVShop/Controllers/cartcontroller.js"></script>
 </body>
 
 </html>

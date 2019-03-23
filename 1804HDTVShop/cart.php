@@ -42,6 +42,9 @@ session_start();
                                                     echo "<td>",$cart["quan"],"</td>";
                                                     echo "<td>",$b["b_price"],"</td>";
                                                     echo "<td>",$b["b_price"]*$cart["quan"],"</td>";
+                                                    echo "<td><button class='btn btn-danger' type='button' name='btnDel'>X
+                                                           <input type='hidden' id='bid' value='".$b["b_ID"]."'> 
+                                                        </button></td>";
                                                     echo "</tr>";
                                                     break;
                                                 }
@@ -66,8 +69,19 @@ session_start();
                 </div>
             </div>
         </div>
+        
     </div>
 </div>
     </div>
     <br>
 
+<!-- Modal kết quả -->
+<div class="modal" id="result">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body text-center" id="txtResult">
+            </div>
+        </div>
+    </div>
+</div>
