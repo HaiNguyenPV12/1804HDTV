@@ -110,7 +110,8 @@ session_start();
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
                             </div>
-                            <input name="dateVal" id="dateVal" class="form-control" placeholder="Ngày nhận hàng" type="datetime-local">
+                            <input name="dateVal" id="dateVal" class="form-control" placeholder="Ngày nhận hàng" type="date" 
+                            min="<?php echo date("Y-m-d") ?>" max="<?php echo date("Y-m-d",strtotime("+1 week")) ?>">
                         </div> <!-- form-group// -->
                         <div class="form-group">
                             <button  name="cmdPay" id="cmdPay"  type="button" class="btn btn-primary btn-block">Xác nhận thanh toán </button>
@@ -125,6 +126,15 @@ session_start();
         </div>
     </div>
     <br>
-
+<!-- Modal kết quả -->
+<div class="modal" id="result">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body text-center" id="txtResult">
+            </div>
+        </div>
+    </div>
+</div>
    
 </html>
