@@ -78,14 +78,12 @@ app.config(['$routeProvider', function ($routeProvider) {
         
         .when('/cart', {
             templateUrl: 'cart.php',
+            controller: 'cartcontroller'
         })
         .when('/payment', {
             templateUrl: 'payment.php',
             controller: 'paymentcontroller'
         }) 
-        .when('/paymentconfirm', {
-            templateUrl: 'paymentconfirm.php'
-        })
         .when('/feedback', {
             templateUrl: 'feedback.php',
             // controller: 'logincontroller'

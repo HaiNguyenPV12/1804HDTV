@@ -129,14 +129,15 @@ app.controller('membercontroller', function ($scope, $location, $anchorScroll, $
                 $("#txtResult").html("<h2>Đăng Ký thành công!</h2>");
                 // Hiện modal hiển thị kết quả
                 $('#result').modal('show');
-
+                // window.location.replace("#!login");    
                 // Xóa input
                 // eraseInput();
 
                 // Cho tự động tắt và load lại trang sau vài giây
                 // window.setTimeout(closeModal, 1500);
-                window.open = '#!login';
-
+                window.open('#!login');
+                // window.location.assign("https://www.example.com");
+                // window.location.href="#!login";
             } else {
                 $("#txtResult").removeClass("text-danger");
                 // Nếu dữ liệu trả về bị bất kì lỗi gì
