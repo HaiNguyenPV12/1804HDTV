@@ -7,13 +7,13 @@ session_start();
 
 <?php
     include "../src/flowerdb.php";
-    if (isset($_GET["cmdPay"])&& isset($_GET["cusName"]) && isset($_GET["cusEmail"]) && isset($_GET["cusPhone"])&& isset($_GET["cusAddress"])&& isset($_GET["dateVal"])) 
+    if (isset($_POST["cmdPayment"])&& isset($_POST["cusName"]) && isset($_POST["cusEmail"]) && isset($_POST["cusPhone"])&& isset($_POST["cusAddress"])&& isset($_POST["dateVal"])) 
     {
-        $cName = $_GET["cusName"];
-        $cEmail = $_GET["cusEmail"];
-        $cAddress =$_GET["cusAddress"];
-        $cPhone = $_GET["cusPhone"];    
-        $dVal = $_GET["dateVal"];     
+        $cName = $_POST["cusName"];
+        $cEmail = $_POST["cusEmail"];
+        $cAddress =$_POST["cusAddress"];
+        $cPhone = $_POST["cusPhone"];    
+        $dVal = $_POST["dateVal"];     
         $timezone = date_default_timezone_get();
         $date = date("Y-m-d",time());
         $csql = insertSql("insert into customer values(null,'$cPhone','$cName','$cAddress','$cEmail')");
@@ -74,7 +74,7 @@ session_start();
     echo "<td>",$sum,"</td>";
     echo "</tr>";
     echo "</table>";
-
+    unset($_SESSION["cart"]);
 ?>
     <div style="text-align: center">
     <a href='index.php' style="justify-content: center">TRỞ VỀ TRANG CHỦ</a><br>

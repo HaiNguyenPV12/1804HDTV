@@ -2,9 +2,6 @@
 include "../src/fconnectadmin.php";
 session_start();
 ?>
-
-    <!-- content -->
-
     <div class="container">
     <h2 class="text-center">Thanh toán</h2>
     <div class="row">
@@ -76,11 +73,11 @@ session_start();
         </div>
         
         <div class="container col-4">
-            
             <div class="card bg-light">
                 <article class="card-body mx-auto" style="max-width: 400px;">
                     <h4 class="card-title mt-3 text-center">Thông tin thanh toán</h4>
-                    <form method="get" action="#!paymentconfirm" id="frmPayment">
+                    <form method="post" name="frmPayment" id="frmPayment">
+                    <input type="hidden" name ="cmdPayment">
                         <div class="form-group input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -113,11 +110,12 @@ session_start();
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
                             </div>
-                            <input name="dateVal" id="dateVal" class="form-control" placeholder="Ngày nhận hàng" type="datetime-local">
+                            <input name="dateVal" id="dateVal" class="form-control" placeholder="Ngày nhận hàng" type="date" 
+                            min="<?php echo date("Y-m-d") ?>" max="<?php echo date("Y-m-d",strtotime("+1 week")) ?>">
                         </div> <!-- form-group// -->
                         <div class="form-group">
                             <button  name="cmdPay" id="cmdPay"  type="button" class="btn btn-primary btn-block">Xác nhận thanh toán </button>
-                                <input type="hidden" name ="cmdPayment">
+                               
                         </div> <!-- form-group// -->
                     </form>
                 </article>
@@ -128,6 +126,15 @@ session_start();
         </div>
     </div>
     <br>
-
+<!-- Modal kết quả -->
+<div class="modal" id="result">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal body -->
+            <div class="modal-body text-center" id="txtResult">
+            </div>
+        </div>
+    </div>
+</div>
    
 </html>
