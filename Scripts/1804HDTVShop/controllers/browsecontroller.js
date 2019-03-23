@@ -30,4 +30,7 @@ app.controller('browsecontroller', function ($scope, $location, $anchorScroll, $
         $('#filterGenLink').attr('href', '#!browse.php/filter/' + cateFilter.value + '/' + colFilter.value + '/' + occaFilter.value + '/'  + fnameFilter.value + '/'  + priceFilter.value);
     });
 
+    $(document).ready(function () {
+        console.log($(".querycmd").html());
+    });
 });
