@@ -44,9 +44,9 @@ img {
 <body>
     <div class='row'>
         <h2 class="col-9">Quản lý Dịp</h2>
-        <button type="button" class="btn btn-success btn-lg col-2 btn-shop">
-            <a href="#!occasion/add">Thêm mới</a>
-        </button>
+        <a href="#!occasion/add" class="btn btn-success btn-lg col-2 btn-shop">
+            Thêm mới
+        </a>
     </div>
 
     <br>
@@ -88,9 +88,9 @@ if ($num <= 0) {
 
         echo "
         <td class='align-middle'>
-            <button class='btn btn-info btn-sm text-light btn-shop'>
-                <a href='#!occasion/edit/" . $oc["occa_ID"] . "'>Sửa thông tin</a> <br>
-            </button>
+            <a class='btn btn-info btn-sm text-light btn-shop' href='#!occasion/edit/" . $oc["occa_ID"] . "'>
+                Sửa thông tin
+            </a>
             <div class='py-1'></div>
             <button class='btn btn-info btn-sm text-light btn-shop'>
             <a href='#!occasion/img/" . $oc["occa_ID"] . "'>Upload Hình</a>
