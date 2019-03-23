@@ -3,7 +3,8 @@ app.controller('membercontroller', function ($scope, $location, $anchorScroll, $
     document.title = 'Member';
     //scroll to top on load
     $('html,body').animate({ scrollTop: 0 }, 100); //miliseconds
-    $(document).ready(function () {
+    $(document).ready(function ()
+    {
 
         $('#cmdMember').click(function () {
             if (validateForm() == true) {
@@ -86,7 +87,7 @@ app.controller('membercontroller', function ($scope, $location, $anchorScroll, $
                 $('#repwLabel').after('<p class="error"> Mật khẩu lần 2 phải trùng với mật khẩu lần 1</p>');
                 check = false;
             }
-            //dấu error sau 1750ms
+            //dấu error sau bao nhiêu ms
             $(".error").delay(2500)
             .hide(500)
             .queue(function () {
@@ -94,9 +95,13 @@ app.controller('membercontroller', function ($scope, $location, $anchorScroll, $
             });
             return check;
         }
+       
+
+    });
     var request;
     //Nếu form submit
-    $('#frmReg').submit(function (e) {
+    $("#frmReg").submit(function (e) 
+    {
         // Ngừng submit mặc định (tránh việc load lại trang trước khi thực hiện các lệnh khác)
         e.preventDefault();
         if (request) {
@@ -116,7 +121,7 @@ app.controller('membercontroller', function ($scope, $location, $anchorScroll, $
         // Bắt đầu đưa dữ liệu qua trang xử lý
         request = $.ajax({
             url: "member_process.php",
-            type: "POST",
+            type: "post",
             data: serializedData
         });
 
@@ -165,7 +170,5 @@ app.controller('membercontroller', function ($scope, $location, $anchorScroll, $
             $inputs.prop("disabled", false);
 
         });
-    });
-
     });
 });

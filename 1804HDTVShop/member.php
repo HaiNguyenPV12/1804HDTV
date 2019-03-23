@@ -7,7 +7,8 @@ session_start();
     <div class="card bg-light">
     <article class="card-body mx-auto" style="max-width: 400px;">
 	<h4 class="card-title mt-3 text-center">ĐĂNG KÝ TÀI KHOẢN THÀNH VIÊN</h4>
-	<form method="post" name="frmReg" id="frmReg">
+	<form method="post" name="frmReg" id="frmReg">    
+    <input type="hidden" name ="cmdMember" >
         <div class="form-group input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -60,7 +61,6 @@ session_start();
         <div id="repwLabel"></div>                                   
         <div class="form-group">
             <button type="button" name="cmdMember" id="cmdMember" class="btn btn-primary btn-block"> BẠN MUỐN LÀM THÀNH VIÊN CỦA SHOP CHỨ? </button>
-            <input type="hidden" name ="cmdMember" >
         </div> <!-- form-group// -->                                                           
     </form>
 </article>
