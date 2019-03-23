@@ -169,7 +169,6 @@ while ($row = mysqli_fetch_assoc($rs)) {
     echo "<div class='col-lg-3 col-md-5 mb-4'>
             <div class='card card-bouq h-80 border-primary border-shop'>
                 <a href='#!product/" . $row['b_ID'] . "'>
-                    <img class='card-img-top custom' src='../img/Bouquet/B000/B000_PV.jpg' alt=''>
                     <img class='card-img-top custom' src='../" . $row['b_img'] . "' alt=''>
                 </a>
                 <div class='card-body'>
