@@ -48,7 +48,7 @@ img{
                 echo "<td>",$mem['mem_uID'],"</td>";
                 echo "<td>",$mem['mem_uPW'],"</td>";
                 echo '<td>
-                        <button class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'delete.php?member&&cusid=',$mem["cus_ID"],'\';modalHText=\'Xóa\';">
+                        <button class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'delete.php?member&&memid=',$mem["mem_ID"],'\';modalHText=\'Xóa\';">
                         Xóa
                         </button>
                     </td>';

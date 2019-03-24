@@ -14,7 +14,7 @@ app.controller('membercontroller', function ($scope, $location, $anchorScroll, $
 
         function validateForm() {
             var check = true;
-            var nameReg = /^[A-Za-z ]+$/;
+            var nameReg = /[^\p{L}\s]{2,30}$/;
             var phoneReg = /^[0-9]{10,11}$/;
             var emailReg = /^([\w+]+@([\w]+\.)+[\w]{2,4})?$/;
             var idReg = /^\w+$/;
