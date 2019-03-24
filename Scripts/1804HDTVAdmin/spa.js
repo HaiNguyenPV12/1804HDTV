@@ -119,6 +119,11 @@ app.config(function ($routeProvider) {
         .when("/statistic", {
             templateUrl: "statistic.php"
         })
+        .when("/statistic/:year", {
+            templateUrl: function (params) {
+                return 'statistic.php?year=' + params.year;
+            },
+        })
         .when("/comment", {
             templateUrl: "comment.php"
         })
