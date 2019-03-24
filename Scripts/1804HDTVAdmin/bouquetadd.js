@@ -1,4 +1,5 @@
 // Script tùy chỉnh của trang bouquetadd.php
+
 var addimglist = [];
 // Function xóa các input (reset)
 function eraseInput(){
@@ -112,7 +113,7 @@ $('#addbprice').keyup(function(event){
     }
     //bpriceshow += " VNĐ";
     $(this).val(parseInt(bprice));
-    $("#addbpriceshow").html(bpriceshow);
+    $("#addbpriceshow").val(bpriceshow +" VNĐ");
 });
 
 $(document).on("click","#addimgPreview div",function(){

@@ -43,9 +43,17 @@ function validateFCateID(){
             $("#validatetext").html("ID đã tồn tại!");
             fcateidvalid=false;
         }else{
-            $('#validatetext').attr('class','text-success');
-            $("#validatetext").html("ID hợp lệ!");
-            fcateidvalid=true;
+            var IDRegex = new RegExp("^[A-Z]{2,3}$");
+            if (IDRegex.test($("#addfcateid").val())) {
+                $('#validatetext').attr('class','text-success');
+                $("#validatetext").html("");
+                fcateidvalid=true;
+            }else{
+                $('#validatetext').attr('class','text-danger');
+                $("#validatetext").html("Mã phải có 2 hoặc 3 kí tự! Và không chứa kí tự đặc biệt hoặc số.");
+                fcateidvalid=false;
+            }
+            
         }
         
     }
