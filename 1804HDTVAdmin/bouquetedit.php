@@ -22,18 +22,21 @@
     <!-- Tên bó hoa và ID -->
     <div class="form-inline">
         <label class="mb-2 mr-sm-2 col-2" for="editbname">Tên bó hoa:</label>
-        <input type="text" readonly class="form-control mb-2 mr-sm-2 col-2" name="editbid" id="editbid" value="<?php echo $id?>"
+        <input type="text" readonly class="form-control mb-2 col-3" name="editbid" id="editbid" value="<?php echo $id?>"
             tabindex="-1">
         <input type="text" autofocus required class="form-control mb-2 mr-sm-2 col-6" name="editbname" id="editbname"
-            autocomplete="off" value="<?php echo $data['b_name']?>">
+            autocomplete="off" value="<?php echo $data['b_name']?>" 
+            pattern="[\p{L}\s\d]{2,40}" title="2-40 chữ. Không bao gồm kí tự đặc biệt như @#$%^&* ">
     </div>
 
     <!-- Giá -->
     <div class="form-inline">
         <label class="mb-2 mr-sm-2 col-2" for="editbprice">Giá:</label>
-        <input type="number" required class="form-control mb-2 mr-sm-2 col-8" name="editbprice" id="editbprice"
-            autocomplete="off" min=0 value="<?php echo $data['b_price']?>">
-        VND
+        <input readonly class="mb-2 col-3 form-control" id="editbpriceshow" value="<?php echo number_format($data['b_price'],0,",",".")?> VNĐ">
+        <input type="number" required class="form-control mb-2 mr-sm-2 col-6" name="editbprice" id="editbprice"
+            autocomplete="off" min=500 step="500" max="100000000" title="Giá từ 0-10 triệu. Tiền lẻ nhất là 500 đ" 
+            value="<?php echo $data['b_price']?>">
+        
     </div>
 
     <!-- Hình -->
@@ -99,7 +102,7 @@
             tất</button>
         <div class="mr-sm-2"></div>
         <!-- Nút reset -->
-        <button type="reset" class="btn mb-2 btn-warning col-2" name="cmdResetEditBouquet" id="cmdResetEditBouquet">Làm lại</button>
+        <input type="button" class="btn mb-2 btn-warning col-2" name="cmdResetEditBouquet" id="cmdResetEditBouquet" value ="Làm lại">
     </div>
 </form>
 

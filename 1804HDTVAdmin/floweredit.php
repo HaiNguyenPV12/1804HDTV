@@ -27,12 +27,14 @@
     <input type="hidden" id="editfid_old" name="editfid_old" value="<?php echo $id?>">
     <div class="form-inline">
         <label class="mr-sm-2 col-2" for="editfid">Mã hoa:</label>
-        <input type="text" readonly class="form-control mb-2 mr-sm-2 col-9" name="editfid" id="editfid" autocomplete="off" value="<?php echo $id?>">
+        <input type="text" readonly class="form-control mb-2 mr-sm-2 col-9" name="editfid" id="editfid" autocomplete="off" 
+        value="<?php echo $id?>">
     </div>
     
     <div class="form-inline">
         <label class="mr-sm-2 col-2" for="editfname">Tên:</label>
-        <input type="text" autofocus required class="form-control mb-2 mr-sm-2 col-9" name="editfname" id="editfname" autocomplete="off" value="<?php echo $data['f_name']?>">
+        <input type="text" autofocus required class="form-control mb-2 mr-sm-2 col-9" name="editfname" id="editfname" autocomplete="off" 
+        value="<?php echo $data['f_name']?>" pattern="[\p{L}\s\d]{2,40}" title="2-40 chữ. Không bao gồm kí tự đặc biệt như @#$%^&* ">
     </div>
     <div class="form-inline">
         <label class="mr-sm-2 col-2" for="editfcate">Loại hoa:</label>
@@ -90,7 +92,7 @@
         <label class="mr-sm-2 col-2"></label>
         <button type="submit" class="btn btn-primary mb-2 col-2 btn-shop" name="cmdEditFlower">Hoàn tất</button>
         <div class="mr-sm-2"></div>
-        <input type="button" class="btn mb-2 btn-warning col-2" name="cmdEditFlowerReset" id="cmdEditFlowerReset" value="Làm lại">
+        <input type="reset" class="btn mb-2 btn-warning col-2" name="cmdEditFlowerReset" id="cmdEditFlowerReset" value="Làm lại">
     </div>
 </form>
 
