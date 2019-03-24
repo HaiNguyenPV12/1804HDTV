@@ -14,7 +14,7 @@ app.controller('paymentcontroller', function ($scope, $location, $anchorScroll, 
         
         function validateForm(){
             var check = true;
-            var nameReg = /^[A-Za-z ]+$/;
+            var nameReg = /[^\p{L}\s]{2,30}$/;
             var phoneReg =  /^[0-9]{10,11}$/;
             var emailReg = /^([\w+]+@([\w]+\.)+[\w]{2,4})?$/;        
         
@@ -34,7 +34,7 @@ app.controller('paymentcontroller', function ($scope, $location, $anchorScroll, 
                     check = false;
                 } 
                 else if(!nameReg.test(name)){
-                    $('#nameLabel').after('<p class="error"> Chỉ bao gồm chữ cái</p>');
+                    $('#nameLabel').after('<p class="error"> 2 - 30 chữ không bao gồm kí tự đặc biệt như @#$%^&*</p>');
                     check = false;
                 }
                 if(inputVal[1] == ""){
