@@ -72,11 +72,11 @@
             echo "Mã Loại Hoa bị sai!";
         }
     }else if (isset($_GET['member'])) {
-        if (isset($_GET["cusid"])&&$_GET["cusid"]!="") {
-            $id = $_GET["cusid"];
+        if (isset($_GET["memid"])&&$_GET["memid"]!="") {
+            $id = $_GET["memid"];
             include '../src/flowerdb.php';
-            $member = getSql("SELECT * FROM member where cus_ID = '$id'");
-            echo '<input name="cusid" id="cusid" type="hidden" value="',$id,'">';
+            $member = getSql("SELECT * FROM member where mem_ID = '$id'");
+            echo '<input name="memid" id="delmemid" type="hidden" value="',$id,'">';
             echo '<input name="cmdDelete" type="hidden">';
             echo "<h2>Bạn có muốn xóa thành viên ?</h2>";
             if (sizeof($member)>0) {
