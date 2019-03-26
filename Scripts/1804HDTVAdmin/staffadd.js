@@ -29,6 +29,7 @@ $(document).ready(function () {
         var phoneReg = /^[0-9]{10}$/;
         var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
         var addressReg = /[-0-9a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]+$/;
+        var pwReg = /^[A-Za-z0-9]{5,}$/;
 
         var name = $('#staffName').val();
         var email = $('#staffEmail').val();
@@ -63,7 +64,7 @@ $(document).ready(function () {
             error = error + 1;
         }
         else if (!emailReg.test(inputVal[1])) {
-            $('#staffName').after('<span class="errorm">Vui lòng nhập email đúng</span>');
+            $('#staffEmail').after('<span class="errorm">Vui lòng nhập email đúng</span>');
             error = error + 1;
         }
 
@@ -82,8 +83,8 @@ $(document).ready(function () {
             $('#staffPW').after('<span class="errorm"> Vui lòng nhập ' + inputMessage[3] + '</span>');
             error = error + 1;
         }
-        else if (!usernameReg.test(inputVal[3])) {
-            $('#staffPW').after('<span class="errorm">Chỉ chữ và số</span>');
+        else if (!pwReg.test(inputVal[3])) {
+            $('#staffPW').after('<span class="errorm">Chỉ chữ và số, ít nhất 5 ký tự</span>');
             error = error + 1;
         }
 
