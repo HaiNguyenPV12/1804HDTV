@@ -51,8 +51,6 @@ session_start();
                                             }
                                         }
                                     
-                                }else{
-                                    echo "Chưa có dữ liệu giỏ hàng";
                                 }
                         ?>
                     </tbody>
