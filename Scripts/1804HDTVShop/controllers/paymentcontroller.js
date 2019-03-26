@@ -68,6 +68,17 @@ app.controller('paymentcontroller', function ($scope, $location, $anchorScroll, 
         }   
         
         }); 
+        function closeModal() {
+            $('#result').modal('hide');
+            $('.modal-backdrop').remove();
+        }
+        function redir(){
+            closeModal();
+            window.location.href = "#!index";
+        }
+        $('#result').on('hidden.bs.modal', function (e) {
+            redir();
+        });
         var request;
         //Nếu form submit
         $('#frmPayment').submit(function (e) {
@@ -111,7 +122,7 @@ app.controller('paymentcontroller', function ($scope, $location, $anchorScroll, 
                     // window.setTimeout(closeModal, 1500);
                     // window.open('#!login');
                     // window.location.assign("https://www.example.com");
-                    // window.location.href="#!login";
+                    //window.location.href = "#!index";
                 } else {
                     $("#txtResult").removeClass("text-danger");
                     // Nếu dữ liệu trả về bị bất kì lỗi gì
@@ -122,6 +133,8 @@ app.controller('paymentcontroller', function ($scope, $location, $anchorScroll, 
                     // Cho tự động tắt và load lại trang sau vài giây
                     //window.setTimeout(closeModal, 1500);
                     //window.setTimeout(reloadPage,500);
+                    //window.setTimeout(closeModal, 1500);
+                    //window.setTimeout(redir, 1600);
                 }
     
             });

@@ -82,8 +82,6 @@ session_start();
     echo "</table>";
     unset($_SESSION["cart"]);
 ?>
-    <div style="text-align: center">
-    <a href='index.php' style="justify-content: center">TRỞ VỀ TRANG CHỦ</a><br>
-    </div>
+
             
     
