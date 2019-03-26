@@ -15,7 +15,8 @@
     <!-- ID loại hoa -->
     <div class="form-inline">
         <label class="mb-2 mr-sm-2 col-2" for="addfcateid">Mã loại hoa:</label>
-        <input type="text" autofocus required class="form-control mb-2 mr-sm-2 col-9" name="addfcateid" id="addfcateid" autocomplete="off" maxlength="3" pattern="\w{2,3}">
+        <input type="text" autofocus required class="form-control mb-2 mr-sm-2 col-9" name="addfcateid" id="addfcateid" autocomplete="off" 
+        maxlength="3" pattern="\w{2,3}" title="Chỉ gồm 2-3 kí tự, không được trùng với mã đã có">
     </div>
     <div class="form-inline">
         <label class="mr-sm-2 col-2"></label>
@@ -26,7 +27,7 @@
     <div class="form-inline">
         <label class="mb-2 mr-sm-2 col-2" for="addfcatename">Tên loại hoa:</label>
         <input type="text" required class="form-control mb-2 mr-sm-2 col-9" name="addfcatename" id="addfcatename"
-            autocomplete="off">
+            autocomplete="off" pattern="[\p{L}\s\d]{2,40}" title="2-40 chữ. Không bao gồm kí tự đặc biệt như @#$%^&* ">
     </div>
 
     <!-- Chi tiết -->

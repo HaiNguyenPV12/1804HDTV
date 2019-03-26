@@ -95,6 +95,18 @@ app.config(function ($routeProvider) {
         .when("/order", {
             templateUrl: "order.php",
         })
+        .when("/order/delivered/:oid", {
+            cache: false,
+            templateUrl: function (params) {
+                return 'order_process.php?delivered&oid=' + params.oid;
+            },
+        })
+        .when("/order/aborted/:oid", {
+            cache: false,
+            templateUrl: function (params) {
+                return 'order_process.php?aborted&oid=' + params.oid;
+            },
+        })
         .when("/member", {
             templateUrl: "member.php"
         })
@@ -106,6 +118,11 @@ app.config(function ($routeProvider) {
         })
         .when("/statistic", {
             templateUrl: "statistic.php"
+        })
+        .when("/statistic/:year", {
+            templateUrl: function (params) {
+                return 'statistic.php?year=' + params.year;
+            },
         })
         .when("/comment", {
             templateUrl: "comment.php"

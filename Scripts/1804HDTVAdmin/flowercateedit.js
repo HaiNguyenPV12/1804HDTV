@@ -53,8 +53,16 @@ function editvalidateFCateID(){
             }
         }else{
             //$('#validatetext').attr('class','text-success');
-            $("#validatetext").html("");
-            editfcateidvalid=true;
+            var IDRegex = new RegExp("^[A-Z]{2,3}$");
+            if (IDRegex.test($("#editfcateid").val())) {
+                $('#validatetext').attr('class','text-success');
+                $("#validatetext").html("");
+                editfcateidvalid=true;
+            }else{
+                $('#validatetext').attr('class','text-danger');
+                $("#validatetext").html("Mã phải có 2 hoặc 3 kí tự! Và không chứa kí tự đặc biệt hoặc số.");
+                editfcateidvalid=false;
+            }
         }
         
     }

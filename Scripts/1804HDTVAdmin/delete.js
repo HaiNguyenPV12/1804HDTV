@@ -45,6 +45,9 @@ $('#cmdDelete').click(function(event){
     }else if($("#delroleid").length){
         myFormData.append('roleid', $("#delroleid").val());
     }
+    else if($("#delmemid").length){
+        myFormData.append('memid', $("#delmemid").val());
+    }
     //var $form = $(this);
     //var serializedData = $form.serialize();
     // Fire off the request to /form.php
