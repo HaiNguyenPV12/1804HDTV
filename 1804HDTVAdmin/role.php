@@ -1,7 +1,7 @@
 <?php
     session_start();
     // Kiểm tra quyền truy cập trang này
-    if (!in_array("Q00",$_SESSION["sRight"],true)) {
+    if (!in_array("Q00",$_SESSION["sRight"],true ) && !in_array("Q05",$_SESSION["sRight"],true )) {
         echo "<h2>Không tìm thấy trang!<h2>";
         exit;
     }
@@ -53,9 +53,12 @@
                     $rcount++;
                 }
             }
-            if ($roledata['s_role_ID']!="admin") {
-                echo '(Có '.$rcount.' quyền) <a class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'roleredit.php?roleid=',$roledata["s_role_ID"],'\';modalHText=\'Chỉnh sửa quyền của '.$roledata["s_role_name"].'\';">Sửa quyền hạn</a>';
+            if (in_array("Q00",$_SESSION["sRight"],true ) || in_array("Q09",$_SESSION["sRight"],true )) {
+                if ($roledata['s_role_ID']!="admin") {
+                    echo '(Có '.$rcount.' quyền) <a class="btn btn-info btn-sm text-light btn-shop" data-toggle="modal" data-target="#modal" ng-click="temp.url = \'roleredit.php?roleid=',$roledata["s_role_ID"],'\';modalHText=\'Chỉnh sửa quyền của '.$roledata["s_role_name"].'\';">Sửa quyền hạn</a>';
+                }
             }
+            
             echo "</td>";
 
             //-----------------------------------------------------------------------------
