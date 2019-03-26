@@ -157,12 +157,12 @@ if (isset($_POST['cmdAddFlower'])) {
         echo "Không có id";
     }
 //xóa thành viên
-}else if (isset($_POST['cusid']))
+}else if (isset($_POST['memid']))
     {
-        $cusid = $_POST['cusid'];
+        $memid = $_POST['memid'];
         include '../src/flowerdb.php';
-        if (sizeof(getSql("select * from member where cus_ID = '$cusid'"))>0) {
-            deleteSql("DELETE FROM member where cus_ID = '$cusid'");
+        if (sizeof(getSql("select * from member where mem_ID = '$memid'"))>0) {
+            deleteSql("DELETE FROM member where mem_ID = '$memid'");
             echo "ok";
         }   
         else
