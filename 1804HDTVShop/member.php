@@ -25,7 +25,7 @@ session_start();
         <p style="color:red;display:none;" id="emailLabel"></p>
         <div class="form-group input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                <span class="input-group-text"> <i class="fa fa-home"></i> </span>
             </div>
             <input name="memAddress" id="memAddress" class="form-control" placeholder="Địa chỉ thành viên" type="text">
         </div> <!-- form-group// -->        
