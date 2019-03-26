@@ -61,8 +61,6 @@ session_start();
                                     echo "<td>",$sum+$ship,"</td>";
                                     echo "</tr>";
                                     
-                                }else{
-                                    echo "Chưa có dữ liệu giỏ hàng";
                                 }
                         ?>
                     </tbody>
