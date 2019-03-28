@@ -16,7 +16,13 @@ session_start();
         $dVal = $_POST["dateVal"];     
         $timezone = date_default_timezone_get();
         $date = date("Y-m-d",time());
-        $csql = insertSql("insert into customer values(null,'$cPhone','$cName','$cAddress','$cEmail')");
+        $existed = getSql("SELECT * FROM customer WHERE cus_phone = '$cPhone'");
+        if (sizeof($existed)>0) {
+            updateSql("UPDATE customer SET cus_name='$cName', cus_email ='$cEmail', cus_address='$cAddress' WHERE cus_phone = '$cPhone'");
+        }else{
+            $csql = insertSql("insert into customer values(null,'$cPhone','$cName','$cAddress','$cEmail')");
+        }
+        
         $data = getSql("select cus_ID from customer where cus_phone = '$cPhone'");
         $cusID = $data[0]['cus_ID'];
         $osql = insertSql("insert into orders values(null,'$cusID',1,'$date','$dVal')");
@@ -35,9 +41,9 @@ session_start();
                 foreach ($bdata as $key2 => $b) {
                     if ($b["b_ID"]==$cart["bid"]) {
                         $sum = 0;
-                        $cdata = getSql("select cus_ID from customer where cus_phone = '$cPhone'");
+                        $cdata = getSql("SELECT cus_ID from customer where cus_phone = '$cPhone'");
                         $cID = $cdata[0]['cus_ID'];
-                        $odata = getSql("select order_ID from orders where cus_ID = '$cID'");
+                        $odata = getSql("SELECT order_ID from orders where cus_ID = '$cID' order by order_ID desc");
                         $ordID = $odata[0]['order_ID'];
                         $odsql = insertSql("insert into order_detail values(null,'$ordID','".$cart["bid"]."','".$cart["quan"]."')");
                         $aprice = $b["b_price"]*$cart["quan"];
@@ -76,8 +82,6 @@ session_start();
     echo "</table>";
     unset($_SESSION["cart"]);
 ?>
-    <div style="text-align: center">
-    <a href='index.php' style="justify-content: center">TRỞ VỀ TRANG CHỦ</a><br>
-    </div>
+
             
     

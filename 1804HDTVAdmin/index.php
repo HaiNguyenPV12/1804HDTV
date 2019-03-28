@@ -87,15 +87,13 @@ if (!isset($_SESSION["loggedin"])) {
                         if (in_array("Q02",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
                             echo '<a href="#!flower" class="list-group-item list-group-item-shop">Quản lý Hoa</a>';
                         }
-                        if (in_array("Q03",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
+                        if (in_array("Q04",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
                             echo '<a href="#!occasion" class="list-group-item list-group-item-shop">Quản lý Dịp</a>';
                         }
                         if (in_array("Q05",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
                             echo '<a href="#!staff" class="list-group-item list-group-item-shop">Quản lý Nhân Viên</a>';
-                        }
-                        if(in_array("Q00",$rightsdata,true)){
                             echo '<a href="#!role" class="list-group-item list-group-item-shop">Quản lý Chức Vụ</a>';
-                            echo '<a href="#!member" class="list-group-item list-group-item-shop">Quản lý Thành viên</a>';
+                            
                         }
                         if (in_array("Q06",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
                             echo '<a href="#!order" class="list-group-item list-group-item-shop">Quản lý Đơn Hàng</a>';
@@ -103,6 +101,7 @@ if (!isset($_SESSION["loggedin"])) {
                         }
                         if (in_array("Q10",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
                             echo '<a href="#!customer" class="list-group-item list-group-item-shop">Quản lý Khách Hàng</a>';
+                            echo '<a href="#!member" class="list-group-item list-group-item-shop">Quản lý Thành viên</a>';
                         }
                         if (in_array("Q07",$rightsdata,true) || in_array("Q00",$rightsdata,true)) {
                             echo '<a href="#!comment" class="list-group-item list-group-item-shop">Quản lý Bình Luận</a>';

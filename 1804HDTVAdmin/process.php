@@ -91,12 +91,17 @@ if (isset($_POST['cmdAddFlower'])) {
         include '../src/flowerdb.php';
         // Lấy dữ liệu hoa này có trong các bó hoa hay không
         $existed = getSql("SELECT * FROM bouq_detail where f_ID = '$fid'");
+        $colorExisted = getSql("SELECT * FROM flower_color_detail WHERE f_ID='$fid'");
+
         // Lấy đường dẫn file hình
         $img = getSql("SELECT f_img from flower where f_ID = '$fid'")[0];
 
         // Nếu hoa này có trong các bó hoa thì thực hiện xóa dữ liệu đó trước
         if (sizeof($existed)>0) {
             deleteSql("DELETE FROM bouq_detail where f_ID = '$fid'");
+        }
+        if (sizeof($colorExisted)>0) {
+            deleteSql("DELETE FROM flower_color_detail where f_ID = '$fid'");
         }
         // Sau đó là thực hiện xóa trong CSDL
         deleteSql("delete from flower where f_ID ='$fid'");
@@ -619,9 +624,9 @@ if (isset($_POST['cmdAddFlower'])) {
                 // Nếu có thì insert trước cái mới, không update liền
                 insertSql("INSERT INTO flower_cate VALUES ('$fcateid', '$fcatename', '$fcateimg', '$fcatedetail')");
                 // Sau đó cập nhật thông tin ở các hoa có chứa loại hoa này
-                updateSql("UPDATE flower SET f_cate_ID = '$fcateid' WHERE f_cate_ID='$oldfcateid'");
+                updateSql("UPDATE flower SET f_cate_ID = '$fcateid' WHERE f_cate_ID = '$oldfcateid'");
                 // Cuối cùng thì xóa đi cái cũ
-                deleteSql("DELETE flower_cate WHERE f_cate_ID='$oldfcateid'");
+                deleteSql("DELETE FROM flower_cate WHERE f_cate_ID = '$oldfcateid'");
             }else{
                 // Nếu không có thì update thẳng luôn
                 updateSql("UPDATE flower_cate SET f_cate_ID = '$fcateid',f_cate_name='$fcatename',f_cate_img='$fcateimg',f_cate_detail='$fcatedetail' WHERE f_cate_ID='$oldfcateid'");
