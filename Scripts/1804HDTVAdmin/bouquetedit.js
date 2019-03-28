@@ -33,6 +33,7 @@ $("#cmdResetEditBouquet").click(function(){
     }else{
         $('#editbselling').prop('checked', false);
     }
+    editimgremoved = [];
 });
 
 // Function tắt bảng Modal
@@ -212,7 +213,7 @@ $("#frmEditBouquet").submit(function(event){
     }else{
         bselling=0;
     }
-    if ($("#editimgPreview").find("[name='img[]']").length || editimgremoved.length>0) {
+    if ($("#editimgPreview").find("[name='img[]']").length|| editimgremoved.length>0) {
         imgchanged=true;
     }else{
         imgchanged=false;
