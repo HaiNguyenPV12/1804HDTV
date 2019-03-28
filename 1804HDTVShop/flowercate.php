@@ -222,7 +222,7 @@
                         echo '<a href="#!flowercate/'.$fcate["f_cate_ID"].'" class="btn card-footer btn-shop" style="border-radius:0px;border-bottom:2px solid #9f7fc3">
                                 Xem các Loại hoa '.$fcate["f_cate_name"].'
                             </a>
-                            <a href="#!browse.php/filter/'.$fcate["f_cate_name"].'/*/*/*" class="btn card-footer btn-shop">
+                            <a href="#!browse.php/filter/'.$fcate["f_cate_name"].'/*/*/*/*" class="btn card-footer btn-shop">
                                 Tìm Bó có hoa '.$fcate["f_cate_name"].'
                             </a>';
                         echo'   </div>
