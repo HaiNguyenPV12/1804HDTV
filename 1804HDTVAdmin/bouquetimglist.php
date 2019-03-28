@@ -24,10 +24,14 @@
                     onclick="showModal(\'large\',\'Cập nhật hình\',\'bouquetimgedit.php?bimgid='.$imgdata["b_img_ID"].'\');" 
                     >Cập nhật</button></td>';
                 // Nút Xóa
-                echo '<td><button class="btn btn-danger btn-sm text-light"
+                if (sizeof($data)!=1) {
+                    echo '<td><button class="btn btn-danger btn-sm text-light"
                     data-toggle="modal" data-target="#imgModal" 
                     onclick="showModal(\'large\',\'Xóa hình\',\'delete.php?bouquetimg&&bimgid='.$imgdata["b_img_ID"].'\');"
                     >Xóa</button></td>';
+                }else{
+                    echo '<td><a class="btn btn-secondary btn-sm text-light">Xóa</a></td>';
+                }
                 echo "</tr>";
             }
             

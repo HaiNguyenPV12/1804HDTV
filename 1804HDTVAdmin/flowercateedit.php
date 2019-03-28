@@ -24,7 +24,8 @@
     <!-- ID loại hoa -->
     <div class="form-inline">
         <label class="mb-2 mr-sm-2 col-2" for="editfcateid">Mã loại hoa:</label>
-        <input type="text" autofocus required class="form-control mb-2 mr-sm-2 col-9" name="editfcateid" id="editfcateid" autocomplete="off" maxlength="3" pattern="\w{2,3}"" value="<?php echo $data['f_cate_ID'] ?>">
+        <input type="text" autofocus required class="form-control mb-2 mr-sm-2 col-9" name="editfcateid" id="editfcateid" autocomplete="off" maxlength="3" 
+        pattern="\w{2,3}"" value="<?php echo $data['f_cate_ID'] ?>" title="Chỉ gồm 2-3 kí tự, không được trùng với mã đã có">
     </div>
     <div class="form-inline">
         <label class="mr-sm-2 col-2 mb-2"></label>
@@ -33,7 +34,8 @@
     <!-- Tên loại hoa -->
     <div class="form-inline">
         <label class="mb-2 mr-sm-2 col-2">Tên loại hoa:</label>
-        <input type="text" required class="form-control mb-2 mr-sm-2 col-9" name="editfcatename" id="editfcatename" autocomplete="off" value="<?php echo $data['f_cate_name'] ?>">
+        <input type="text" required class="form-control mb-2 mr-sm-2 col-9" name="editfcatename" id="editfcatename" autocomplete="off" 
+        value="<?php echo $data['f_cate_name'] ?>" pattern="[\p{L}\s]{2,40}" title="2-40 chữ. Không bao gồm kí tự đặc biệt như @#$%^&* ">
     </div>
 
     <!-- Chi tiết -->

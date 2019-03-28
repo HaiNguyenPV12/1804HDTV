@@ -12,9 +12,9 @@ function closeModal(){
 }
 
 
-$('#cmdReset').click(function (e) {
-    $("#imgPreview").html(oldFImgView);
-    $("#fimgfiletext").html("(Hãy để trống nếu không muốn thay đổi)");
+$('#cmdEditFlowerReset').click(function (e) {
+    $("#editimgPreview").html(oldFImgView);
+    $("#editfimgfiletext").html("(Hãy để trống nếu không muốn thay đổi)");
 });
 
 //reload để load lại dữ liệu từ sql
